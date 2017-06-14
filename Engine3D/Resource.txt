@@ -1,0 +1,4 @@
+
+LE RISORSE SONO INSERITE NELLA CARTELLA:		...\Engine3D\Engine3D\Resources		(C:\Develop\Engine3D\Engine3D\Resources)
+L'IMPOSTAZIONE E' SU: Proprietà progetto->Debug->Directory di lavoro
+QUesto per permettere un'esecuzione senza problemi di path (in questo modo però non è possibile eseguire dalla cartella dell'eseguibile senza VS)

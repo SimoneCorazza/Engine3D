@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="File di risorse">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{31270c47-e0e7-4314-8d4c-57867d5bca7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderingEngine">
+      <UniqueIdentifier>{135f46fc-b523-4365-82a4-e591fcbd1106}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderingEngine\Frustum">
+      <UniqueIdentifier>{509af6ba-e555-4cf2-ac5d-fac212a39962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderingEngine\2D">
+      <UniqueIdentifier>{6506636b-1fbc-4ac0-a85d-a044fd14b600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\RenderingEngine\2D\Font">
+      <UniqueIdentifier>{0a8886de-df24-4b1f-9dbe-0840910bd23e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Utility">
+      <UniqueIdentifier>{258ec3f4-d602-48b7-b3b6-b2870198e494}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\InputEngine">
+      <UniqueIdentifier>{56c3fe37-8f3e-49a9-a313-262605266577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{f5d8d9bc-6ab6-4780-aa49-00a539d8f820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene">
+      <UniqueIdentifier>{72aa3c5d-9065-4609-9b35-e9d3e945d928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene\Actor">
+      <UniqueIdentifier>{1281ac66-636e-43f7-bdcb-28d92b4194d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene\Actor\Model">
+      <UniqueIdentifier>{5a40da54-24c1-4073-9880-1e4f655da68f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene\Actor\Model\Mesh">
+      <UniqueIdentifier>{7ce7c407-ca5d-42fc-9783-f6e17adb8201}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene\Actor\Model\Material">
+      <UniqueIdentifier>{36c42e89-2748-40fa-a6fe-da2475e078b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene\Camera">
+      <UniqueIdentifier>{8e0797b4-c4a2-4010-b5d4-9a4528d6d44e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\ItemScene\Lights">
+      <UniqueIdentifier>{66a7c29c-ffce-4d70-830e-ec7dd1b842fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders">
+      <UniqueIdentifier>{579f0dfe-1681-4bf3-a042-f483bd4b8c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\ShaderLoader">
+      <UniqueIdentifier>{060498a0-f790-44f1-91ca-b7b363927da7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\Models">
+      <UniqueIdentifier>{f78d623b-1027-4cdf-aec3-1f4ca8d4fc59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\PostProcess">
+      <UniqueIdentifier>{9a92ad8f-42a6-4dd2-b7e2-785700191c73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess">
+      <UniqueIdentifier>{51a16cbf-af35-4c32-b84f-ef89c222c939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\BlackAndWhite">
+      <UniqueIdentifier>{0a1f67d5-1e34-47d1-947d-7a2e341618a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Blur">
+      <UniqueIdentifier>{f7e6f12e-ef7b-46c5-9d1c-6f834500fb05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering">
+      <UniqueIdentifier>{486cf9e4-689d-4083-90b0-42c18a5187cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth">
+      <UniqueIdentifier>{e3ffbffe-ba84-4354-ac79-84e38377596c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\Skybox">
+      <UniqueIdentifier>{dc017ce0-fdd5-4bd6-84da-b50f8b92b286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Textures">
+      <UniqueIdentifier>{0a6344fc-68ec-4b4b-ab8d-279e539c9161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Textures\TextureLoader">
+      <UniqueIdentifier>{6d4b6c99-2334-465e-97c4-fef631533e88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Skybox">
+      <UniqueIdentifier>{371b2485-1eab-4df8-ab2c-182bddbe3ff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\UI">
+      <UniqueIdentifier>{da9e3fd0-b3b5-40d4-b148-2a807cea144a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\UI\UIElements">
+      <UniqueIdentifier>{693206c0-9241-42e1-97d8-411152fd6c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\File">
+      <UniqueIdentifier>{35242adc-e7ab-4f32-b200-3e2049ee2e3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\BasicStructers">
+      <UniqueIdentifier>{2a8fad01-946a-4451-97de-05125bac4edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestGame">
+      <UniqueIdentifier>{a7ac29e4-a62e-4e89-ad5f-0f0f0f7c4694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShadersCode">
+      <UniqueIdentifier>{158f0001-6ceb-4785-8bc5-67fc7da81963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\Models\LiftTri">
+      <UniqueIdentifier>{8787c3f2-2c63-476e-923e-97edd6248d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\Models\LightTexture">
+      <UniqueIdentifier>{324b21f4-8b36-4976-aed9-3e89434d3e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene\Shaders\Models\Standard">
+      <UniqueIdentifier>{2965faae-25ff-4368-885e-a35e86ef68d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cpp">
+      <Filter>Engine\Scene\Shaders\ShaderLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Engine\Scene\ItemScene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderingEngine.cpp">
+      <Filter>Engine\RenderingEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Engine\Scene\ItemScene\Actor\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Engine\Scene\ItemScene\Actor\Model\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Engine\Scene\ItemScene\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Engine\Scene\ItemScene\Actor\Model\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>TestGame</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTest.cpp">
+      <Filter>TestGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="InputEngine.cpp">
+      <Filter>Engine\InputEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Frustum.cpp">
+      <Filter>Engine\RenderingEngine\Frustum</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemScene.cpp">
+      <Filter>Engine\Scene\ItemScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureDecoder.cpp">
+      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_FileSystem.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="DEBUG.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_Strings.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Engine\Scene\Skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_GLM.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryReader.cpp">
+      <Filter>Engine\File</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessEffect.cpp">
+      <Filter>Engine\Scene\ItemScene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Engine\Scene\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorShader.cpp">
+      <Filter>Engine\Scene\Shaders\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcess_Final.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessShader.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessShaderParams.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelShader.cpp">
+      <Filter>Engine\Scene\Shaders\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackAndWhitePostProcessShader.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\BlackAndWhite</Filter>
+    </ClCompile>
+    <ClCompile Include="BlurPostProcessShader.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Blur</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCube.cpp">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_Arrays.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyboxShader.cpp">
+      <Filter>Engine\Scene\Shaders\Skybox</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureUtils.cpp">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Engine\Scene\ItemScene\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckTable.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="InputState.cpp">
+      <Filter>Engine\InputEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="JoystickState.cpp">
+      <Filter>Engine\InputEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>Engine\Scene\UI\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorParameters.cpp">
+      <Filter>Engine\Scene\ItemScene\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Engine\RenderingEngine\2D\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_Math.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Engine\RenderingEngine\2D\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="GlyphInfo.cpp">
+      <Filter>Engine\RenderingEngine\2D\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>Engine\Scene\UI\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw2D.cpp">
+      <Filter>Engine\RenderingEngine\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Engine\Scene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="LightScatteringPPS.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
+    </ClCompile>
+    <ClCompile Include="LightScatteringPPSP.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthPostProcessShader.cpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
+    </ClCompile>
+    <ClCompile Include="NvidiaOptimus.h">
+      <Filter>Engine\RenderingEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="LiftTriShader.cpp">
+      <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
+    </ClCompile>
+    <ClCompile Include="LightTextureShader.cpp">
+      <Filter>Engine\Scene\Shaders\Models\LightTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="StandardShader.cpp">
+      <Filter>Engine\Scene\Shaders\Models\Standard</Filter>
+    </ClCompile>
+    <ClCompile Include="LiftTriAP.cpp">
+      <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
+    </ClCompile>
+    <ClCompile Include="MyActor.cpp">
+      <Filter>TestGame</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateParameters.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility_Time.cpp">
+      <Filter>Engine\Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lodepng.h">
+      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>Engine\Scene\Shaders\ShaderLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\Scene\ItemScene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingEngine.h">
+      <Filter>Engine\RenderingEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DEBUG.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IDCollection.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Engine\Scene\ItemScene\Actor\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Engine\Scene\ItemScene\Actor\Model\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Engine\Scene\ItemScene\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Engine\Scene\ItemScene\Actor\Model\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTest.h">
+      <Filter>TestGame</Filter>
+    </ClInclude>
+    <ClInclude Include="InputEngine.h">
+      <Filter>Engine\InputEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Point3.h">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2.h">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Frustum.h">
+      <Filter>Engine\RenderingEngine\Frustum</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemScene.h">
+      <Filter>Engine\Scene\ItemScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDecoder.h">
+      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_FileSystem.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Strings.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Engine\Scene\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_GLM.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryReader.h">
+      <Filter>Engine\File</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessEffect.h">
+      <Filter>Engine\Scene\ItemScene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Engine\Scene\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorShader.h">
+      <Filter>Engine\Scene\Shaders\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcess_Final.h">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessShader.h">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessShaderParams.h">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelShader.h">
+      <Filter>Engine\Scene\Shaders\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackAndWhitePostProcessShader.h">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\BlackAndWhite</Filter>
+    </ClInclude>
+    <ClInclude Include="RectangleF.h">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClInclude>
+    <ClInclude Include="BlurPostProcessShader.h">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Blur</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCube.h">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Arrays.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyboxShader.h">
+      <Filter>Engine\Scene\Shaders\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureUtils.h">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Engine\Scene\ItemScene\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckTable.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="InputState.h">
+      <Filter>Engine\InputEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="IE_CursorMode.h">
+      <Filter>Engine\InputEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="MapIterator.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Engine\BasicStructers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>Engine\Scene\UI\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonConstants.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorParameters.h">
+      <Filter>Engine\Scene\ItemScene\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Engine\RenderingEngine\2D\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Math.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Engine\RenderingEngine\2D\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="GlyphInfo.h">
+      <Filter>Engine\RenderingEngine\2D\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.h">
+      <Filter>Engine\Scene\UI\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw2D.h">
+      <Filter>Engine\RenderingEngine\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Engine\Scene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="LightScatteringPPS.h">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
+    </ClInclude>
+    <ClInclude Include="LightScatteringPPSP.h">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingEngineInfo.h">
+      <Filter>Engine\RenderingEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthPostProcessShader.h">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
+    </ClInclude>
+    <ClInclude Include="LiftTriShader.h">
+      <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
+    </ClInclude>
+    <ClInclude Include="LightTextureShader.h">
+      <Filter>Engine\Scene\Shaders\Models\LightTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="StandardShader.h">
+      <Filter>Engine\Scene\Shaders\Models\Standard</Filter>
+    </ClInclude>
+    <ClInclude Include="LiftTriAP.h">
+      <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
+    </ClInclude>
+    <ClInclude Include="MyActor.h">
+      <Filter>TestGame</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateParameters.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Time.h">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Develop.txt" />
+    <Text Include="Resource.txt">
+      <Filter>File di risorse</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine3D_HowTo.odt" />
+    <None Include="Resources\Caratteri.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\Caratteri.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\Color.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\LiftTri.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\LightTexture.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\LightTexture.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\PostProcess_BlackWhite.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\PostProcess_Blur.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\PostProcess_Common.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\PostProcess_Depth.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\PostProcess_LightScattering.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\Skybox.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\Skybox.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\Standard.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\Texture.frag.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+    <None Include="Resources\VertecesOnly.vert.glsl">
+      <Filter>ShadersCode</Filter>
+    </None>
+  </ItemGroup>
+</Project>

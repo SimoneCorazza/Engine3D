@@ -1,0 +1,121 @@
+CRITICITA' PROGETTUALI:
+	• Gestire gli asset di default
+
+
+BUG:
+	• Il font è renderizzato più in basso di quanto voluto
+
+	• Usando la VGA 840M si ha un periodo iniziale dove le mesh sembrano scattare se si mette da subito la finestra a schermo intero
+
+
+
+DA AGGIUNGERE
+	• Usare mesh più elaborate
+
+
+
+PIPLINE DI RENDERING:
+	• Pacchettare assieme le draw call con stessi shaders
+	• Pacchettare assieme le draw call con stessi materiali (texture, ...)
+	• Pacchettare assieme le draw call con stessi vertex buffer
+	• Mettere più mesh nello stesso buffer (es. static mesh in un buffer, dynamic mesh in un'altro,...) usando API
+		per poi renderizzare porzioni di questi vertex buffer glDrawElementsBaseVertex
+
+	• Aggiungere uno struct/classe che permette di raggruppare gli attori che usano stessa mesh, materiale e shader
+		Questa struttura è utilizzata a discrezione dell'utente ed è così composta
+			BlockRendering
+			{
+				Shader -> particolare (modelmatrix deve essere su buffer, ...)
+				Mesh
+				Actors -> attori che necessitano di essere renderizzati in blocco (viene considerata solo la modelview matrix)
+				|-> utilizzare una classe apposita a questo scopo e non una classe attore? (mantenere astrazione ma non ripetere inutilmente dati)
+				Instance render per draw call -> numero di istanze/attori da rendeizzare al colpo (incide
+					sulla dimensione del buffer per contenere le varie peculiarità delle singole istanze)
+				FrustumCullingMode -> Modalità di culling degli elementi del blocco:
+										• Uno per uno (fatto lato CPU)
+										• Tutto il blocco (considerando 4 istanze come vertici)
+			}
+
+	MIGLIORARE:
+		• Miglioarare il sistema di ordinamento:
+			- evitare di effettuare l'ordinameto se nulla è cambiato
+			- utilizzare un algoritmo multi-thred dove si ordinano gli attori mentre si effettuano operazioni su di essi (per la porzione di array ordinata)
+			- eseguira prima il test del frustum culling e poi effettuare l'ordinamento
+
+
+GESTIONE ASSET:
+	• Come gestire asset di default (es. shaders) necessari all'engine?
+	• Avere una classe asset per la gestione di mesh, texture, 
+	• La gestione serve per sapere quali mesh e texture servono all'interno della scena (quali caricare e quali no)
+	• Avere un metodo tipo BeginLoad che permette di iniziare il caricamento degli asset
+	• Avere un metodo tipo RequestAsset(...) che permette di richiedere un'asset da usare all'interno della scena e ne ritorna l'ID
+	• Avere poi un metodo EndLoad che permette di prendere le varie mesh e texture da usare nella scena ed effettuare delle operazioni quali:
+		- Inserire le mesh in un unco buffer per ottimizzare la pipeline di rendering
+		- Rilasciare buffer e texture che non sono stati richiesti durante la fase di inizializzazione
+	• Avere poi un metodo tipo GetAsset(ID) o GetAsset(Asset_Type, ID) che ritorna l'ID della texture o buffer secondo OpenGL
+		(NOTA: con la seconda opzione può essere più semplice gestire la classe Asset)
+		
+
+RENDERING IN BLOCCHI:
+	• Array di attori con proprietà simili agli attori solo che sono statici (si può modificare solamente la model matrix)
+	• Shader sa usare derivato da uno shader apposito per questa tipologia di rendering (BlockShader)
+	• Dedicare apposito spazio sulla scena
+
+	Possibilità di usare glDrawArraysInstanced per renderizzare sul colpo molte più modelli: è necessario pacchettare gli attori aventi proprietà simili.
+	Poi ci sono due modi per passare i parametri:
+		• Usando dei buffer e poi usare glVertexAttribDivisor (come mostrato nel tutorial delle particelle con billboard: http://www.opengl-tutorial.org/intermediate-tutorials/billboards-particles/particles-instancing/)
+			per segmentare l'input per ogni attore (model matrix, ...) [Scelta che sembra più ottimale siccome utilizza dei buffer (che per esempio possono essere creati precedentemente e riempiti al momento)]
+		• Usando l'attributo gl_InstanceID nello shader per identificare l'istanza [Contro: non usando i buffer non si è costretti ad utilizzare delle uniform con array]
+
+
+FILE SCENA:
+	- Da memorizzare gli Items (ogni item deve essere univocamente identificato):
+		• Attori presenti
+			. Modello (Mesh + Texture + Shader) [NOTA: in caso più attori utilizzino lo stesso modello bisogna compattare la cosa]
+			. Nome univoco
+			. Matrice di transformazione
+	- Da memorizzare Shaders:
+		• Set shader default (MONOCOLOR, TEXTURE_SHADER, ...)
+		• Shader personalizzati in file separati (codeice GLSL)
+	- Da memorizzare modelli:
+		• Modello da memorizzare in un file separato (riferimento tramite path relativo)
+		• Vertici con UV e numero vertici da renderizzare totali
+		• Texture all'interno del file (formato PNG, ...)
+		• Filtri texture, mipmaps, filtro anisotropico, ...
+
+
+
+COMPOSIZIONE FILE MESH (.msh)
+	- 3 Byte con i caratteri "MSH"
+	- 1 byte = 0 se non ci sono le normali, oppure 1 se sono presenti
+	- Box contenente tutta la mesh:
+		• Max X (float32)
+		• Min X (float32)
+		• Max Y (float32)
+		• Min Y (float32)
+		• Max Z (float32)
+		• Min Z (float32)
+
+	- Numero di vertitici della palette (int32)
+	- Palette dei vertici (float32 : X / float32 : Y / float32 : Z per ogni vertice)
+	- Numero di UV della palette (int32)
+	- Palette dell'UV (float32 : X / float32 : Y per ogni UV)
+	- Numero di normali della palette (int32)
+	- Palette delle normali (float32 : X / float32 : Y per ogni normale)
+	- Numero di triangoli  (int32)
+	- Faccie del triangolo (int16 : Indice Vertice / int16 : Indice UV / int16 : Indice Normale x tre volte) (le normali vengono inserite solo se presenti)
+	
+
+
+POST-RENDER: (http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-14-render-to-texture/)
+	- Per ogni camera avere una pipeline degli effetti da applicare, un'effetto è rappresentato da una classe
+	che andrà a ricevere come input il depth buffer (texture) e il frame (texture) e poi restituire il frame elaborato
+	dall'effetto.
+	- Di default verranno forniti:
+		• blur di sfocamento (in base alla distanza) https://github.com/mattdesl/lwjgl-basics/wiki/ShaderLesson5
+		• bianco e nero
+		• 
+
+
+
+

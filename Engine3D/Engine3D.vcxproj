@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FD5D7BEA-2E2E-4C9C-B0EB-D419D1B36107}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OpenGLProva2</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);WINDOWS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\freetype-2.6.2\include;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\include;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <ShowIncludes>true</ShowIncludes>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\CreatedLIB;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\lib\Release\Win32;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\lib-vc2015;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);WINDOWS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\freetype-2.6.2\include;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\include;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <ShowIncludes>true</ShowIncludes>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\CreatedLIB;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\lib\Release\Win32;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\lib-vc2015;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)WINDOWS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\freetype-2.6.2\include;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\include;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\CreatedLIB;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\lib\Release\Win32;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\lib-vc2015;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)WINDOWS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\freetype-2.6.2\include;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\include;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(DevelopLibrerie)\Cpp\FreeType-2.6.2\CreatedLIB;$(DevelopLibrerie)\Cpp\glm-0.9.4.0;$(DevelopLibrerie)\Cpp\glew-1.13.0\lib\Release\Win32;$(DevelopLibrerie)\Cpp\glfw-3.1.2.bin.WIN32\lib-vc2015;$(DevelopLibrerie)\Cpp\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="ActorParameters.cpp" />
+    <ClCompile Include="BinaryReader.cpp" />
+    <ClCompile Include="BlackAndWhitePostProcessShader.cpp" />
+    <ClCompile Include="BlurPostProcessShader.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CheckTable.cpp" />
+    <ClCompile Include="ColorShader.cpp" />
+    <ClCompile Include="DEBUG.cpp" />
+    <ClCompile Include="DepthPostProcessShader.cpp" />
+    <ClCompile Include="Draw2D.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Font.cpp" />
+    <ClCompile Include="Frustum.cpp" />
+    <ClCompile Include="GlyphInfo.cpp" />
+    <ClCompile Include="InputEngine.cpp" />
+    <ClCompile Include="InputState.cpp" />
+    <ClCompile Include="ItemScene.cpp" />
+    <ClCompile Include="JoystickState.cpp" />
+    <ClCompile Include="LiftTriAP.cpp" />
+    <ClCompile Include="LiftTriShader.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="LightScatteringPPS.cpp" />
+    <ClCompile Include="LightScatteringPPSP.cpp" />
+    <ClCompile Include="LightTextureShader.cpp" />
+    <ClCompile Include="lodepng.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelShader.cpp" />
+    <ClCompile Include="MyActor.cpp" />
+    <ClCompile Include="NvidiaOptimus.h" />
+    <ClCompile Include="PostProcessEffect.cpp" />
+    <ClCompile Include="PostProcessShader.cpp" />
+    <ClCompile Include="PostProcessShaderParams.cpp" />
+    <ClCompile Include="PostProcess_Final.cpp" />
+    <ClCompile Include="RenderingEngine.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneTest.cpp" />
+    <ClCompile Include="UpdateParameters.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderLoader.cpp" />
+    <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="SkyboxShader.cpp" />
+    <ClCompile Include="SpriteFont.cpp" />
+    <ClCompile Include="StandardShader.cpp" />
+    <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="TextureCube.cpp" />
+    <ClCompile Include="TextureDecoder.cpp" />
+    <ClCompile Include="TextureUtils.cpp" />
+    <ClCompile Include="UI.cpp" />
+    <ClCompile Include="UIElement.cpp" />
+    <ClCompile Include="Utility_Arrays.cpp" />
+    <ClCompile Include="Utility_FileSystem.cpp" />
+    <ClCompile Include="Utility_GLM.cpp" />
+    <ClCompile Include="Utility_Math.cpp" />
+    <ClCompile Include="Utility_Strings.cpp" />
+    <ClCompile Include="Utility_Time.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="ActorParameters.h" />
+    <ClInclude Include="BinaryReader.h" />
+    <ClInclude Include="BlackAndWhitePostProcessShader.h" />
+    <ClInclude Include="BlurPostProcessShader.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CheckTable.h" />
+    <ClInclude Include="ColorShader.h" />
+    <ClInclude Include="CommonConstants.h" />
+    <ClInclude Include="DEBUG.h" />
+    <ClInclude Include="DepthPostProcessShader.h" />
+    <ClInclude Include="Draw2D.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="Font.h" />
+    <ClInclude Include="Frustum.h" />
+    <ClInclude Include="GlyphInfo.h" />
+    <ClInclude Include="IDCollection.h" />
+    <ClInclude Include="IE_CursorMode.h" />
+    <ClInclude Include="InputEngine.h" />
+    <ClInclude Include="InputState.h" />
+    <ClInclude Include="ItemScene.h" />
+    <ClInclude Include="LiftTriAP.h" />
+    <ClInclude Include="LiftTriShader.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="LightScatteringPPS.h" />
+    <ClInclude Include="LightScatteringPPSP.h" />
+    <ClInclude Include="LightTextureShader.h" />
+    <ClInclude Include="lodepng.h" />
+    <ClInclude Include="MapIterator.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelShader.h" />
+    <ClInclude Include="MyActor.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Point2.h" />
+    <ClInclude Include="Point3.h" />
+    <ClInclude Include="PostProcessEffect.h" />
+    <ClInclude Include="PostProcessShader.h" />
+    <ClInclude Include="PostProcessShaderParams.h" />
+    <ClInclude Include="PostProcess_Final.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="RectangleF.h" />
+    <ClInclude Include="RenderingEngine.h" />
+    <ClInclude Include="RenderingEngineInfo.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneTest.h" />
+    <ClInclude Include="UpdateParameters.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderLoader.h" />
+    <ClInclude Include="Skybox.h" />
+    <ClInclude Include="SkyboxShader.h" />
+    <ClInclude Include="SpriteFont.h" />
+    <ClInclude Include="StandardShader.h" />
+    <ClInclude Include="TextBox.h" />
+    <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="TextureCube.h" />
+    <ClInclude Include="TextureDecoder.h" />
+    <ClInclude Include="TextureUtils.h" />
+    <ClInclude Include="UI.h" />
+    <ClInclude Include="UIElement.h" />
+    <ClInclude Include="Utility_Arrays.h" />
+    <ClInclude Include="Utility_FileSystem.h" />
+    <ClInclude Include="Utility_GLM.h" />
+    <ClInclude Include="Utility_Math.h" />
+    <ClInclude Include="Utility_Strings.h" />
+    <ClInclude Include="Utility_Time.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Develop.txt" />
+    <Text Include="Resource.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine3D_HowTo.odt" />
+    <None Include="Resources\Caratteri.frag.glsl" />
+    <None Include="Resources\Caratteri.vert.glsl" />
+    <None Include="Resources\Color.frag.glsl" />
+    <None Include="Resources\LiftTri.vert.glsl" />
+    <None Include="Resources\LightTexture.frag.glsl" />
+    <None Include="Resources\LightTexture.vert.glsl" />
+    <None Include="Resources\PostProcess_BlackWhite.frag.glsl" />
+    <None Include="Resources\PostProcess_Blur.frag.glsl" />
+    <None Include="Resources\PostProcess_Common.vert.glsl" />
+    <None Include="Resources\PostProcess_Depth.frag.glsl" />
+    <None Include="Resources\PostProcess_LightScattering.frag.glsl" />
+    <None Include="Resources\Skybox.frag.glsl" />
+    <None Include="Resources\Skybox.vert.glsl" />
+    <None Include="Resources\Standard.vert.glsl" />
+    <None Include="Resources\Texture.frag.glsl" />
+    <None Include="Resources\VertecesOnly.vert.glsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
