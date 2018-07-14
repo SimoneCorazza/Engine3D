@@ -11,7 +11,7 @@
 
 typedef FT_ULong Char;
 
-//Enumerazione che permette di individuare
+// Enumeration that allows to identify
 enum FontAtlas_Descriptor
 {
 	FontAtlas_Descriptor_PersonalStandard
@@ -19,17 +19,17 @@ enum FontAtlas_Descriptor
 
 class SpriteFont;
 
-//Classe che rappresenta un font
+// Class that represents a font
 class Font
 {
 	friend SpriteFont;
 
-	static FT_Library freeType; //Libreria di FreeType
-	static int maxTextureSize; //Dimensione in pixel massima supporata dal dispositivo utilizzato
+	static FT_Library freeType; // FreeType library
+	static int maxTextureSize; // Maximum pixel size supported by the device used
 
-	GLuint idTexture; //ID della texture secondo OpenGL contenente l'atlas dei caratteri
-	std::map<Char, GlyphInfo> charactersMap; //Abbina a ogni carattere il corrispettivo descrittore
-	size_t quality; //Qualità scelta per il font (usato solo se .ttf)
+	GLuint idTexture; // ID of the texture according to OpenGL containing the character atlas
+	std::map<Char, GlyphInfo> charactersMap; // Match the corresponding descriptor to each character
+	size_t quality; // Quality chosen for the font (used only if .ttf)
 
 
 public:
@@ -37,47 +37,47 @@ public:
 	~Font();
 
 
-	//METODI STATICI:
+	// STATIC METHODS:
 public:
 
-	//Consente di convertire una stringa con caratteri ascii in caratteri unicode
-	//@param[in] C - Caratteri da convertire
-	//@return Sequenza di caratteri unicode
-	//@NOTA è a carico dell'utente eliminare l'array ritornato
+	// Convert a string with ascii characters to unicode characters
+	// @param [in] C - Characters to be converted
+	// @return Sequence of unicode characters
+	// @NOTA is up to the user to delete the returned array
 	static const Char* ToChar(const char* C);
 
 private:
 
-	//Consente di inizializzare la libreria Free Type e le variabili
-	//statiche della classe
-	//@friend Metodo creato per essere accesso solo dalla lcasse "SpriteFont"
+	// Initialize the Free Type library and variables
+	// static of the class
+	// @friend Method created to be accessed only by the "SpriteFont" lcasse
 	static void Inizialize();
 
-	//METODI:
+	// METHODS:
 public:
 
-	//Consente di caricare un file .ttf contenente le informazioni riguardo ai set di catatteri
-	//@param[in] TTFPath - Path del file .ttf
-	//@param[in] Quality - Coefficiente rappresentante la qualità (più è alta più è di qualità)
-	//@return True se il caricamento ha avuto successo, Flase altrimenti
-	//	Il caricamento ha successo se:
-	//		• La libreria FreeType non da errori
-	//		• I caratteri del font stanno in una texture
+	// Allows you to upload a .ttf file containing information about the catatter set
+	// @param [in] TTFPath - Path to the .ttf file
+	// @param [in] Quality - Coefficient representing the quality (the higher the higher the quality)
+	// @return True if the upload was successful, Flase otherwise
+	// The upload is successful if:
+	// â€¢ The FreeType library is not error-free
+	// â€¢ Font characters are in a texture
 	bool Load(const char* TTFPath, const size_t Quality);
 
-	//Consente di caricare una texture atlas di caratteri da usare come font
-	//@param[in] AtlasPath - Path dell'immagine dell'atlas dei caratteri
-	//@param[in] DescrittorePath - Path del descrittore dell'atlas (indica la posizione dei caratteri nell'immagine)
-	//@param[in] Type - Indica il formato del descrittore
+	// Allows you to load a texture atlas of characters to use as a font
+	// @param [in] AtlasPath - Path to the image of the atlas of the characters
+	// @param [in] DescriptorPath - Path of the descriptor of the atlas (indicates the position of the characters in the image)
+	// @param [in] Type - Indicates the format of the descriptor
 	void Load(const char* AtlasPath, const char* DescrittorePath, FontAtlas_Descriptor Type);
 
-	//Ottiene l'ID della texture contenente l'atlas dei glifi
+	// Gets the ID of the texture containing the glyphs atlas
 	GLuint getIDTexture() const;
 
-	//Ottiene la qualità utilizzata per la realizzazione di questo font (se .ttf)
+	// Gets the quality used to make this font (if .ttf)
 	int getQuality() const;
 
-	//Ottiene la porzione di texture contenente il carattere indicato
-	//Se il carattere non è presente ritorna null
+	// Gets the portion of texture containing the indicated character
+	// If the character is not present, it returns null
 	const GlyphInfo* getGlyphInfo(Char C) const;
 };

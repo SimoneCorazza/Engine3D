@@ -4,49 +4,49 @@
 #include <glm\glm.hpp>
 #include <string>
 
-//Classe astratta che rappresenta un generico shader
+// Abstract class representing a generic shader
 class Shader
 {
-	//ATTRIBUTI:
+	// ATTRIBUTES:
 	private:
 
-		GLuint idShader; //ID dello shader secondo OpenGL
+		GLuint idShader; // Shader ID according to OpenGL
 
-	//COSTRUTTORI:
+	// MANUFACTURERS:
 	public:
 		Shader();
 
 		~Shader();
 
-	//METODI:
+	// METHODS:
 	public:
 
-		//Consente di caricare lo shader
-		//@param[in] PathVertexShader - Path al file contenente il codice GLSL del vertex shader
-		//@param[in] PathFragmentShader - Path al file contenente il codice GLSL del fragment shader
-		//@return True operazione caricamento eseguito con successo False atrimenti
+		// Allows you to load the shader
+		// @param [in] PathVertexShader - Path to the file containing the GLSL code of the vertex shader
+		// @param [in] PathFragmentShader - Path to the file containing the GLSL code of the fragment shader
+		// @return True operation loading successfully performed False otherwise
 		bool LoadShader(const char* PathVertexShader, const char* PathFragmentShader);
 
-		//GET e SET
+		// GET and SET
 
-		//Ottiene l'id dello shader (0 se non caricato correttamente)
+		// Gets the shader id (0 if not loaded correctly)
 		GLuint getIDShader() const;
 
 
 
 	protected:
 
-		//Consente di ottenere l'ID della variabile unifrme indicata nello shader
-		//@param[in] Name - Nome della variabile nello shader
-		//@return ID della variabile per lo shader
+		// Obtains the ID of the unifrme variable indicated in the shader
+		// @param [in] Name - Name of the variable in the shader
+		// @return ID of the variable for the shader
 		GLuint GetVarID(const char* Name);
 
-		//Consente di ottenere l'ID della variabile unifrme indicata nello shader
-		//@param[in] Name - Nome della variabile nello shader
-		//@return ID della variabile per lo shader
+		// Obtains the ID of the unifrme variable indicated in the shader
+		// @param [in] Name - Name of the variable in the shader
+		// @return ID of the variable for the shader
 		GLuint GetVarID(const std::string& Name);
 
-		//Metodo virtuale da implementare per ottenere i vari ID necessari per le variabili all'interno dello shader
+		// Virtual method to implement to get the various IDs needed for the variables within the shader
 		virtual void LoadIDVar() abstract;
 
 

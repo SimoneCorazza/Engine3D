@@ -1,7 +1,7 @@
 #pragma once
 
-//Classe che raccoglie dati associati ad un'attore:
-//un'esempio di utilizzo può essere il rendering dell'attore con determinati parametri
+// Class that collects data associated with an actor:
+// an example of use can be the rendering of the actor with certain parameters
 class ActorParameters
 {
 	public:

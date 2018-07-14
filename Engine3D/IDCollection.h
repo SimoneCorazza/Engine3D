@@ -2,11 +2,11 @@
 
 #include <map>
 
-//Classe che permette di racchiudere in se una collezione di oggetti identificati da interi che vengono gestiti dalla classe
+// Class that allows to enclose in itself a collection of objects identified by integers that are managed by the class
 template <class T>
 class IDCollection
 {
-	unsigned int counter; //Contatore degli ID
+	unsigned int counter; // ID counter
 	std::map<unsigned int, T> dictionary;
 
 	public:
@@ -23,14 +23,14 @@ class IDCollection
 
 	public:
 
-		//Inserisce un nuovo elemento nella collezione e ne ritorna l'identificatore
+		// Inserts a new item into the collection and returns the identifier
 		unsigned int InsertNew(T E)
 		{
 			dictionary[counter] = E;
 			return counter++;
 		}
 
-		//Ottiene l'elemento con l'ID indicato
+		// Gets the item with the indicated ID
 		T GetEl(int ID) const
 		{
 			if (Present(ID))
@@ -39,20 +39,20 @@ class IDCollection
 				throw "Element not found";
 		}
 
-		//Rimuove l'elemento indicato dalla collezione
-		//Nel caso in cui l'elemento non viene trovato genera un'eccezione
+		// Removes the item indicated by the collection
+		// In the event that the element is not found, it generates an exception
 		void Remove(int ID)
 		{
 			dictionary.erase(ID);
 		}
 
-		//Indica se l'elemento con l'ID indicato è presente
+		// Indicates whether the item with the indicated ID is present
 		bool Present(int ID) const
 		{
 			return dictionary.find(ID) != dictionary.end();
 		}
 
-		//Ottiene gli Items che compongono la collezione
+		// Gets the Items that make up the collection
 		std::vector<T> getItems() const
 		{
 			std::vector<T> v;
@@ -65,7 +65,7 @@ class IDCollection
 			return v;
 		}
 
-		//Ottiene il prossimo ID disponibile che andrà utilizzato per il prossimo elemento
+		// Gets the next available ID that will be used for the next item
 		unsigned int getNextID()
 		{
 			return counter;

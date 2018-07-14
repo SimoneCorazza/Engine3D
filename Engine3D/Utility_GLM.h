@@ -1,15 +1,15 @@
 #pragma once
 /*
-File contenente metodi di utility, per espandere GLM
+File containing utility methods, to expand GLM
 */
 
 #include <glm\glm.hpp>
 
 
-//Ritorna la matrice che racchiude le informazioni dei seguenti vettori
-//Esempio: per rappresentare un modello nello spazio 3D
-//@param[in] Location - Vettore della posizione
-//@param[in] Scale - Vettore della scala 
-//@param[in] Rotation - Vettore della rotazione (indicativa ai singoli assi)
+// Returns the array that encloses the information of the following vectors
+// Example: to represent a model in 3D space
+// @param [in] Location - Location vector
+// @param [in] Stairs - Scale vector
+// @param [in] Rotation - Rotation vector (indicative of the individual axes)
 const glm::mat4& Utility_GLM_MatrixFromVectors(const glm::vec3& Location, 
 	const glm::vec3& Scale, const glm::vec3& Rotation);

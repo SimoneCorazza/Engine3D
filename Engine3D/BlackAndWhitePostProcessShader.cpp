@@ -22,5 +22,5 @@ void BlackAndWhitePostProcessShader::SetShaderParams(const PostProcessShaderPara
 
 void BlackAndWhitePostProcessShader::LoadIDVar()
 {
-	PostProcessShader::LoadIDVar(); //Chiamo il metodo base
+	PostProcessShader::LoadIDVar(); // I call the basic method
 }

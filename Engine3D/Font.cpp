@@ -2,10 +2,10 @@
 
 #include <glm\glm.hpp>
 
-//Bordo tra i vari glifi in pixel
+// Border between the various glyphs in pixels
 #define GLYPS_BORDER 5
 
-//--- Variabili statiche:
+// --- Static variables:
 
 FT_Library Font::freeType;
 int Font::maxTextureSize;
@@ -43,19 +43,19 @@ void Font::Inizialize()
 const Char* Font::ToChar(const char* C)
 {
 	/*
-	Nota implementativa: Acuni caratteri se tradotti come interi invece di essere positivi (come dovrebbe)
-	sono negativi questo a causa del char che è con segno per questa ragione converto i caratteri to unsigned char
-	per avere i valori tra 0 e 255 come dovrebbero essere
+	Implementation note: some characters if translated as integers, instead of being positive (as it should)
+	are negative, this because of the char that is signed. For this reason I convert the characters to unsigned char
+	to have the values between 0 and 255 as they should be
 	*/
 
 	Char* c = new Char[strlen(C) + 1];
 	int i = 0;
 	while (C[i] != '\0')
 	{
-		c[i] = (unsigned char)C[i]; //Passo da signed char a unsigned char per avere la corrispondenza con unicode
+		c[i] = (unsigned char)C[i]; // Step from signed char to unsigned char to match unicode
 		i++;
 	}
-	c[i] = '\0'; //Carattere fine stringa
+	c[i] = '\0'; // Fine string character
 	return c;
 }
 
@@ -63,14 +63,14 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 {
 	quality = Quality;
 
-	//--- FREE TYPE
+	// --- FREE TYPE
 
 	std::vector<std::vector<float>> bitmaps;
 	std::vector<FT_ULong> chars;
 	std::vector<glm::vec4> sizes;
-	int maxGlyphHeight = 0; //Altezza massima di un glifo nel font in pixel 
+	int maxGlyphHeight = 0; // Maximum height of a glyph in the font in pixels
 	int wid = 0, hei = 0;
-	int rows = 1; //Numero di righe per poter far stare i glifi nei limiti della dimensione della texture
+	int rows = 1; // Number of lines to make glyphs stand within the limits of the texture size
 
 	FT_Face face;
 	FT_Error err = FT_New_Face(freeType, TTFPath, 0, &face);
@@ -87,20 +87,20 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 		return false;
 	}
 
-	//--- SCANSIONE DEI CARATTERI SUPPORTATI DAL FONT
+	// --- SCAN OF CHARACTERS SUPPORTED BY THE FONT
 
-	FT_ULong charcode; //Carattere attualmente selezionato
-	FT_UInt gindex; //Indice del glifo attuale
+	FT_ULong charcode; // Currently selected font
+	FT_UInt gindex; // Index of the current glyph
 
-	int currentLine = 0; //Cursore utilizzato per poter sapere quante righe vengono utilizzate per memorizzare i glifi
+	int currentLine = 0; // Cursor used to know how many lines are used to store glyphs
 	charcode = FT_Get_First_Char(face, &gindex);
-	while (gindex != 0) //Scandaglio i caratteri del font
+	while (gindex != 0) // Flick the font characters
 	{
-		FT_Error errFT_loadGl = FT_Load_Glyph(face, gindex, FT_LOAD_NO_BITMAP); //Carico il glifo
+		FT_Error errFT_loadGl = FT_Load_Glyph(face, gindex, FT_LOAD_NO_BITMAP); // Load the glyph
 		if (errFT_loadGl != FT_Err_Ok)
 			printf("Errore nel caricamento del simbolo: Car: %c; Cod: %i\n", charcode, (int)charcode);
 
-		//Ottengo la bitmap del glifo appena caricato (face->glyph)
+		// I get the bitmap of the newly loaded glyph (face-> glyph)
 		FT_Error errFT_renderBtm = FT_Render_Glyph(face->glyph, FT_Render_Mode::FT_RENDER_MODE_NORMAL);
 		if (errFT_renderBtm != FT_Err_Ok)
 			printf("Errore nella conversione del glifo in bitmap: Car: %c; Cod: %i\n", charcode, (int)charcode);
@@ -117,35 +117,35 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 				rows++;
 				currentLine = 0;
 
-				if (hei * rows > maxTextureSize) //Nel caso in cui non tutti i caratteri possono stare nella texture
+				if (hei * rows > maxTextureSize) // In the event that not all characters can be in the texture
 					return false;
 			}
 			maxGlyphHeight = glm::max(maxGlyphHeight, (int)face->glyph->bitmap.rows);
 
-			bitmaps.insert(bitmaps.end(), bufferFloat); //Inserisco il glifo nell'elenco
-			chars.insert(chars.end(), charcode); //Inserisco il carattere
-			sizes.insert(sizes.end(), glm::vec4(face->glyph->bitmap.width, face->glyph->bitmap.rows, face->glyph->bitmap_top, face->glyph->bitmap_left)); //Inserisco la dimensione del carattere
+			bitmaps.insert(bitmaps.end(), bufferFloat); // I enter the glyph in the list
+			chars.insert(chars.end(), charcode); // I enter the character
+			sizes.insert(sizes.end(), glm::vec4(face->glyph->bitmap.width, face->glyph->bitmap.rows, face->glyph->bitmap_top, face->glyph->bitmap_left)); // I enter the font size
 		}
 
 		charcode = FT_Get_Next_Char(face, charcode, &gindex);
 	}
 
-	//Calcolo le dimensioni della bitmap
-	hei = maxGlyphHeight * rows; //Calcolo l'altezza necessaria della texture in base alla dimensione massima di un carattere
-								 //Nel caso in cui utilizzi più di una riga la dimensione è pari alla massima possibile, altrimenti è pari
-								 //alla posizione raggiunta dal cursore
+	// Calculating the size of the bitmap
+	hei = maxGlyphHeight * rows; // Calculate the necessary height of the texture based on the maximum size of a font
+								 // In the case in which you use more than one line the dimension is equal to the maximum possible, otherwise it is even
+								 // at the position reached by the cursor
 	wid = (rows == 1) ? currentLine : maxTextureSize;
 
-	//--- OPENGL
+	// --- OPENGL
 
-	glGenTextures(1, &idTexture); //Genero l'id della texture per l'atlas
+	glGenTextures(1, &idTexture); // I create the texture id for the atlas
 	glBindTexture(GL_TEXTURE_2D, idTexture);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RED, wid, hei, 0, GL_RED, GL_FLOAT, nullptr);
 
 	int x = 0;
 	int y = 0;
-	for (int i = 0; i < bitmaps.size(); i++) //Ciclo per posizionare li glifi nella texture
+	for (int i = 0; i < bitmaps.size(); i++) // Cycle to place glyphs in the texture
 	{
 		if (x > maxTextureSize)
 		{
@@ -153,11 +153,11 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 			y += maxGlyphHeight + GLYPS_BORDER;
 		}
 
-		//Modifico la porzione dei texture necessaria
+		// I modify the portion of the textures needed
 		glTexSubImage2D(GL_TEXTURE_2D, 0, x, y, sizes[i].x, sizes[i].y, GL_RED, GL_FLOAT, &bitmaps[i][0]);
 
 		GlyphInfo info;
-		//Setto la coordinata delle uv del glifo
+		// Septum of the glyph uv
 		info.areaUV = RectangleF((float)x / (float)wid, (float)y / (float)hei, (float)sizes[i].x / (float)wid, (float)sizes[i].y / (float)hei);
 		info.width = (int)sizes[i].x;
 		info.height = (int)sizes[i].y;
@@ -165,19 +165,19 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 		info.bitmapLeft = (int)sizes[i].w;
 		charactersMap[chars[i]] = info;
 
-		x += sizes[i].x + GLYPS_BORDER; //Mi posiziono per il prossimo carattere
+		x += sizes[i].x + GLYPS_BORDER; // I position myself for the next character
 	}
 
-	//GL_REPEAT è inutile e può generare problemi quando i glifi sono vicino ai bordi
+	// GL_REPEAT is useless and can generate problems when glyphs are near the edges
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-	//Filtri di qualità richiedono che i caratteri siano distanziati (motivo dei bordi tra i vari glifi) ma garantiscono una
-	//qualità migliore quando sono renderizzati
+	// Quality filters require the characters to be spaced (motif of the borders between the various glyphs) but guarantee one
+	// better quality when they are rendered
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glGenerateMipmap(GL_TEXTURE_2D); //Genero le mipmap per il filtro desiderato
+	glGenerateMipmap(GL_TEXTURE_2D); // I create the mipmaps for the desired filter
 }
 
 
@@ -197,7 +197,7 @@ const GlyphInfo* Font::getGlyphInfo(Char C) const
 {
 	auto p = charactersMap.find(C);
 	if (p == charactersMap.end())
-		return nullptr; //Caso carattere non trovato
+		return nullptr; // Case character not found
 	else
 		return &charactersMap.find(C)->second;
 }

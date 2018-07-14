@@ -2,7 +2,7 @@
 
 #include "Actor.h"
 
-//Classe attore personalizzata
+// Custom actor class
 class MyActor : public Actor
 {
 	public:

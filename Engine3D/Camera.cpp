@@ -12,9 +12,9 @@
 /*
 Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
 {
-	//TODO: anche la camera deve essere tattata come attori in InsertNewCamera(Camera* C)
+	// TODO: also the camera must be tact as actors in InsertNewCamera (Camera * C)
 
-	//Inizializzazione camera:
+	// Room initialization:
 	position = glm::vec3(0, 0, 0);
 	horizontalAngle = 0.0f;
 	verticalAngle = 0.0f;
@@ -24,21 +24,21 @@ Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, f
 	coefficienteVelocitaCamera = 1.0f;
 
 
-	//Limiti movimento visuale:
-	//Impedisco alla camera di capovolgersi
+	// Visual movement limits:
+	// I prevent the camera from tipping over
 	minVerticalAngle = -glm::pi<float>() / 2.f;
 	maxVerticalAngle = glm::pi<float>() / 2.f;
 
-	//Non limito la parte orizzontale
+	// I do not limit the horizontal part
 	minHorizontalAngle = 0.f;
 	maxHorizontalAngle = 0.f;
 
-	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f); //Imposto la Projection matrix di default
+	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f); // Set the Projection matrix by default
 
 	focused = false;
 	frustumCulling = true;
 
-	//Post process:
+	// Post process:
 	idPostProcessEffectsCounter = 1;
 	idFrameBuffer = 0;
 	idDepthTexture = 0;
@@ -48,13 +48,13 @@ Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, f
 	modeSize = ModeSize;
 	measureSize = glm::vec2(Width, Height);
 
-	//UpdateFrameBuffer();
+	// UpdateFrameBuffer ();
 }
 */
 
 Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
 {
-	//Inizializzazione camera:
+	// Room initialization:
 	position = glm::vec3(0, 0, 0);
 	horizontalAngle = 0.0f;
 	verticalAngle = 0.0f;
@@ -64,21 +64,21 @@ Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, f
 	coefficienteVelocitaCamera = 1.0f;
 
 
-	//Limiti movimento visuale:
-	//Impedisco alla camera di capovolgersi
+	// Visual movement limits:
+	// I prevent the camera from tipping over
 	minVerticalAngle = -glm::pi<float>() / 2.f;
 	maxVerticalAngle = glm::pi<float>() / 2.f;
 
-	//Non limito la parte orizzontale
+	// I do not limit the horizontal part
 	minHorizontalAngle = 0.f;
 	maxHorizontalAngle = 0.f;
 
-	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f); //Imposto la Projection matrix di default
+	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f); // Set the Projection matrix by default
 
 	focused = false;
 	frustumCulling = true;
 
-	//Post process:
+	// Post process:
 	idPostProcessEffectsCounter = 1;
 	idFrameBuffer = 0;
 	idDepthTexture = 0;
@@ -88,7 +88,7 @@ Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, f
 	modeSize = ModeSize;
 	measureSize = glm::vec2(Width, Height);
 
-	//UpdateFrameBuffer();
+	// UpdateFrameBuffer ();
 }
 
 Camera::~Camera()
@@ -112,16 +112,16 @@ void Camera::Update(float ElapsedTime)
 		horizontalAngle += mouseSpeed * (float)(cameraWidHalf - cursorPos.x);
 		verticalAngle += mouseSpeed * (float)(cameraHeiHalf - cursorPos.y);
 
-		//Per la limitazione della camera:
-		if(maxHorizontalAngle != 0.f) //Controllo se si vuole limitare l'angolo
+		// For room limitation:
+		if(maxHorizontalAngle != 0.f) // Check if you want to limit the angle
 			horizontalAngle = glm::min(horizontalAngle, maxHorizontalAngle);
-		if (minHorizontalAngle != 0.f) //Controllo se si vuole limitare l'angolo
+		if (minHorizontalAngle != 0.f) // Check if you want to limit the angle
 			horizontalAngle = glm::max(horizontalAngle, minHorizontalAngle);
-		if (maxVerticalAngle != 0.f) //Controllo se si vuole limitare l'angolo
+		if (maxVerticalAngle != 0.f) // Check if you want to limit the angle
 			verticalAngle = glm::min(verticalAngle, maxVerticalAngle);
-		if (minVerticalAngle != 0.f) //Controllo se si vuole limitare l'angolo
+		if (minVerticalAngle != 0.f) // Check if you want to limit the angle
 			verticalAngle = glm::max(verticalAngle, minVerticalAngle);
-		// Direction : Spherical coordinates to Cartesian coordinates conversion
+		// Direction: Spherical coordinates to Cartesian coordinates conversion
 		direction = glm::vec3(
 			cos(verticalAngle) * sin(horizontalAngle),
 			sin(verticalAngle),
@@ -138,35 +138,35 @@ void Camera::Update(float ElapsedTime)
 		// Up vector
 		glm::vec3 up = glm::cross(right, direction);
 
-		// Muovi avanti
+		// Move forward
 		if (getInputState()->IsKeyPressed(GLFW_KEY_W))
 			position += direction * ElapsedTime * speed * coefficienteVelocitaCamera;
-		else if (getInputState()->IsKeyPressed(GLFW_KEY_S)) // Muovi indietro
+		else if (getInputState()->IsKeyPressed(GLFW_KEY_S)) // Move back
 			position -= direction * ElapsedTime * speed * coefficienteVelocitaCamera;
 
-		// Muovi destra
+		// Move right
 		if (getInputState()->IsKeyPressed(GLFW_KEY_D))
 			position += right * ElapsedTime * speed * coefficienteVelocitaCamera;
 		else if (getInputState()->IsKeyPressed(GLFW_KEY_A))
 			position -= right * ElapsedTime * speed * coefficienteVelocitaCamera;
 
-		// Muoversu su
+		// Muoversu on
 		if (getInputState()->IsKeyPressed(GLFW_KEY_SPACE))
 			position += up * ElapsedTime * speed * coefficienteVelocitaCamera;
 
-		// Muoversu giu
+		// Muoversu Jun
 		if (getInputState()->IsKeyPressed(GLFW_KEY_LEFT_CONTROL))
 			position -= up * ElapsedTime * speed * coefficienteVelocitaCamera;
 
 
-		// Camera matrix
+		// Matrix room
 		viewMatrix = glm::lookAt(
-			position,				// Camera is here
-			position + direction,	// and looks here : at the same position, plus "direction"
-			up						// Head is up (set to 0,-1,0 to look upside-down)
+			position,				// Room is here
+			position + direction,	// and looks here: at the same position, plus "direction"
+			up						// Head is up (set to 0, -1.0 to look upside down)
 			);
 
-		cameraMatrix = projectionMatrix * viewMatrix; //Calcolo la matrice della camera
+		cameraMatrix = projectionMatrix * viewMatrix; // Calculating the room matrix
 	}
 }
 
@@ -198,9 +198,9 @@ void Camera::RemovePostProcessEffect(int ID)
 		ASSERT(false, "Effect not found");
 	else
 	{
-		delete postProcessEffects[pos]->getPostProcessShaderParams(); //Elimino eventuali parametri
-		delete postProcessEffects[pos]; //Rilascio la memoria dell'oggetto
-		postProcessEffects.erase(postProcessEffects.begin() + pos); //Elimino l'effetto
+		delete postProcessEffects[pos]->getPostProcessShaderParams(); // Remove any parameters
+		delete postProcessEffects[pos]; // Release the object's memory
+		postProcessEffects.erase(postProcessEffects.begin() + pos); // I delete the effect
 	}
 }
 
@@ -212,7 +212,7 @@ const std::vector<PostProcessEffect*>* Camera::getPostProcessEffects() const
 void Camera::changePostProcessRenderTexture(int Index) const
 {
 	ASSERT(Index == 0 || Index == 1, "Camera::changePostProcessRenderTexture can change between two textures (IDs: 0 and 1)");
-	glDrawBuffer(GL_COLOR_ATTACHMENT0 + Index); //Imposto dove andare a renderizzare il buffer
+	glDrawBuffer(GL_COLOR_ATTACHMENT0 + Index); // Imposed where to go to render the buffer
 }
 
 void Camera::setProjectionMatrix(const float& FovY, const float& AspectRatio, const float& ZNear, const float& ZFar)
@@ -223,7 +223,7 @@ void Camera::setProjectionMatrix(const float& FovY, const float& AspectRatio, co
 	zFar = ZFar;
 
 	projectionMatrix = glm::perspective(fovY, aspectRatio, zNear, zFar);
-	cameraMatrix = projectionMatrix * viewMatrix; //Aggiorno la matrice della camera (altrimenti bisognerebbe aspettare il prossimo Update)
+	cameraMatrix = projectionMatrix * viewMatrix; // I update the room matrix (otherwise we would have to wait for the next update)
 }
 
 const glm::mat4& Camera::getCameraMatrix() const
@@ -345,13 +345,13 @@ void Camera::OnScreenReSize(size_t NewWidth, size_t NewHeight)
 {
 	Point2 windowSize(NewWidth, NewHeight);
 	
-	//Aggiorno la dimensione della camera
+	// Update the size of the room
 	offset = TransformToPixel(modeOffset, measureOffset, windowSize);
 	size = TransformToPixel(modeSize, measureSize, windowSize);
 	
-	UpdateRatio(); //Aggiorno il valore dell'aspect ratio
-	UpdateFrameBuffer(); //Aggiorno il frame buffer
-	if(focused) //Centro il cursore solamente se la camera è in focus
+	UpdateRatio(); // Update the value of the aspect ratio
+	UpdateFrameBuffer(); // Update the frame buffer
+	if(focused) // Center the cursor only if the camera is in focus
 		CenterCursor();
 }
 
@@ -359,7 +359,7 @@ void Camera::Focus()
 {
 	focused = true;
 	getInputState()->setCursorMode(IE_CursorMode::IE_CursorMode_Disabled);
-	CenterCursor(); //Centro il cursore all'interno della camera
+	CenterCursor(); // Center the cursor inside the chamber
 }
 
 void Camera::Unfocus()
@@ -385,7 +385,7 @@ Point2 Camera::TransformToPixel(const MeasureMode & Mode, const glm::vec2 & Meas
 
 	default: 
 		ASSERT(false, "Case not known"); 
-		return Point2(); //Caso di errore e si desidera continuare
+		return Point2(); // Error case and want to continue
 	}
 }
 
@@ -396,23 +396,23 @@ void Camera::CenterCursor()
 
 void Camera::UpdateRatio()
 {
-	//Ri-creo la matrice delle proiezioni mutando solamente l'aspect ratio
+	// I re-create the projection matrix by changing only the aspect ratio
 	setProjectionMatrix(fovY, (float)size.x / (float)size.y, zNear, zFar);
 }
 
 void Camera::UpdateFrameBuffer()
 {
-	//Elimino l'eventuale depth buffer memorizzato:
+	// Remove any stored depth buffer:
 	glDeleteFramebuffers(1, &idFrameBuffer);
 	glDeleteRenderbuffers(1, &depthRenderBuffer);
 	glDeleteTextures(2, idRenderTextures);
 	glDeleteTextures(1, &idDepthTexture);
 
-	//Genero il frame buffer
+	// I create the frame buffer
 	glGenFramebuffers(1, &idFrameBuffer);
 	glBindFramebuffer(GL_FRAMEBUFFER, idFrameBuffer);
 
-	//Texture dove si va a renderizzare:
+	// Texture where you go to render:
 	glGenTextures(2, idRenderTextures);
 
 	glBindTexture(GL_TEXTURE_2D, idRenderTextures[0]);
@@ -435,7 +435,7 @@ void Camera::UpdateFrameBuffer()
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, size.x, size.y);
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthRenderBuffer);
 	
-	// Alternative : Depth texture. Slower, but you can sample it later in your shader
+	// Alternatives: Depth texture. Slower, but you can sample it later in your shader
 	glGenTextures(1, &idDepthTexture);
 	glBindTexture(GL_TEXTURE_2D, idDepthTexture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, size.x, size.y, 0, GL_DEPTH_COMPONENT, GL_FLOAT, 0);
@@ -444,11 +444,11 @@ void Camera::UpdateFrameBuffer()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
-	// Set "renderedTexture" as our colour attachement #0
+	// Set "renderedTexture" as our color attachement # 0
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, idRenderTextures[0], 0);
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT1, idRenderTextures[1], 0);
 
-	// Depth texture alternative : 
+	// Depth alternative textures:
 	glFramebufferTexture(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, idDepthTexture, 0);
 
 
@@ -458,5 +458,5 @@ void Camera::UpdateFrameBuffer()
 	// Always check that our framebuffer is ok
 	ASSERT(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE, "Faild to inizialize frame buffer for the camera");
 
-	glBindFramebuffer(GL_FRAMEBUFFER, 0); //Setto per sicurezza come destinazione di rendering lo schermo
+	glBindFramebuffer(GL_FRAMEBUFFER, 0); // Setto for security as a rendering destination the screen
 }

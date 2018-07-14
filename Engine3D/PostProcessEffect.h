@@ -5,7 +5,7 @@ class PostProcessShaderParams;
 
 class Camera;
 
-//Classe che racchiude le informazioni  a un effetto post process/rendering
+// A class that wraps information to a post process / rendering effect
 class PostProcessEffect
 {
 	unsigned int id;
@@ -21,17 +21,17 @@ class PostProcessEffect
 
 	public:
 
-		//Consente di rimuovere questo effetto dalla camera
+		// Removes this effect from the camera
 		void RemoveFromCamera();
 
 
-		//Ottiene l'id di questa istanza di effetto nella camera
+		// Gets the id of this effect instance in the camera
 		unsigned int getID() const;
 
-		//Ottiene lo shader da usare per questo effetto
+		// Gets the shader to use for this effect
 		const PostProcessShader* getPostProcessShader() const;
 
-		//Ottiene i parametri per lo shader
+		// Gets the parameters for the shader
 		PostProcessShaderParams* getPostProcessShaderParams();
 };
 

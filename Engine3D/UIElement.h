@@ -6,7 +6,7 @@
 
 
 
-//Allineamento del testo sull'asse verticale
+// Alignment of the text on the vertical axis
 enum VerticalTextAllign
 {
 	VTA_Top,
@@ -14,7 +14,7 @@ enum VerticalTextAllign
 	VTA_Bottom
 };
 
-//Allineamento del testo sull'asse orizzontale
+// Alignment of the text on the horizontal axis
 enum HorizontalTextAllign
 {
 	HTA_Left,
@@ -23,16 +23,16 @@ enum HorizontalTextAllign
 };
 
 
-//Classe che rappresenta un'elemento dell UI
+// Class representing an element of the UI
 class UIElement
 {
-	Rectangle area; //Area occupata a video dall'elemento in millimetri
+	Rectangle area; // Area occupied by video from the element in millimeters
 
-	std::string text; //Testo da dell'elemento
-	VerticalTextAllign verticalAllign; //Allineamento verticale del testo
-	HorizontalTextAllign horizontalAllign; //Allineamento orizzontale del testo
-	const Font* font; //Font per il testo
-	glm::vec4 textColor; //Colore del testo
+	std::string text; // Text from the element
+	VerticalTextAllign verticalAllign; // Vertical alignment of the text
+	HorizontalTextAllign horizontalAllign; // Horizontal alignment of the text
+	const Font* font; // Font for the text
+	glm::vec4 textColor; // Text color
 
 	public:
 		UIElement();
@@ -40,39 +40,39 @@ class UIElement
 
 	public:
 
-		//Permette di disegnare il controllo
-		//@param[in] G - Elemento grafico per disegnare in controllo
+		// It allows you to draw the control
+		// @param [in] G - Graphic element for drawing in control
 		virtual void DrawControl(Draw2D* G) abstract;
 
-		//Imposta l'area occupata a video dall'elemento in millimetri
+		// Set the area occupied by the video in mm
 		void setArea(const Rectangle& A);
-		//Ottiene l'area occupata a video dall'elemento in millimetri
+		// Gets the area occupied by video from the element in millimeters
 		const Rectangle& getArea();
 
-		//Setta il testo da renderizzare
+		// Set the text to be rendered
 		void setText(const std::string& T);
-		//Ottiene il contenuto del testo attaule
+		// Gets the contents of the attaule text
 		const std::string& getText() const;
 
-		//Imposta l'allineamento verticale del testo
+		// Set the vertical alignment of the text
 		void setVerticalTextAllign(VerticalTextAllign A);
-		//Ottiene l'allineamento del testo verticale
+		// Gets the alignment of vertical text
 		VerticalTextAllign getVerticalTextAllign() const;
 
-		//Imposta l'allineamento orizzontale del testo
+		// Set the horizontal alignment of the text
 		void setHorizontalTextAllign(HorizontalTextAllign A);
-		//Ottiene l'allineamento del testo orizzontale
+		// Gets the alignment of horizontal text
 		HorizontalTextAllign getHorizontalTextAllign() const;
 
-		//Imposta il font utilizzato per il testo dell'elemento
+		// Sets the font used for the element's text
 		void setFont(const Font* F);
-		//Ottiene il font utilizzato per il testo dell'elemento
-		//(null se non impostato)
+		// Gets the font used for the element's text
+		// (null if not set)
 		const Font* getFont();
 
-		//Imposta il colore utilizzato per il testo dell'elemento
+		// Sets the color used for the element's text
 		void setTextColor(const glm::vec4& C);
-		//Ottiene il colore utilizzato per il testo dell'elemento
+		// Gets the color used for the element's text
 		const glm::vec4& getTextColor();
 };
 

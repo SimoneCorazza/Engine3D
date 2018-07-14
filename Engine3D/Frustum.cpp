@@ -13,40 +13,40 @@ Frustum::~Frustum()
 
 void Frustum::setPlanes(const glm::mat4& m)
 {
-	//Documento per ricavare i piani del frustum culling: http://web.archive.org/web/20120531231005/http://crazyjoke.free.fr/doc/3D/plane%20extraction.pdf
-	//Inversione della colonna e della riga rispetto al documento di riferimento (per OpnenGL)
+	// Document to derive the plans of the frustum culling: http://web.archive.org/web/20120531231005/http://crazyjoke.free.fr/doc/3D/plane%20extraction.pdf
+	// Reversal of the column and row with respect to the reference document (for OpnenGL)
 
-	//Left
+	// left
 	frustum[1].a = m[0][3] + m[0][0];
 	frustum[1].b = m[1][3] + m[1][0];
 	frustum[1].c = m[2][3] + m[2][0];
 	frustum[1].d = m[3][3] + m[3][0];
 
-	//Right
+	// right
 	frustum[0].a = m[0][3] - m[0][0];
 	frustum[0].b = m[1][3] - m[1][0];
 	frustum[0].c = m[2][3] - m[2][0];
 	frustum[0].d = m[3][3] - m[3][0];
 
-	//Top
+	// Top
 	frustum[3].a = m[0][3] - m[0][1];
 	frustum[3].b = m[1][3] - m[1][1];
 	frustum[3].c = m[2][3] - m[2][1];
 	frustum[3].d = m[3][3] - m[3][1];
 
-	//Bottom
+	// bottom
 	frustum[2].a = m[0][3] + m[0][1];
 	frustum[2].b = m[1][3] + m[1][1];
 	frustum[2].c = m[2][3] + m[2][1];
 	frustum[2].d = m[3][3] + m[3][1];
 
-	//Near
+	// Near
 	frustum[5].a = m[0][3] + m[0][2];
 	frustum[5].b = m[1][3] + m[1][2];
 	frustum[5].c = m[2][3] + m[2][2];
 	frustum[5].d = m[3][3] + m[3][2];
 
-	//Far
+	// Far
 	frustum[4].a = m[0][3] - m[0][2];
 	frustum[4].b = m[1][3] - m[1][2];
 	frustum[4].c = m[2][3] - m[2][2];
@@ -71,12 +71,12 @@ bool Frustum::TestView(const glm::vec3 & V)
 
 bool Frustum::TestView(const Box* B)
 {
-	//Per questo metodo è stato utilizzato il codice fornito da: http://www.racer.nl/reference/vfc_markmorley.htm
-	//alla sezione "Is This Box In the Frustum?"
-	//NOTE:
-	//• La normalizzazione dei piani non viene effettuata (vedi ciclo for commentato) e apparentemente funziona lo stesso
-	//• In alcuni casi il culling non viene effettuato (ed essendo questo opportuno), tuttativia capita solo in casi sporadici 
-	//	e non ben determinati (certe angolazioni o quando si è appena fuori il box)
+	// For this method the code provided by: http://www.racer.nl/reference/vfc_markmorley.htm was used
+	// in the section "Is This Box In the Frustum?"
+	// NOTE:
+	// â€¢ The normalization of the plans is not carried out (see cycle for commented) and apparently works the same
+	// â€¢ In some cases the culling is not carried out (and this is appropriate), all-in-all it happens only in sporadic cases
+	// and not well determined (certain angles or when you are just outside the box)
 
 	/*
 	for (int i = 0; i < 8; i++)
@@ -107,7 +107,7 @@ bool Frustum::TestView(const Box* B)
 	return true;
 
 	/*
-	//Ritorno false solo se tutti i test falliscono
+	// Return false only if all tests fail
 	return TestView(B->getV1()) || TestView(B->getV2()) ||
 		TestView(B->getV3()) || TestView(B->getV4()) ||
 		TestView(B->getV5()) || TestView(B->getV6()) ||
@@ -117,8 +117,8 @@ bool Frustum::TestView(const Box* B)
 
 bool Frustum::TestView(const glm::vec3 & O, float Radius)
 {
-	//Per questo metodo è stato utilizzato il codice fornito da: http://www.racer.nl/reference/vfc_markmorley.htm
-	//alla sezione "Is This Sphere In the Frustum?"
+	// For this method the code provided by: http://www.racer.nl/reference/vfc_markmorley.htm was used
+	// to the section "Is This Sphere In the Frustum?"
 
 	for (int p = 0; p < 6; p++)
 		if (frustum[p].a * O.x + frustum[p].b * O.y + frustum[p].c * O.z + frustum[p].d <= -Radius)
@@ -128,7 +128,7 @@ bool Frustum::TestView(const glm::vec3 & O, float Radius)
 
 inline bool Frustum::TestViewPlane(const Plane & P, const glm::vec3 & V)
 {
-	//Nota questo è dot product tra i due vettori: vec4(P.a, P.b, P.c, P.d) * vec4(V.x, V.y, V.z, 1)
+	// Note this is dot product between the two vectors: vec4 (P.a, P.b, P.c, P.d) * vec4 (V.x, V.y, V.z, 1)
 	return P.a * V.x + P.b * V.y + P.c * V.z + P.d >= 0;
 }
 

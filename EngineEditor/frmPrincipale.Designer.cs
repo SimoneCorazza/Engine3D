@@ -1,16 +1,16 @@
-﻿namespace EngineEditor
+namespace EngineEditor
 {
     partial class frmPrincipale
     {
         /// <summary>
-        /// Variabile di progettazione necessaria.
+        /// Design variable required.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Pulire le risorse in uso.
+        /// Clean up resources in use.
         /// </summary>
-        /// <param name="disposing">ha valore true se le risorse gestite devono essere eliminate, false in caso contrario.</param>
+        /// <param name="disposing">has value true if the managed resources must be deleted, false otherwise.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,8 +23,8 @@
         #region Codice generato da Progettazione Windows Form
 
         /// <summary>
-        /// Metodo necessario per il supporto della finestra di progettazione. Non modificare
-        /// il contenuto del metodo con l'editor di codice.
+        /// Method required to support the designer. Do not change
+        /// the content of the method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -39,7 +39,7 @@
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip
+            // MenuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});

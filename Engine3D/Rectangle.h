@@ -1,7 +1,7 @@
 #pragma once
 
-//Struct che rappresenta un rettangolo che usa dei integer a 32 bit
-//per memorizzare la posizione nello spazio
+// A struct that represents a rectangle that uses 32-bit integers
+// to memorize the position in space
 struct Rectangle
 {
 	int x, y, width, height;

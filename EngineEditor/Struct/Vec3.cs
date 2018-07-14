@@ -1,4 +1,4 @@
-﻿
+
 namespace EngineEditor
 {
     public struct Vec3

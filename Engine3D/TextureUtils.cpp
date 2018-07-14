@@ -4,8 +4,8 @@
 
 size_t TextureUtils_PixelSize(const GLenum& PixelFormat, const GLenum& ComponentType)
 {
-	size_t componentsNumber; //Numero di componenti
-	size_t componentsSize; //Dimensione della singola componente
+	size_t componentsNumber; // Number of components
+	size_t componentsSize; // Size of the single component
 
 	switch (PixelFormat)
 	{

@@ -2,7 +2,7 @@
 
 #include <map>
 
-//Classe che rappresenta un'itoratore per i valori di una map
+// Class that represents an editor for the values ​​of a map
 template <class K, class T>
 class MapIterator
 {
@@ -27,13 +27,13 @@ class MapIterator
 
 	public:
 
-		//Indica se la collezione � finita
+		// Indicates if the collection is over
 		bool hasNext()
 		{
 			return it != end;
 		}
 
-		//Ottiene il prossimo elemento della collezione
+		// Gets the next item in the collection
 		T next()
 		{
 			if (!hasNext())
@@ -44,13 +44,13 @@ class MapIterator
 			return r;
 		}
 
-		//Ottiene la dimensione della collezione
+		// Gets the size of the collection
 		size_t size()
 		{
 			return s;
 		}
 
-		//Consente di resettare l'iteratore, facendolo ripartire dall'inizio della clollezione
+		// Allows you to reset the iterator, restarting it from the beginning of the cluster
 		void reset()
 		{
 			it = begin;

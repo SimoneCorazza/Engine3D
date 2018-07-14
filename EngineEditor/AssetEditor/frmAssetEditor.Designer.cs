@@ -1,4 +1,4 @@
-﻿namespace EngineEditor
+namespace EngineEditor
 {
     partial class frmAssetEditor
     {

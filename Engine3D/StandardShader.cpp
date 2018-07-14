@@ -5,7 +5,7 @@
 #include "Mesh.h"
 #include "Texture2D.h"
 
-//--- COSTRUTTORI ---
+// --- BUILDERS ---
 
 StandardShader::StandardShader()
 {
@@ -19,7 +19,7 @@ StandardShader::~StandardShader()
 
 
 
-//--- METODI ---
+// --- METHODS ---
 
 
 void StandardShader::LoadIDVar()
@@ -30,22 +30,22 @@ void StandardShader::LoadIDVar()
 	idVertecesCoords = 0;
 	idVertecesUVs = 1;
 
-	glUniform1i(idTextureSampler, 0); //Il sampler sarà sempre costante
+	glUniform1i(idTextureSampler, 0); // The sampler will always be constant
 }
 
 void StandardShader::SetAmbientLight(const glm::vec3 & L)
 {
-	//Non considero operazioni sulle luci
+	// I do not consider operations on the lights
 }
 
 void StandardShader::SetSceneLights(const std::vector<Light*>& Lights)
 {
-	//Non considero operazioni sulle luci
+	// I do not consider operations on the lights
 }
 
 void StandardShader::SetMaterial(const Material * M)
 {
-	//Imposto la texture
+	// Set the texture
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, M->getTexture()->getIDTexture());
 }
@@ -58,5 +58,5 @@ void StandardShader::SetCameraParameters(const glm::mat4 & ViewMatix, const glm:
 void StandardShader::SetObjectParameters(const ActorParameters * P, const glm::mat4 & ModelMatrix)
 {
 	glm::mat4 mvp = matrixViewProject * ModelMatrix;
-	glUniformMatrix4fv(idMatrix, 1, GL_FALSE, &mvp[0][0]); //Imposto la matrice
+	glUniformMatrix4fv(idMatrix, 1, GL_FALSE, &mvp[0][0]); // Set the matrix
 }

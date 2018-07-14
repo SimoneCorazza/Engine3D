@@ -2,8 +2,8 @@
 
 #include "Shader.h"
 
-//Shader utilizzato per il rendering del frame finale delal camera
-//sullo shcermo
+// Shader used to render the final camera frame
+// on the screen
 class PostProcess_Final : public Shader
 {
 	GLuint idTextureSampler;
@@ -14,11 +14,11 @@ class PostProcess_Final : public Shader
 
 	public:
 
-		//Disenga a schermo il frame della camera finale
-		//@param[in] UnitBuffVertex - Buffer dei 6 vertici dello schermo (due triangoli)
-		//	NOTA: siccome non vengono effettuate operazioni sui vertici l'altezza e la lunghezza
-		//			dello schermo sarà sempre di 1
-		//@param[in] TexID - Texture rappresentante il frame della camera
+		// Screen the final camera frame
+		// @param [in] UnitBuffVertex - Buffer of the 6 vertices of the screen (two triangles)
+		// NOTE: as no height and length operations are carried out on the vertices
+		// of the screen will always be 1
+		// @param [in] TexID - Texture representing the camera frame
 		void DrawFrame(GLuint UnitBuffVertex, GLuint TexID);
 
 	protected:

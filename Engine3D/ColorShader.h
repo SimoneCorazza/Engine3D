@@ -3,17 +3,17 @@
 
 #include "ModelShader.h"
 
-//Shader per vertici mono colorati
+// Shades for mono colored vertices
 class ColorShader : public ModelShader
 {
-	GLuint idMatrix; //ID della variabile uniforme della matrice
-	GLuint idColor; //ID della variabile uniforme del colore da usare
+	GLuint idMatrix; // ID of the uniform variable of the array
+	GLuint idColor; // ID of the uniform color variable to use
 
 	public:
 		ColorShader();
 		~ColorShader();
 
-	//METODI:
+	// METHODS:
 	public:
 
 		virtual void LoadIDVar() override;
@@ -26,7 +26,7 @@ class ColorShader : public ModelShader
 
 		virtual void SetCameraParameters(const glm::mat4& ViewMatix, const glm::mat4& ProjectionMatrix) override;
 
-		//DISEGNO:
+		// DRAWING:
 
 		void RenderTriangles(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4& modelMatrix, const glm::mat4& cameraMatrix, GLsizei numVerteces);
 		void RenderLines(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4& modelMatrix, const glm::mat4& cameraMatrix, GLsizei numVerteces);
@@ -36,7 +36,7 @@ class ColorShader : public ModelShader
 
 	private:
 
-		//Renderizza con la primitiva indicata
+		// Render with the indicated primitive
 		void RenderPrimitives(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4& modelMatrix, const glm::mat4& cameraMatrix, GLsizei numVerteces, GLenum Primitive) const;
 };
 

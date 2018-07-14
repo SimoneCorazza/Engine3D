@@ -2,8 +2,8 @@
 
 class InputState;
 
-//Classe immutabile che raccoglie i parametri da passare alla scena, attori e qualsiasi
-//altro elemento da aggiornare
+// Immutable class that collects parameters to pass to the scene, actors and any
+// another item to update
 class UpdateParameters
 {
 	float elapsedTime;
@@ -11,16 +11,16 @@ class UpdateParameters
 
 
 	public:
-		//@param[in] ElapsedTime - Tempo trascorso in secondi dall'ultimo update
+		// @param [in] ElapsedTime - Time spent in seconds since the last update
 		UpdateParameters(float ElapsedTime, InputState* InputState);
 		~UpdateParameters();
 
 	public:
 
-		//Ottiene il tempo trascorso in secondi dall'ultimo Update
+		// Gets the time spent in seconds since the last Update
 		float getElapsedTime() const;
 
-		//Ottiene lo stato dell'input attuale
+		// Gets the status of the current input
 		InputState* getInputState() const;
 
 };

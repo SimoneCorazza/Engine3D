@@ -66,14 +66,14 @@ GLuint Texture2D::getAnisotropicFilter() const
 
 void Texture2D::Dispose()
 {
-	glDeleteTextures(1, &idTexture); //Elimino la texture
+	glDeleteTextures(1, &idTexture); // I remove the texture
 	width = height = 0;
-	idTexture = INVALID_TEXTURE_ID; //Setto l'ID della texture invalida
+	idTexture = INVALID_TEXTURE_ID; // Set the ID of the invalid texture
 }
 
 Texture2D* Texture2D::NewTexture2D(int Width, int Height, GLvoid * RawData, GLenum DataFormat, GLenum DataType, GLint InternalFormat, GLint WrapS, GLint WrapT, GLint MinFilter, GLint MagFilter, GLuint AnisotropicFilter)
 {
-	//NOTA: nessun controllo sull'input
+	// NOTE: no check on the input
 
 	Texture2D* t = new Texture2D();
 	t->InizializeTexture(Width, Height, RawData, DataFormat, DataType, InternalFormat, WrapS, WrapT, MinFilter, MagFilter, AnisotropicFilter);
@@ -89,7 +89,7 @@ Texture2D* Texture2D::NewTexture2D(const std::string & Path, GLint InternalForma
 	int width, height;
 	void* data;
 	GLenum dataFormat, dataType;
-	if (TextureDecoder_DecodeTexture(Path, &data, &dataFormat, &dataType, &width, &height)) //Controllo come è andato il caricamento della texture
+	if (TextureDecoder_DecodeTexture(Path, &data, &dataFormat, &dataType, &width, &height)) // Control how the texture was loaded
 	{
 		Texture2D* t = new Texture2D();
 		t->InizializeTexture(width, height, data, dataFormat, dataType, InternalFormat, WrapS, WrapT, MinFilter, MagFilter, AnisotropicFilter);
@@ -98,7 +98,7 @@ Texture2D* Texture2D::NewTexture2D(const std::string & Path, GLint InternalForma
 	else
 		return nullptr;
 
-	TextureDecoder_FreeDecode(); //Rilascio i dati allocati per la bitmap passata
+	TextureDecoder_FreeDecode(); // Release the data allocated for the bitmap passed
 
 #ifdef _DEBUG
 	TIME_POP("Texture loaded %s", Path.c_str());
@@ -119,14 +119,14 @@ void Texture2D::InizializeTexture(int Width, int Height,
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, MagFilter);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, MinFilter);
 
-	if (MinFilter != GL_NEAREST && MinFilter != GL_LINEAR) //Controllo se è necessario generare le mipmaps
+	if (MinFilter != GL_NEAREST && MinFilter != GL_LINEAR) // Check if you need to generate mipmaps
 		glGenerateMipmap(GL_TEXTURE_2D);
 
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, (GLfloat)AnisotropicFilter);
 
-	glBindTexture(GL_TEXTURE_2D, 0); //Imposto nessuna texture
+	glBindTexture(GL_TEXTURE_2D, 0); // No texture imposed
 
-	//Setto gli attributi della texture:
+	// Set the texture attributes:
 	width = Width;
 	height = Height;
 

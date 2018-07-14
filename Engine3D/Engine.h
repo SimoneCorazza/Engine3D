@@ -6,16 +6,16 @@
 
 struct GLFWwindow;
 
-//Classe che rappresenta l'engine
+// Class that represents the engine
 class Engine
 {
 	RenderingEngine renderingEngine;
 	InputEngine inputEngine;
-	InputState* lastInputState; //Ultimo stato dell'input conoscuto
+	InputState* lastInputState; // Last state of the input known
 
-	GLFWwindow* window; //Finestra utilizzata dall'engine
-	Scene* actualScene; //Scena attuale da utilizzare
-	bool gameLoop; //Indica se true che il game loop verrà eseguito
+	GLFWwindow* window; // Window used by the engine
+	Scene* actualScene; // Current scene to use
+	bool gameLoop; // Indicates if true that the game loop will be executed
 
 	public:
 		Engine();
@@ -24,52 +24,52 @@ class Engine
 
 	public:
 
-		//Permette di inizializzare l'engine
+		// It allows to initialize the engine
 		void Inizialize();
 
-		//--- FINESTRE ---
+		// --- WINDOWS ---
 
 
-		//Consente di creare una finestra
-		//@param[in] Title - Titolo della finestra
-		//@param[in] Width - Lunghezza della finestra in pixel
-		//@param[in] Heigth - Altezza della finestra in pixel
+		// Create a window
+		// @param [in] Title - Title of the window
+		// @param [in] Width - Window length in pixels
+		// @param [in] Height - Height of the window in pixels
 		void CreateNewWindow(const char* Title, int Width, int Heigth);
 
-		//Consente di creare una finestra in fullscreen nel monitor principale
-		//@param[in] Title - Titolo della finestra
+		// Allows you to create a fullscreen window in the main monitor
+		// @param [in] Title - Title of the window
 		void CreateNewWindow(const char* Title);
 
 		
 
-		//--- GAME ---
+		// --- GAME ---
 
-		//Consente di iniziare il game loop
-		//@param[in] Scene - Scena da utilizzare (no null)
+		// Start the game loop
+		// @param [in] Scene - Scene to use (no null)
 		void StartGameLoop(Scene* Scene);
 
-		//Permette di terminare il ciclo di gioco e terminare l'engine
+		// Allows to end the game cycle and finish the engine
 		void EndGameLoop();
 
-		//Setta la scena da renderizzare
+		// Set the scene to be rendered
 		void setScene(Scene* Scene);
 
-		//Ottiene l'ultimo stato conoscuto dell'input
-		//NOTA: Il rilascio del puntatore è gestito da questa classe
+		// Gets the last known state of the input
+		// NOTE: The pointer release is managed by this class
 		InputState* getLastInputState();
 
-		//@return Informazionu sull'operato dell'engine
+		// @return Information on the work of the engine
 		const RenderingEngineInfo& getRenderingEngineInfo() const;
 
 	private:
 
-		//Consente di eseguire il game loop
+		// Allows you to run the game loop
 		void GameLoop();
 
-		//Permette di rilasciare le risorse allocate dall'engine
+		// Allows to release the resources allocated by the engine
 		void Terminate();
 
-		//Permette di prendere provvedimenti quando una nuova finestra è stata creata
+		// It allows to take action when a new window has been created
 		void CreatedNewWindow();
 };
 

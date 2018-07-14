@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-#include <algorithm> //Per std::sort
+#include <algorithm> // For std :: sort
 
 #include "Engine.h"
 #include "DEBUG.h"
@@ -24,23 +24,23 @@ Scene::~Scene()
 void Scene::Inizialize(Engine* E)
 {
 	engine = E;
-	ambientLight = glm::vec3(0.5f, 0.5f, 0.5f); //Impostazione di default della luce d'ambiente
-	InizializeScene(); //Inizializzo la scena derivata
+	ambientLight = glm::vec3(0.5f, 0.5f, 0.5f); // Default setting of ambient light
+	InizializeScene(); // Initialize the derived scene
 }
 
 void Scene::Update(const UpdateParameters& SceneUpdateParameters)
 {
 	const std::vector<Actor*>* a = getActors();
-	//Aggiorno gli attori
+	// I update the actors
 	for (int i = 0; i < a->size(); i++)
 		(*a)[i]->Update(SceneUpdateParameters);
 
-	//Aggiorno le camere:
+	// Update rooms:
 	MapIterator<unsigned int, Camera*> c = getCameras();
 	while (c.hasNext())
 		c.next()->Update(SceneUpdateParameters.getElapsedTime());
 
-	UpdateScene(SceneUpdateParameters); //Aggiorno la scena derivata
+	UpdateScene(SceneUpdateParameters); // Update the derived scene
 }
 
 void Scene::OnScreenResize(size_t NewWidth, size_t NewHeight)
@@ -72,19 +72,19 @@ const Skybox * Scene::getSkyBox()
 
 void Scene::RemoveItem(unsigned int ID)
 {
-	items.Remove(ID); //Rimuovo l'elemento lall'elenco degli items
+	items.Remove(ID); // I remove the item from the list of items
 	int index_a = IndexOfActor(ID);
 	std::map<unsigned int, Camera*>::iterator it_c = cameras.find(ID);
 
-	if (index_a != -1) //Nel caso l'elemento da rimuovere è un'attore
+	if (index_a != -1) // In the case the element to be removed is an actor
 	{
-		delete actors[index_a]; //Disalloco l'attore
-		actors.erase(actors.begin() + index_a); //Elimino l'attore dagli attori
+		delete actors[index_a]; // I remove the actor
+		actors.erase(actors.begin() + index_a); // I delete the actor from the actors
 	}
-	else if (it_c != cameras.end()) //Nel caso l'elemento da rimuovere è una camera
+	else if (it_c != cameras.end()) // In the case the element to be removed is a chamber
 	{
-		delete it_c->second; //Disalloco la camera
-		cameras.erase(it_c); //Elimino la camera dalle camere
+		delete it_c->second; // Disallocate the room
+		cameras.erase(it_c); // I remove the room from the rooms
 	}
 	else
 		ASSERT(false, "Caso non previso: ID sconoscuto");
@@ -97,34 +97,34 @@ InputState * Scene::getLastInputState()
 
 Camera* Scene::InsertNewCamera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
 {
-	unsigned int id = items.getNextID(); //Siccome per la camera è richiesto l'ID faccio "anticipare"
-	Camera* c = new Camera(ModeOffset, X, Y, ModeSize, Width, Height); //Istanzio una camera
+	unsigned int id = items.getNextID(); // Since the ID is required for the camera, I "anticipate"
+	Camera* c = new Camera(ModeOffset, X, Y, ModeSize, Width, Height); // Istanzio a room
 
-	//Setto i parametri di ItemScene
-	c->id = id; //ID dell'item della scena
-	c->scene = this; //Scena madre
+	// Set the parameters of ItemScene
+	c->id = id; // ID of the scene item
+	c->scene = this; // Mother scene
 
 
 	Point2 size = getLastInputState()->getWindowSize();
 	c->OnScreenReSize(size.x, size.y);
-	items.InsertNew(c); //Inserisco la camera (l'id restituito da questo metodo deve corrispondere con quello contenuto in 'id')
-	cameras.insert(std::pair<unsigned int, Camera*>(id, c)); //Inserisco la camera anche nell'elenco delle camere
+	items.InsertNew(c); // I enter the camera (the id returned by this method must match the one contained in 'id')
+	cameras.insert(std::pair<unsigned int, Camera*>(id, c)); // I also enter the room in the list of rooms
 
 	return c;
 }
 
 void Scene::InsertNewActor(Actor* A)
 {
-	if (A != nullptr) //Null non accettato
+	if (A != nullptr) // Null not accepted
 	{
-		unsigned int id = items.getNextID(); //Mi facio anticipare l'ID dell'attore
+		unsigned int id = items.getNextID(); // I have the anticipated ID of the actor
 
-		//Setto i parametri di ItemScene
-		A->id = id; //ID dell'item della scena
-		A->scene = this; //Imposto la scena madre
+		// Set the parameters of ItemScene
+		A->id = id; // ID of the scene item
+		A->scene = this; // Imposed the mother scene
 
-		items.InsertNew(A); //Inserisco l'attore (l'id restituito da questo metodo deve corrispondere con quello contenuto in 'id')
-		actors.push_back(A); //Inserisco l'attore anche nell'elenco degli attori
+		items.InsertNew(A); // I insert the actor (the id returned by this method must match the one contained in 'id')
+		actors.push_back(A); // I include the actor also in the list of actors
 		addedActors++;
 	}
 }
@@ -134,12 +134,12 @@ Light* Scene::InsertNewLight()
 	unsigned int id = items.getNextID();
 	Light* l = new Light();
 
-	//Setto i parametri di ItemScene
-	l->id = id; //ID dell'item della scena
-	l->scene = this; //Imposto la scena madre
+	// Set the parameters of ItemScene
+	l->id = id; // ID of the scene item
+	l->scene = this; // Imposed the mother scene
 
-	items.InsertNew(l); //Inserisco l'item (l'id restituito da questo metodo deve corrispondere con quello contenuto in 'id')
-	lights.insert(std::pair<unsigned int, Light*>(id, l)); //Inserisco la luce anche nell'elenco delle luci
+	items.InsertNew(l); // I insert the item (the id returned by this method must match the one contained in 'id')
+	lights.insert(std::pair<unsigned int, Light*>(id, l)); // I enter the light also in the list of lights
 
 	return l;
 }
@@ -164,14 +164,14 @@ const RenderingEngineInfo & Scene::getRenderingEngineInfo()
 	return engine->getRenderingEngineInfo();
 }
 
-//Consente di decretare quale attore tra i due deve essere posizionato prima
-//questo allo scopo di ordinare l'array degli attori per il rendering
-//Il test ordina gli attori nel segiunete modo:
-//1) Per shder
-//2) per texture (proprietà del materiale)
-//3) per mesh
-//NOTA: non importa che sia un ordine preciso, l'importante è che tutti gli attori con le stesse caratteristiche siano raggruppati pesando
-//	i fattori sopra citati (per questo viene effettuato un confronto tra puntatori)
+// It allows to decree which actor between the two must be positioned first
+// this in order to sort the array of actors for rendering
+// The test orders the actors in the following way:
+// 1) For shader
+// 2) for textures (material properties)
+// 3) for mesh
+// NOTE: it does not matter that it is a precise order, the important thing is that all the actors with the same characteristics are grouped by weighting
+// the factors mentioned above (for this a comparison is made between pointers)
 bool ActorCompare(const Actor* a, const Actor* b)
 {
 	const Shader* a_shader = a->getModel()->getMaterial()->getShader();

@@ -3,7 +3,7 @@
 #include <string>
 #include "UIElement.h"
 
-//Classe che rappresenta un testo da renderizzare a video in 2D
+// Class that represents a text to render to video in 2D
 class TextBox : public UIElement
 {
 	public:

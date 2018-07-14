@@ -24,26 +24,26 @@ void PostProcessShader::ApplayShader(GLuint IdBufferUnitQuad, GLuint RenderedTex
 	ASSERT(idRenderedTexture != UINT_MAX || idDepthTexture != UINT_MAX, 
 		"the derived class of PostProcessSHader if overrides the method CaricaIDVariabili must call the base method with PostProcessShader::CaricaIDVariabili();");
 
-	SetShaderParams(Params); //Setta i parametri dello shader
+	SetShaderParams(Params); // Set the shader parameters
 
-	if (idRenderedTexture != UINT_MAX) //Controllo se il post process derivato utilizza la texture renderizzata
+	if (idRenderedTexture != UINT_MAX) // Check if the derived post process uses the rendered texture
 	{
-		//Imposto la texture renderizzata nello shader
+		// Set the rendered texture in the shader
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, RenderedTextureID);
 		glUniform1i(idRenderedTexture, 0);
 	}
 
-	if (idDepthTexture != UINT_MAX) //Controllo se il post process derivato utilizza la depth texture
+	if (idDepthTexture != UINT_MAX) // Check if the derived post process uses the depth texture
 	{
-		//Imposto la texture della profondità nello shader
+		// Set the texture of the depth in the shader
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, DepthTextureID);
 		glUniform1i(idDepthTexture, 1);
 	}
 
 
-	// 1rst attribute buffer : vertices
+	// 1rst attribute buffer: vertices
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, IdBufferUnitQuad);
 	glVertexAttribPointer(
@@ -52,10 +52,10 @@ void PostProcessShader::ApplayShader(GLuint IdBufferUnitQuad, GLuint RenderedTex
 		GL_FLOAT,           // type
 		GL_FALSE,           // normalized?
 		0,                  // stride
-		(void*)0            // array buffer offset
+		(void*)0            // offset buffer array
 	);
 
-	glDrawArrays(GL_TRIANGLES, 0, 6); //Disegno il quadrato
+	glDrawArrays(GL_TRIANGLES, 0, 6); // I draw the square
 
 	glDisableVertexAttribArray(0);
 }

@@ -8,9 +8,9 @@ void* Utility_Arrays_SubMatrix(const size_t& OffsetX, const size_t& OffsetY, con
 	ASSERT(Matrix != nullptr || Width * Height == 0, "Utility_Arrays_SubMatrix(): Matrix is null and size > 0");
 
 	char* mat = (char*)Matrix;
-	size_t rowSize = SizeElement * MatrixWid; //Calcolo la dimensione di una riga in byte
+	size_t rowSize = SizeElement * MatrixWid; // Calculating the size of a row in bytes
 	
-	char* copy = new char[Width * Height * SizeElement]; //Alloco lo spazio per il nuovo array
+	char* copy = new char[Width * Height * SizeElement]; // Allocate space for the new array
 
 	int d = 0;
 	for (int y = OffsetY; y < OffsetY + Height; y++)

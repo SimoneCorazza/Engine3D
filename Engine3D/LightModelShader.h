@@ -2,8 +2,8 @@
 
 #include "ModelShader.h"
 
-//Classe astratta che permette di rappresentare uno shader utilizzato
-//per renderizzare un modello con effetti di luce
+// Abstract class that allows to represent a used shader
+// to render a model with light effects
 class LightModelShader : public ModelShader
 {
 	public:
@@ -12,8 +12,8 @@ class LightModelShader : public ModelShader
 
 	public:
 
-		//Imposta la luce dell'ambiente da applicare al modello
-		//(luce minima che possiederà l'ogetto)
+		// Set the ambient light to apply to the model
+		// (minimum light that owns the object)
 		virtual void setAmbientLight(glm::vec3 AbientLight) const abstract;
 
 

@@ -25,23 +25,23 @@ bool CheckTable::Check(const KeyType& K)
 {
 	int index = HashFunction(K);
 
-	if (table[index] == nullptr) //Caso non è stato creato l'array
+	if (table[index] == nullptr) // Case has not been created the array
 	{
 		table[index] = new std::vector<KeyType>();
-		table[index]->push_back(K); //Inserisco il valore
-		return false; //Indico di non averlo trovato
+		table[index]->push_back(K); // I enter the value
+		return false; // I indicate that I have not found it
 	}
 	else
 	{
-		//Cerco l'elemento nel sotto array:
+		// I look for the element in the sub array:
 		std::vector<KeyType>* vec = table[index];
 		size_t i = 0;
 		while (i < vec->size() && (*vec)[i] != K)
 			i++;
 		
-		if (i == vec->size()) //Elemento non trovato
+		if (i == vec->size()) // Element not found
 		{
-			vec->push_back(K); //Inserisco l'elemento siccome non presente
+			vec->push_back(K); // I insert the element as not present
 			return false;
 		}
 		else
@@ -53,13 +53,13 @@ void CheckTable::Reset(size_t PredictedSize)
 {
 	if (table != nullptr)
 	{
-		for (size_t i = 0; i < tableSize; i++) //Elimino i sotto-arry istanziati
+		for (size_t i = 0; i < tableSize; i++) // I delete the instantiated sub-arry
 			delete table[i];
 		delete table;
 	}
 	tableSize = PredictedSize;
 	table = new std::vector<KeyType>*[tableSize];
-	for (size_t i = 0; i < tableSize; i++) //Inizializzo i vettori a null
+	for (size_t i = 0; i < tableSize; i++) // Initialize the vectors to null
 		table[i] = nullptr;
 }
 

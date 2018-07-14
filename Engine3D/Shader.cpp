@@ -1,7 +1,7 @@
 #include "Shader.h"
 #include "ShaderLoader.h"
 
-//--- COSTRUTTORI ---
+// --- BUILDERS ---
 
 Shader::Shader()
 {
@@ -15,17 +15,17 @@ Shader::~Shader()
 }
 
 
-//--- METODI ---
+// --- METHODS ---
 
 bool Shader::LoadShader(const char* PathVertexShader, const char* PathFragmentShader)
 {
-	//Ritorno true se è tutto OK false altrimenti (== 0 -> errore)
+	// Return true if everything is OK false otherwise (== 0 -> error)
 	idShader = ShaderLoader::LoadShader(PathVertexShader, PathFragmentShader);
 	bool r = idShader != 0;
 	if (r)
-		LoadIDVar(); //Carico i vari ID delle variabili dello shader (metodo astratto)
+		LoadIDVar(); // Load the various IDs of the shader variables (abstract method)
 	else
-		idShader = 0; //In caso di errore
+		idShader = 0; // In case of error
 
 	return r;
 }
@@ -40,7 +40,7 @@ GLuint Shader::GetVarID(const std::string & Name)
 	return GetVarID(Name.c_str());
 }
 
-//GET e SET
+// GET and SET
 
 GLuint Shader::getIDShader() const
 {

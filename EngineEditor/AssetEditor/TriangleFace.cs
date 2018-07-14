@@ -3,21 +3,21 @@
 namespace EngineEditor
 {
     /*
-    In questa classe i Point3 rappresentano le informazioni riguardo a un singolo vertice del triangolo:
-        x: ID della posizione del vetice nello spazio
-        y: ID della coordinata UV
-        z: ID della normale
+    In this class, Point3 represent information about a single vertex of the triangle:
+         x: ID of the position of the vetice in the space
+         y: ID of the UV coordinate
+         z: ID of the normal
     */
 
     /// <summary>
-    /// Struct che rappresenta una faccia di un triangolo tramite gli ID di vertici, UV e normali
+    /// Struct that represents a face of a triangle using vertex, UV, and normal IDs
     /// </summary>
     public class TriangleFace
     {
         Point3[] verteces = new Point3[3];
 
         /// <summary>
-        /// Ottiene il primo vertice della faccia del triangolo
+        /// Gets the first vertex of the triangle face
         /// </summary>
         public Point3 V1
         {
@@ -26,7 +26,7 @@ namespace EngineEditor
         }
 
         /// <summary>
-        /// Ottiene il secondo vertice della faccia del triangolo
+        /// Gets the second vertex of the triangle face
         /// </summary>
         public Point3 V2
         {
@@ -35,7 +35,7 @@ namespace EngineEditor
         }
 
         /// <summary>
-        /// Ottiene il terzo vertice della faccia del triangolo
+        /// Gets the third vertex of the face of the triangle
         /// </summary>
         public Point3 V3
         {
@@ -57,9 +57,9 @@ namespace EngineEditor
         }
 
         /// <summary>
-        /// Ottiene o imposta i parametri per il vertice desiderato
+        /// Gets or sets the parameters for the desired vertex
         /// </summary>
-        /// <param name="VertexIndex">Indice compreso tra 0 e 2</param>
+        /// <param name="VertexIndex">Index between 0 and 2</param>
         public Point3 this[int VertexIndex]
         {
             get

@@ -3,13 +3,13 @@
 #include <GL\glew.h>
 #include <string>
 
-//Numero di faccie di un cubo
+// Number of faces of a cube
 #define CUBE_FACES_NUM 6 
 
-//Classe che rappresenta una texture cube map
+// Class that represents a texture cube map
 class TextureCube
 {
-	GLuint idTexture; //ID della texture
+	GLuint idTexture; // ID of the texture
 
 	GLint internalFormat;
 	GLenum minFilter;
@@ -28,55 +28,55 @@ class TextureCube
 
 	public:
 
-		//Ottiene l'ID della texture cube secondo OpenGL
+		// Gets the ID of the texture cube according to OpenGL
 		GLuint getTextureID() const;
 
-		//Ottiene come viene memorizzata la texture in OpenGL
+		// Gets how the texture is stored in OpenGL
 		GLint getInternalFormat() const;
 
-		//Ottiene il MAX_FILTER della texturte utilizzato
+		// Gets the MAX_FILTER of the texturte used
 		GLenum getMinFilter() const;
-		//Ottiene il MAX_FILTER della texturte utilizzato
+		// Gets the MAX_FILTER of the texturte used
 		GLenum getMaxFilter() const;
 
-		//Ottiene il parametro utilizzato per l'impostazione WARP_S della cube map 
+		// Gets the parameter used for the WARP_S setting of the cube map
 		GLint getWrapS() const;
-		//Ottiene il parametro utilizzato per l'impostazione WARP_T della cube map 
+		// Gets the parameter used for the WARP_T setting of the cube map
 		GLint getWrapT() const;
-		//Ottiene il parametro utilizzato per l'impostazione WARP_S della cube map 
+		// Gets the parameter used for the WARP_S setting of the cube map
 		GLint getWrapR() const;
 
-		//Consente di rilasciare la texture
+		// Allows to release the texture
 		void Dispose();
 
-		//Consente di caricare una textured cube
-		//@param[in] FacesPath - Path delle texture delle 6 facce
-		//	• le faccie tra di loro possono avere dimensioni differenti, ma nella stessa faccia width = height
-		//	• l'ordine delle faccie è: Right, Left, Top, Bottom, Back, Front
-		//@param[in] InternalFormat - Formato di memorizzazione della texture
-		//@param[in] MinFilter - Filtro MIN per OpenGL
-		//@param[in] MaxFilter - Filtro MAX per OpenGL
-		//@param[in] WrapS - Modalità di WarpS 
-		//@param[in] WrapT - Modalità di WarpT
-		//@param[in] WrapR - Modalità di WarpR
-		//@param[in] Usage - Utilizzo della cubemap:
-		//	True: per uso interno, la cube map viene creata per la corretta visualizzazione dall'interno
-		//	(NB: nel fragment shader utilizzato si richiede di invertire la coordinata X (x * -1))
-		//	False: per uso esterno, la cube map viene creata per la corretta visualizzazione dall'esterno
+		// Allows you to load a textured cube
+		// @param [in] FacesPath - Path of 6-sided textures
+		// â€¢ the faces between them can have different dimensions, but in the same face width = height
+		// â€¢ the order of the faces is: Right, Left, Top, Bottom, Back, Front
+		// @param [in] InternalFormat - Texture storage format
+		// @param [in] MinFilter - MIN filter for OpenGL
+		// @param [in] MaxFilter - MAX filter for OpenGL
+		// @param [in] WrapS - WarpS mode
+		// @param [in] WrapT - WarpT mode
+		// @param [in] WrapR - WarpR mode
+		// @param [in] Usage - Use of the cubemap:
+		// True: for internal use, the cube map is created for correct visualization from the inside
+		// (NB: in the fragment shader used it is required to invert the X coordinate (x * -1))
+		// False: for external use, the cube map is created for correct visualization from the outside
 		static TextureCube* NewTextureCube(std::string FacesPath[CUBE_FACES_NUM], GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR, bool Usage);
 
-		//Consente di caricare una textured cube
-		//@param[in] FacesPath - Path alla texture contenente le 6 texture
-		//@param[in] InternalFormat - Formato di memorizzazione della texture
-		//@param[in] MinFilter - Filtro MIN per OpenGL
-		//@param[in] MaxFilter - Filtro MAX per OpenGL
-		//@param[in] WrapS - Modalità di WarpS 
-		//@param[in] WrapT - Modalità di WarpT
-		//@param[in] WrapR - Modalità di WarpR
-		//@param[in] Usage - Utilizzo della cubemap:
-		//	True: per uso interno, la cube map viene creata per la corretta visualizzazione dall'interno
-		//	(NB: nel fragment shader utilizzato si richiede di invertire la coordinata X (x * -1))
-		//	False: per uso esterno, la cube map viene creata per la corretta visualizzazione dall'esterno
+		// Allows you to load a textured cube
+		// @param [in] FacesPath - Path to the texture containing the 6 textures
+		// @param [in] InternalFormat - Texture storage format
+		// @param [in] MinFilter - MIN filter for OpenGL
+		// @param [in] MaxFilter - MAX filter for OpenGL
+		// @param [in] WrapS - WarpS mode
+		// @param [in] WrapT - WarpT mode
+		// @param [in] WrapR - WarpR mode
+		// @param [in] Usage - Use of the cubemap:
+		// True: for internal use, the cube map is created for correct visualization from the inside
+		// (NB: in the fragment shader used it is required to invert the X coordinate (x * -1))
+		// False: for external use, the cube map is created for correct visualization from the outside
 		static TextureCube* NewTextureCube(std::string FacesPath, GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR, bool Usage);
 
 	private:
@@ -90,16 +90,16 @@ class TextureCube
 			GLint dataType;
 		};
 
-		//Inizializza la cubemap
-		//@param[in] FacesData - Dati delle texture delle singole faccie del cubo:
-		//	•le faccie tra di loro possono avere dimensioni differenti, ma nella stessa faccia width = height
-		//	•l'ordine delle faccie è: Right, Left, Top, Bottom, Back, Front
-		//@param[in] InternalFormat - Formato di memorizzazione della texture
-		//@param[in] MinFilter - Filtro MIN per OpenGL
-		//@param[in] MaxFilter - Filtro MAX per OpenGL
-		//@param[in] WrapS - Modalità di WarpS 
-		//@param[in] WrapT - Modalità di WarpT
-		//@param[in] WrapR - Modalità di WarpR
+		// Initialize the cubemap
+		// @param [in] FacesData - Texture data of the individual faces of the cube:
+		// â€¢ the faces between them can have different dimensions, but in the same face width = height
+		// â€¢ the order of the faces is: Right, Left, Top, Bottom, Back, Front
+		// @param [in] InternalFormat - Texture storage format
+		// @param [in] MinFilter - MIN filter for OpenGL
+		// @param [in] MaxFilter - MAX filter for OpenGL
+		// @param [in] WrapS - WarpS mode
+		// @param [in] WrapT - WarpT mode
+		// @param [in] WrapR - WarpR mode
 		void Inizialize(Face FacesData[CUBE_FACES_NUM], GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR);
 };
 

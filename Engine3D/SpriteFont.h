@@ -5,27 +5,27 @@
 #include "Font.h"
 
 
-//Classe statica che permette di renderizzare a video i font
+// Static class that allows you to render fonts on video
 class SpriteFont
 {
-	//Buffers:
+	// Buffers:
 
-	static GLuint idBuffVerteces; //Buffer per i vertici
-	static GLuint idBuffUV; //Buffer per le coordinate UV
+	static GLuint idBuffVerteces; // Buffer for the vertices
+	static GLuint idBuffUV; // Buffer for UV coordinates
 
-							//Variabili shader:
+							// Shader variables:
 	static GLuint idShader;
 
-	//Uniform:
+	// Uniform:
 	static GLuint idColor;
 	static GLuint idSampler;
 	static GLuint idMatrix;
 
-	//Attibuti:
+	// attribs:
 	static GLuint idVertexArray;
 	static GLuint idUVArray;
 
-	//Dimensioni:
+	// Dimensions:
 	static float pixelScreenX;
 	static float pixelScreenY;
 
@@ -38,41 +38,41 @@ public:
 
 public:
 
-	//Consente di inizializzare lo sprite font
+	// Initialize the sprite font
 	void Inizialize();
 
-	//Imposta la dimensione dello schermo secondo
-	//@param[in] PixelScreenX - Dimensione (X) della finestra in pixel
-	//@param[in] PixelScreenY - Dimensione (Y) della finestra in pixel
-	//@param[in] ScreenX - Dimensione (X) della finestra in unità geometriche scelta (devono corrispondere con quelle della matrice)
-	//@param[in] ScreenY - Dimensione (Y) della finestra in unità geometriche scelta (devono corrispondere con quelle della matrice)
+	// Set the second screen size
+	// @param [in] PixelScreenX - Size (X) of the window in pixels
+	// @param [in] PixelScreenY - Size (Y) of the window in pixels
+	// @param [in] ScreenX - Dimension (X) of the window in selected geometric units (must correspond with those of the matrix)
+	// @param [in] ScreenY - Size (Y) of the window in selected geometric units (must correspond with those of the matrix)
 	void SetSizes(float PixelScreenX, float PixelScreenY, float ScreenX, float ScreenY);
 
-	//Imposta la matrice per posizionare i vertici dello spritefont
+	// Set the array to position the vertices of the spritefont
 	void SetMatrix(const glm::mat4& M);
 
-	//Permette di iniziare una sequenza di disegni di font
+	// It allows to start a sequence of font drawings
 	void Begin();
 
-	//Inoltra la richiesta di disegno della stringa con il font scelto
-	//deve essere incluso tra Begin() e End()
-	//@param[in] String - Stringa da renderizzare
-	//@param[in] Font - Font da utilizzare
-	//@param[in] Location - Posizione dalla quale partire a disegnare il font
-	//@param[in] Height - Dimensioni dei caretteri desiderata
-	//@param[in] Color - Colore da utilizzare per il font
+	// Forward the string design request with the chosen font
+	// must be included between Begin () and End ()
+	// @param [in] String - String to render
+	// @param [in] Font - Font to use
+	// @param [in] Location - Location from which to draw the font
+	// @param [in] Height - Desired font size
+	// @param [in] Color - Color to use for the font
 	void RequestDraw(const Char* String, const Font& Font, const glm::vec2& Location, const float& Height, const glm::vec4& Color);
 
-	//Permette di concludere la sequenza di richieste di disegno e di renderizzarle
+	// It allows to conclude the sequence of drawing requests and to render them
 	void End();
 
-	//Disegna la stringa con il font scelto
-	//@param[in] String - Stringa da renderizzare
-	//@param[in] Font - Font da utilizzare
-	//@param[in] Location - Posizione dalla quale partire a disegnare il font in millimetri
-	//@param[in] Height - Altezza dei caratteri in millimetri
-	//@param[in] Color - Colore da utilizzare per il font
-	//@NOTA Se un carattere non è presente nel font viene ignorato
+	// Draw the string with the chosen font
+	// @param [in] String - String to render
+	// @param [in] Font - Font to use
+	// @param [in] Location - Location from which to draw the font in millimeters
+	// @param [in] Height - Height of the characters in millimeters
+	// @param [in] Color - Color to use for the font
+	// @NOTE If a character is not present in the font it is ignored
 	void Draw(const Char* String, const Font* Font, const glm::vec2& Location, const float& Height, const glm::vec4& Color);
 };
 

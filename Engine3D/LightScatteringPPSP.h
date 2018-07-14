@@ -1,10 +1,10 @@
 #pragma once
 #include "PostProcessShaderParams.h"
 
-//Classe per i parametri dell'effetto post process light scattering
+// Class for post processing light scattering effect parameters
 class LightScatteringPPSP : public PostProcessShaderParams
 {
-	glm::vec2 screenLightPos; //Posizione della luce a schermo
+	glm::vec2 screenLightPos; // Position of the light on the screen
 	float exposure;
 	float decay;
 	float density;

@@ -31,13 +31,13 @@ void SkyboxShader::RenderSkybox(const Skybox * S, const glm::mat4 & CameraMatrix
 		GL_FLOAT,						// type
 		GL_FALSE,						// normalized?
 		0,								// stride
-		(void*)0						// array buffer offset
+		(void*)0						// offset buffer array
 		);
 
 	glDrawArrays(GL_TRIANGLES, 0, S->getMesh()->getVertecesDraw());
 	glDisableVertexAttribArray(0);
 
-	//Setto nessuna texture
+	// I leave no texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 

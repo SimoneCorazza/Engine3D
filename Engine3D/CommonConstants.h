@@ -3,11 +3,11 @@
 #include <limits>
 
 /*
-Header file che contiene le costanti comuni utilizzate per la realizzazione del'engine
+Header file that contains the common constants used for the construction of the engine
 */
 
 
-//Costante di un ID invalido per un buffer per OpenGL
+// Constant of an invalid ID for a buffer for OpenGL
 #define INVALID_BUFFER_ID		UINT_MAX
-//Costante di un ID invalido per una texture per OpenGL
+// Constant of an invalid ID for a texture for OpenGL
 #define INVALID_TEXTURE_ID		0

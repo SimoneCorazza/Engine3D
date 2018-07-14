@@ -2,7 +2,7 @@
 
 #include "PostProcessShader.h"
 
-//Post process shader per visualizzare il depth buffer (Utilizzo per il debug)
+// Post process shader to display the depth buffer (Use for debugging)
 class DepthPostProcessShader : public PostProcessShader
 {
 	public:

@@ -6,38 +6,38 @@
 class Mesh;
 class TextureCube;
 
-//Classe che rappresenta uno skybox generico
+// Class representing a generic skybox
 class Skybox
 {
-	const Mesh* mesh; //Mesh dello skybox
-	const TextureCube* textureCube; //Texture cubica per lo skybox
-	glm::vec3 scale; //Dimensione dello skybox rispetto alla mesh
+	const Mesh* mesh; // Mesh of the skybox
+	const TextureCube* textureCube; // Cubic texture for the skybox
+	glm::vec3 scale; // Size of the skybox with respect to the mesh
 
 	public:
-		//Istanza uno skybox
+		// Instance a skybox
 		Skybox(const Mesh* Mesh, const TextureCube* TextureCube);
 
 		~Skybox();
 
 	public:
 
-		//Imposta la texture cube map per lo skybox
+		// Set the texture cube map for the skybox
 		void setTextureCube(const TextureCube* T);
 
-		//Ottiene la cube map per lo skybox
+		// Gets the cube map for the skybox
 		const TextureCube* getTextureCube() const;
 
-		//Modifica la dimensione dello skybox
+		// Change the size of the skybox
 		void setScale(const glm::vec3& S);
 
-		//Ottiene il vettore di ingrandimento dello skybox rispetto al modello selezionato
+		// Gets the vector of magnifying the skybox with respect to the selected model
 		const glm::vec3& getScale() const;
 
-		//Ottiene la mesh dello skybox
+		// Get the skybox mesh
 		const Mesh* getMesh() const;
 
-		//Ottiene la matrice di transformazione dello skybox
-		//@param[in] CameraPos - Posizione della camera (per poter centrare lo skybox su di essa)
+		// Gets the transformation matrix of the skybox
+		// @param [in] CameraPos - Location of the room (to be able to center the skybox on it)
 		const glm::mat4 getMatrix(const glm::vec3& CameraPos) const;
 };
 
@@ -49,31 +49,31 @@ class Skybox
 
 class Model;
 
-//Classe che rappresenta uno skybox generico
+// Class representing a generic skybox
 class Skybox
 {
-const Model* model; //Modello dello skybox contenente la mesh e il materiale per esso
-glm::vec3 scale; //Dimensione del modello rispetto a quello originale
+const Model* model; // Model of the skybox containing the mesh and the material for it
+glm::vec3 scale; // Size of the model compared to the original one
 
 public:
-//Istanza uno skybox
+// Instance a skybox
 Skybox(const Model* model);
 
 ~Skybox();
 
 public:
 
-//Modifica la dimensione dello skybox
+// Change the size of the skybox
 void setScale(const glm::vec3& S);
 
-//Ottiene il vettore di ingrandimento dello skybox rispetto al modello selezionato
+// Gets the vector of magnifying the skybox with respect to the selected model
 const glm::vec3& getScale() const;
 
-//Ottiene il modello dello skybox
+// Gets the model of the skybox
 const Model* getModel() const;
 
-//Ottiene la matrice di transformazione dello skybox
-//@param[in] CameraPos - Posizione della camera (per poter centrare lo skybox su di essa)
+// Gets the transformation matrix of the skybox
+// @param [in] CameraPos - Location of the room (to be able to center the skybox on it)
 const glm::mat4 getMatrix(const glm::vec3& CameraPos) const;
 };
 */

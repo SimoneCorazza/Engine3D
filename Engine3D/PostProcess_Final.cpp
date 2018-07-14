@@ -21,7 +21,7 @@ void PostProcess_Final::DrawFrame(GLuint UnitBuffVertex, GLuint TexID)
 	// Set our "renderedTexture" sampler to user Texture Unit 0
 	glUniform1i(idTextureSampler, 0);
 
-	// 1rst attribute buffer : vertices
+	// 1rst attribute buffer: vertices
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, UnitBuffVertex);
 	glVertexAttribPointer(
@@ -30,11 +30,11 @@ void PostProcess_Final::DrawFrame(GLuint UnitBuffVertex, GLuint TexID)
 		GL_FLOAT,           // type
 		GL_FALSE,           // normalized?
 		0,                  // stride
-		(void*)0            // array buffer offset
+		(void*)0            // offset buffer array
 		);
 
-	// Draw the triangles !
-	glDrawArrays(GL_TRIANGLES, 0, 6); // 2*3 indices starting at 0 -> 2 triangles
+	// Draw the triangles!
+	glDrawArrays(GL_TRIANGLES, 0, 6); // 2 * 3 indices starting at 0 -> 2 triangles
 
 	glDisableVertexAttribArray(0);
 }

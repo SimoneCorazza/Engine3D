@@ -46,13 +46,13 @@ void InputEngine::Inizialize(GLFWwindow * Window)
 
 void InputEngine::Update()
 {
-	//Controllo che non vanga cambiata la modalità dei tasti dall'utente
+	// Check that the key mode of the user has not changed
 	ASSERT(glfwGetInputMode(window, GLFW_STICKY_KEYS) != GL_TRUE, "GLFW_STICKY_KEYS is True -> for the correct function of the class it must be false");
 	ASSERT(glfwGetInputMode(window, GLFW_STICKY_MOUSE_BUTTONS) != GL_TRUE, "GLFW_STICKY_MOUSE_BUTTONS is True -> for the correct function of the class it must be false");
 
-	scrollWheel = sW; //Aggiorno lo scroll wheel
+	scrollWheel = sW; // I update the scroll wheel
 
-	if (inputState != nullptr) //Invalido l'istanza dell'InputState precedente
+	if (inputState != nullptr) // Invalidate the instance of the previous InputState
 		inputState->Invalidate();
 
 	inputState = InputState::GetState(window, this, inputState);
@@ -93,8 +93,8 @@ InputEngine::MessageBox_Return InputEngine::MessageBoxShow(const char * Title, c
 {
 #ifdef WINDOWS
 
-	//Windows
-	//Complite explenation in https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505(v=vs.85).aspx
+	// Windows
+	// Complite explenation at https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505(v=vs.85).aspx
 
 	UINT options = 0;
 
@@ -139,7 +139,7 @@ InputEngine::MessageBox_Return InputEngine::MessageBoxShow(const char * Title, c
 		break;
 	case InputEngine::MB_ICON_Hand: options |= MB_ICONHAND;
 		break;
-	case InputEngine::MB_ICON_None: //Per non impostare un'icona basta non impostare il flag
+	case InputEngine::MB_ICON_None: // To not set an icon, just do not set the flag
 		break;
 
 	default: 

@@ -4,10 +4,10 @@
 
 #include "UIElement.h"
 
-//Classe che rappresenta l'interfaccia utente
+// Class representing the user interface
 class UI
 {
-	std::vector<UIElement*> uiElements; //Elementi dell'interfaccia
+	std::vector<UIElement*> uiElements; // Interface elements
 
 	public:
 		UI();
@@ -15,11 +15,11 @@ class UI
 
 	public:
 
-		//Aggiunge un elemento dell'interfaccia nell'UI
-		//@param[in] UIElement - Elemento da aggiungere
+		// Adds an interface element in the UI
+		// @param [in] UIElement - Element to add
 		void Add(UIElement& UIElement);
 
-		//Ottiene gli elementi dell'interfaccia
+		// Gets the elements of the interface
 		const std::vector<UIElement*>& getUIElements();
 };
 

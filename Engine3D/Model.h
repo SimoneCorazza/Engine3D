@@ -3,11 +3,11 @@
 class Mesh;
 class Material;
 
-//Classe che rappresenta un modello di un'oggetto texturizzato
+// Class that represents a model of a textured object
 class Model
 {
-	const Mesh* mesh; //Puntatore alla mesh del modello
-	const Material* material; //Puntatore al materiale che compone il modello
+	const Mesh* mesh; // Pointer to the model mesh
+	const Material* material; // Pointer to the material that makes up the model
 
 
 	public:
@@ -18,10 +18,10 @@ class Model
 
 	public:
 
-		//Ottiene la mesh del modello
+		// Gets the model mesh
 		const Mesh* getMesh() const;
 
-		//Ottiene la texture del modello
+		// Gets the texture of the model
 		const Material* getMaterial() const;
 };
 

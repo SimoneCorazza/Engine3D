@@ -8,11 +8,11 @@ class Box;
 
 
 
-//Classe che permette di determinare se un punto è dentro lo spazio visibile della camera
+// Class that allows to determine if a point is inside the visible space of the room
 class Frustum
 {
-	//Array dei piani che compongono la frustum culling sono in ordine:
-	//Right, Left, Bottom, Top, Far, Near
+	// Arrays of the planes that make up the frustum culling are in order:
+	// Right, Left, Bottom, Top, Far, Near
 	Plane frustum[6];
 
 public:
@@ -22,33 +22,33 @@ public:
 
 public:
 
-	//Imposta i piani del Fstrum data la camera
-	//@param[in] m - Matrice delal camera
+	// Set the Fstrum plans given the room
+	// @param [in] m - Chamber matrix
 	void setPlanes(const glm::mat4& m);
 
 	
-	//Testa se il punto indicato rientra nel cono visivo
-	//@param[in] V - Punto da testare
-	//@return True se il punto è nel campo visivo
+	// Head if the indicated point is within the visual cone
+	// @param [in] V - Point to be tested
+	// @return True if the point is in the visual field
 	bool TestView(const glm::vec3& V);
 
-	//Testa se il box indicato rientra nel cono visivo
-	//@param[in] B - Box da testare
-	//@return True se il box è nel campo visivo
-	//bool TestView(const Box* B);
+	// Head if the indicated box is within the visual cone
+	// @param [in] B - Box to be tested
+	// @return True if the box is in the visual field
+	// bool TestView (const Box * B);
 	bool TestView(const Box* B);
 
-	//Testa se la sfera è visibile nel cono visivo
-	//@param[in] O - Origine della sfera
-	//@param[in] Radius - Raggio della sfera
+	// Head if the sphere is visible in the visual cone
+	// @param [in] O - Origin of the sphere
+	// @param [in] Radius - Radius of the sphere
 	bool TestView(const glm::vec3& O, float Radius);
 
 private:
 
-	//Indica da che parte del piano si trova il vertice
-	//@param[in] P - Piano
-	//@param[in] V - Vertice
-	//@return True il vertice si trova nella porzione positiva del piano [0, +inf[
+	// Indicates which side of the plane is the vertex
+	// @param [in] P - Plan
+	// @param [in] V - Summit
+	// @return True the vertex is in the positive portion of the plane [0, + inf [
 	inline bool TestViewPlane(const Plane& P, const glm::vec3& V);
 };
 

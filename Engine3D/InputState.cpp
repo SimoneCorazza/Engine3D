@@ -39,49 +39,49 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 	r->joysticks = new InputState::JoystickState*[GLFW_JOYSTICK_LAST + 1];
 	r->window = Window;
 
-	//Ottengo parametri INDIPENDENTI dallo stato precedente della classe
+	// I get INDEPENDENT parameters from the previous state of the class
 	int w, h;
 	glfwGetWindowSize(Window, &w, &h);
 	r->windowSize.x = w;
 	r->windowSize.y = h;
-	r->windowSurfaceValid = w * h > 0; //Setto la validità della superficie
+	r->windowSurfaceValid = w * h > 0; // The validity of the surface is valid
 
 	double x, y;
 	glfwGetCursorPos(Window, &x, &y);
 	r->cursor.x = (int)x;
 	r->cursor.y = (int)y;
 
-	//Ottengo parametri DIPENDENTI dallo stato precedente della classe
+	// I get EMPLOYMENT parameters from the previous state of the class
 
 	if (PrecState == nullptr)
 	{
-		for (size_t i = 0; i <= GLFW_KEY_LAST; i++) //Per la tastiera
+		for (size_t i = 0; i <= GLFW_KEY_LAST; i++) // For the keyboard
 		{
 			r->keyboard[i].pressed = glfwGetKey(Window, i) == GLFW_PRESS;
 			r->keyboard[i].down = r->keyboard[i].pressed;
 			r->keyboard[i].up = false;
 		}
 
-		for (size_t i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++) //Per il mouse
+		for (size_t i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++) // For the mouse
 		{
 			r->mouse[i].pressed = glfwGetMouseButton(Window, i) == GLFW_PRESS;
 			r->mouse[i].down = r->mouse[i].pressed;
 			r->mouse[i].up = false;
 		}
 
-		for (size_t i = 0; i <= GLFW_JOYSTICK_LAST; i++) //Per i joystick
+		for (size_t i = 0; i <= GLFW_JOYSTICK_LAST; i++) // For the joysticks
 		{
 			r->joysticks[i] = InputState::JoystickState::GetJoystickState(i, nullptr);
-			if(r->joysticks[i] != nullptr) //Incremento il numero di joystick connessi
+			if(r->joysticks[i] != nullptr) // Increase the number of connected joysticks
 				r->connectedJoysticks++;
 		}
 
-		r->cursorMode = IE_CursorMode::IE_CursorMode_Normal; //Impostazione di default (la deduzione potrebbe essere errata)
+		r->cursorMode = IE_CursorMode::IE_CursorMode_Normal; // Default setting (the deduction may be incorrect)
 		r->windowSizeChanged = false;
 	}
 	else
 	{
-		for (size_t i = 0; i <= GLFW_KEY_LAST; i++) //Per la tastiera
+		for (size_t i = 0; i <= GLFW_KEY_LAST; i++) // For the keyboard
 		{
 			bool p = glfwGetKey(Window, i) == GLFW_PRESS;
 			r->keyboard[i].pressed = p;
@@ -89,7 +89,7 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 			r->keyboard[i].up = !p && PrecState->IsKeyPressed(i);
 		}
 
-		for (size_t i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++) //Per il mouse
+		for (size_t i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++) // For the mouse
 		{
 			bool p = glfwGetMouseButton(Window, i) == GLFW_PRESS;
 			r->mouse[i].pressed = p;
@@ -97,10 +97,10 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 			r->mouse[i].up = !p && PrecState->IsMouseButtonPressed(i);
 		}
 
-		for (size_t i = 0; i <= GLFW_JOYSTICK_LAST; i++) //Per i joystick
+		for (size_t i = 0; i <= GLFW_JOYSTICK_LAST; i++) // For the joysticks
 		{
 			r->joysticks[i] = InputState::JoystickState::GetJoystickState(i, PrecState->getJoystickState(i));
-			if (r->joysticks[i] != nullptr) //Incremento il numero di joystick connessi
+			if (r->joysticks[i] != nullptr) // Increase the number of connected joysticks
 				r->connectedJoysticks++;
 		}
 
@@ -265,7 +265,7 @@ size_t InputState::getNumConnectedJoystick() const
 
 const InputState::JoystickState * InputState::getJoystickState(int GLFW_JoystickID) const
 {
-	if (GLFW_JoystickID < 0 && GLFW_JoystickID > GLFW_JOYSTICK_LAST) //Caso ecceda i limiti
+	if (GLFW_JoystickID < 0 && GLFW_JoystickID > GLFW_JOYSTICK_LAST) // Case exceed limits
 		return nullptr;
 	else
 		return joysticks[GLFW_JoystickID];

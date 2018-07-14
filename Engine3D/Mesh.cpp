@@ -64,11 +64,11 @@ const bool Mesh::hasNormals() const
 
 void Mesh::Dispose()
 {
-	//Rilascio i buffers:
+	// Release the buffers:
 	glDeleteBuffers(1, &idBuffVerteces);
 	glDeleteBuffers(1, &idBuffUV);
 	glDeleteBuffers(1, &idBuffNormals);
-	//Re-inizializzo i campi associati alla mesh
+	// Re-initialize the fields associated with the mesh
 	idBuffVerteces = INVALID_BUFFER_ID;
 	idBuffUV = INVALID_BUFFER_ID;
 	idBuffNormals = INVALID_BUFFER_ID;
@@ -90,7 +90,7 @@ Mesh* Mesh::Create(const float* BuffVerteces, const float* BuffUV, const float* 
 	glBindBuffer(GL_ARRAY_BUFFER, m->idBuffVerteces);
 	glBufferData(GL_ARRAY_BUFFER, sizeV, BuffVerteces, GL_STATIC_DRAW);
 
-	if (BuffUV == nullptr) //Controllo se le UV sono presenti
+	if (BuffUV == nullptr) // Check if the UVs are present
 	{
 		m->idBuffUV = 0;
 		sizeUV = 0;
@@ -103,7 +103,7 @@ Mesh* Mesh::Create(const float* BuffVerteces, const float* BuffUV, const float* 
 		glBufferData(GL_ARRAY_BUFFER, sizeUV, BuffUV, GL_STATIC_DRAW);
 	}
 
-	if (BuffNormals == nullptr) //Caso normali non inserite
+	if (BuffNormals == nullptr) // Normal cases not inserted
 	{
 		m->idBuffNormals = 0;
 		sizeNor = 0;
@@ -123,25 +123,25 @@ Mesh* Mesh::Create(const float* BuffVerteces, const float* BuffUV, const float* 
 	return m;
 }
 
-//Numero di vertici che compongono la faccia
+// Number of vertices that make up the face
 #define VERTECES_FACE 3
 
-//Consente di caricare un singolo vertice di una faccia
-//abbinando a ogni ID il corrispettivo valore che viene aggiunto nel rispettivo array
-//@param[in] FaceIndex - Indice della faccia a cui appartiene questo vertice
-//@param[in] VertexIndex - Indice del vertice analizzato attualmente (compreso tra 0 e VERTECES_FACE)
-//@param[in-out] FacesVerteces - Array dove inserire i dati dei vertici
-//@param[in-out] FacesUVs -  Array dove inserire i dati delle UV
-//@param[in-out] FacesNormals - Array dove inserire i dati delle normali (se supportate)
-//@param[in] Verteces - Array che funge da dizionario per i vari ID dei vertici
-//@param[in] UVs - Array che funge da dizionario per i vari ID delle UV
-//@param[in] Normals - Array che funge da dizionario per i vari ID delle normali (se supporate)
-//@param[in] NormalsSupp - Indica se le normali sono supportate da questa mesh
-//@param[in-out] Br - Stream da dove leggere i dati delle faccie
+// Allows you to load a single vertex of a face
+// by matching each ID with the corresponding value that is added to the respective array
+// @param [in] FaceIndex - Index of the face to which this summit belongs
+// @param [in] VertexIndex - Index of the currently analyzed vertex (between 0 and VERTECES_FACE)
+// @param [in-out] FacesVerteces - Array where to insert vertex data
+// @param [in-out] FacesUVs - Array where to enter UV data
+// @param [in-out] FacesNormals - Array where to enter normal data (if supported)
+// @param [in] Verteces - Array that serves as a dictionary for the various vertex IDs
+// @param [in] UVs - Array that serves as a dictionary for the various UV IDs
+// @param [in] Normals - Array that acts as a dictionary for the various IDs of the normals (if you support them)
+// @param [in] NormalsSupp - Indicates whether normals are supported by this mesh
+// @param [in-out] Br - Stream where to read the face data
 inline void LoadVertexFace(const int& FaceIndex, const int& VertexIndex, float* FacesVerteces, float* FacesUVs, float* FacesNormals,
 	float* Verteces, float* UVs, float* Normals, const bool& NormalsSupp, BinaryReader* Br)
 {
-	//Prendo gli ID degli array da questa faccia:
+	// I take the IDs of the arrays from this face:
 	int idVerteces = Br->ReadInt32() - 1;
 	int idUVs = Br->ReadInt32() - 1;
 	int idNormals;
@@ -150,7 +150,7 @@ inline void LoadVertexFace(const int& FaceIndex, const int& VertexIndex, float* 
 	else
 		idNormals = -1;
 
-	//Aggiungo nei rispettivi array i dati:
+	// I add the data in the respective arrays:
 
 	int indexFaceVert = FaceIndex * VERTECES_FACE * 3 + VertexIndex * 3;
 	FacesVerteces[indexFaceVert + 0] = Verteces[idVerteces * 3 + 0];
@@ -182,8 +182,8 @@ Mesh* Mesh::LoadMSH(const char* Path)
 
 	char* signature = br.ReadFixedString(3);
 	bool isMSHFile = signature[0] == 'M' && signature[1] == 'S' && signature[2] == 'H';
-	delete[] signature; //Libero l'array della signature
-	if (!isMSHFile) //Caso non abbia la signature
+	delete[] signature; // Free the signature array
+	if (!isMSHFile) // Case does not have the signature
 	{
 		br.Close();
 		return nullptr;
@@ -192,7 +192,7 @@ Mesh* Mesh::LoadMSH(const char* Path)
 	char normalByte = br.ReadChar();
 	bool normSup = normalByte == 1;
 
-	//Dimensioni del box
+	// Box dimensions
 	float maxX, maxY, maxZ, minX, minY, minZ;
 	maxX = br.ReadSingle();
 	minX = br.ReadSingle();
@@ -205,7 +205,7 @@ Mesh* Mesh::LoadMSH(const char* Path)
 	float* uvs = nullptr;
 	float* normals = nullptr;
 
-	//Carico i vertici
+	// I load the vertices
 	int vertecesCount = br.ReadInt32();
 	verteces = new float[vertecesCount * 3];
 	for (int i = 0; i < vertecesCount; i++)
@@ -238,7 +238,7 @@ Mesh* Mesh::LoadMSH(const char* Path)
 	else
 		normalsCount = 0;
 
-	//Array che contengono i vertici nell'ordine per OpenGL
+	// Arrays containing vertices in the order for OpenGL
 	float* faceVerteces = nullptr;
 	float* faceUVs = nullptr;
 	float* faceNormals = nullptr;
@@ -268,62 +268,62 @@ Mesh* Mesh::LoadMSH(const char* Path)
 
 #define pi 3.14159265359f
 
-//Ottiene la posizione delle UV della sfera
-//@param[in] P - Vertice delle sfera
-//@param[in] R - Raggio della sfera
-//@param[in] O - Orientamento della coordinata u valori:
-//		True:  Visualizza correttamente la texture se si è all'interno della sfera
-//		False: Visualizza correttamente la texture se si è all'esterno della sfera
+// Gets the position of the UV of the sphere
+// @param [in] P - Sphere Summit
+// @param [in] R - Sphere of the sphere
+// @param [in] O - Coordination orientation u values:
+// True: Display the texture correctly if you are inside the sphere
+// False: Display the texture correctly if you are outside the sphere
 inline glm::vec2 getUVPos(const glm::vec3& P, const float& R, const bool& O)
 {
-	//FONTE: https://en.wikipedia.org/wiki/UV_mapping
-	//Normalizzo le componenti del verrore:
+	// SOURCE: https://en.wikipedia.org/wiki/UV_mapping
+	// I normalize the components of the error:
 	float nx = P.x / R, ny = P.y / R, nz = P.z / R;
-	if (O) //Caso si vogli visualizzare dall'esterno
-		std::swap(nz, nx); //Scambio le due coordinate normali
-	//Effettuo i calcoli necessari:
+	if (O) // If you want to see from the outside
+		std::swap(nz, nx); // Exchange the two normal coordinates
+	// I make the necessary calculations:
 	float u = 0.5f + std::atan2(nz, nx) / (2.0f * pi);
 	float v =  0.5f - std::asin(ny) / pi;
 
-	return glm::vec2(u, v); //Ritorno il vettore
+	return glm::vec2(u, v); // I return the carrier
 }
 
 Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & Segments, const bool& Orentation, const bool& Normals)
 {
 	if (Segments <= 0 || Radius == 0)
-		return nullptr; //TODO: throw
+		return nullptr; // TODO: throw
 
-	const int numVerteces = Segments * Segments / 2 * 6; //Numeri di vertici della sfera
-	const int numVertecesSize = numVerteces * 3; //Dimensione in numero di float del buffer dei vertici
-	const int numUVSize = numVerteces * 2; //Dimensione in numero di float del buffer delle UV
+	const int numVerteces = Segments * Segments / 2 * 6; // Numbers of vertices of the sphere
+	const int numVertecesSize = numVerteces * 3; // Size in float number of the vertex buffer
+	const int numUVSize = numVerteces * 2; // Dimension in number of floats of the UV buffer
 	GLfloat* verteces = new GLfloat[numVerteces * 3];
 	GLfloat* uv = new GLfloat[numVerteces * 2];
 	GLfloat* normals = nullptr;
 	if(Normals)
 		normals = new GLfloat[numVerteces * 3];
 
-	const float interval = (pi * 2.0f) / (float)Segments; //Calcolo l'angolo per i rettangoli
+	const float interval = (pi * 2.0f) / (float)Segments; // Calculate the angle for the rectangles
 
-	//Ciclo per disegnare gli anelli della sfera
+	// Cycle to draw the rings of the sphere
 	for (int counterZ = 0;
-	counterZ < Segments / 2; //Eseguo solo una "campana" del seno/coseno
+	counterZ < Segments / 2; // I perform only a "bell" of the breast / cosine
 		counterZ++)
 	{
-		float angleZ = pi + (float)counterZ * interval; //Imposto il nuovo angolo per l'asse Z partendo da 180°
+		float angleZ = pi + (float)counterZ * interval; // Set the new angle for the Z axis starting from 180 Â°
 
-		//Calcolo i due raggi intermedi che seguono l'asse Z (calcolo quello attuale e quello successivo per poterli congiungere)
-		//Usati per calcolare l'anello
+		// Calculating the two intermediate rays that follow the Z axis (calculate the current one and the next one to be able to join them)
+		// Used to calculate the ring
 		float r1 = Radius * sin(angleZ);
 		float r2 = Radius * sin(angleZ + interval);
 
-		//Calcolo i due coseni (calcolo quello attuale e quello successivo per poterli congiungere)
+		// Calculating the two cosines (calculating the current one and the next one to be able to join them)
 		float c1Z = cos(angleZ);
 		float c2Z = cos(angleZ + interval);
 
-		//Ciclo per disegnare un anello della sfera sul piano formato con l'asse X e Y
+		// Cycle to draw a ring of the sphere on the plane formed with the X and Y axis
 		for (int counterX = 0; counterX < Segments; counterX++)
 		{
-			float angleX = interval * (float)counterX; //Imposto il nuovo angolo per l'asse X
+			float angleX = interval * (float)counterX; // Set the new angle for the X axis
 
 			float s1 = sin(angleX);
 			float c1 = cos(angleX);
@@ -331,24 +331,24 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 			float s2 = sin(angleX + interval);
 			float c2 = cos(angleX + interval);
 
-			//Calcolo i quattro vertici del rettangolo
-			//Composizione:
-			//spostamento sull'asse X del rettangolo (usato il raggio attuale dell'anello);
-			//spostamento sull'asse Y del rettangolo (usato il raggio attuale dell'anello);
-			//Spostamento sull'asse Z dell'anello
+			// Calculating the four vertices of the rectangle
+			// Composition:
+			// movement on the X axis of the rectangle (used the current radius of the ring);
+			// movement on the Y axis of the rectangle (used the current radius of the ring);
+			// Movement on the Z axis of the ring
 			glm::vec3 v1 = glm::vec3(Origin.x + r1 * s1, Origin.y + r1 * c1, Origin.z + Radius * c1Z);
 			glm::vec3 v2 = glm::vec3(Origin.x + r2 * s1, Origin.y + r2 * c1, Origin.z + Radius * c2Z);
 			glm::vec3 v3 = glm::vec3(Origin.x + r1 * s2, Origin.y + r1 * c2, Origin.z + Radius * c1Z);
 			glm::vec3 v4 = glm::vec3(Origin.x + r2 * s2, Origin.y + r2 * c2, Origin.z + Radius * c2Z);
 
-			if (!Orentation) //Caso si vogla visualizzare la sfera dall'interno
+			if (!Orentation) // In case you want to visualize the sphere from the inside
 			{
 				std::swap(v1, v3);
 				std::swap(v2, v4);
 			}
 
 			const int vertexStart = (counterZ * Segments + counterX) * 18;
-			//Inserisco i vertici del rettangolo (convertiti in due triangoli)
+			// Insert the vertices of the rectangle (converted into two triangles)
 			verteces[vertexStart + 0] = v1.x; verteces[vertexStart + 1] = v1.y; verteces[vertexStart + 2] = v1.z;
 			verteces[vertexStart + 3] = v2.x; verteces[vertexStart + 4] = v2.y; verteces[vertexStart + 5] = v2.z;
 			verteces[vertexStart + 6] = v3.x; verteces[vertexStart + 7] = v3.y; verteces[vertexStart + 8] = v3.z;
@@ -363,7 +363,7 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 			glm::vec2 uv4 = getUVPos(v4, Radius, Orentation);
 
 			const int uvStart = (counterZ  * Segments + counterX) * 12;
-			//Inserisco le UV del rettangolo
+			// I enter the UV of the rectangle
 			uv[uvStart + 0] = uv1.x; uv[uvStart + 1] = uv1.y;
 			uv[uvStart + 2] = uv2.x; uv[uvStart + 3] = uv2.y;
 			uv[uvStart + 4] = uv3.x; uv[uvStart + 5] = uv3.y;
@@ -372,14 +372,14 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 			uv[uvStart + 8] = uv2.x; uv[uvStart + 9] = uv2.y;
 			uv[uvStart + 10] = uv4.x; uv[uvStart + 11] = uv4.y;
 
-			//Calcolo la normale di questa faccia (i due triangoli hanno la stessa normale)
+			// Calculating the normal of this face (the two triangles have the same normal)
 			glm::vec3 u = v2 - v1;
 			glm::vec3 v = v3 - v1;
 
 			if (Normals)
 			{
-				//DA SISTEMARE:
-				//Array 
+				// TO ACCORDING:
+				// Array
 				glm::vec3* vertecesVec[6] = 
 				{
 					&v1, &v2, &v3,
@@ -389,8 +389,8 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 				const int normalStart = (counterZ * Segments + counterX) * 18;
 				for (int i = normalStart, indexVert = 0; i < normalStart + 6 * 3; i += 3, indexVert++)
 				{
-					//Calcolo la normale dei vertici (http://stackoverflow.com/questions/8024898/calculate-the-vertex-normals-of-a-sphere)
-					//della sfera in maniera particolare, siccome è una sfera, rendendole molto più precise
+					// Calculating the normal of vertices (http://stackoverflow.com/questions/8024898/calculate-the-vertex-normals-of-a-sphere)
+					// of the sphere in a particular way, as it is a sphere, making it much more precise
 					glm::vec3 n = glm::normalize(*vertecesVec[indexVert] - Origin);
 
 					normals[i + 0] = n.x;
@@ -411,9 +411,9 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 
 Mesh* Mesh::CubeInternal(const glm::vec3& Origin, const float& Edge)
 {
-	float r = Edge / 2.0f; //Calcolo il raggio del cubo
+	float r = Edge / 2.0f; // Calculate the radius of the cube
 
-	//Numero di vertici del cubo (6 faccie, 2 triangoli per faccia, 3 vertici per triangolo)
+	// Number of vertices of the cube (6 faces, 2 triangles per face, 3 vertices per triangle)
 	const int numVerteces = 6 * 3 * 2;
 	float verteces[numVerteces * 3] =
 	{

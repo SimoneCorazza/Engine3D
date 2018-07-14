@@ -22,5 +22,5 @@ void DepthPostProcessShader::SetShaderParams(const PostProcessShaderParams * Par
 
 void DepthPostProcessShader::LoadIDVar()
 {
-	PostProcessShader::LoadIDVar(); //Chiamo il metodo base
+	PostProcessShader::LoadIDVar(); // I call the basic method
 }

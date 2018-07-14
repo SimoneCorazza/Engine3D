@@ -6,15 +6,15 @@ using System.IO;
 namespace EngineEditor
 {
     /// <summary>
-    /// Classe statica che fornisce dei metodi di conversione per gli assets
+    /// Static class that provides conversion methods for assets
     /// </summary>
     public static class AssetConverter
     {
         /// <summary>
-        /// Converte un il file OBJ in MSH
+        /// Convert an OBJ file to MSH
         /// </summary>
-        /// <param name="PathOBJ">Path al file in formato OBJ</param>
-        /// <param name="PathMSH">Path al file da creare MSH</param>
+        /// <param name="PathOBJ">Path to the file in OBJ format</param>
+        /// <param name="PathMSH">Path to the file to be created MSH</param>
         public static void ConvertOBJToMSH(string PathOBJ, string PathMSH)
         {
             List<Vec3> vertecesIDs = new List<Vec3>();
@@ -28,13 +28,13 @@ namespace EngineEditor
 
 
         /// <summary>
-        /// Carica un file OBJ
+        /// Upload an OBJ file
         /// </summary>
-        /// <param name="Verteces">Elenco di vertici presenti nella mesh (non nulla)</param>
-        /// <param name="UVs">UV presenti nella mesh (non nulla)</param>
-        /// <param name="Normals">Normali presenti nella faccia  (non nulla)</param>
-        /// <param name="Faces">Faccie che compongono la mesh  (non nulla)</param>
-        /// <param name="Path">Path al file .obj</param>
+        /// <param name="Verteces">List of vertices present in the mesh (not null)</param>
+        /// <param name="UVs">UV present in the mesh (not null)</param>
+        /// <param name="Normals">Normal present in the face (not nothing)</param>
+        /// <param name="Faces">Faces that make up the mesh (not anything)</param>
+        /// <param name="Path">Path to the .obj file</param>
         private static void LoadOBJ(List<Vec3> Verteces, List<Vec2> UVs, List<Vec3> Normals, List<TriangleFace> Faces, string Path)
         {
             if (!File.Exists(Path))
@@ -50,19 +50,19 @@ namespace EngineEditor
                 if(v.Length > 0)
                 {
                     string initial = v[0];
-                    if(initial == "v") //Caso sia un vertice
+                    if(initial == "v") // Case is a summit
                     {
                         Verteces.Add(Vec3FromString(v[1], v[2], v[3]));
                     }
-                    else if(initial == "vt") //caso sia una UV
+                    else if(initial == "vt") // case is a UV
                     {
                         UVs.Add(Vec2FromString(v[1], v[2]));
                     }
-                    else if(initial == "vn") //caso sia una normale
+                    else if(initial == "vn") // case is a normal one
                     {
                         Normals.Add(Vec3FromString(v[1], v[2], v[3]));
                     }
-                    else if(initial == "f") //Caso sia una faccia
+                    else if(initial == "f") // Case is a face
                     {
                         Faces.Add(LoadTriangleFace(v));
                     }
@@ -74,17 +74,17 @@ namespace EngineEditor
         }
 
         /// <summary>
-        /// Converte l'array di stringhe in una faccia e la faccia tdel triangolo
+        /// Converts the array of strings to a face and the face of the triangle
         /// </summary>
-        /// <param name="S">Array ottenuto dallo split della stringa del carattere spazio della riga della faccia del file OBJ</param>
+        /// <param name="S">Array obtained by splitting the space character string of the face line of the OBJ file</param>
         private static TriangleFace LoadTriangleFace(string[] S)
         {
             TriangleFace tr = new TriangleFace();
 
-            for(int i = 1; i < 4; i++) //Ciclo per i 3 vertici del triangolo
+            for(int i = 1; i < 4; i++) // Cycle for the 3 vertices of the triangle
             {
-                string[] singleVertexDataString = S[i].Split('/'); //Prendo i dati associati al vertice
-                Point3 singleVertexData = new Point3(); //Rappresentazione del singolo vertice
+                string[] singleVertexDataString = S[i].Split('/'); // I take the data associated with the summit
+                Point3 singleVertexData = new Point3(); // Representation of the single summit
 
                 if (singleVertexDataString.Length == 3)
                 {
@@ -113,14 +113,14 @@ namespace EngineEditor
             FileStream fs = new FileStream(Path, FileMode.Create);
             BinaryWriter bw = new BinaryWriter(fs);
 
-            bw.Write(new char[] { 'M', 'S', 'H' }); //Scrivo l'intestazione
+            bw.Write(new char[] { 'M', 'S', 'H' }); // I write the header
             bool normals = Normals.Count > 0;
-            if (normals) //Flag per la presenza delle normali
-                bw.Write((byte)0x01); //Presenti
+            if (normals) // Flags for the presence of normal
+                bw.Write((byte)0x01); // present
             else
-                bw.Write((byte)0x0); //Non presenti
+                bw.Write((byte)0x0); // Not present
 
-            //Salvo la dimensione del Box
+            // Except for the size of the Box
             float minX, minY, minZ, maxX, maxY, maxZ;
             BoundsMesh(out maxX, out minX, out maxY, out minY, out maxZ, out minZ, Verteces);
             bw.Write(maxX);
@@ -130,7 +130,7 @@ namespace EngineEditor
             bw.Write(maxZ);
             bw.Write(minZ);
 
-            //Vertici
+            // Vertices
             bw.Write(Verteces.Count);
             for(int i = 0; i < Verteces.Count; i++)
             {
@@ -139,7 +139,7 @@ namespace EngineEditor
                 bw.Write(Verteces[i].z);
             }
 
-            //UV
+            // UV
             bw.Write(UVs.Count);
             for (int i = 0; i < UVs.Count; i++)
             {
@@ -147,7 +147,7 @@ namespace EngineEditor
                 bw.Write(UVs[i].y);
             }
 
-            //Normali (se presenti)
+            // Normal (if any)
             if (normals)
             {
                 bw.Write(Normals.Count);
@@ -159,7 +159,7 @@ namespace EngineEditor
                 }
             }
 
-            //Facce
+            // Faces
             const int NUM_VERTECES_TRIANGLE = 3;
             bw.Write(Faces.Count);
             for (int i = 0; i < Faces.Count; i++)
@@ -181,9 +181,9 @@ namespace EngineEditor
         }
 
         /// <summary>
-        /// Ritorna i limiti della mesh
+        /// Return the limits of the mesh
         /// </summary>
-        /// <param name="Verteces">Vertici della mesh (dimensione almeno 1)</param>
+        /// <param name="Verteces">Mesh vertices (at least 1 dimension)</param>
         private static void BoundsMesh(out float MaxX, out float MinX, out float MaxY, out float MinY, out float MaxZ, out float MinZ, List<Vec3> Verteces)
         {
             MaxX = Verteces[0].x;

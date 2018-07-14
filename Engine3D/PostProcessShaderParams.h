@@ -4,7 +4,7 @@
 
 class Camera;
 
-//Classe che rappresenta una serie di parametri da passare al PostProcessShader
+// Class representing a series of parameters to be passed to the PostProcessShader
 class PostProcessShaderParams
 {
 	glm::vec2 resolution;
@@ -16,12 +16,12 @@ class PostProcessShaderParams
 
 	public:
 
-		//Imposta la risoluzione della porzione di video dove lo shader viene applicato
+		// Sets the resolution of the portion of the video where the shader is applied
 		void setResolution(const glm::vec2& R);
-		//Ottiene la risoluzione della porzione di video dove lo shader viene applicato
+		// Gets the resolution of the portion of the video where the shader is applied
 		glm::vec2 getResolution() const;
 
-		//Ottiene il tempo passato dall'avvio dell'applicazione in questo preciso istante
+		// Gets the time passed since the application started at this precise moment
 		static float getCurrentTime();
 };
 

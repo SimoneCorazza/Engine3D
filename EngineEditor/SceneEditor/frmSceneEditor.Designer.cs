@@ -1,4 +1,4 @@
-﻿namespace EngineEditor.SceneEditor
+namespace EngineEditor.SceneEditor
 {
     partial class frmSceneEditor
     {
@@ -39,7 +39,7 @@
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip
+            // MenuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_scene,

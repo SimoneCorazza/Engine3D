@@ -1,9 +1,9 @@
 #pragma once
 
 
-//Struct che racchiude le informazioni sull'engine
+// Struct that contains information about the engine
 struct RenderingEngineInfo
 {
-	size_t renderedActors; //Numero di attori renderizzati nell'ultimo frame
-	size_t renderedTriangles; //Numero di triangoli renderizzati
+	size_t renderedActors; // Number of actors rendered in the last frame
+	size_t renderedTriangles; // Number of rendered triangles
 };

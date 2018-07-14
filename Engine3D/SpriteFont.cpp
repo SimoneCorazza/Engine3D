@@ -4,13 +4,13 @@
 
 #include "DEBUG.h"
 
-//Caratteri che è possibile disegnare in una sola volta (richiede una maggiore memoria)
+// Characters that can be drawn at once (requires more memory)
 #define MAX_CHAR_RENDER_ONCE 128
-//Numero di vertici per carattere da renderizzare
+// Number of vertices per character to be rendered
 #define NUM_VERTECES_FACE (4)
-//Dimensione in byte del buffer dei vertici
+// Size in bytes of the vertex buffer
 #define SIZE_VERTEX_BUFFER (sizeof(float) * NUM_VERTECES_FACE * 2 * MAX_CHAR_RENDER_ONCE)
-//Dimensione in byte del buffer delle coordinate UV
+// Size in bytes of the UV coordinate buffer
 #define SIZE_UV_BUFFER (sizeof(float) * NUM_VERTECES_FACE * 2 * MAX_CHAR_RENDER_ONCE)
 
 
@@ -70,7 +70,7 @@ void SpriteFont::Inizialize()
 	idVertexArray = glGetAttribLocation(idShader, "vertex");
 	idUVArray = glGetAttribLocation(idShader, "coordUV");
 
-	Font::Inizialize(); //Inizializzo la classe dei font
+	Font::Inizialize(); // Initialize the font class
 }
 
 void SpriteFont::SetSizes(float PixelScreenX, float PixelScreenY, float ScreenX, float ScreenY)
@@ -90,7 +90,7 @@ void SpriteFont::SetMatrix(const glm::mat4 & M)
 
 
 
-//@return Lunghezza della stringa
+// @return Length of the string
 int string_length(const Char* S)
 {
 	int i = 0;
@@ -99,25 +99,25 @@ int string_length(const Char* S)
 	return i;
 }
 
-//Ottiene la dimensione della nuova righa
-//@param[in] Height - Altezza dei caratteri in una unità di misura
-//@return Dimensione della nuova riga
+// Gets the size of the new righa
+// @param [in] Height - Height of the characters in a unit of measure
+// @return Size of the new row
 inline float GetNewLineSize(float Height)
 {
 	return Height + Height * 0.01f;
 }
 
-//Ottiene la dimensione del carattere spazio
-//@param[in] Height - Altezza dei caratteri in una unità di misura
-//@return Dimensione del carattere spazio
+// Gets the size of the space character
+// @param [in] Height - Height of the characters in a unit of measure
+// @return Space font size
 inline float GetSpaceSize(float Height)
 {
 	return Height * 0.5f;
 }
 
-//Ottiene la dimensione del separatore dei caratteri
-//@param[in] Height - Altezza dei caratteri in una unità di misura
-//@return Dimensione del separatore tra caratteri
+// Gets the size of the character separator
+// @param [in] Height - Height of the characters in a unit of measure
+// @return Size of the separator between characters
 inline float GetCharaterSeparetorSize(float Height)
 {
 	return Height * 0.08f;
@@ -126,30 +126,30 @@ inline float GetCharaterSeparetorSize(float Height)
 void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Location, const float& Height, const glm::vec4& Color)
 {
 	int len = string_length(String);
-	if (String == nullptr || len == 0) //Evito di perdere tempo con una draw call nel caso la tringa sia vuota
+	if (String == nullptr || len == 0) // I avoid wasting time with a draw call if the string is empty
 		return;
 
 	ASSERT(Font != nullptr, "SpriteFont::Draw argument \"Font\" cannot be null");
 
 
 
-	//Array per con cui riempire i buffer delle UV e dei Vertici (la lunghezza è una stima: pottrebbero essere spazi ' ' o '\n' che non
-	//vanno a generare caratteri e dunque coordinate per vertici o uv)
-	//-!!NOTA!!-- Meglio non sostituire questi due std::vector<float> con array float*
-	//altrimenti ci sono dei glich grafici (poligoni neri random) nella modalità relese
-	//questo probabilmente è dovuto al fatto che vengono ottimizzate le operazioni di delete degli array che provoca un cattivo
-	//porting degli array nella VRAM
+	// Arrays for which to fill the UV and Vertex buffers (length is an estimate: they could be spaces '' or '\ n' that not
+	// they go to generate characters and therefore coordinates by vertices or uv)
+	// - !! NOTE !! - Better not to replace these two std :: vector <float> with float array *
+	// otherwise there are graphical glich (random black polygons) in the relays mode
+	// this is probably due to the fact that the delete operations of the arrays that causes a bad are optimized
+	// porting of arrays in VRAM
 	std::vector<float> vertexCoords(NUM_VERTECES_FACE * 2 * len);
 	std::vector<float> uvCoords(NUM_VERTECES_FACE * 2 * len);
 
 	
 	float pixel_hei = pixelScreenX * Height / screenX;
 
-	glm::vec2 cursor = Location; //Cursore che indica la posizione attuale del prossimo carattere da renderizzare
+	glm::vec2 cursor = Location; // Cursor that indicates the current position of the next character to be rendered
 
-	int indexChar = 0; //Carattere attuale
-	int realChar = 0; //Contatore dei caratteri che vengono renderizzati
-	while (String[indexChar] != '\0') //Ciclo per posizionare ogni carattere a video con rispettive UV
+	int indexChar = 0; // Current character
+	int realChar = 0; // Counter of the characters that are rendered
+	while (String[indexChar] != '\0') // Cycle to position each character on video with respective UV
 	{
 		if (String[indexChar] == ' ')
 			cursor.x += GetSpaceSize(Height);
@@ -163,23 +163,23 @@ void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Loc
 			const GlyphInfo* info = Font->getGlyphInfo(String[indexChar]);
 
 			if (info == nullptr)
-				; //Caso carattere non trovato: non visualizzo nulla
+				; // Case not found: I do not display anything
 			else
 			{
-				//Faccio delle proporzioni per ottenere i pixel del glifo
+				// I make proportions to get the glyph pixels
 				float rapporto = pixel_hei / (float)Font->getQuality();
 				float h = (float)info->height *  rapporto;
 				float w = (float)info->width  * rapporto;
 				float top = (float)info->bitmapTop * rapporto;
 
-				//Calcolo lo spostamento in basso (calcolandolo e poi convertendolo in coordinate di OpenGL)
+				// Calculate the displacement at the bottom (by calculating it and then converting it to OpenGL coordinates)
 				float sposY = (h - top) / pixelScreenY * screenY;
-				float widChar = w / pixelScreenX * screenX; //Calcolo l'altezza del carattere in coordinate per OpenGL
+				float widChar = w / pixelScreenX * screenX; // Calculate the height of the character in coordinates for OpenGL
 				float heiChar = h / pixelScreenY * screenY;
 
 				int pos = NUM_VERTECES_FACE * 2 * realChar;
 
-				//float x1 = cursor.x, x2 = cursor.x + widChar, y1 = cursor.y + Height - heiChar + sposY, y2 = cursor.y + Height + sposY;
+				// float x1 = cursor.x, x2 = cursor.x + widChar, y1 = cursor.y + Height - heiChar + sposY, y2 = cursor.y + Height + sposY;
 				float x1 = cursor.x, x2 = cursor.x + widChar, y1 = cursor.y + Height - heiChar + sposY, y2 = cursor.y + Height + sposY;
 
 				vertexCoords[pos + 0] = x1;
@@ -218,9 +218,9 @@ void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Loc
 		indexChar++;
 	}
 
-	if (realChar > 0) //Controllo che ci sia almeno un carattere da renderizzare
+	if (realChar > 0) // I check that there is at least one character to render
 	{
-		//Inserisco i dati nei buffer:
+		// I enter data in the buffers:
 		glBindBuffer(GL_ARRAY_BUFFER, idBuffVerteces);
 		glBufferData(GL_ARRAY_BUFFER, SIZE_VERTEX_BUFFER, nullptr, GL_STREAM_DRAW);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(float) * NUM_VERTECES_FACE * 2 * realChar, &vertexCoords[0]);
@@ -245,7 +245,7 @@ void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Loc
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
 			0,                  // stride
-			(void*)0            // array buffer offset
+			(void*)0            // offset buffer array
 			);
 
 		glEnableVertexAttribArray(idUVArray);
@@ -256,7 +256,7 @@ void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Loc
 			GL_FLOAT,           // type
 			GL_FALSE,           // normalized?
 			0,                  // stride
-			(void*)0            // array buffer offset
+			(void*)0            // offset buffer array
 			);
 
 		glDrawArrays(GL_QUADS, 0, NUM_VERTECES_FACE * realChar);

@@ -1,7 +1,7 @@
 #pragma once
 
-//Struct che rappresenta un rettangolo che usa dei float a 32 bit
-//per memorizzare la posizione nello spazio
+// Struct that represents a rectangle that uses 32-bit floats
+// to memorize the position in space
 struct RectangleF
 {
 	float x, y, width, height;

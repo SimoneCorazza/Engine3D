@@ -1,13 +1,13 @@
 #include "Box.h"
 
 /*
-Assi:
+Axis:
  ^
 Z|
  |
- O------>     (Y esce dallo schermo)
+ O------>     (Y exit upwords from the screen)
 Y      X
-Parte inferiore:				Parte superiore:
+Bottom part:						Top part:
 	V1--------V4					V5--------V8
 	|		  |						|		  |
 	|		  |						|		  |

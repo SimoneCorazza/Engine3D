@@ -3,15 +3,15 @@
 #include "SpriteFont.h"
 #include "Point2.h"
 
-//Classe utilizzata per il disegno in 2D dell'interfaccia
+// Class used for the 2D drawing of the interface
 class Draw2D
 {
-	Point2 monitorMM; //Dimensione del monitor principale in millimetri
-	Point2 resolution; //Risoluzione correntemente utilizzata per il monitor
-	Point2 windowSizeMM; //Dimensione della finestra in millimetri
-	glm::mat4 matrix; //Matrice 2D per il calcolo dei vertici
+	Point2 monitorMM; // Size of the main monitor in millimeters
+	Point2 resolution; // Resolution currently used for the monitor
+	Point2 windowSizeMM; // Window size in millimeters
+	glm::mat4 matrix; // 2D matrix for vertex calculation
 
-	SpriteFont sf; //Classe usata per il rendering dei caratteri
+	SpriteFont sf; // Class used for rendering characters
 
 
 
@@ -21,21 +21,21 @@ class Draw2D
 
 	public:
 
-		//Inizializza la classe
+		// Initialize the class
 		void Inizialize();
 
-		//Imposta la dimensione dello schermo
-		//@param[in] Width - Dimensione (X) della finestra in pixel
-		//@param[in] Height - Dimensione (Y) della finestra in pixel
+		// Set the screen size
+		// @param [in] Width - Size (X) of the window in pixels
+		// @param [in] Height - Size (Y) of the window in pixels
 		void SetWindowSize(float Width, float Height);
 
-		//Disegna la stringa con il font scelto
-		//@param[in] String - Stringa da renderizzare
-		//@param[in] Font - Font da utilizzare
-		//@param[in] Location - Posizione dalla quale partire a disegnare il font in millimetri
-		//@param[in] Height - Altezza dei caratteri in millimetri
-		//@param[in] Color - Colore da utilizzare per il font
-		//@NOTA Se un carattere non è presente nel font viene ignorato
+		// Draw the string with the chosen font
+		// @param [in] String - String to render
+		// @param [in] Font - Font to use
+		// @param [in] Location - Location from which to draw the font in millimeters
+		// @param [in] Height - Height of the characters in millimeters
+		// @param [in] Color - Color to use for the font
+		// @NOTE If a character is not present in the font it is ignored
 		void DrawText(const char* String, const Font* Font, const Point2& Location, size_t Height, const glm::vec4& Color);
 };
 

@@ -20,22 +20,22 @@ void ColorShader::LoadIDVar()
 
 void ColorShader::SetAmbientLight(const glm::vec3 & L)
 {
-	//Non considero le luci in questo shader
+	// I do not consider the lights in this shader
 }
 
 void ColorShader::SetSceneLights(const std::vector<Light*>& Lights)
 {
-	//Non considero le luci in questo shader
+	// I do not consider the lights in this shader
 }
 
 void ColorShader::SetMaterial(const Material * M)
 {
-	//Non considero il materiale in questo shader
+	// I do not consider the material in this shader
 }
 
 void ColorShader::SetCameraParameters(const glm::mat4 & ViewMatix, const glm::mat4 & ProjectionMatrix)
 {
-	//Non uso questo metodo
+	// I do not use this method
 }
 
 void ColorShader::RenderTriangles(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4 & modelMatrix, const glm::mat4 & cameraMatrix, GLsizei numVerteces)
@@ -60,7 +60,7 @@ void ColorShader::RenderPrimitives(GLuint vertexBufer, const glm::vec4 Color, co
 
 	glUniform4f(idColor, Color.r, Color.g, Color.b, Color.a);
 
-	// Attribute buffer : vertices
+	// Attribute buffer: vertices
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufer);
 	glVertexAttribPointer(
@@ -69,7 +69,7 @@ void ColorShader::RenderPrimitives(GLuint vertexBufer, const glm::vec4 Color, co
 		GL_FLOAT,						// type
 		GL_FALSE,						// normalized?
 		0,								// stride
-		(void*)0						// array buffer offset
+		(void*)0						// offset buffer array
 		);
 
 
@@ -77,7 +77,7 @@ void ColorShader::RenderPrimitives(GLuint vertexBufer, const glm::vec4 Color, co
 
 	glDisableVertexAttribArray(0);
 
-	//Setto nessuna texture
+	// I leave no texture
 	glBindTexture(Primitive, 0);
 }
 

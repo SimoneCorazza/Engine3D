@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +28,6 @@ namespace EngineEditor
             frm.Show();
         }
 
-#endregion //EVENTI INTERFACCIA
+#endregion // EVENTS INTERFACE
     }
 }

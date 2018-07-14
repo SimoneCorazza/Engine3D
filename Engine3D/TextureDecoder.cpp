@@ -2,40 +2,40 @@
 
 #include "DEBUG.h"
 
-//#include "lodepng.h"
-//#include "Utility_FileSystem.h"
+// #include "lodepng.h"
+// #include "Utility_FileSystem.h"
 
 #include <vector>
 #include <FreeImage.h>
 
-std::vector<FIBITMAP*> bitmapCreated; //Lista di bitmap create dalla decodifica e non ancora liberate ancora da liberare
+std::vector<FIBITMAP*> bitmapCreated; // List of bitmaps created by decoding and not yet released yet to be freed
 
 bool TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height)
 {
-	//image format
+	// image format
 	FREE_IMAGE_FORMAT fif = FIF_UNKNOWN;
-	FIBITMAP* dib = nullptr; //Bitmap da caricare
+	FIBITMAP* dib = nullptr; // Bitmap to load
 
-	//check the file signature and deduce its format
+	// check the file signature and deduce its format
 	fif = FreeImage_GetFileType(Path.c_str(), 0);
-	//if still unknown, try to guess the file format from the file extension
+	// if still unknown, try to guess the file format from the file extension
 	if (fif == FIF_UNKNOWN)
 		fif = FreeImage_GetFIFFromFilename(Path.c_str());
-	//if still unkown, return failure
+	// if still unknown, return failure
 	if (fif == FIF_UNKNOWN)
 		return false;
 
-	//check that the plugin has reading capabilities and load the file
+	// check that the plugin has reading capabilities and load the file
 	if (FreeImage_FIFSupportsReading(fif))
 		dib = FreeImage_Load(fif, Path.c_str());
-	//if the image failed to load, return failure
+	// if the image failed to load, return failure
 	if (!dib)
 		return false;
 
-	//retrieve the image data
+	// retrieve the image data
 	*RawData = FreeImage_GetBits(dib);
 	
-	//Nel caso sia a 32 o a 24 bit forzo che abbia 4 o 3 componenti indipendentemente dal formato del colore indicato
+	// In the case of either 32 or 24 bit forzo having 4 or 3 components regardless of the format of the indicated color
 	unsigned int bitPerPixel = FreeImage_GetBPP(dib);
 	if (bitPerPixel == 32)
 	{
@@ -47,7 +47,7 @@ bool TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLe
 		*DataFormat = GL_BGR;
 		*DataType = GL_UNSIGNED_BYTE;
 	}
-	else //Caso formato ambiguo
+	else // Ambiguous format case
 	{
 		FREE_IMAGE_COLOR_TYPE color = FreeImage_GetColorType(dib);
 		switch (color)
@@ -58,13 +58,13 @@ bool TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLe
 		default: *DataFormat = GL_BGR; break;
 		}
 
-		*DataType = GL_UNSIGNED_BYTE; //TODO: DA MIGLIORARE NON E' AFFATTO DETTO
+		*DataType = GL_UNSIGNED_BYTE; // TODO: TO BE IMPROVED IS NOT SAFE
 	}
 	
 	*Width = (int)FreeImage_GetWidth(dib);
 	*Height = (int)FreeImage_GetHeight(dib);
 
-	//if this somehow one of these failed (they shouldn't), return failure
+	// if this somehow one of these failed (they should not), return failure
 	if (*RawData == nullptr || *Height == 0 || *Width == 0)
 		return false;
 
@@ -85,7 +85,7 @@ void TextureDecoder_FreeDecode()
 void TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height)
 {
 	std::string ext = Utility_FileSystem_GetExtension(Path);
-	if (ext == "") //Caso estensione assente
+	if (ext == "") // Absent extension case
 	{
 		Debug_Error("TextureDecoder_DecodeTexture(), estensione assente %s", Path);
 		*RawData = nullptr;

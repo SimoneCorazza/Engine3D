@@ -2,7 +2,7 @@
 
 #include "Scene.h"
 
-//Scena creata come test per l'engine
+// Scene created as a test for the engine
 class SceneTest : public Scene
 {
 	Camera* camera;

@@ -4,16 +4,16 @@
 #include <glm\glm.hpp>
 #include <GL\glew.h>
 
-//Classe che rappresenta un riquadro, scatola 3D
-//
-/* Schema dei vertici:
-Assi:
+// Class representing a box, 3D box
+// 
+/* Verteces scheme:
+Axis:
 ^
 Z|
 |
-O------>     (Y esce dallo schermo)
+O------>     (Y exits upword from the screen)
 Y      X
-Parte inferiore:				Parte superiore:
+Bottom part:				Top part:
 V1--------V4					V5--------V8
 |		  |						|		  |
 |		  |						|		  |
@@ -21,16 +21,16 @@ V2--------V3					V6--------V7
 */
 class Box
 {
-	//Vertici del Box
+	// Vertexes of the Box
 	public: glm::vec3 v1, v2, v3, v4, v5, v6, v7, v8;
 
 	public:
 		Box();
 
-		//Crea un box centrato sull'origine con queste dimensioni
+		// Create a box centered on the origin with these dimensions
 		Box(float Width, float Height, float Depth);
 
-		//Crea un box centrato nell'origine che rispetta i limiti indicati, per ogni asse
+		// Creates a box centered in the origin that respects the indicated limits, for each axis
 		Box(float MaxX, float MinX, float MaxY, float MinY, float MaxZ, float MinZ);
 
 		~Box();
@@ -51,8 +51,8 @@ class Box
 		Box* Box::operator*(const glm::mat4& matrix) const
 		{
 			Box* b = new Box();
-			//NOTA: nella moltiplicazione la matrice va sul lato sinistro, altrimenti si ha
-			//l'effetto contrario (es. rotazione senso opposto)
+			// NOTE: in the multiplication the matrix goes to the left side, otherwise it has
+			// the opposite effect (eg reverse rotation)
 			b->v1 = glm::vec3(matrix * glm::vec4(this->v1, 1));
 			b->v2 = glm::vec3(matrix * glm::vec4(this->v2, 1));
 			b->v3 = glm::vec3(matrix * glm::vec4(this->v3, 1));

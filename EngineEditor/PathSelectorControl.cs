@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,14 +12,14 @@ namespace EngineEditor
     }
 
     /// <summary>
-    /// Controllo che rappresenta un generico path selector
+    /// Control representing a generic path selector
     /// </summary>
     public partial class PathSelectorControl : UserControl
     {
         PathSelectorType typeSelection = PathSelectorType.Open;
 
         /// <summary>
-        /// Ottiene o imposta la tipologia di selezione della path
+        /// Gets or sets the type of path selection
         /// </summary>
         public PathSelectorType TypeSelection
         {
@@ -28,7 +28,7 @@ namespace EngineEditor
         }
 
         /// <summary>
-        /// Ottiene o imposta la path attualmente selezionata
+        /// Gets or sets the currently selected path
         /// </summary>
         public string Path
         {
@@ -38,12 +38,12 @@ namespace EngineEditor
 
 
         /// <summary>
-        /// Ottiene o imposta il filtro per l'OpenFileDialog o per il SaveFileDialog
+        /// Gets or sets the filter for the OpenFileDialog or the SaveFileDialog
         /// </summary>
         public string Filter { get; set; }
 
         /// <summary>
-        /// Ottiene o imposta l'intestazione della label
+        /// Gets or sets the header of the label
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Browsable(true)]

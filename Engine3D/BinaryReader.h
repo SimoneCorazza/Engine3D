@@ -3,40 +3,40 @@
 #include <iostream>
 #include <fstream>
 
-//Classe che permette di leggere un file come file binario
+// Class that allows you to read a file as a binary file
 class BinaryReader
 {
 	std::ifstream fs;
 
 	public:
-		//Apre un nuovo file
+		// Opens a new file
 		BinaryReader(const char* File);
 
 		~BinaryReader();
 
 	public:
 
-		//Ottiene un flag che indica se il file è aperto
+		// Gets a flag indicating whether the file is open
 		bool IsOpen() const;
 
-		//Permette di chiudere il file
+		// It allows you to close the file
 		void Close();
 
-		//Legge i prosimi 32 bit e lo converte in intero con segno
+		// It reads the 32-bit continuums and converts it in full with sign
 		int ReadInt32();
 
-		//Legge i prossimi 32 bit e li converte in floating-point
+		// Read the next 32 bits and convert them to floating-point
 		float ReadSingle();
 
-		//Legge una stringa di dimensione fissata
-		//@param[in] Size - Numeri di caratteri da leggere > 0
-		//@return Ritorna un'array di dimensione Size dei caratteri letti (da eliminare successivamente)
+		// Reads a string of fixed size
+		// @param [in] Size - Numbers of characters to read> 0
+		// @return Returns an array of size Size of the read characters (to be deleted later)
 		char* ReadFixedString(size_t Size);
 
-		//Legge il prossimo carattere dallo stream
+		// Read the next character from the stream
 		char ReadChar();
 
-		//Legge una stringa
+		// Read a string
 		char* ReadString();
 };
 

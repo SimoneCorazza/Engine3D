@@ -3,40 +3,40 @@
 #include <GL\glew.h>
 #include <string>
 
-//Permette di decodificare una texture di un formato supportato (PNG e alcune BMP)
-//@param[in] Path - Percorso al file della texture
-//@param[out] RawData - Dati della texture (non viene invertito l'ordine delle righr per OpenGL)
-//	la disallocazione di essi è commissionata al chiamante mediante delete[]
-//@param[out] InternalFormat - Struttura dei dati del colore (GL_RGB, GL_RGBA, ...)
-//@param[out] DataType - Tipologia di dato (GL_UNSIGNED_BYTE, GL_FLOAT, ...)
-//@param[out] Width - Lunghezza della texture in pixel
-//@param[out] Height - ALtezza della texture in pixel
-//@return True in caso di succeso false in caso contrario
-//@NOTA Quando si ha finito con i dati chiamare il metodo TextureDecoder_FreeDecode() per rilasciarli
+// It allows to decode a texture of a supported format (PNG and some BMP)
+// @param [in] Path - Path to the texture file
+// @param [out] RawData - Texture data (the righr order for OpenGL is not reversed)
+// the disallocation of them is commissioned to the caller by means of delete []
+// @param [out] InternalFormat - Color data structure (GL_RGB, GL_RGBA, ...)
+// @param [out] DataType - Data type (GL_UNSIGNED_BYTE, GL_FLOAT, ...)
+// @param [out] Width - Texture length in pixels
+// @param [out] Height - Texture height in pixels
+// @return True if successful false otherwise
+// @NOTE When you are finished with data, call the TextureDecoder_FreeDecode () method to release it
 bool TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height);
 
-//Permette di rilasciare tutte le bitmap non ancora rilasciate
+// Allows to release all the not yet released bitmaps
 void TextureDecoder_FreeDecode();
 
 /*
-//Permette di decodificare una texture in formato PNG
-//@param[in] Path - Percorso al file della texture
-//@param[out] RawData - Dati della texture (non viene invertito l'ordine delle righr per OpenGL)
-//	la disallocazione di essi è commissionata al chiamante mediante delete[]
-//@param[out] InternalFormat - Struttura dei dati del colore (GL_RGB, GL_RGBA, ...)
-//@param[out] DataType - Tipologia di dato (GL_UNSIGNED_BYTE, GL_FLOAT, ...)
-//@param[out] Width - Lunghezza della texture in pixel
-//@param[out] Height - ALtezza della texture in pixel
+// It allows to decode a texture in PNG format
+// @param [in] Path - Path to the texture file
+// @param [out] RawData - Texture data (the righr order for OpenGL is not reversed)
+// the disallocation of them is commissioned to the caller by means of delete []
+// @param [out] InternalFormat - Color data structure (GL_RGB, GL_RGBA, ...)
+// @param [out] DataType - Data type (GL_UNSIGNED_BYTE, GL_FLOAT, ...)
+// @param [out] Width - Texture length in pixels
+// @param [out] Height - Texture height in pixels
 void TextureDecoder_DecodeTexture_PNG(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height);
 
-//Permette di decodificare una texture in formato BMP
-//@param[in] Path - Percorso al file della texture
-//@param[out] RawData - Dati della texture (non viene invertito l'ordine delle righr per OpenGL)
-//	la disallocazione di essi è commissionata al chiamante mediante delete[]
-//@param[out] InternalFormat - Struttura dei dati del colore (GL_RGB, GL_RGBA, ...)
-//@param[out] DataType - Tipologia di dato (GL_UNSIGNED_BYTE, GL_FLOAT, ...)
-//@param[out] Width - Lunghezza della texture in pixel
-//@param[out] Height - ALtezza della texture in pixel
+// It allows to decode a texture in BMP format
+// @param [in] Path - Path to the texture file
+// @param [out] RawData - Texture data (the righr order for OpenGL is not reversed)
+// the disallocation of them is commissioned to the caller by means of delete []
+// @param [out] InternalFormat - Color data structure (GL_RGB, GL_RGBA, ...)
+// @param [out] DataType - Data type (GL_UNSIGNED_BYTE, GL_FLOAT, ...)
+// @param [out] Width - Texture length in pixels
+// @param [out] Height - Texture height in pixels
 void TextureDecoder_DecodeTexture_BMP(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height);
 
 */

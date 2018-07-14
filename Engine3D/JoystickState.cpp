@@ -80,7 +80,7 @@ size_t InputState::JoystickState::getNumAxes() const
 
 InputState::JoystickState * InputState::JoystickState::GetJoystickState(int GLFW_JoystickID, const JoystickState* Prec)
 {
-	//Caso il joystick desiderato non sia presente
+	// The desired joystick is not present
 	if (GLFW_JoystickID < 0 || GLFW_JoystickID > GLFW_JOYSTICK_LAST ||
 		glfwJoystickPresent(GLFW_JoystickID) == GL_FALSE)
 		return nullptr;
@@ -88,24 +88,24 @@ InputState::JoystickState * InputState::JoystickState::GetJoystickState(int GLFW
 	{
 		InputState::JoystickState* j = new InputState::JoystickState();
 
-		//Prendo gli input:
+		// I take the inputs:
 		int numAxes;
 		const float* axes = glfwGetJoystickAxes(GLFW_JoystickID, &numAxes);
 
 		int numBtn;
 		const unsigned char* buttons = glfwGetJoystickButtons(GLFW_JoystickID, &numBtn);
 
-		//Caso il joystick precedente abbia parametri diverso da questi (= sicuramente non è lo stesso joystick di prima)
+		// If the previous joystick has parameters other than these (= it's definitely not the same joystick as before)
 		if (Prec != nullptr && ((size_t)numAxes != Prec->countAxes || (size_t)numBtn != Prec->countButt))
 			return nullptr;
 
-		//Settaggio per gli assi:
+		// Settings for the axes:
 		j->countAxes = (size_t)numAxes;
-		j->axes = new float[j->countAxes]; //Istanzio l'array degli assi
-		for (size_t i = 0; i < j->countAxes; i++) //Copio l'array passato da GLFW
+		j->axes = new float[j->countAxes]; // Instance the array of axes
+		for (size_t i = 0; i < j->countAxes; i++) // I copy the array passed from GLFW
 			j->axes[i] = axes[i];
 
-		//Settaggio per i bottoni:
+		// Button settings:
 		j->countButt = (size_t)numBtn;
 		j->buttons = new KeyState[j->countButt];
 

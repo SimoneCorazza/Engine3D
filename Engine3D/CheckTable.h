@@ -1,18 +1,18 @@
 #pragma once
 
-//#include <hash_map>
+// #include <hash_map>
 #include <vector>
 
 
 
-//Classe che rappresenta una tabella che associa a un chiave un valore
-//checked o non cheked (vero o falso) in base alla presenza della chiave nella tabella
+// A class that represents a table that associates a value with a key
+// checked or not cheked (true or false) based on the presence of the key in the table
 class CheckTable
 {
-	typedef int KeyType; //Tipologia per la chiave (deve essere numerico e di tipo base)
+	typedef int KeyType; // Typology for the key (must be numeric and basic)
 
 	/*
-	Nota implementativa: usato hash concatenato
+	Implementation note: used concatenated hash
 	*/
 
 	size_t tableSize;
@@ -20,29 +20,29 @@ class CheckTable
 
 	public:
 
-		//Istanzia una tabella con dimensione prevista di 1
+		// Instantiate a table with expected size of 1
 		CheckTable();
 
-		//@param[in] PredictedSize - Dimensione prevista della tabella
+		// @param [in] PredictedSize - Expected table size
 		CheckTable(size_t PredictedSize);
 
 		~CheckTable();
 
 	public:
 
-		//Inserisce l'elemento se non ancora presente
-		//@param[in] K - Elemento da inserire
-		//@return True se l'elemento era già inserito, false altrimenti
+		// Inserts the element if not yet present
+		// @param [in] K - Element to be inserted
+		// @return True if the element was already inserted, false otherwise
 		virtual bool Check(const KeyType& K);
 
-		//Resetta la struttura dati
-		//@param[in] PredictedSize - Dimensione prevista della tabella
+		// Reset the data structure
+		// @param [in] PredictedSize - Expected table size
 		void Reset(size_t PredictedSize);
 
 	private:
 
-		//@param[in] K - Chiave
-		//@return Indice in base 0 della tabella dove trovare la l'ID
+		// @param [in] K - Key
+		// @return Index based 0 of the table where to find the ID
 		inline size_t HashFunction(const KeyType& K);
 };
 

@@ -2,29 +2,29 @@
 
 #include "ModelShader.h"
 
-//Shader per modelli che permette di spostare i triangoli della mesh
-//NOTA: non funziona bene con il frustum culling
+// Shader for models that allows you to move the triangles of the mesh
+// NOTE: it does not work well with frustum culling
 class LiftTriShader : public ModelShader
 {
-	//ID DELLE VARIABILI DELLO SHADER:
+	// ID OF THE SHADER VARIABLES:
 
 	GLuint idMatrix;
 	GLuint idTextureSampler;
 	GLuint idDelta;
 
 
-	//Matrice parziale per il MVP (siccome il vertex shader prende in input l'intera matrice MVP e non le singole matrici)
+	// Partial matrix for the MVP (as the vertex shader takes the entire MVP matrix as input and not the individual matrices)
 	glm::mat4 matrixViewProject;
 
 
-	//COSTRUTTORI:
+	// MANUFACTURERS:
 
 	public:
 		LiftTriShader();
 		~LiftTriShader();
 
 
-	//METODI:
+	// METHODS:
 	public:
 
 		virtual void LoadIDVar() override;

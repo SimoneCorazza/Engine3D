@@ -1,7 +1,7 @@
 #pragma once
 #include "PostProcessShader.h"
 
-//Classe che rappresenta lo shader post process per il light scattering o god rays
+// Class representing the post process shader for light scattering or god rays
 class LightScatteringPPS : public PostProcessShader
 {
 	GLuint idExposure;
@@ -18,8 +18,8 @@ class LightScatteringPPS : public PostProcessShader
 
 	protected:
 
-		//Metodo da derivare che consente di impostare i parametri
-		//@param[in] Params - Parametri per lo shader
+		// Method to derive that allows you to set the parameters
+		// @param [in] Params - Parameters for the shader
 		virtual void SetShaderParams(const PostProcessShaderParams* Params) const override;
 
 		void LoadIDVar() override;

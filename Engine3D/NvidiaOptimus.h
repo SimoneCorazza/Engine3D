@@ -1,9 +1,9 @@
 #include <Windows.h>
 
 /*
-Variabile utilizzata per indicare al driver NVIDIA di utilizzare la scheda dedicata e non quella
-integrata nella CPU (generalmente Intel). Utile quando il PC è un portatile
-http://developer.download.nvidia.com/devzone/devcenter/gamegraphics/files/OptimusRenderingPolicies.pdf
+Variable used to tell the NVIDIA driver to use the dedicated card and not the one
+integrated in the CPU (generally Intel). Useful when the PC is a laptop
+http:// developer.download.nvidia.com/devzone/devcenter/gamegraphics/files/OptimusRenderingPolicies.pdf
 */
 
 

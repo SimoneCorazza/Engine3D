@@ -6,7 +6,7 @@ int main(int numArgs, char** args)
 	Engine engine;
 	engine.Inizialize();
 	engine.CreateNewWindow("Engine3D", 640, 480);
-	//glfwSwapInterval(0); //Non limita gli FPS
+	// glfwSwapInterval (0); // Does not limit the FPS
 	SceneTest sceneTest;
 	engine.StartGameLoop(&sceneTest);
 
@@ -38,32 +38,32 @@ int main(int numArgs, char** args)
 
 
 /*
-//Set the error callback
+// Set the error callback
 glfwSetErrorCallback(error_callback);
 
 
-//Initialize GLFW
+// Initialize GLFW
 if (!glfwInit())
 {
 exit(EXIT_FAILURE);
 }
 
-//Set the GLFW window creation hints - these are optional
-//glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //Request a specific OpenGL version
-//glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //Request a specific OpenGL version
-//glfwWindowHint(GLFW_SAMPLES, 4); //Request 4x antialiasing
-//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-//glfwWindowHint(GLFW_SAMPLES, 4);
+// Set the GLFW window creation hints - these are optional
+// glfwWindowHint (GLFW_CONTEXT_VERSION_MAJOR, 3); // Request a specific OpenGL version
+// glfwWindowHint (GLFW_CONTEXT_VERSION_MINOR, 3); // Request a specific OpenGL version
+// glfwWindowHint (GLFW_SAMPLES, 4); // Request 4x antialiasing
+// glfwWindowHint (GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+// glfwWindowHint (GLFW_SAMPLES, 4);
 
 
-//Declare a window object
+// Declare a window object
 GLFWwindow* window;
 
 
-//Create a window and create its OpenGL context
+// Create a window and create its OpenGL context
 window = glfwCreateWindow(640, 480, "Test Window", NULL, NULL);
 
-//If the window couldn't be created
+// If the window could not be created
 if (!window)
 {
 fprintf( stderr, "Failed to open GLFW window.\n" );
@@ -71,29 +71,29 @@ glfwTerminate();
 exit(EXIT_FAILURE);
 }
 
-//This function makes the context of the specified window current on the calling thread.
+// This is how it works.
 glfwMakeContextCurrent(window);
 
-//Sets the key callback
+// Sets the key callback
 glfwSetKeyCallback(window, key_callback);
 
-//Initialize GLEW
+// Initialize GLEW
 GLenum err = glewInit();
 
-//If GLEW hasn't initialized
+// If GLEW has not initialized
 if (err != GLEW_OK)
 {
 fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
 return -1;
 }
 
-//Set a background color
+// Set in color background
 glClearColor(0.0f, 0.0f, 1.0f, 0.0f);
 
 
 // Enable depth test
 glEnable(GL_DEPTH_TEST);
-// Accept fragment if it closer to the camera than the former one
+// Accept fragment if it is closer to the camera than the former one
 glDepthFunc(GL_LESS);
 
 */
@@ -102,7 +102,7 @@ glDepthFunc(GL_LESS);
 /*
 
 // Our vertices. Tree consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
-// A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
+// A cube has 6 faces with 2 triangles each, so this makes 6 * 2 = 12 triangles, and 12 * 3 vertices
 static const GLfloat g_vertex_buffer_data[] = {
 -1.0f,-1.0f,-1.0f,
 -1.0f,-1.0f, 1.0f,
@@ -142,7 +142,7 @@ static const GLfloat g_vertex_buffer_data[] = {
 1.0f,-1.0f, 1.0f
 };
 
-// Two UV coordinatesfor each vertex. They were created withe Blender.
+// Two UV coordinates for each vertex. They were created with Blender.
 static const GLfloat g_uv_buffer_data[] = {
 0.000059f, 1.0f - 0.000004f,
 0.000103f, 1.0f - 0.336048f,
@@ -195,10 +195,10 @@ Model* model = new Model(mesh, material);
 Camera camera;
 camera.setWindow(window);
 
-//glfwSwapInterval(0); //Non limita gli FPS
+// glfwSwapInterval (0); // Does not limit the FPS
 
 
-//Main Loop
+// Main Loop
 do
 {
 // Clear the screen
@@ -207,7 +207,7 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 camera.Update();
 
 glUseProgram(standardShader->getIDShader());
-//standardShader.RenderTriangles(Texture.getIDTexture(), vertexbuffer, uvbuffer, glm::mat4(1.0f), camera.getCameraMatrix(), 12 * 3);
+// standardShader.RenderTriangles (Texture.getIDTexture (), vertexbuffer, uvbuffer, glm :: mat4 (1.0f), camera.getCameraMatrix (), 12 * 3);
 standardShader->RenderModel(model, glm::mat4(1.0f), camera.getCameraMatrix());
 
 glfwSwapBuffers(window);

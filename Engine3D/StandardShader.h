@@ -2,26 +2,26 @@
 
 #include "ModelShader.h"
 
-//Shader per renderizzare dei modelli applicando la texture così com'è
+// Shader to render patterns by applying the texture as it is
 class StandardShader : public ModelShader
 {
-	//ID DELLE VARIABILI DELLO SHADER:
+	// ID OF THE SHADER VARIABLES:
 
 	GLuint idMatrix;
 	GLuint idTextureSampler;
 
 
-	//Matrice parziale per il MVP (siccome il vertex shader prende in input l'intera matrice MVP e non le singole matrici)
+	// Partial matrix for the MVP (as the vertex shader takes the entire MVP matrix as input and not the individual matrices)
 	glm::mat4 matrixViewProject;
 
-	//COSTRUTTORI:
+	// MANUFACTURERS:
 
 	public:
 		StandardShader();
 
 		~StandardShader();
 
-	//METODI:
+	// METHODS:
 	public:
 
 		virtual void LoadIDVar() override;

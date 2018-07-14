@@ -1,52 +1,52 @@
 /*
-File che ha lo scopo di aggiungere delle utility per il debug dell'applicazione
+File that aims to add utilities for debugging the application
 */
 #pragma once
 
 #include <iostream>
 
-//---- PER IL DEBUG ----
+// ---- FOR THE DEBUG ----
 
 
-//Messaggio di log delleazioni ritenute importanti
+// Log message of the assessments deemed important
 #ifdef _DEBUG
 #define LOG(c, ...) do { printf("LOG: "); printf(c, ##__VA_ARGS__); printf("\n"); }while(0)
 #else
 #define LOG(C, ...)
 #endif
 
-//Messaggio di errore recuperabile: informa che è avvenuto un errore ma che l'esecuzione può continuare
+// Recoverable error message: informs you that an error occurred but that execution can continue
 #ifdef _DEBUG
 #define ERROR(c, ...) do { printf("ERROR: "); printf(c, ##__VA_ARGS__); printf("\n"); } while(0)
 #else
 #define ERROR(c, ...)
 #endif
 
-//Errore di programmazione inaspettato dovuto a un'input inaspettatamente diverso da quello desiderato
-//Emula il comportamento ad <assert.h>
+// Unexpected programming error due to an unexpectedly different input from the one desired
+// Emulates the behavior to <assert.h>
 #ifdef _DEBUG
-#define ASSERT(condition, message)  do { if(!(condition)) { printf("ASSERT: "); printf(message); __debugbreak(); } } while(0) //(void)( (!!(condition)) && (message) ) )
+#define ASSERT(condition, message)  do { if(!(condition)) { printf("ASSERT: "); printf(message); __debugbreak(); } } while(0) // (void) ((!! (condition)) && (message)))
 #else
 #define ASSERT(condition, message)
 #endif
 
-//---- PER LA RELESE -----
+// ---- FOR RELEASE -----
 
-//Consente di mostrare un'errore in console nel caso siamo in debug altrimenti di mostrarlo in una MessageBox se si è inrelese
-//per poi chiudere l'applicazione
+// Lets show an error in the console if we are debugging otherwise to show it in a MessageBox if it is inrelese
+// and then close the application
 void RELEASE_CLOSE(const char* C);
 
 
 
 
-//---- TEMPO IMPIEGATO ----
+// ---- THE TIME SPENT ON ----
 
-//Consente di memorizzare lo stato di tempo attuale, per poi ottenerlo in seguito
+// It allows you to store the current time status, and then obtain it later
 void Time_Now();
 
-//Estrae l'ultimo tempo inserito
+// Extracts the last inserted time
 float Time_Pop();
 
-//Consente di estrarre l'ultimo tempo inserito e di ottenerlo scritto in console
-//con il messaggio indicato
+// It allows you to extract the last inserted time and get it written in the console
+// with the indicated message
 #define TIME_POP(c, ...) do { printf("TIME "); printf(c, ##__VA_ARGS__); printf(" %f sec\n", Time_Pop()); } while(0)

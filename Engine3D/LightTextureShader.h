@@ -2,11 +2,11 @@
 
 #include "ModelShader.h"
 
-//Shader che pertmette di renderizzare un modello con relativa texture
-//e di applicare le luci della scena
+// Shader that allows you to render a model with its texture
+// and to apply the lights of the scene
 class LightTextureShader : public ModelShader
 {
-	//Numero massimo di luci supportate dallo shader
+	// Maximum number of lights supported by the shader
 	#define MAXIMUM_LIGTS 10
 
 	struct LightUniformIDs
@@ -27,19 +27,19 @@ class LightTextureShader : public ModelShader
 		GLuint idShininess;
 	};
 
-	GLuint idM; //ID della matrice uniforme per il modello
-	GLuint idV; //ID della matrice uniforme per la camera (View)
-	GLuint idP; //ID della matrice uniforme per la proiezione
-	GLuint idMTrans; //Id della matrice uniforme M trasposta
-	GLuint idVInv; //Id della matrice della camera (View) inversa
+	GLuint idM; // ID of the uniform matrix for the model
+	GLuint idV; // ID of the uniform matrix for the camera (View)
+	GLuint idP; // ID of the uniform matrix for the projection
+	GLuint idMTrans; // Id of the uniform matrix M transposed
+	GLuint idVInv; // Id of the inverse camera matrix (View)
 
 	GLuint idTextureSampler;
 
-	GLuint idAmbientLight; //Variabile uniforme per la luce d'ambiente
-	LightUniformIDs lightsArrayComponetsID[MAXIMUM_LIGTS]; //Array contenente gli ID delle singole componenti dello struct dello shader
-	MaterialUniformIDs materialUniformComponetID; //ID delle componenti uniformi dello shader per il materiale
+	GLuint idAmbientLight; // Uniform variable for ambient light
+	LightUniformIDs lightsArrayComponetsID[MAXIMUM_LIGTS]; // Array containing the IDs of the individual shader struct components
+	MaterialUniformIDs materialUniformComponetID; // ID of the uniform shader components for the material
 	
-	GLuint idLightsNumber; //ID della variabile nello shader indicante il numero di luci attualmente presenti nell'array
+	GLuint idLightsNumber; // ID of the variable in the shader indicating the number of lights currently in the array
 
 	public:
 		LightTextureShader();

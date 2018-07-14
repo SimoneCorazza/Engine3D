@@ -2,7 +2,7 @@
 
 #include "Point2.h"
 
-//Struct che rappresenta un punto interno nello spazio 3D
+// Struct that represents an internal point in 3D space
 struct Point3
 {
 	int x;

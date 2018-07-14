@@ -16,8 +16,8 @@ LightScatteringPPS::~LightScatteringPPS()
 void LightScatteringPPS::SetShaderParams(const PostProcessShaderParams* Params) const
 {
 	ASSERT(Params != nullptr, "Parms in LightScatteringPPS::SetShaderParams must not be null");
-	//if(dynamic_cast<const LightScatteringPPSP*>(Params) == nullptr)
-	//	Debug_ErrorBreak("Parms in LightScatteringPPS::SetShaderParams must be LightScatteringPPSP");
+	// if (dynamic_cast <const LightScatteringPPSP *> (Params) == nullptr)
+	// Debug_ErrorBreak ("Parms in LightScatteringPPS :: SetShaderParams must be LightScatteringPPSP");
 
 	const LightScatteringPPSP* p = (LightScatteringPPSP*)Params;
 

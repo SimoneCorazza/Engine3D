@@ -13,21 +13,21 @@
 #include <stack>
 #include <chrono>
 
-//---- PER IL DEBUG ----
+// ---- FOR THE DEBUG ----
 
 /*
 
-//Inserisce un breaking point nella riga indicata
+// Inserts a breaking point in the indicated line
 void Debug_BreakPoint()
 {
 #ifdef _DEBUG
 	__debugbreak();
 #else
-	//Nothing
+	// nothing
 #endif
 }
 
-//Mostra un messaggio d'errore e inserisce un breaking point
+// Show an error message and insert a breaking point
 void Debug_ErrorBreak(const char* C)
 {
 #ifdef _DEBUG
@@ -35,24 +35,24 @@ void Debug_ErrorBreak(const char* C)
 	printf("\n");
 	Debug_BreakPoint();
 #else
-	//Nothing
+	// nothing
 #endif
 }
 
-//Stampa un messaggio sullo standard output seguito da un a capo
+// Print a message on standard output followed by a new one
 void Log(const char* C)
 {
 #ifdef _DEBUG
 	printf(C);
 	printf("\n");
 #else
-	//Nothing
+	// nothing
 #endif
 }
 */
 
 /*
-//Stampa sullo standard output un'errore non fatale
+// Print on the standard output a non-fatal error
 void Debug_Error(const char* C)
 {
 #ifdef _DEBUG
@@ -60,16 +60,16 @@ void Debug_Error(const char* C)
 	printf(C);
 	printf("\n");
 #else
-	//Nothing
+	// nothing
 #endif
 }
 */
 
-//---- PER LA RELESE -----
+// ---- FOR RELEASE -----
 
 
-//Consente di mostrare un'errore in console nel caso siamo in debug altrimenti di mostrarlo in una MessageBox se si è inrelese
-//per poi chiudere l'applicazione
+// Lets show an error in the console if we are debugging otherwise to show it in a MessageBox if it is inrelese
+// and then close the application
 void RELEASE_CLOSE(const char* C)
 {
 #ifdef _DEBUG
@@ -99,7 +99,7 @@ void RELEASE_CLOSE(const char* C)
 }
 
 
-//---- TEMPO IMPIEGATO ----
+// ---- THE TIME SPENT ON ----
 
 std::stack<  std::chrono::time_point<std::chrono::high_resolution_clock>  > timeStack;
 
@@ -116,7 +116,7 @@ float Time_Pop()
 	{
 		std::chrono::time_point<std::chrono::high_resolution_clock> curr = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<float> seconds = std::chrono::duration_cast<std::chrono::duration<float>>(curr - timeStack.top());
-		timeStack.pop(); //Elimino l'ultima  ora
+		timeStack.pop(); // I'll take the last hour
 		return seconds.count();
 	}
 }

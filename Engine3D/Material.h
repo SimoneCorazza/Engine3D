@@ -6,18 +6,18 @@
 class ModelShader;
 class Texture2D;
 
-//Classe che racchiude l'informazioni del materiale
+// Class that contains the information of the material
 class Material
 {
-	ModelShader* shader; //Shader da utilizzare per il rendering del modello
-	const Texture2D* texture; //Texture del materiale
+	ModelShader* shader; // Shader to use for model rendering
+	const Texture2D* texture; // Texture of the material
 
-	//Proprietà per la luce:
+	// Properties for light:
 
-	glm::vec3 ambient; //Luce trasmessa dall'ambiente (dovuta a riflessioni di luce da altri oggetti)
-	glm::vec3 diffuse; //For the diffuse reflection: for a black surface is 0 for a white surface it is 1
-	glm::vec3 specular; //For the specular reflection
-	float shininess; //Lucentezza del materiale, maggiore è più l'oggetto risplenderà
+	glm::vec3 ambient; // Light transmitted from the environment (due to reflections of light from other objects)
+	glm::vec3 diffuse; // For the diffuse reflection: for a black surface
+	glm::vec3 specular; // For the specular reflection
+	float shininess; // Shine of the material, the greater the object the more it will shine
 
 	public:
 		Material();
@@ -27,34 +27,34 @@ class Material
 
 	public:
 
-		//Ottiene lo shader che renderizza il modello
+		// Gets the shader that renders the model
 		ModelShader* getShader() const;
-		//Ottiene la texture del modello
+		// Gets the texture of the model
 		const Texture2D* getTexture() const;
 
-		//Imposta la luce trasmessa dall'ambiente (dovuta a riflessioni di luce da altri oggetti) che irradia il modello
+		// Sets the light transmitted by the environment (due to reflections of light from other objects) that radiates the model
 		void setAmbient(const glm::vec3& V);
-		//Ottiene la luce trasmessa dall'ambiente (dovuta a riflessioni di luce da altri oggetti) che irradia il modello 
+		// Gets the light transmitted by the environment (due to reflections of light from other objects) that radiates the model
 		const glm::vec3& getAmbient() const;
 		
-		//Imposta il parametro per la riflessione diffusa (diffuse reflection) per una superficie nera è 0 per una bianca è 1
+		// Set the parameter for diffuse reflection (diffuse reflection) for a black surface is 0 for a white surface is 1
 		void setDiffuse(const glm::vec3& V);
-		//Ottiene il parametro per la riflessione diffusa (diffuse reflection) per una superficie nera è 0 per una bianca è 1
+		// Gets the parameter for diffuse reflection (diffuse reflection) for a black surface is 0 for a white surface is 1
 		const glm::vec3& getDiffuse() const;
 
-		//Imposta il parametro per la riflesione speculare
+		// Set the parameter for the specular reflection
 		void setSpecular(const glm::vec3& V);
-		//Ottiene il parametro per la riflesione speculare
+		// Gets the parameter for the specular reflection
 		const glm::vec3& getSpecular() const;
 
-		//Imposta la lucentezza del materiale più è più risplende
+		// Set the shine of the material the more it is glowing
 		void setShininess(float S);
-		//Ottiene la lucentezza del materiale più è più risplende
+		// It gets the luster of the material the more it is glowing
 		float getShininess() const;
 
 	private:
 
-		//Inizializza i parametri del materiale relativi alla luce
+		// Initializes the parameters of the light-related material
 		inline void DefaultLightSettings();
 };
 

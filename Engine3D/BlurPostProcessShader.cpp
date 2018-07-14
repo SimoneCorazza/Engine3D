@@ -21,6 +21,6 @@ void BlurPostProcessShader::SetShaderParams(const PostProcessShaderParams* Param
 
 void BlurPostProcessShader::LoadIDVar()
 {
-	PostProcessShader::LoadIDVar(); //Chiamo il metodo base
+	PostProcessShader::LoadIDVar(); // I call the basic method
 	idResolution = GetVarID("resolution");
 }

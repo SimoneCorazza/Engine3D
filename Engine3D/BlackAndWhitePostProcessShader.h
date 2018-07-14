@@ -2,7 +2,7 @@
 
 #include "PostProcessShader.h"
 
-//Post process shader che rende l'immagine in bianco e nero
+// Post process shader that makes the image in black and white
 class BlackAndWhitePostProcessShader : public PostProcessShader
 {
 

@@ -10,15 +10,15 @@ class Material;
 class Actor;
 class ActorParameters;
 
-//Classe astratta che rappresenta uno shader generico per il rendering di un modello
+// Abstract class representing a generic shader for rendering a model
 class ModelShader : public Shader
 {
 	protected:
-		GLuint idVertecesCoords; //ID dell'array delle coordinate dei vertici (deve esserte presente)
-		GLuint idVertecesUVs; //ID dell'array con le uv dei vertici (se non presente non settarlo o settarlo a INVALID_BUFFER_ID)
-		GLuint idVertecesNormals; //ID dell'array le normali dei vertici (se non presente non settarlo o settarlo a INVALID_BUFFER_ID)
+		GLuint idVertecesCoords; // ID of the array of the coordinates of the vertices (must be present)
+		GLuint idVertecesUVs; // ID of the array with the uv of the vertices (if not present, do not set it or set it to INVALID_BUFFER_ID)
+		GLuint idVertecesNormals; // ID of the array the normals of the vertices (if not present, do not set it or set it to INVALID_BUFFER_ID)
 
-		bool bothSide = false; //Flag che indica se lo shader richiede che vengano renderizzati entrambi i lati dei poligoni
+		bool bothSide = false; // Flag indicating whether the shader requires both sides of the polygons to be rendered
 
 	public:
 		ModelShader();
@@ -27,45 +27,45 @@ class ModelShader : public Shader
 
 	public:
 
-		//Ottiene l'ID della variabile dello shader che contiene l'array del buffer delle coodinate (x, y, z)
-		GLuint getIDVertecesCoords() const; //AGIUNGERE I VARI ID DEGLI ATTRIBUTI DEI VERTICI
-		//Ottiene l'ID della variabile dello shader che contiene l'array del buffer delle UV (u, v)
+		// Gets the ID of the shader variable that contains the coodinate buffer array (x, y, z)
+		GLuint getIDVertecesCoords() const; // ADD THE VARIOUS IDENTURES OF THE ATTRIBUTES OF THE TOPS
+		// Gets the ID of the shader variable that contains the UV buffer array (u, v)
 		GLuint getIDVertecesUVs() const;
-		//Ottiene l'ID della variabile dello shader che contiene l'array del buffer delle normali (x, y, z)
+		// Gets the ID of the shader variable that contains the normal buffer array (x, y, z)
 		GLuint getIDVertecesNormals() const;
-		//Ottiene un flag che indica se lo shader richiede che vengano renderizzati entrambi i lati dei poligoni
+		// Gets a flag indicating whether the shader requires that both sides of the polygons be rendered
 		bool getBothSide() const;
 
-		//Permette di settare i parametri relativi alle luci, per poter renderizzare i modelli successivi
-		//utilizzando quelle luci
-		//@param[in] Lights - Luci da considerare nel rendering dei futuri modelli
+		// Allows to set the parameters related to the lights, to be able to render the following models
+		// using those lights
+		// @param [in] Lights - Lights to consider in the rendering of future models
 		virtual void SetSceneLights(const std::vector<Light*>& Lights) abstract;
 
-		//Imposta la luce d'ambiente nella scena pqe i prossimi modelli da renderizzare
-		//@NOTA: Si richiede che alla chiamata di questo metodo si sia eseguita l'istruzione:
-		//		glUseProgram(ModelShader->GetShaderID());
+		// Set the ambient light in the scene and the next models to be rendered
+		// @NOTE: It is required that the statement has been executed to the call of this method:
+		// glUseProgram (ModelShader-> GetShaderID ());
 		virtual void SetAmbientLight(const glm::vec3& L) abstract;
 
-		//Imposta le proprietà necessarie per il materiale indicato
-		//@param[in] M - Materiale da impostare
-		//@NOTA: Si richiede che alla chiamata di questo metodo si sia eseguita l'istruzione:
-		//		glUseProgram(ModelShader->GetShaderID());
+		// Set the necessary properties for the indicated material
+		// @param [in] M - Material to be set
+		// @NOTE: It is required that the statement has been executed to the call of this method:
+		// glUseProgram (ModelShader-> GetShaderID ());
 		virtual void SetMaterial(const Material* M) abstract;
 
-		//Setta le variabili dello shader relative alla camera
-		//@param[in] ViewMatix - Matrice della vista
-		//@param[in] ProjectionMatrix - Proiezione del mondo di gioco
-		//@NOTA: Si richiede che alla chiamata di questo metodo si sia eseguita l'istruzione:
-		//		glUseProgram(ModelShader->GetShaderID());
+		// Set the shader variables for the camera
+		// @param [in] ViewMatix - Matrix of sight
+		// @param [in] ProjectionMatrix - Projection of the gaming world
+		// @NOTE: It is required that the statement has been executed to the call of this method:
+		// glUseProgram (ModelShader-> GetShaderID ());
 		virtual void SetCameraParameters(const glm::mat4& ViewMatix, const glm::mat4& ProjectionMatrix) abstract;
 
-		//Permette di settare i parametri dell'oggetto da renderizzare
-		//@param[in] P - Parametri per lo shader (può essere null se lo shader non necessita di parametri)
-		//@param[in] ModelMatrix - Matrice del modello
-		//@NOTA 1: è necessario usare i due metodi SetMaterial() e SetMesh() prima di chiamare questo metodo
-		//	E' facoltativo invece chiamare i metodi delle luci SetSceneLights() e SetAmbientLight()
-		//@NOTA 2: Si richiede che alla chiamata di questo metodo si sia eseguita l'istruzione:
-		//		glUseProgram(ModelShader->GetShaderID());
+		// Allows you to set the parameters of the object to be rendered
+		// @param [in] P - Parameters for the shader (can be null if the shader does not need parameters)
+		// @param [in] ModelMatrix - Model Matrix
+		// @NOTE 1: You must use the two methods SetMaterial () and SetMesh () before calling this method
+		// It is optional to call the light methods SetSceneLights () and SetAmbientLight ()
+		// @NOTE 2: It is required that the instruction has been executed to the call of this method:
+		// glUseProgram (ModelShader-> GetShaderID ());
 		virtual void SetObjectParameters(const ActorParameters* P, const glm::mat4& ModelMatrix) abstract;
 };
 

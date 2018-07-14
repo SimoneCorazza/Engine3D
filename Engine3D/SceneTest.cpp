@@ -101,12 +101,12 @@ void SceneTest::InizializeScene()
 	params->setScreenLightPos(glm::vec2(0, 0));
 	*/
 
-	//camera->AddPostProcessEffect(blackAndWhite, nullptr);
-	//camera->AddPostProcessEffect(postBlur, new PostProcessShaderParams());
-	//camera->AddPostProcessEffect(postDepth, nullptr);
+	// camera-> AddPostProcessEffect (blackAndWhite, nullptr);
+	// camera-> AddPostProcessEffect (postBlur, new PostProcessShaderParams ());
+	// camera-> AddPostProcessEffect (postDepth, nullptr);
 
 	TextureCube* texCube = TextureCube::NewTextureCube("Cubemap3.png", GL_RGB, GL_LINEAR_MIPMAP_NEAREST, GL_LINEAR, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, true);
-	//Model* modelSkyBox = new Model(meshSphere, new Material(standardShader, texSkybox));
+	// Model * modelSkyBox = new Model (meshSphere, new Material (standardShader, texSkybox));
 	Skybox* box = new Skybox(Mesh::CubeInternal(glm::vec3(0, 0, 0), 1), texCube);
 	InsertSkybox(box);
 

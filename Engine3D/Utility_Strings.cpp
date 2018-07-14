@@ -4,7 +4,7 @@
 /*
 std::string Utility_Strings_CloneString(const std::string& S)
 {
-	//Creo una copia della stringa (comprendendo anche '\0')
+	// I create a copy of the string (also including '\0')
 	char* s = new char[S.size() + 1];
 	strncpy(s, S.c_str(), S.size() + 1);
 	return s;

@@ -3,19 +3,19 @@
 #include <string>
 
 /*
-Insieme di metodi utili per poter lavorare con il file system
+Set of useful methods for working with the file system
 */
 
-//@return Cartella da cui è stato lanciato il processo
+// @return Folder from which the process was launched
 std::string& Utility_FileSystem_GetExeFolder();
 
-//Ottiene il percorso assoluto della working directoru corrente
-//NECESSITA settare la working directory prima
-//std::string Utility_FileSystem_GetAbsolutePath(const std::string& P);
+// Gets the absolute path of the current working directory
+// NEED set the working directory first
+// std :: string Utility_FileSystem_GetAbsolutePath (const std :: string & P);
 
-//Ottiene l'estensione del file specificato (punto compreso), le lettere NON vengono modificate (no toLower)
-//nel caso il file non abbia estensione ritorna nullptr
+// Gets the extension of the specified file (including dot), the letters are NOT changed (no toLower)
+// in case the file has no extension, return nullptr
 std::string Utility_FileSystem_GetExtension(const std::string& File);
 
-//Ottiene la path cartella superiore della path specificata
+// Gets the upper folder path of the specified path
 std::string Utility_FileSystem_GetUpperFolder(const std::string& Path);

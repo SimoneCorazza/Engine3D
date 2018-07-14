@@ -10,21 +10,21 @@
 class ActorParameters;
 class UpdateParameters;
 
-//Classe che rappresenta un oggetto posizionabile nella scena
+// Class that represents an object that can be positioned in the scene
 class Actor : public ItemScene
 {
-	const Model* model; //Modello dell'attore
-	glm::mat4 modelMatrix; //Matrice del modello
+	const Model* model; // Model of the actor
+	glm::mat4 modelMatrix; // Model matrix
 
-	//Informazioni codificate nella matrice:
-	glm::vec3 location; //Posizione occupata dall'attore
-	glm::vec3 scale; //Streach effettuato al modello (default (1, 1, 1))
-	glm::vec3 rotation; //Rotazione del modello sui rispettivi assi
+	// Information encoded in the array:
+	glm::vec3 location; // Position occupied by the actor
+	glm::vec3 scale; // Stretch made to the model (default (1, 1, 1))
+	glm::vec3 rotation; // Rotation of the model on the respective axes
 
 
 	protected:
-		//Parametri dell'attore per lo shader; null se non c'è nessun parametro
-		//Eliminazione effettuata dalla classe base Attore
+		// Actor parameters for the shader; null if there is no parameter
+		// Elimination performed by the Actor base class
 		ActorParameters* param;
 
 
@@ -35,18 +35,18 @@ class Actor : public ItemScene
 
 	public:
 
-		//Ottiene la locazione della matrice
+		// Gets the location of the array
 		const glm::vec3& getLocation() const;
-		//Ottine il vettore di scala dell'attore
+		// Get the actor's scale vector
 		const glm::vec3& getScale() const;
-		//Ottiene la rotazione dell'attore
+		// Get the actor's rotation
 		const glm::vec3& getRotation() const;
 
-		//Ottiene il modello 3D dell'attore
+		// Gets the actor's 3D model
 		const Model* getModel() const;
-		//Ottiene la matrice del modello
+		// Gets the model matrix
 		const glm::mat4 getModelMatrix() const;
-		//Ottiene il Box contenente il modello 3D dell'attore
+		// Gets the Box containing the actor's 3D model
 		Box* getBox() const;
 
 
@@ -59,19 +59,19 @@ class Actor : public ItemScene
 
 		void setModel(const Model* M);
 
-		//Consente di Aggiornare l'attore
-		//@param[in] P - Parametri per l'attore
+		// Update the actor
+		// @param [in] P - Parameters for the actor
 		virtual void Update(const UpdateParameters& P);
 
-		//Imposta il para
-		//virtual void setActorParameters(ActorParameters* P);
-		//Ottiene i parametri dell'attore (per il rendering o altro)
-		//Può ritornare anche null
+		// Set para
+		// virtual void setActorParameters (ActorParameters * P);
+		// Gets the parameters of the actor (for rendering or other)
+		// It can also return null
 		const ActorParameters* getActorParameters() const;
 
 	private:
 
-		//Consente di ri-calcolare la matrice dell'attore
+		// Allows you to re-calculate the actor's matrix
 		void CalculateMatrix();
 };
 

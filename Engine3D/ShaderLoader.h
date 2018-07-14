@@ -6,7 +6,7 @@
 #include <fstream>
 #include <streambuf>
 
-//Classe che permette di caricare uno shader
+// Class that allows you to load a shader
 class ShaderLoader
 {
 	private:
@@ -15,24 +15,24 @@ class ShaderLoader
 
 	public:
 
-		//Carica uno shader in OpenGL
-		//@param[in] VertexPath - Path al file contenente il codice del Vertex shader
-		//@param[in] FragmentPath - Path al file contenente il codice del Fragment shader
-		//@return 0 in caso di errore, altrimenti l'id dello shader secondo OpenGL
+		// Upload a shader in OpenGL
+		// @param [in] VertexPath - Path to the file containing the Vertex shader code
+		// @param [in] FragmentPath - Path to the file containing the Fragment shader code
+		// @return 0 in case of error, otherwise the shader id according to OpenGL
 		static GLuint LoadShader(const char* VertexPath, const char* FragmentPath);
 
-		//Carica lo shader indicato in OpenGL
-		//@param[in] ShaderType - Tipologia di sahder: GL_FRAGMENT_SHADER, GL_VERTEX_SHADER, ...
-		//@param[in] Path - Percorso al file di testo contenente il codice dello shader
-		//@return l'id dello shader 0 se lo shader non è stato caricato correttamente
+		// Load the shader indicated in OpenGL
+		// @param [in] ShaderType - Type of sahder: GL_FRAGMENT_SHADER, GL_VERTEX_SHADER, ...
+		// @param [in] Path - Path to the text file containing the shader code
+		// @return the shader id 0 if the shader has not been loaded correctly
 		static GLuint LoadShader(GLint ShaderType, const char* Path);
 
 
 	private: 
 
-		//Usato per caricare il file di testo con il codice dello sahder
-		//@param[in] Path - Path del file di tersto
-		//@return Testo contenuto all'interno del file
+		// Used to load the text file with the sahder code
+		// @param [in] Path - Path to the text file
+		// @return Text contained within the file
 		static std::string* LoadTextFile(const char* Path);
 };
 

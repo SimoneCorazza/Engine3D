@@ -4,18 +4,18 @@
 
 #include "Box.h"
 
-//Classe che rappresenta un'insieme di vertici e di coordinate UV
+// Class representing a set of vertices and UV coordinates
 class Mesh
 {
-	GLuint idBuffVerteces; //Id del buffer che racchiude i vertici
-	GLuint idBuffUV; //ID del buffer che racchiude le coordinate UV
-	GLuint idBuffNormals; //ID del buffer contenente le normali
+	GLuint idBuffVerteces; // Id of the buffer that encloses the vertices
+	GLuint idBuffUV; // ID of the buffer that encloses the UV coordinates
+	GLuint idBuffNormals; // ID of the buffer containing the normals
 
-	//int numVertices; //Numero di vertici presenti nella mesh
-	int numVerticesDraw; //Numero di vertici da renderizzare separatamente secondo OpenGL
-	int sizeInVRAM; //Byte occupati nella VRAM dall'oggetto
+	// int numVertices; // Number of vertices present in the mesh
+	int numVerticesDraw; // Number of vertices to be rendered separately according to OpenGL
+	int sizeInVRAM; // Bytes occupied in VRAM by the object
 
-	Box frustumBox; //Contenitore per il frustum culling
+	Box frustumBox; // Container for frustum culling
 
 	private: Mesh();
 	public:
@@ -25,68 +25,68 @@ class Mesh
 
 	public:
 
-		//Ottiene l'ID del buffer dei vertici
+		// Gets the ID of the vertex buffer
 		GLuint getIDBuffVerteces() const;
 
-		//Ottiene l'ID del buffer delle UV
+		// Gets the ID of the UV buffer
 		GLuint getIDBuffUV() const;
 
-		//Ottiene l'ID del buffer delle normali (se 0 non presenti)
+		// Gets the buffer ID of the normals (if 0 is not present)
 		GLuint getIDBuffNormals() const;
 
-		//Ottiene il numero di vertici da rendererizzare
+		// Gets the number of vertices to be rendered
 		int getVertecesDraw() const;
 
-		//Ottiene la dimensione occupata dalla mesh nella VRAM
+		// Gets the size occupied by the mesh in the VRAM
 		int getSizeInVRAM() const;
 
-		//Ottine il box della Fstrum culling per il modello
+		// Get the Fstrum culling box for the model
 		const Box& getFrustumBox() const;
 
-		//Ottiene un flag che indica se la mesh è fornita con le coordinate UV
+		// Gets a flag indicating whether the mesh is supplied with the UV coordinates
 		const bool hasUV() const;
 
-		//Ottiene un flag che indica se la mesh è fornita con le normali
+		// Gets a flag indicating whether the mesh is supplied with normals
 		const bool hasNormals() const;
 
-		//Consente di eliminare la mesh dalla VRAM
+		// Deletes the mesh from the VRAM
 		void Dispose();
 
-		//--- CREAZIONE MESH ---
+		// --- MESH CREATION ---
 
-		//Crea una Mesh
-		//@param[in] BuffVerteces - Buffer dei vertici
-		//@param[in] BuffUV - Buffer delle UV (null se non presenti)
-		//@param[in] BuffNormals - Buffer delle normali (null se non presenti)
-		//@param[in] NumVertecesDraw - Numeri di vertici presenti nei vari buffer
-		//@param[in] Box - Box che contiene la mesh
+		// Create a Mesh
+		// @param [in] BuffVerteces - Vertex buffer
+		// @param [in] BuffUV - UV Buffer (null if not present)
+		// @param [in] BuffNormals - Normal buffer (null if not present)
+		// @param [in] NumVertecesDraw - Numbers of vertices present in the various buffers
+		// @param [in] Box - Box containing the mesh
 		static Mesh* Create(const float* BuffVerteces, const float* BuffUV, const float* BuffNormals, 
 			const int& NumVertecesDraw, const Box& Box);
 
-		//Carica una mesh da un file in formato MSH
-		//@param[in] Path - Percorso al file
-		//@return la mesh contenuta nel file, nullptr nel caso di errore
+		// Load a mesh from a file in MSH format
+		// @param [in] Path - Path to the file
+		// @return the mesh contained in the file, nullptr in case of error
 		static Mesh* LoadMSH(const char* Path);
 
-		//Crea una sfera con l'orientamento dei verici in modo che la faccia sia verso
-		//l'esterno della faccia le UV vengono calcolate
-		//@param[in] Origin - Origine della sfera
-		//@param[in] Radius - Raggio della sfera
-		//@param[in] Segments - Numeri di segmenti della sfera (più ce ne sono più la qualità aumenta)
-		//		Numeri di quadrilateri = Segments^2 / 2
-		//		Deve essere >= 1
-		//@param[in] Orentation - Orientamento della sfera:
-		//		True:  Vertici e UV vengono calcolati per la sfera in modo da essere visibili dall'interno della sfera
-		//		False: Vertici e UV vengono calcolati per la sfera in modo di essere visibili dall'esterno della sfera
-		//@param[in] Normals - Indica se generare o meno le normali per la sfera
-		//@return Mesh rappresentante la sfera o nullptr se la specifica di Segments non è rispettata
+		// Create a sphere with the orientation of the veries so that the face is towards
+		// the outside of the face the UV are calculated
+		// @param [in] Origin - Origin of the sphere
+		// @param [in] Radius - Radius of the sphere
+		// @param [in] Segments - Number of segments of the sphere (plus there are more quality increases)
+		// Quadrilaterals numbers = Segments ^ 2/2
+		// It must be> = 1
+		// @param [in] Orientation - Orientation of the sphere:
+		// True: Summits and UV are calculated for the sphere so as to be visible from within the sphere
+		// False: Vertices and UV are calculated for the sphere to be visible from the outside of the sphere
+		// @param [in] Normals - Indicates whether or not to generate ball normals
+		// @return Mesh representing the sphere or nullptr if the Segments specification is not respected
 		static Mesh* Sphere(const glm::vec3& Origin, const float& Radius, const int& Segments, const bool& Orentation, const bool& Normals);
 
-		//Crea un cubo senza generare le UV, con le normali delle faccie verso l'interno
-		//del cubo (adatto per esembio per uno skybox)
-		//@param[in] Origin - Centro del cubo
-		//@param[in] Edge - Lato del cubo
-		//@return Mesh rappresentate il cubo
+		// Create a cube without generating UV, with the normal faces inward
+		// of the cube (suitable for example for a skybox)
+		// @param [in] Origin - Center of the cube
+		// @param [in] Edge - Side of the cube
+		// @return Mesh represent the cube
 		static Mesh* CubeInternal(const glm::vec3& Origin, const float& Edge);
 };
 

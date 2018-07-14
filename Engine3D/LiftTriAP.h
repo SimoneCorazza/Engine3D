@@ -2,12 +2,12 @@
 
 #include "ActorParameters.h"
 
-//Classe per i parametri da fornire allo shader da parte dell'attore
-//per poter funzionare correttamente
+// Class for the parameters to be supplied to the shader by the actor
+// in order to function properly
 class LiftTriAP : public ActorParameters
 {
 	public:
-		float delta = 0; //Distanza dei poligoni
+		float delta = 0; // Polygon distance
 
 	public:
 		LiftTriAP();

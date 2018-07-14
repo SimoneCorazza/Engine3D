@@ -32,22 +32,22 @@ void LiftTriShader::LoadIDVar()
 	idVertecesUVs = 1;
 	idVertecesNormals = 2;
 
-	glUniform1i(idTextureSampler, 0); //Il sampler sarà sempre costante
+	glUniform1i(idTextureSampler, 0); // The sampler will always be constant
 }
 
 void LiftTriShader::SetAmbientLight(const glm::vec3 & L)
 {
-	//Non considero operazioni sulle luci
+	// I do not consider operations on the lights
 }
 
 void LiftTriShader::SetSceneLights(const std::vector<Light*>& Lights)
 {
-	//Non considero operazioni sulle luci
+	// I do not consider operations on the lights
 }
 
 void LiftTriShader::SetMaterial(const Material * M)
 {
-	//Imposto la texture
+	// Set the texture
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, M->getTexture()->getIDTexture());
 }

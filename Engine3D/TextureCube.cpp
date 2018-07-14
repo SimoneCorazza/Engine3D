@@ -60,21 +60,21 @@ GLint TextureCube::getWrapR() const
 void TextureCube::Dispose()
 {
 	glDeleteTextures(1, &idTexture);
-	idTexture = INVALID_TEXTURE_ID; //Imposto la texture come invalida
+	idTexture = INVALID_TEXTURE_ID; // Imposed the texture as invalid
 }
 
-//http://learnopengl.com/#!Advanced-OpenGL/Cubemaps
+// http://learnopengl.com/#!Advanced-OpenGL/Cubemaps
 TextureCube * TextureCube::NewTextureCube(std::string FacesPath[CUBE_FACES_NUM], GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR, bool Usage)
 {
-	//glGenTextures(1, &idTexture);
-	//glBindTexture(GL_TEXTURE_CUBE_MAP, idTexture);
+	// glGenTextures (1, & idTexture);
+	// glBindTexture (GL_TEXTURE_CUBE_MAP, idTexture);
 
 	if (Usage)
-		std::swap(FacesPath[5], FacesPath[4]); //Per uso interno scambio le ultime due textures
+		std::swap(FacesPath[5], FacesPath[4]); // For internal use, I exchange the last two textures
 
 	Face faces[CUBE_FACES_NUM];
 
-	bool loadErr = false; //Se true indica che c'è stato un errore di caricamento di almeno una texture
+	bool loadErr = false; // If true indicates that there was an error loading at least one texture
 	for (int i = 0; i < CUBE_FACES_NUM && !loadErr; i++)
 	{
 		int width, height;
@@ -91,7 +91,7 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath[CUBE_FACES_NUM],
 		faces[i].dataType = dataType;
 	}
 
-	if (loadErr) //Caso ci sia stato un'errore nel caricamento di almeno una faccia
+	if (loadErr) // There was an error in loading at least one face
 		return nullptr;
 	else
 	{
@@ -100,21 +100,21 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath[CUBE_FACES_NUM],
 		return t;
 	}
 
-	//Disalloco la ram occupata dalle faccie delel textures:
+	// Disallocate the ram occupied by the textures faces:
 	for (int i = 0; i < CUBE_FACES_NUM; i++)
 		delete[] faces[i].textureData;
 }
 
 TextureCube * TextureCube::NewTextureCube(std::string FacesPath, GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR, bool Usage)
 {
-	//glGenTextures(1, &idTexture);
-	//glBindTexture(GL_TEXTURE_CUBE_MAP, idTexture);
+	// glGenTextures (1, & idTexture);
+	// glBindTexture (GL_TEXTURE_CUBE_MAP, idTexture);
 
 	int width, height;
 	void* data;
 	GLenum dataFormat, dataType;
 
-	if (!TextureDecoder_DecodeTexture(FacesPath, &data, &dataFormat, &dataType, &width, &height)) //Controllo se c'è stato un errrore di caricamento
+	if (!TextureDecoder_DecodeTexture(FacesPath, &data, &dataFormat, &dataType, &width, &height)) // Check if there was a loading error
 		return nullptr;
 
 	int faceWid = width / 4;
@@ -123,22 +123,22 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath, GLint InternalF
 	size_t sizeTextel = TextureUtils_PixelSize(dataFormat, dataType);
 
 
-	//Controllo che i singoli frames della faccie siano equivaleni, lo controllo dalla dimensione stessa della texture
+	// Control that the individual frames of the face are equivalent, control it from the same dimension of the texture
 	ASSERT(faceWid == faceHei, "TextureCube::TextureCube() to make a MAP CUBE texture width and height of faces must be the same");
 
 	Face faces[CUBE_FACES_NUM];
 
-	void* right = Utility_Arrays_SubMatrix(faceWid * 2, faceHei, faceWid, faceHei, sizeTextel, data, width, height); //Right
-	void* left = Utility_Arrays_SubMatrix(0, faceHei, faceWid, faceHei, sizeTextel, data, width, height); //Left
-	void* top = Utility_Arrays_SubMatrix(faceWid, 0, faceWid, faceHei, sizeTextel, data, width, height); //Top
-	void* bottom = Utility_Arrays_SubMatrix(faceWid, faceHei * 2, faceWid, faceHei, sizeTextel, data, width, height); //Bottom
-	void* back = Utility_Arrays_SubMatrix(faceWid * 3, faceHei, faceWid, faceHei, sizeTextel, data, width, height); //Back
-	void* front = Utility_Arrays_SubMatrix(faceWid, faceHei, faceWid, faceHei, sizeTextel, data, width, height); //Front
+	void* right = Utility_Arrays_SubMatrix(faceWid * 2, faceHei, faceWid, faceHei, sizeTextel, data, width, height); // right
+	void* left = Utility_Arrays_SubMatrix(0, faceHei, faceWid, faceHei, sizeTextel, data, width, height); // left
+	void* top = Utility_Arrays_SubMatrix(faceWid, 0, faceWid, faceHei, sizeTextel, data, width, height); // Top
+	void* bottom = Utility_Arrays_SubMatrix(faceWid, faceHei * 2, faceWid, faceHei, sizeTextel, data, width, height); // bottom
+	void* back = Utility_Arrays_SubMatrix(faceWid * 3, faceHei, faceWid, faceHei, sizeTextel, data, width, height); // back
+	void* front = Utility_Arrays_SubMatrix(faceWid, faceHei, faceWid, faceHei, sizeTextel, data, width, height); // front
 
 	if (Usage)
-		std::swap(front, back); //Per uso interno scambio le ultime due textures
+		std::swap(front, back); // For internal use, I exchange the last two textures
 
-								//Setto i dati delle textures 
+								// Set the textures data
 	faces[0].textureData = right;
 	faces[1].textureData = left;
 	faces[2].textureData = top;
@@ -158,7 +158,7 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath, GLint InternalF
 	TextureCube* t = new TextureCube();
 	t->Inizialize(faces, InternalFormat, MinFilter, MaxFilter, WrapS, WrapT, WrapR);
 
-	//Disalloco la ram occupata dalle faccie delel textures:
+	// Disallocate the ram occupied by the textures faces:
 	for (int i = 0; i < CUBE_FACES_NUM; i++)
 		delete[] faces[i].textureData;
 
@@ -182,7 +182,7 @@ void TextureCube::Inizialize(Face FacesData[CUBE_FACES_NUM], GLint InternalForma
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, WrapT);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, WrapR);
 
-	//Genero le mimpmap solo se necessario dai filtri
+	// I create the mimpmap only if necessary by the filters
 	if(MinFilter != GL_NEAREST && MinFilter != GL_LINEAR)
 		glGenerateMipmap(GL_TEXTURE_CUBE_MAP);
 

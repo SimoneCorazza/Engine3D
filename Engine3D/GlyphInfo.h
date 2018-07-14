@@ -2,26 +2,26 @@
 
 #include "RectangleF.h"
 
-//Classe che consente di memorizzare tutte le varie informazioni riguardo un glifo
+// Class that allows you to store all the various information about a glyph
 class GlyphInfo
 {
-	//ATTRIBUTI:
+	// ATTRIBUTES:
 public:
-	RectangleF areaUV; //Area occupata dal carattere nella texture
+	RectangleF areaUV; // Area occupied by the character in the texture
 
-	int width; //Dimensione X della texture
-	int height; //Dimensione Y della texture
+	int width; // X size of the texture
+	int height; // Y-size of the texture
 	int bitmapTop;
 	int bitmapLeft;
 
 
-	//COSTRUTTORI:
+	// MANUFACTURERS:
 public:
 	GlyphInfo();
 	~GlyphInfo();
 
 
-	//METODI:
+	// METHODS:
 public:
 
 

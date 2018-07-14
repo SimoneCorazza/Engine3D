@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <GL\glew.h> //Deve essere posizionata prima di "#include <GLFW\glfw3.h>"
+#include <GL\glew.h> // It must be placed before "#include <GLFW \ glfw3.h>"
 #include <GLFW\glfw3.h>
 
 #include "InputEngine.h"
@@ -30,7 +30,7 @@ Engine::~Engine()
 }
 
 
-//Callback generato all'occorrere di un errore in GLFW
+// Callback generated when an error occurs in GLFW
 void GLFW_Error_Callback(int error, const char* description)
 {
 	ASSERT(false, (std::string("Error in GLFW (mediante callback): ") + std::string(description)).c_str()  );
@@ -40,9 +40,9 @@ void GLFW_Error_Callback(int error, const char* description)
 
 void Engine::Inizialize()
 {
-	//Inizializzazione delle librerie:
+	// Initialization of libraries:
 
-	//GLFW
+	// GLFW
 	if (!glfwInit())
 	{
 		RELEASE_CLOSE("Error in glfwInit()");
@@ -51,12 +51,12 @@ void Engine::Inizialize()
 	int m, i, r;
 	glfwGetVersion(&m, &i, &r);
 	LOG("GLFW version: %i.%i.%i", m, i, r);
-	glfwSetErrorCallback(GLFW_Error_Callback); //Imposto il callback per gli errori di GLFW
+	glfwSetErrorCallback(GLFW_Error_Callback); // Set the callback for GLFW errors
 }
 
 void Engine::Terminate()
 {
-	//GLFW e finestre:
+	// GLFW and windows:
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
@@ -80,9 +80,9 @@ void Engine::CreateNewWindow(const char* Title)
 	GLFWmonitor* m = glfwGetPrimaryMonitor();
 	const GLFWvidmode* v = glfwGetVideoMode(m);
 	window = glfwCreateWindow(v->width, v->height, Title, m, nullptr);
-	//glfwWindowHint(GLFW_SAMPLES, 8);
+	// glfwWindowHint (GLFW_SAMPLES, 8);
 
-	if (window) //Controllo per errori
+	if (window) // Checking for errors
 		CreatedNewWindow();
 	else
 		RELEASE_CLOSE("Unable to create a new Window at: Engine::CreateNewWindow(const char*)");
@@ -91,10 +91,10 @@ void Engine::CreateNewWindow(const char* Title)
 void Engine::CreatedNewWindow()
 {
 	inputEngine.Inizialize(window);
-	lastInputState = inputEngine.getInputState(); //Ottengo il primo stato dell'input engine, per l'nizializzazione delle classi
+	lastInputState = inputEngine.getInputState(); // I get the first status of the input engine, for the initialization of classes
 	glfwMakeContextCurrent(window);
 
-	//Inizializzo GLEW
+	// Initialize GLEW
 	GLenum err = glewInit();
 
 	if (err != GLEW_OK)
@@ -113,9 +113,9 @@ void Engine::CreatedNewWindow()
 		glGetString(GL_RENDERER)
 		);
 	
-	//Inizializzo il rendering engine
+	// Initialize the rendering engine
 	renderingEngine.Inizialize();
-	renderingEngine.WindowResized(lastInputState->getWindowSize().x, lastInputState->getWindowSize().y); //Inizializzo anche la dimensione della finestra
+	renderingEngine.WindowResized(lastInputState->getWindowSize().x, lastInputState->getWindowSize().y); // I also initialize the window size
 }
 
 void Engine::StartGameLoop(Scene* Scene)
@@ -133,7 +133,7 @@ void Engine::EndGameLoop()
 void Engine::setScene(Scene* Scene)
 {
 	actualScene = Scene;
-	actualScene->Inizialize(this); //Inizializzo la scena
+	actualScene->Inizialize(this); // Initialize the scene
 }
 
 InputState * Engine::getLastInputState()
@@ -151,7 +151,7 @@ void Engine::GameLoop()
 	bool end = false;
 	double last = glfwGetTime();
 
-	//Variabili per quando la superficie della finestra diventa invalida:
+	// Variables for when the window surface becomes invalid:
 	int glfwCursorMode;
 	bool cursorReset = false;
 
@@ -161,7 +161,7 @@ void Engine::GameLoop()
 		delete lastInputState;
 		lastInputState = inputEngine.getInputState();
 
-		//Per tenere il conto che impiega per realizzare un ciclo
+		// To keep the bill it takes to make a cycle
 		double current = glfwGetTime();
 		float elapsed = float(current - last);
 		last = current;
@@ -173,22 +173,22 @@ void Engine::GameLoop()
 			if (lastInputState->WindowResized())
 			{
 				Point2 newS = lastInputState->getWindowSize();
-				renderingEngine.WindowResized(newS.x, newS.y); //Aggiorno il rendering engine (per aggiornare la grafica 2D)
+				renderingEngine.WindowResized(newS.x, newS.y); // Update rendering engine (to update 2D graphics)
 				actualScene->OnScreenResize(newS.x, newS.y);
 			}
 			
 			if (lastInputState->WindowSurfaceValid())
 			{
-				if (cursorReset) //Controllo se la dimensione della finestra è diventato valido
+				if (cursorReset) // Check if the window size has become valid
 				{
 					cursorReset = false;
-					glfwSetInputMode(window, GLFW_CURSOR, glfwCursorMode); //Resetto il cursore come era prima
+					glfwSetInputMode(window, GLFW_CURSOR, glfwCursorMode); // I reset the cursor as it was before
 				}
 
-				actualScene->Update(UpdateParameters(elapsed, lastInputState)); //Aggiorno la scena
-				renderingEngine.RenderScene(*actualScene); //Renderizzo la scena
+				actualScene->Update(UpdateParameters(elapsed, lastInputState)); // I update the scene
+				renderingEngine.RenderScene(*actualScene); // I render the scene
 			}
-			else if(!cursorReset) //Quando la finestra diventa invalida memorizzo lo stato del cursore e lo imposto come normale
+			else if(!cursorReset) // When the window becomes invalid, I memorize the state of the cursor and set it as normal
 			{
 				cursorReset = true;
 				glfwCursorMode = glfwGetInputMode(window, GLFW_CURSOR);
@@ -196,12 +196,12 @@ void Engine::GameLoop()
 			}
 		}
 
-		gameLoop &= glfwWindowShouldClose(window) == 0; //Controllo se la finestra deve chiudersi
+		gameLoop &= glfwWindowShouldClose(window) == 0; // Check if the window has to close
 
-		glfwSwapBuffers(window); //Scambio i fuffer mostrandolo sulla finestra
-		glfwPollEvents(); //Gestisco la finestra
+		glfwSwapBuffers(window); // Exchange the fuffer by showing it on the window
+		glfwPollEvents(); // I manage the window
 
 	} while (gameLoop);
 
-	Terminate(); //Disalloco lo spazio allocato dall'engine
+	Terminate(); // Disallocate the space allocated by the engine
 }

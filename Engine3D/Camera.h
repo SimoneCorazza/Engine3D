@@ -12,100 +12,100 @@
 class PostProcessShaderParams;
 class PostProcessShader;
 
-//Enumerazione per indicare come vine interpretata una misura
+// Enumeration to indicate how a measure is interpreted
 enum MeasureMode
 {
-	MeasureMode_Rate, //Indica che la misura sarà in percentuale
-	MeasureMode_Constant, //Indica che la misura sarà espressa in cifre esatte e non dovrà cambiare
+	MeasureMode_Rate, // Indicates that the measure will be in percentage
+	MeasureMode_Constant, // Indicates that the measure will be expressed in exact figures and will not have to change
 };
 
-//Enumerazione per indicare se è presente il face culling e se sì la modalità
-//i valori assunti se è abilitato sono coincidenti con quelli de OpenGL
+// Enumeration to indicate if face culling is present and if so the mode
+// the values â€‹â€‹assumed if it is enabled coincide with those of OpenGL
 enum FaceCulling : int
 {
-	FaceCulling_Disabled = 0, //Face culling disabilitato
-	FaceCulling_Front = GL_FRONT, //Face culling abilitato e settato sul fronte della faccia
-	FaceCulling_Back = GL_BACK, //Face culling abilitato e settato sul retro della faccia
-	FaceCulling_FrontAndBack = GL_FRONT_AND_BACK,  //Face culling abilitato e settato sul fronte della faccia
+	FaceCulling_Disabled = 0, // Face culling disabled
+	FaceCulling_Front = GL_FRONT, // Face culling enabled and set on the front of the face
+	FaceCulling_Back = GL_BACK, // Face culling enabled and set on the back of the face
+	FaceCulling_FrontAndBack = GL_FRONT_AND_BACK,  // Face culling enabled and set on the front of the face
 };
 
 
-//Classe che rappresenta la porzione di mondo visualizzato
+// Class that represents the portion of the world viewed
 class Camera : public ItemScene
 {
-	//Visuale:
-	glm::vec3 direction; //Direzione della camera
-	glm::vec3 position; //Posizione della camera
-	float horizontalAngle; //Angolo orizzontale
-	float verticalAngle; //Angolo verticale
+	// Visual:
+	glm::vec3 direction; // Direction of the room
+	glm::vec3 position; // Location of the room
+	float horizontalAngle; // Horizontal angle
+	float verticalAngle; // Vertical angle
 
-	//Limiti della visuale della camera:
-	float maxHorizontalAngle; //Angolo massimo (verso destra) possibile per la camera
-	float minHorizontalAngle;  //Angolo minimo (verso sinistra) possibile per la camera
-	float maxVerticalAngle; //Angolo massimo (verso l'alto) possibile per la camera
-	float minVerticalAngle;  //Angolo minimo (verso il basso) possibile per la camera
+	// Room view limits:
+	float maxHorizontalAngle; // Maximum angle (to the right) possible for the room
+	float minHorizontalAngle;  // Minimum angle (to the left) possible for the room
+	float maxVerticalAngle; // Maximum angle (upward) possible for the room
+	float minVerticalAngle;  // Minimum angle (downwards) possible for the room
 
 	// Initial Field of View
 	#define INITIAL_FOV 45.0f
 	
-	float fovY; //Fov delal camera
-	float aspectRatio; //Ratio attuale della camera
-	float zNear; //Minima distanza a cui gli oggetti vengono renderizzati
-	float zFar; //Massima distanza a cui gli oggetti vengono renderizzati
+	float fovY; // Fov of the room
+	float aspectRatio; // Current ratio of the room
+	float zNear; // Minimum distance at which objects are rendered
+	float zFar; // Maximum distance at which objects are rendered
 
 	float speed;
 	float mouseSpeed;
 
 	float coefficienteVelocitaCamera;
 
-	glm::mat4 viewMatrix; //Matrice della vista ottenuta dall'utente tramite le periferiche di input
-	glm::mat4 cameraMatrix; //Matrice della camera ottenuta moltiplicando nell'ordine: la matrice della proiezione con quella della vista
-	glm::mat4 projectionMatrix; //Matrice della proiezione settata dall'utente
+	glm::mat4 viewMatrix; // View matrix obtained by the user through input devices
+	glm::mat4 cameraMatrix; // Matrix of the chamber obtained by multiplying in order: the matrix of the projection with that of the view
+	glm::mat4 projectionMatrix; // Projection matrix set by the user
 
-	bool focused; //Indica se la camera è selezionata e pronta per l'input
-	bool frustumCulling; //Indica se per la camera è abilitato il frustum culling per gli attori da renderizzare
-	FaceCulling faceCulling; //Indica il face culling della camera
+	bool focused; // Indicates if the camera is selected and ready for input
+	bool frustumCulling; // Indicates whether the frustum culling for the actors to be rendered is enabled for the camera
+	FaceCulling faceCulling; // Indicates the face culling of the camera
 
-	Point2 offset; //Offset della camera in pixel
-	Point2 size; //Dimensione della camera in pixel
+	Point2 offset; // Room offset in pixels
+	Point2 size; // Room size in pixels
 
-	MeasureMode modeOffset; //Modalità di trattare la misura dell'offset
-	glm::vec2 measureOffset; //Misura dell'offset della camera secondo la modalità presecelta (pixel, percentuale, ...)
-	MeasureMode modeSize; //Modalita di trattare la misura della size
-	glm::vec2 measureSize;  //Misura della dimensione della camera secondo la modalità presecelta (pixel, percentuale, ...)
+	MeasureMode modeOffset; // How to deal with the offset measurement
+	glm::vec2 measureOffset; // Measurement of the camera offset according to the pre-selected mode (pixel, percentage, ...)
+	MeasureMode modeSize; // How to treat the size measurement
+	glm::vec2 measureSize;  // Measurement of the size of the camera according to the pre-selected mode (pixel, percentage, ...)
 
-	//-- POST PROCESS EFFECTS
+	// - POST PROCESS EFFECTS
 
-	GLuint idFrameBuffer; //Framebuffer della camera
-	//Ids della texture collegata al frame buffer, dove viene inserito il risultato dell'operazione del rendering,
-	//sono due per poter scambiarsi a turno per poter applicari più effetti post-process
+	GLuint idFrameBuffer; // Room framebuffer
+	// Ids of the texture connected to the frame buffer, where the result of the rendering operation is inserted,
+	// there are two to be able to exchange in turn to be able to apply more post-process effects
 	GLuint idRenderTextures[2];
-	GLuint idDepthTexture; //Id della texture collegata al frame buffer, dove viene inserità la profondità
+	GLuint idDepthTexture; // ID of the texture connected to the frame buffer, where the depth is inserted
 
-	GLuint depthRenderBuffer; //Depth buffer inserito nel framebuffer
+	GLuint depthRenderBuffer; // Depth buffer inserted in the framebuffer
 
-	unsigned int idPostProcessEffectsCounter; //Contatore per la generazione degli id degli effetti prost process
-	std::vector<PostProcessEffect*> postProcessEffects; //Effetti post rendering della camera
+	unsigned int idPostProcessEffectsCounter; // Counter for generating the effects of prost prost effects
+	std::vector<PostProcessEffect*> postProcessEffects; // Post-rendering effects of the camera
 
 	public:
-		//Istanzia una camra
-		//@param[in] ID - ID della camera
-		//@param[in] Scene - Scena contenente la camera
-		//@param[in] ModeOffset - Modalità desiderata di misura per l'offset della camera
-		//@param[in] X - Modalità desiderata di misura per la dimensione delal camera
-		//@param[in] Y - Modalità desiderata di misura per la dimensione delal camera
-		//@param[in] ModeSize - Modalità desiderata di misura per la dimensione della camera
-		//@param[in] Width - Lunghezza della camera rispetto alla finestra (utilizza la modalità indicata precedentemente)
-		//@param[in] Height - Altezza della camera rispetto alla finestra (utilizza la modalità indicata precedentemente)
-		//Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height);
+		// Instant a camra
+		// @param [in] ID - ID of the room
+		// @param [in] Scene - Scene containing the camera
+		// @param [in] ModeOffset - Desired measurement mode for camera offset
+		// @param [in] X - Desired measurement mode for the room size
+		// @param [in] Y - Desired measurement mode for room size
+		// @param [in] ModeSize - Desired measurement mode for the room size
+		// @param [in] Width - Length of the room relative to the window (using the mode indicated above)
+		// @param [in] Height - Room height compared to the window (using the mode indicated above)
+		// Camera (unsigned int ID, Scene * Scene, MeasureMode ModeOffset, X float, Y float, MeasureMode ModeSize, float Width, float Height);
 
-		//Istanzia una camra
-		//@param[in] ModeOffset - Modalità desiderata di misura per l'offset della camera
-		//@param[in] X - Modalità desiderata di misura per la dimensione delal camera
-		//@param[in] Y - Modalità desiderata di misura per la dimensione delal camera
-		//@param[in] ModeSize - Modalità desiderata di misura per la dimensione della camera
-		//@param[in] Width - Lunghezza della camera rispetto alla finestra (utilizza la modalità indicata precedentemente)
-		//@param[in] Height - Altezza della camera rispetto alla finestra (utilizza la modalità indicata precedentemente)
+		// Instant a camra
+		// @param [in] ModeOffset - Desired measurement mode for camera offset
+		// @param [in] X - Desired measurement mode for the room size
+		// @param [in] Y - Desired measurement mode for room size
+		// @param [in] ModeSize - Desired measurement mode for the room size
+		// @param [in] Width - Length of the room relative to the window (using the mode indicated above)
+		// @param [in] Height - Room height compared to the window (using the mode indicated above)
 		Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height);
 		~Camera();
 
@@ -113,133 +113,133 @@ class Camera : public ItemScene
 	public:
 
 
-		//Permette di aggiornare l'interfaccia della camera
-		//NOTA: riservato alla classe SCENE
+		// It allows you to update the camera interface
+		// NOTE: reserved for the SCENE class
 		void Update(float ElapsedTime);
 
-		//Metodo che permette di aggiornare la camera al cambiamento di dimensioni della finestra di gioco
-		//NOTA: riservato alla classe SCENE
+		// Method that allows you to upgrade the camera to the size change of the game window
+		// NOTE: reserved for the SCENE class
 		void OnScreenReSize(size_t NewWidth, size_t NewHeight);
 
-		//Consente di abilitare la camera agli input
+		// Enable the camera to input
 		void Focus();
-		//Consente di disabilitare la camera agli input
+		// It allows to disable the camera to the inputs
 		void Unfocus();
-		//Consente di invertire lo stato di focus della camera
+		// It allows you to invert the focus status of the camera
 		void SwitchFocus();
 
-		//-- Effetti post-processing
+		// - Post-processing effects
 
-		//Aggiunge un'effetto post process
-		//@param[in] S - Shader da usare come effeto
-		//@param[in] P - Parametri per lo shader dell'effetto (possono esse NULL, se lo shader lo supporta)
-		//@return Effetto risultate
+		// Adds a post process effect
+		// @param [in] A - Shader to use as an effect
+		// @param [in] P - Parameters for the effect shader (they can be NULL, if the shader supports it)
+		// @return Effect proved
 		PostProcessEffect* AddPostProcessEffect(const PostProcessShader* S, PostProcessShaderParams* P);
 
-		//Permette di rimuovere un'effetto post process dall'elenco
+		// Allows you to remove a post process effect from the list
 		void RemovePostProcessEffect(int ID);
 
-		//Ottiene gli effetti post process delal camera
+		// Gets the post process effects of the camera
 		const std::vector<PostProcessEffect*>* getPostProcessEffects() const;
 
-		//Cambia la textrue dove andare a renderizzare il frame buffer
-		//@param[in] Index - Indica la texture su cui renderizzare: 0 o 1
+		// Change the textrue where to render the frame buffer
+		// @param [in] Index - Indicates the texture to render: 0 or 1
 		void changePostProcessRenderTexture(int Index) const;
 
-		//GET e SET
+		// GET and SET
 
-		//Imposta la matrice della proiezione
+		// Set the projection matrix
 		void setProjectionMatrix(const float& FovY, const float& AspectRatio, const float& ZNear, const float& ZFar);
 
-		//Ottiene la matrice della camera ottunuta dal prodotto della matrice della proiezione con quella della vista
+		// Gets the matrix of the chamber obtained from the product of the projection matrix with that of the view
 		const glm::mat4& getCameraMatrix() const;
 
-		//Ottiene la matrice della proiezione della camera
+		// Gets the matrix of the projection of the camera
 		const glm::mat4& getProjectionMatrix() const;
 
-		//Ottiene la matrice della vista della camera
+		// Gets the matrix of the camera view
 		const glm::mat4& getViewMatrix() const;
 
-		//Ottiene la posizione dell'angolo della camera nella finestra
+		// Gets the position of the camera angle in the window
 		const Point2& getOffset() const;
-		//Ottiene la dimensione della camera nella finestra
+		// Gets the size of the room in the window
 		const Point2& getSize() const;
 
-		//Ottiene un flag che indica se la camera è abilitata (riceve gli input)
+		// Gets a flag indicating if the camera is enabled (it receives the inputs)
 		const bool& isFocus() const;
 
-		//Imposta un flag che indica se la camera abilita il frustum culling
+		// Sets a flag indicating whether the camera enables frustum culling
 		void setFrustumCulling(const bool& B);
-		//Ottiene un flag che indica se la camera abilita il frustum culling
+		// Gets a flag indicating whether the camera enables frustum culling
 		const bool& getFrustumCulling() const;
 
-		//Ottiene il face culling della camera
+		// Gets the face culling of the camera
 		const FaceCulling& getFaceCulling() const;
-		//Imposta il face culling della camera
+		// Set the face culling of the camera
 		void setFaceCulling(const FaceCulling& F);
 
-		//Imposta la posizione della camera
+		// Set the position of the room
 		void setPosition(const glm::vec3& P);
-		//Ottiene la posizione della camera
+		// Gets the position of the room
 		const glm::vec3& getPosition() const;
 
-		//Frame buffer:
+		// Frame buffer:
 
-		//Ottiene l'id del framebuffer della camera
+		// Gets the framebuffer id of the camera
 		GLuint getFrameBufferID() const;
-		//Ottiene l'id della texture del frame renderizzato
-		//@param[in] Index - Indice della texture del frame attuale desiderato (0 o 1)
+		// Gets the id of the rendered frame texture
+		// @param [in] Index - Index of the desired current frame texture (0 or 1)
 		GLuint getRenderedTextureID(int Index) const;
-		//Ottiene l'id della texture della profondità della scena
+		// Gets the id of the texture of the scene depth
 		GLuint getDepthTextureID() const;
 
-		//Limiti movimento visuale:
+		// Visual movement limits:
 
-		//Imposta l'angolo massimo (verso destra) possibile per la camera
-		//il valore deve essere > 0 o = 0 per non dare limiti
-		//PI / 2 = guarda verso destra
+		// Set the maximum angle (to the right) possible for the camera
+		// the value must be> 0 or = 0 to not give limits
+		// PI / 2 = look to the right
 		void setMaxHorizontalAngle(float A);
-		//Imposta angolo minimo (verso sinistra) possibile per la camera
-		//il valore deve essere < 0 o = 0 per non dare limiti
-		//PI / 2 = guarda verso sinistra
+		// Set minimum angle (to the left) possible for the camera
+		// the value must be <0 or = 0 to not give limits
+		// PI / 2 = look to the left
 		void setMinHorizontalAngle(float A);
-		//Imposta angolo massimo (verso l'alto) possibile per la camera
-		//il valore deve essere > 0 o = 0 per non dare limiti
-		//PI / 2 = guarda verso l'alto
+		// Set maximum angle (upward) possible for the room
+		// the value must be> 0 or = 0 to not give limits
+		// PI / 2 = look upwards
 		void setMaxVerticalAngle(float A);
-		//Imposta angolo minimo (verso il basso) possibile per la camera
-		//il valore deve essere < 0 o = 0 per non dare limiti
-		//PI / 2 = guarda verso il basso
+		// Set minimum angle (down) possible for the room
+		// the value must be <0 or = 0 to not give limits
+		// PI / 2 = look down
 		void setMinVerticalAngle(float A);
 
-		//Ottiene l'angolo massimo (verso destra) possibile per la camera
+		// Gets the maximum angle (to the right) possible for the room
 		float getMaxHorizontalAngle();
-		//Ottiene angolo minimo (verso sinistra) possibile per la camera
+		// Gets the minimum angle (to the left) possible for the room
 		float getMinHorizontalAngle();
-		//Ottiene angolo massimo (verso l'alto) possibile per la camera
+		// Get maximum angle (upward) possible for the room
 		float getMaxVerticalAngle();
-		//Ottiene angolo minimo (verso il basso) possibile per la camera
+		// It obtains minimum angle (downwards) possible for the room
 		float getMinVerticalAngle();
 
 	private:
 
-		//Ottiene la posizione occupata dall'effetto con id indicato (se non presente ritorna -1)
+		// Gets the position occupied by the effect with the indicated id (if not present returns -1)
 		int FindPostProcessEffect(int ID);
 
-		//Consente di trasformare una misura dalla sua modalità in pixel
-		//@param[in] Mode - Modalità di misura
-		//@param[in] Measure - Misura da trasformare
-		//@param[in] WindowSize - Dimensione delal finestra in pixel
+		// Allows you to transform a measurement from its pixel mode
+		// @param [in] Mode - Measurement mode
+		// @param [in] Measure - Measure to transform
+		// @param [in] Window Size - Window size in pixels
 		Point2 static TransformToPixel(const MeasureMode& Mode, const glm::vec2& Measure, const Point2& WindowSize);
 
-		//Permette di posizionare il cursore al centro della camera
+		// Allows you to place the cursor in the middle of the room
 		void CenterCursor();
 
-		//Consente di aggiornare il ratio della projection matrix (e conseguentemente alla camera matrix)
-		//in base alla dimensione dello schermo
+		// It allows to update the ratio of projection matrix (and consequently to the matrix camera)
+		// according to the size of the screen
 		void UpdateRatio();
 
-		//Consente di aggiornare il frame buffer della camera
+		// Update the frame buffer of the camera
 		void UpdateFrameBuffer();
 };
 

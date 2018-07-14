@@ -35,9 +35,9 @@ const Scene * ItemScene::getScene()
 void ItemScene::RemoveFromScene()
 {
 	if (scene == nullptr)
-		ASSERT(false, "Impossibile eliminare Item: non è agganciato a nessuna scena");
+		ASSERT(false, "Impossibile eliminare Item: non Ã¨ agganciato a nessuna scena");
 	else
-		scene->RemoveItem(id); //Rimuovo l'item dalla scena
+		scene->RemoveItem(id); // I remove the item from the scene
 }
 
 InputState * ItemScene::getInputState()

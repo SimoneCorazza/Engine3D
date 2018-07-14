@@ -1,10 +1,10 @@
 #pragma once
 
 /*
-Utility per le varie operazioni con il tempo
+Utility for various operations with time
 */
 
 
 
-//Ottiene il tempo trascorso in secondi dall'avvio del processo
+// Gets the time spent in seconds since the start of the process
 float Utility_Time_GetTime();

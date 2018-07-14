@@ -45,8 +45,8 @@ void LightTextureShader::LoadIDVar()
 
 	for (int i = 0; i < MAXIMUM_LIGTS; i++)
 	{
-		//Prima parte sempre uguale per le successive operazioni esempi:
-		//"lights[0].", "lights[1].", "lights[2].", ...
+		// First part always the same for the following operations examples:
+		// "lights [0].", "lights [1].", "lights [2].", ...
 		std::string first = std::string("lights[") + std::to_string(i) + std::string("].");
 
 		lightsArrayComponetsID[i].idPosition = GetVarID(first + std::string("position"));
@@ -60,24 +60,24 @@ void LightTextureShader::LoadIDVar()
 		lightsArrayComponetsID[i].idSpotDirection = GetVarID(first + std::string("spotDirection"));
 	}
 
-	glUniform1i(idTextureSampler, 0); //Setto la texture utilizzata a zero (sarà sempre costante)
+	glUniform1i(idTextureSampler, 0); // I leave the texture used at zero (it will always be constant)
 }
 
 void LightTextureShader::SetAmbientLight(const glm::vec3 & L)
 {
-	//La w deve essere sempre 1 (trasparenza non possibile)
+	// The w must always be 1 (transparency not possible)
 	glUniform4f(idAmbientLight, L.x, L.y, L.z, 1.0f);
 }
 
-//const Model* lastRenderedModel = nullptr; //Ultimo modello renderizzato
+// const Model * lastRenderedModel = nullptr; // Last rendered model
 
 void LightTextureShader::SetSceneLights(const std::vector<Light*>& Lights)
 {
-	//lastRenderedModel = nullptr;
+	// lastRenderedModel = nullptr;
 
-	glUniform1i(idLightsNumber, (int)Lights.size()); //Imposto il numero di luci da settare
+	glUniform1i(idLightsNumber, (int)Lights.size()); // Set the number of lights to be set
 
-	//Setto i vari parametri per oni campo di ogni luce:
+	// I set the various parameters for each field of light:
 	for (int i = 0; i < Lights.size() && i < MAXIMUM_LIGTS; i++)
 	{
 		Light* l = Lights[i];
@@ -95,13 +95,13 @@ void LightTextureShader::SetSceneLights(const std::vector<Light*>& Lights)
 
 void LightTextureShader::SetMaterial(const Material * M)
 {
-	//Imposto il materiale:
+	// Imposed the material:
 	glUniform4f(materialUniformComponetID.idAmbient, M->getAmbient().x, M->getAmbient().y, M->getAmbient().z, 1.0f);
 	glUniform4f(materialUniformComponetID.idDiffuse, M->getDiffuse().x, M->getDiffuse().y, M->getDiffuse().z, 1.0f);
 	glUniform4f(materialUniformComponetID.idSpecular, M->getSpecular().x, M->getSpecular().y, M->getSpecular().z, 1.0f);
 	glUniform1f(materialUniformComponetID.idShininess, M->getShininess());
 
-	//Setto la texture:
+	// I leave the texture:
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, M->getTexture()->getIDTexture());
 }
@@ -118,12 +118,12 @@ void LightTextureShader::SetCameraParameters(const glm::mat4 & ViewMatix, const 
 
 void LightTextureShader::SetObjectParameters(const ActorParameters* P, const glm::mat4& ModelMatrix)
 {
-	//P è accettano NULL in questo sahder
+	// P is accepting NULL in this shader
 
 	glm::mat4 m = ModelMatrix;
 	glm::mat3 m_3x3_inv_transp = glm::transpose(glm::inverse(glm::mat3(ModelMatrix)));
 
-	//Imposto le matrici:
+	// Set the matrices:
 	glUniformMatrix4fv(idM, 1, GL_FALSE, &m[0][0]);
 	glUniformMatrix3fv(idMTrans, 1, GL_FALSE, &m_3x3_inv_transp[0][0]);
 }

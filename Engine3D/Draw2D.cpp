@@ -27,7 +27,7 @@ void Draw2D::Inizialize()
 	resolution.x = v->width;
 	resolution.y = v->height;
 
-	sf.Inizialize(); //Inizializzo la classe per il rendering dei caratteri
+	sf.Inizialize(); // Initialize the character rendering class
 }
 
 void Draw2D::SetWindowSize(float Width, float Height)
@@ -44,5 +44,5 @@ void Draw2D::DrawText(const char* String, const Font* Font, const Point2& Locati
 {
 	const Char* c = Font::ToChar(String);
 	sf.Draw(c, Font, glm::vec2(Location.x, Location.y), (float)Height, Color);
-	delete c; //Rilascio l'array di caratteri convertito
+	delete c; // Release the converted character array
 }
