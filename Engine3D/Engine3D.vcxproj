@@ -290,29 +290,6 @@
     <ClInclude Include="Utility_Strings.h" />
     <ClInclude Include="Utility_Time.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="Develop.txt" />
-    <Text Include="Resource.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine3D_HowTo.odt" />
-    <None Include="Resources\Caratteri.frag.glsl" />
-    <None Include="Resources\Caratteri.vert.glsl" />
-    <None Include="Resources\Color.frag.glsl" />
-    <None Include="Resources\LiftTri.vert.glsl" />
-    <None Include="Resources\LightTexture.frag.glsl" />
-    <None Include="Resources\LightTexture.vert.glsl" />
-    <None Include="Resources\PostProcess_BlackWhite.frag.glsl" />
-    <None Include="Resources\PostProcess_Blur.frag.glsl" />
-    <None Include="Resources\PostProcess_Common.vert.glsl" />
-    <None Include="Resources\PostProcess_Depth.frag.glsl" />
-    <None Include="Resources\PostProcess_LightScattering.frag.glsl" />
-    <None Include="Resources\Skybox.frag.glsl" />
-    <None Include="Resources\Skybox.vert.glsl" />
-    <None Include="Resources\Standard.vert.glsl" />
-    <None Include="Resources\Texture.frag.glsl" />
-    <None Include="Resources\VertecesOnly.vert.glsl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

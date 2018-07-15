@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="File di risorse">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{31270c47-e0e7-4314-8d4c-57867d5bca7a}</UniqueIdentifier>
     </Filter>
@@ -103,9 +99,6 @@
     </Filter>
     <Filter Include="TestGame">
       <UniqueIdentifier>{a7ac29e4-a62e-4e89-ad5f-0f0f0f7c4694}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ShadersCode">
-      <UniqueIdentifier>{158f0001-6ceb-4785-8bc5-67fc7da81963}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Scene\Shaders\Models\LiftTri">
       <UniqueIdentifier>{8787c3f2-2c63-476e-923e-97edd6248d64}</UniqueIdentifier>
@@ -507,62 +500,5 @@
     <ClInclude Include="Utility_Time.h">
       <Filter>Engine\Utility</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Develop.txt" />
-    <Text Include="Resource.txt">
-      <Filter>File di risorse</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine3D_HowTo.odt" />
-    <None Include="Resources\Caratteri.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\Caratteri.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\Color.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\LiftTri.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\LightTexture.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\LightTexture.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\PostProcess_BlackWhite.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\PostProcess_Blur.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\PostProcess_Common.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\PostProcess_Depth.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\PostProcess_LightScattering.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\Skybox.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\Skybox.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\Standard.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\Texture.frag.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
-    <None Include="Resources\VertecesOnly.vert.glsl">
-      <Filter>ShadersCode</Filter>
-    </None>
   </ItemGroup>
 </Project>
