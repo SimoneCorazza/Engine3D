@@ -96,6 +96,14 @@
       <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
+xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy dll to out directory</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -114,6 +122,14 @@
       <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
+xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy dll to out directory</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -135,6 +151,14 @@
       <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
+xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy dll to out directory</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -156,6 +180,14 @@
       <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
+xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
+</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy dll to out directory</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
