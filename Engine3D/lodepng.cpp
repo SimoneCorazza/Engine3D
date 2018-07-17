@@ -2621,7 +2621,7 @@
 //	the max of 256 colors, it'll have the exact alloc size*/
 //	if (!info->palette) /*allocate palette if empty*/
 //	{
-//		/*room for 256 colors with 4 bytes each*/
+//		/*camera for 256 colors with 4 bytes each*/
 //		data = (unsigned char*)lodepng_realloc(info->palette, 1024);
 //		if (!data) return 83; /*alloc fail*/
 //		else info->palette = data;
@@ -4463,7 +4463,7 @@
 //	/*multiplication overflow*/
 //	if (*h != 0 && numpixels / *h != *w) CERROR_RETURN(state->error, 92);
 //	/*multiplication overflow possible further below. Allows up to 2^31-1 pixel
-//	bytes with 16-bit RGBA, the rest is room for filter bytes.*/
+//	bytes with 16-bit RGBA, the rest is camera for filter bytes.*/
 //	if (numpixels > 268435455) CERROR_RETURN(state->error, 92);
 //
 //	ucvector_init(&idat);

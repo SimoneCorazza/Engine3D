@@ -211,13 +211,13 @@ void RenderingEngine::RenderScene(Scene& S)
 	// --- ROOMS ---
 	while(cam.hasNext()) // Cycle for the rooms
 	{
-		const Camera* camera = cam.next(); // Pointer to the current room
+		const Camera* camera = cam.next(); // Pointer to the current camera
 
 		ASSERT(camera != nullptr, "Camera cannot be null");
 
 		const Point2 o = camera->getOffset();
 		const Point2 s = camera->getSize();
-		Rectangle cameraPortion(o.x, windowSize.y - (o.y + s.y), s.x, s.y); // I get the portion of room used by the room
+		Rectangle cameraPortion(o.x, windowSize.y - (o.y + s.y), s.x, s.y); // I get the portion of camera used by the camera
 		const bool frustumCulling = camera->getFrustumCulling(); // Indicates whether the frustum culling is enabled by the camera
 
 		glBindFramebuffer(GL_FRAMEBUFFER, camera->getFrameBufferID()); // I use the frame buffer of the camera
@@ -226,7 +226,7 @@ void RenderingEngine::RenderScene(Scene& S)
 		glViewport(cameraPortion.x, cameraPortion.y, cameraPortion.width, cameraPortion.height); // Render the camera in its position (inverting the Y axis)
 
 		
-		RenderSkybox(S.getSkyBox(), *camera); // I render the skybox if present, for this room
+		RenderSkybox(S.getSkyBox(), *camera); // I render the skybox if present, for this camera
 
 		const bool cameraCullFace = camera->getFaceCulling() != FaceCulling::FaceCulling_Disabled; // Indicates whether face culling is activated by the camera
 		bool cullFace = cameraCullFace; // Current state of the culling of the faces

@@ -37,7 +37,7 @@ class Skybox
 		const Mesh* getMesh() const;
 
 		// Gets the transformation matrix of the skybox
-		// @param [in] CameraPos - Location of the room (to be able to center the skybox on it)
+		// @param [in] CameraPos - Location of the camera (to be able to center the skybox on it)
 		const glm::mat4 getMatrix(const glm::vec3& CameraPos) const;
 };
 
@@ -73,7 +73,7 @@ const glm::vec3& getScale() const;
 const Model* getModel() const;
 
 // Gets the transformation matrix of the skybox
-// @param [in] CameraPos - Location of the room (to be able to center the skybox on it)
+// @param [in] CameraPos - Location of the camera (to be able to center the skybox on it)
 const glm::mat4 getMatrix(const glm::vec3& CameraPos) const;
 };
 */

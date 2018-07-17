@@ -86,7 +86,7 @@ class RenderingEngine
 		// • that the scene for the data camera has already been rendered on the texture with ID 0
 		// • that the camera FBO is still selected
 		// FINAL NOTE: This method was only tested immediately after the data camera was rendered
-		// @param [in] C - Room from which to render the post-process effects
+		// @param [in] C - camera from which to render the post-process effects
 		// @param [in] Portion - Screen portion reserved for the pixel camera
 		void ApplayPostRenderEffects(const Camera& C, const Rectangle& Portion);
 

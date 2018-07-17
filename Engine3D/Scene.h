@@ -105,11 +105,11 @@ class Scene
 
 		// Gets a new Camera object for the scene
 		// @param [in] ModeOffset - Desired measurement mode for camera offset
-		// @param [in] X - Desired measurement mode for the room size
-		// @param [in] Y - Desired measurement mode for room size
-		// @param [in] ModeSize - Desired measurement mode for the room size
-		// @param [in] Width - Length of the room relative to the window (using the mode indicated above)
-		// @param [in] Height - Room height compared to the window (using the mode indicated above)
+		// @param [in] X - Desired measurement mode for the camera size
+		// @param [in] Y - Desired measurement mode for camera size
+		// @param [in] ModeSize - Desired measurement mode for the camera size
+		// @param [in] Width - Length of the camera relative to the window (using the mode indicated above)
+		// @param [in] Height - camera height compared to the window (using the mode indicated above)
 		// @return Camera created
 		Camera* InsertNewCamera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height);
 

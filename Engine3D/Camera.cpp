@@ -14,7 +14,7 @@ Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, f
 {
 	// TODO: also the camera must be tact as actors in InsertNewCamera (Camera * C)
 
-	// Room initialization:
+	// camera initialization:
 	position = glm::vec3(0, 0, 0);
 	horizontalAngle = 0.0f;
 	verticalAngle = 0.0f;
@@ -54,7 +54,7 @@ Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, f
 
 Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
 {
-	// Room initialization:
+	// camera initialization:
 	position = glm::vec3(0, 0, 0);
 	horizontalAngle = 0.0f;
 	verticalAngle = 0.0f;
@@ -112,7 +112,7 @@ void Camera::Update(float ElapsedTime)
 		horizontalAngle += mouseSpeed * (float)(cameraWidHalf - cursorPos.x);
 		verticalAngle += mouseSpeed * (float)(cameraHeiHalf - cursorPos.y);
 
-		// For room limitation:
+		// For camera limitation:
 		if(maxHorizontalAngle != 0.f) // Check if you want to limit the angle
 			horizontalAngle = glm::min(horizontalAngle, maxHorizontalAngle);
 		if (minHorizontalAngle != 0.f) // Check if you want to limit the angle
@@ -159,14 +159,14 @@ void Camera::Update(float ElapsedTime)
 			position -= up * ElapsedTime * speed * coefficienteVelocitaCamera;
 
 
-		// Matrix room
+		// Matrix camera
 		viewMatrix = glm::lookAt(
-			position,				// Room is here
+			position,				// camera is here
 			position + direction,	// and looks here: at the same position, plus "direction"
 			up						// Head is up (set to 0, -1.0 to look upside down)
 			);
 
-		cameraMatrix = projectionMatrix * viewMatrix; // Calculating the room matrix
+		cameraMatrix = projectionMatrix * viewMatrix; // Calculating the camera matrix
 	}
 }
 
@@ -223,7 +223,7 @@ void Camera::setProjectionMatrix(const float& FovY, const float& AspectRatio, co
 	zFar = ZFar;
 
 	projectionMatrix = glm::perspective(fovY, aspectRatio, zNear, zFar);
-	cameraMatrix = projectionMatrix * viewMatrix; // I update the room matrix (otherwise we would have to wait for the next update)
+	cameraMatrix = projectionMatrix * viewMatrix; // I update the camera matrix (otherwise we would have to wait for the next update)
 }
 
 const glm::mat4& Camera::getCameraMatrix() const
@@ -345,7 +345,7 @@ void Camera::OnScreenReSize(size_t NewWidth, size_t NewHeight)
 {
 	Point2 windowSize(NewWidth, NewHeight);
 	
-	// Update the size of the room
+	// Update the size of the camera
 	offset = TransformToPixel(modeOffset, measureOffset, windowSize);
 	size = TransformToPixel(modeSize, measureSize, windowSize);
 	

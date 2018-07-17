@@ -8,7 +8,7 @@ class Box;
 
 
 
-// Class that allows to determine if a point is inside the visible space of the room
+// Class that allows to determine if a point is inside the visible space of the camera
 class Frustum
 {
 	// Arrays of the planes that make up the frustum culling are in order:
@@ -22,7 +22,7 @@ public:
 
 public:
 
-	// Set the Fstrum plans given the room
+	// Set the Fstrum plans given the camera
 	// @param [in] m - Chamber matrix
 	void setPlanes(const glm::mat4& m);
 

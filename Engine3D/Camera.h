@@ -34,22 +34,22 @@ enum FaceCulling : int
 class Camera : public ItemScene
 {
 	// Visual:
-	glm::vec3 direction; // Direction of the room
-	glm::vec3 position; // Location of the room
+	glm::vec3 direction; // Direction of the camera
+	glm::vec3 position; // Location of the camera
 	float horizontalAngle; // Horizontal angle
 	float verticalAngle; // Vertical angle
 
-	// Room view limits:
-	float maxHorizontalAngle; // Maximum angle (to the right) possible for the room
-	float minHorizontalAngle;  // Minimum angle (to the left) possible for the room
-	float maxVerticalAngle; // Maximum angle (upward) possible for the room
-	float minVerticalAngle;  // Minimum angle (downwards) possible for the room
+	// camera view limits:
+	float maxHorizontalAngle; // Maximum angle (to the right) possible for the camera
+	float minHorizontalAngle;  // Minimum angle (to the left) possible for the camera
+	float maxVerticalAngle; // Maximum angle (upward) possible for the camera
+	float minVerticalAngle;  // Minimum angle (downwards) possible for the camera
 
 	// Initial Field of View
 	#define INITIAL_FOV 45.0f
 	
-	float fovY; // Fov of the room
-	float aspectRatio; // Current ratio of the room
+	float fovY; // Fov of the camera
+	float aspectRatio; // Current ratio of the camera
 	float zNear; // Minimum distance at which objects are rendered
 	float zFar; // Maximum distance at which objects are rendered
 
@@ -66,8 +66,8 @@ class Camera : public ItemScene
 	bool frustumCulling; // Indicates whether the frustum culling for the actors to be rendered is enabled for the camera
 	FaceCulling faceCulling; // Indicates the face culling of the camera
 
-	Point2 offset; // Room offset in pixels
-	Point2 size; // Room size in pixels
+	Point2 offset; // camera offset in pixels
+	Point2 size; // camera size in pixels
 
 	MeasureMode modeOffset; // How to deal with the offset measurement
 	glm::vec2 measureOffset; // Measurement of the camera offset according to the pre-selected mode (pixel, percentage, ...)
@@ -76,7 +76,7 @@ class Camera : public ItemScene
 
 	// - POST PROCESS EFFECTS
 
-	GLuint idFrameBuffer; // Room framebuffer
+	GLuint idFrameBuffer; // camera framebuffer
 	// Ids of the texture connected to the frame buffer, where the result of the rendering operation is inserted,
 	// there are two to be able to exchange in turn to be able to apply more post-process effects
 	GLuint idRenderTextures[2];
@@ -89,23 +89,23 @@ class Camera : public ItemScene
 
 	public:
 		// Instant a camra
-		// @param [in] ID - ID of the room
+		// @param [in] ID - ID of the camera
 		// @param [in] Scene - Scene containing the camera
 		// @param [in] ModeOffset - Desired measurement mode for camera offset
-		// @param [in] X - Desired measurement mode for the room size
-		// @param [in] Y - Desired measurement mode for room size
-		// @param [in] ModeSize - Desired measurement mode for the room size
-		// @param [in] Width - Length of the room relative to the window (using the mode indicated above)
-		// @param [in] Height - Room height compared to the window (using the mode indicated above)
+		// @param [in] X - Desired measurement mode for the camera size
+		// @param [in] Y - Desired measurement mode for camera size
+		// @param [in] ModeSize - Desired measurement mode for the camera size
+		// @param [in] Width - Length of the camera relative to the window (using the mode indicated above)
+		// @param [in] Height - camera height compared to the window (using the mode indicated above)
 		// Camera (unsigned int ID, Scene * Scene, MeasureMode ModeOffset, X float, Y float, MeasureMode ModeSize, float Width, float Height);
 
 		// Instant a camra
 		// @param [in] ModeOffset - Desired measurement mode for camera offset
-		// @param [in] X - Desired measurement mode for the room size
-		// @param [in] Y - Desired measurement mode for room size
-		// @param [in] ModeSize - Desired measurement mode for the room size
-		// @param [in] Width - Length of the room relative to the window (using the mode indicated above)
-		// @param [in] Height - Room height compared to the window (using the mode indicated above)
+		// @param [in] X - Desired measurement mode for the camera size
+		// @param [in] Y - Desired measurement mode for camera size
+		// @param [in] ModeSize - Desired measurement mode for the camera size
+		// @param [in] Width - Length of the camera relative to the window (using the mode indicated above)
+		// @param [in] Height - camera height compared to the window (using the mode indicated above)
 		Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height);
 		~Camera();
 
@@ -162,7 +162,7 @@ class Camera : public ItemScene
 
 		// Gets the position of the camera angle in the window
 		const Point2& getOffset() const;
-		// Gets the size of the room in the window
+		// Gets the size of the camera in the window
 		const Point2& getSize() const;
 
 		// Gets a flag indicating if the camera is enabled (it receives the inputs)
@@ -178,9 +178,9 @@ class Camera : public ItemScene
 		// Set the face culling of the camera
 		void setFaceCulling(const FaceCulling& F);
 
-		// Set the position of the room
+		// Set the position of the camera
 		void setPosition(const glm::vec3& P);
-		// Gets the position of the room
+		// Gets the position of the camera
 		const glm::vec3& getPosition() const;
 
 		// Frame buffer:
@@ -203,22 +203,22 @@ class Camera : public ItemScene
 		// the value must be <0 or = 0 to not give limits
 		// PI / 2 = look to the left
 		void setMinHorizontalAngle(float A);
-		// Set maximum angle (upward) possible for the room
+		// Set maximum angle (upward) possible for the camera
 		// the value must be> 0 or = 0 to not give limits
 		// PI / 2 = look upwards
 		void setMaxVerticalAngle(float A);
-		// Set minimum angle (down) possible for the room
+		// Set minimum angle (down) possible for the camera
 		// the value must be <0 or = 0 to not give limits
 		// PI / 2 = look down
 		void setMinVerticalAngle(float A);
 
-		// Gets the maximum angle (to the right) possible for the room
+		// Gets the maximum angle (to the right) possible for the camera
 		float getMaxHorizontalAngle();
-		// Gets the minimum angle (to the left) possible for the room
+		// Gets the minimum angle (to the left) possible for the camera
 		float getMinHorizontalAngle();
-		// Get maximum angle (upward) possible for the room
+		// Get maximum angle (upward) possible for the camera
 		float getMaxVerticalAngle();
-		// It obtains minimum angle (downwards) possible for the room
+		// It obtains minimum angle (downwards) possible for the camera
 		float getMinVerticalAngle();
 
 	private:
@@ -232,7 +232,7 @@ class Camera : public ItemScene
 		// @param [in] Window Size - Window size in pixels
 		Point2 static TransformToPixel(const MeasureMode& Mode, const glm::vec2& Measure, const Point2& WindowSize);
 
-		// Allows you to place the cursor in the middle of the room
+		// Allows you to place the cursor in the middle of the camera
 		void CenterCursor();
 
 		// It allows to update the ratio of projection matrix (and consequently to the matrix camera)
