@@ -132,8 +132,8 @@ void SceneTest::InizializeScene()
 	light1->spotExponent = 10;
 	light1->spotDirection = glm::vec3(0, 1, 0);
 
-	Texture2D* texture = Texture2D::NewTexture2D("Test.png", GL_RGB, GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, 4);
-	Texture2D* texture2 = Texture2D::NewTexture2D("Word-Realistic.png", GL_RGB, GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, 4);
+	Texture2D* texture = Texture2D::NewTexture2D("bricks_wall.jpg", GL_RGB, GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, 4);
+	Texture2D* texture2 = Texture2D::NewTexture2D("world.jpg", GL_RGB, GL_REPEAT, GL_REPEAT, GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, 4);
 	Material* material = new Material(liftTriShader, texture);
 	Material* world = new Material(liftTriShader, texture2);
 	material->setAmbient(glm::vec3(0, 0, 0));
