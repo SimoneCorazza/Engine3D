@@ -16,7 +16,7 @@ You can have a high level overview at the [wiki](https://github.com/SimoneCorazz
 * Simple implementation of lights (no shadows)
 * Customizables shaders
 
-[[https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/stressTest.gif]]
+![Stress test](https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/stressTest.gif)
 
 ## Getting Started
 
