@@ -1,11 +1,11 @@
 #version 330 core
 
 /*
-Source https://en.m.wikibooks.org/wiki/GLSL_Programming/GLUT/Multiple_Lights
+Source https:// en.m.wikibooks.org/wiki/GLSL_Programming/GLUT/Multiple_Lights
 */
 
 in vec4 position;  // position of the vertex (and fragment) in world space
-in vec2 uv; //Coordinata UV
+in vec2 uv; // UV Coordinate
 in vec3 varyingNormalDirection;  // surface normal vector in world space
 
 uniform mat4 m, v, p;
@@ -14,7 +14,7 @@ uniform mat4 v_inv;
 uniform sampler2D texture;
 uniform vec4 scene_ambient;
 
-struct lightSource //Proprietà della luce
+struct lightSource // Properties of light
 {
 	vec4 position;
 	vec4 diffuse;
@@ -26,10 +26,10 @@ struct lightSource //Proprietà della luce
 
 const int NUMBER_OF_LIGHTS = 2;
 
-uniform int lightsNumber; //Numero di luci presenti nell'array lights
+uniform int lightsNumber; // Number of lights in the array of lights
 uniform lightSource lights[NUMBER_OF_LIGHTS];
  
-struct material //Proprietà del materiale
+struct material // Properties of the material
 {
 	vec4 ambient;
 	vec4 diffuse;
@@ -46,7 +46,7 @@ void main()
 	vec3 normalDirection = normalize(varyingNormalDirection);
 	vec3 viewDirection = normalize(vec3(v_inv * vec4(0.0, 0.0, 0.0, 1.0) - position));
 	vec3 lightDirection;
-	float attenuation; //Attenuazione: nessuna -> 1, massima attenuazione -> 0
+	float attenuation; // Attenuation: none -> 1, maximum attenuation -> 0
 
 	// initialize total lighting with ambient lighting
 	vec3 totalLighting = vec3(scene_ambient) * vec3(frontMaterial.ambient);
@@ -55,10 +55,10 @@ void main()
 	{
 		if (0.0 == lights[index].position.w) // directional light?
 		{
-			attenuation = 1.0; //No attenuazione per la luce direzionale
+			attenuation = 1.0; // No attenuation for directional light
 			lightDirection = normalize(vec3(lights[index].position));
 		}
-		else // point light or spotlight (or other kind of light) 
+		else // point light or spotlight (or other kind of light)
 		{
 			vec3 positionToLightSource = vec3(lights[index].position - position);
 			float distance = length(positionToLightSource);
@@ -79,7 +79,7 @@ void main()
 
 		vec3 diffuseReflection = attenuation
 			* vec3(lights[index].diffuse) * vec3(frontMaterial.diffuse)
-			* max(0.0, dot(normalDirection, lightDirection)); //Uso di max nel caso il prodotto dot product sia negativo
+			* max(0.0, dot(normalDirection, lightDirection)); // Use of max if the product dot product is negative
 
 		vec3 specularReflection;
 		if (dot(normalDirection, lightDirection) < 0.0) // light source on the wrong side?
@@ -159,7 +159,7 @@ void main()
 		attenuation = 1.0; // no attenuation
 		lightDirection = normalize(vec3(light0.position));
     } 
-	else // point light or spotlight (or other kind of light) 
+	else // point light or spotlight (or other kind of light)
     {
 		vec3 positionToLightSource = vec3(light0.position - position);
 		float distance = length(positionToLightSource);

@@ -1,5 +1,5 @@
 /*
-Fragment shader che prende una texture e ne disegna il corrispettivo in bianco e nero
+Fragment shader that take in a texture and output a black and white texture 
 */
 
 

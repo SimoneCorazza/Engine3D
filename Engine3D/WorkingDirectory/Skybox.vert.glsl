@@ -1,7 +1,7 @@
 #version 330 core
 
 /*
-Vertex shader per lo skybox
+Vertex shader to render a skybox
 */
 
 layout (location = 0) in vec3 position;
@@ -13,6 +13,6 @@ uniform mat4 MVP;
 void main()
 {
     gl_Position = MVP * vec4(position, 1);
-	//Come coordinata dello skybox passo direttamente la coordinata del vertice (anche se non normalizzata non importa, verrà normalizzata dal sistema)
+	// As the coordinate of the skybox directly step the coordinate of the summit (even if not normalized it does not matter, it will be normalized by the system)
     TexCoords = position;
 }  

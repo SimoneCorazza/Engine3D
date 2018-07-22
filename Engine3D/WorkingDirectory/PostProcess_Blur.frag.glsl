@@ -8,10 +8,10 @@ uniform vec2 resolution;
 in vec2 UV;
 out vec4 fragmentFinal;
 
-//Versione non in GLSL
-//http://blog.ivank.net/fastest-gaussian-blur.html
+// Version not in GLSL
+// http://blog.ivank.net/fastest-gaussian-blur.html
 
-//https://github.com/Jam3/glsl-fast-gaussian-blur
+// https://github.com/Jam3/glsl-fast-gaussian-blur
 vec4 blur13(sampler2D image, vec2 uv, vec2 resolution, vec2 direction)
 {
 	vec4 color = vec4(0.0);
@@ -37,7 +37,7 @@ void main()
 {
 /*
 	if(texture2D(depthTex, UV).r < 0.1)
-		fragmentFinal = vec4(1, 0, 0, 1); 	//fragmentFinal = texture2D(renderedTex, UV);
+		fragmentFinal = vec4(1, 0, 0, 1); 	// fragmentFinal = texture2D (renderedTex, UV);
 	else
 		fragmentFinal = blur13(renderedTex, UV, resolution, vec2(1, 1));*/
 	fragmentFinal = blur13(renderedTex, UV, resolution, vec2(1, 1));

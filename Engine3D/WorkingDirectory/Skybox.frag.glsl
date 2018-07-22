@@ -1,17 +1,17 @@
 #version 330 core
 
 /*
-Fragment shader per lo skybox
+Fragment shader to render the skybox
 */
 
-in vec3 TexCoords; //Coordinata della texture (può essere lo stesso vertice della mesh)
-uniform samplerCube skybox; //Sampler delal textured cube dello skybox
+in vec3 TexCoords; // Texture coordinate (can be the same vertex of the mesh)
+uniform samplerCube skybox; // Sampler fo the textured cube of the skybox
 
 out vec4 colorOut;
 
 void main()
 {
-	//NOTA: prima la X si invertiva [TexCoords.x * (-1)] non si sa il perchè (problema risolto?)
-	//Inverto la Y siccome il caricamento della texture non inverte le righe
+	// NOTE: before the X was inverted [TexCoords.x * (-1)] we do not know why (problem solved?)
+	// Invert the Y as the texture loading does not reverse the rows
     colorOut = texture(skybox, vec3(TexCoords.x, TexCoords.y * (-1), TexCoords.z));
 }
