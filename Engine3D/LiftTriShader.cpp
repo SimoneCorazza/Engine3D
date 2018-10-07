@@ -59,13 +59,12 @@ void LiftTriShader::SetCameraParameters(const glm::mat4 & ViewMatix, const glm::
 
 void LiftTriShader::SetObjectParameters(const ActorParameters* P, const glm::mat4 & ModelMatrix)
 {
-
-	if(P == nullptr || static_cast<const LiftTriAP*>(P) == nullptr)
+	const LiftTriAP* params = dynamic_cast<const LiftTriAP*>(P);
+	if(P == nullptr || params == nullptr)
 		glUniform1f(idDelta, 0.f);
 	else
 	{
-		const LiftTriAP* p = (const LiftTriAP*)P;
-		glUniform1f(idDelta, p->delta);
+		glUniform1f(idDelta, params->delta);
 	}
 
 	glm::mat4 mvp = matrixViewProject * ModelMatrix;
