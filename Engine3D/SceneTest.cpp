@@ -24,6 +24,8 @@
 #include "DepthPostProcessShader.hpp"
 #include "LiftTriShader.hpp"
 
+#include "ColorShader.hpp"
+
 
 #include "DEBUG.hpp"
 
@@ -72,6 +74,9 @@ void SceneTest::InizializeScene()
 
 	LiftTriShader* liftTriShader = new LiftTriShader();
 	liftTriShader->LoadShader("LiftTri.vert.glsl", "Texture.frag.glsl");
+
+	ColorShader* colorShader = new ColorShader();
+	colorShader->LoadShader("Standard.vert.glsl", "Color.frag.glsl");
 
 
 	BlackAndWhitePostProcessShader* blackAndWhite = new BlackAndWhitePostProcessShader();

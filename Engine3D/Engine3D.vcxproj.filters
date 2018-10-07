@@ -106,6 +106,9 @@
     <Filter Include="Engine\Scene\Shaders\Models\Standard">
       <UniqueIdentifier>{2965faae-25ff-4368-885e-a35e86ef68d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Scene\Shaders\Models\Color">
+      <UniqueIdentifier>{c6fa235d-1258-40de-b382-0e800d500fd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaderLoader.cpp">
@@ -176,9 +179,6 @@
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Engine\Scene\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorShader.cpp">
-      <Filter>Engine\Scene\Shaders\Models</Filter>
     </ClCompile>
     <ClCompile Include="PostProcess_Final.cpp">
       <Filter>Engine\Scene\Shaders\PostProcess</Filter>
@@ -282,6 +282,12 @@
     <ClCompile Include="NvidiaOptimus.hpp">
       <Filter>Engine\RenderingEngine</Filter>
     </ClCompile>
+    <ClCompile Include="ColorShader.cpp">
+      <Filter>Engine\Scene\Shaders\Models\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorShaderAP.cpp">
+      <Filter>Engine\Scene\Shaders\Models\Color</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.hpp">
@@ -373,9 +379,6 @@
     </ClInclude>
     <ClInclude Include="StandardShader.hpp">
       <Filter>Engine\Scene\Shaders\Models\Standard</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorShader.hpp">
-      <Filter>Engine\Scene\Shaders\Models</Filter>
     </ClInclude>
     <ClInclude Include="ModelShader.hpp">
       <Filter>Engine\Scene\Shaders\Models</Filter>
@@ -478,6 +481,12 @@
     </ClInclude>
     <ClInclude Include="TextureDecoder.hpp">
       <Filter>Engine\Scene\Textures\TextureLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorShader.hpp">
+      <Filter>Engine\Scene\Shaders\Models\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorShaderAP.hpp">
+      <Filter>Engine\Scene\Shaders\Models\Color</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

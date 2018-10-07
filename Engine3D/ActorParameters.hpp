@@ -6,6 +6,6 @@ class ActorParameters
 {
 	public:
 		ActorParameters();
-		~ActorParameters();
+		virtual ~ActorParameters();
 };
 

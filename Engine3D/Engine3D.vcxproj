@@ -199,6 +199,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CheckTable.cpp" />
     <ClCompile Include="ColorShader.cpp" />
+    <ClCompile Include="ColorShaderAP.cpp" />
     <ClCompile Include="DEBUG.cpp" />
     <ClCompile Include="DepthPostProcessShader.cpp" />
     <ClCompile Include="Draw2D.cpp" />
@@ -259,6 +260,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="Camera.hpp" />
     <ClInclude Include="CheckTable.hpp" />
     <ClInclude Include="ColorShader.hpp" />
+    <ClInclude Include="ColorShaderAP.hpp" />
     <ClInclude Include="CommonConstants.hpp" />
     <ClInclude Include="DEBUG.hpp" />
     <ClInclude Include="DepthPostProcessShader.hpp" />

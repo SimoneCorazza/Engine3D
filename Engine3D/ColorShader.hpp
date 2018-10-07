@@ -1,13 +1,16 @@
 #pragma once
-/*
 
-#include "ModelShader.h"
+
+#include "ModelShader.hpp"
 
 // Shades for mono colored vertices
 class ColorShader : public ModelShader
 {
 	GLuint idMatrix; // ID of the uniform variable of the array
 	GLuint idColor; // ID of the uniform color variable to use
+
+	// Partial matrix for the MVP (as the vertex shader takes the entire MVP matrix as input and not the individual matrices)
+	glm::mat4 matrixViewProject;
 
 	public:
 		ColorShader();
@@ -26,18 +29,5 @@ class ColorShader : public ModelShader
 
 		virtual void SetCameraParameters(const glm::mat4& ViewMatix, const glm::mat4& ProjectionMatrix) override;
 
-		// DRAWING:
-
-		void RenderTriangles(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4& modelMatrix, const glm::mat4& cameraMatrix, GLsizei numVerteces);
-		void RenderLines(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4& modelMatrix, const glm::mat4& cameraMatrix, GLsizei numVerteces);
-
 		virtual void SetObjectParameters(const ActorParameters* P, const glm::mat4& ModelMatrix) override;
-
-
-	private:
-
-		// Render with the indicated primitive
-		void RenderPrimitives(GLuint vertexBufer, const glm::vec4 Color, const glm::mat4& modelMatrix, const glm::mat4& cameraMatrix, GLsizei numVerteces, GLenum Primitive) const;
 };
-
-*/
