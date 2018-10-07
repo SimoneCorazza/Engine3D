@@ -1,8 +1,8 @@
-#include "Texture2D.h"
+#include "Texture2D.hpp"
 
-#include "DEBUG.h"
-#include "TextureDecoder.h"
-#include "CommonConstants.h"
+#include "DEBUG.hpp"
+#include "TextureDecoder.hpp"
+#include "CommonConstants.hpp"
 
 
 Texture2D::Texture2D()

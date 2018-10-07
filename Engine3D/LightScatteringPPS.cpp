@@ -1,8 +1,8 @@
-#include "LightScatteringPPS.h"
+#include "LightScatteringPPS.hpp"
 
-#include "DEBUG.h"
-#include "LightScatteringPPSP.h"
-#include "CommonConstants.h"
+#include "DEBUG.hpp"
+#include "LightScatteringPPSP.hpp"
+#include "CommonConstants.hpp"
 
 LightScatteringPPS::LightScatteringPPS()
 {

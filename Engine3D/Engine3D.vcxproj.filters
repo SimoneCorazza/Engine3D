@@ -270,9 +270,6 @@
     <ClCompile Include="DepthPostProcessShader.cpp">
       <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
     </ClCompile>
-    <ClCompile Include="NvidiaOptimus.h">
-      <Filter>Engine\RenderingEngine</Filter>
-    </ClCompile>
     <ClCompile Include="LiftTriShader.cpp">
       <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
     </ClCompile>
@@ -294,211 +291,214 @@
     <ClCompile Include="Utility_Time.cpp">
       <Filter>Engine\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="NvidiaOptimus.hpp">
+      <Filter>Engine\RenderingEngine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lodepng.h">
       <Filter>Engine\Scene\Textures\TextureLoader</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderLoader.h">
-      <Filter>Engine\Scene\Shaders\ShaderLoader</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Engine\Scene\ItemScene\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderingEngine.h">
-      <Filter>Engine\RenderingEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="DEBUG.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="IDCollection.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Model.h">
-      <Filter>Engine\Scene\ItemScene\Actor\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Engine\Scene\ItemScene\Actor\Model\Mesh</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Engine\Scene\ItemScene\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Engine\Scene\ItemScene\Actor\Model\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTest.h">
-      <Filter>TestGame</Filter>
-    </ClInclude>
-    <ClInclude Include="InputEngine.h">
-      <Filter>Engine\InputEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Point3.h">
+    <ClInclude Include="Box.hpp">
       <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="Point2.h">
+    <ClInclude Include="Plane.hpp">
       <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Engine\Scene</Filter>
+    <ClInclude Include="Point2.hpp">
+      <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="Frustum.h">
-      <Filter>Engine\RenderingEngine\Frustum</Filter>
+    <ClInclude Include="Point3.hpp">
+      <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="ItemScene.h">
-      <Filter>Engine\Scene\ItemScene</Filter>
+    <ClInclude Include="Rectangle.hpp">
+      <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="TextureDecoder.h">
-      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
+    <ClInclude Include="RectangleF.hpp">
+      <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="Utility_FileSystem.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility_Strings.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyBox.h">
-      <Filter>Engine\Scene\Skybox</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility_GLM.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="BinaryReader.h">
+    <ClInclude Include="BinaryReader.hpp">
       <Filter>Engine\File</Filter>
     </ClInclude>
-    <ClInclude Include="PostProcessEffect.h">
-      <Filter>Engine\Scene\ItemScene\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Engine\Scene\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorShader.h">
-      <Filter>Engine\Scene\Shaders\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="PostProcess_Final.h">
-      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="PostProcessShader.h">
-      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="PostProcessShaderParams.h">
-      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelShader.h">
-      <Filter>Engine\Scene\Shaders\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackAndWhitePostProcessShader.h">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\BlackAndWhite</Filter>
-    </ClInclude>
-    <ClInclude Include="RectangleF.h">
-      <Filter>Engine\BasicStructers</Filter>
-    </ClInclude>
-    <ClInclude Include="Rectangle.h">
-      <Filter>Engine\BasicStructers</Filter>
-    </ClInclude>
-    <ClInclude Include="BlurPostProcessShader.h">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Blur</Filter>
-    </ClInclude>
-    <ClInclude Include="Texture2D.h">
-      <Filter>Engine\Scene\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureCube.h">
-      <Filter>Engine\Scene\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility_Arrays.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyboxShader.h">
-      <Filter>Engine\Scene\Shaders\Skybox</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureUtils.h">
-      <Filter>Engine\Scene\Textures</Filter>
-    </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>Engine\Scene\ItemScene\Lights</Filter>
-    </ClInclude>
-    <ClInclude Include="CheckTable.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="InputState.h">
+    <ClInclude Include="IE_CursorMode.hpp">
       <Filter>Engine\InputEngine</Filter>
     </ClInclude>
-    <ClInclude Include="IE_CursorMode.h">
+    <ClInclude Include="InputEngine.hpp">
       <Filter>Engine\InputEngine</Filter>
     </ClInclude>
-    <ClInclude Include="MapIterator.h">
-      <Filter>Engine\Utility</Filter>
+    <ClInclude Include="InputState.hpp">
+      <Filter>Engine\InputEngine</Filter>
     </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>Engine\BasicStructers</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Engine\BasicStructers</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>Engine\Scene\UI\UIElements</Filter>
-    </ClInclude>
-    <ClInclude Include="CommonConstants.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorParameters.h">
-      <Filter>Engine\Scene\ItemScene\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Font.h">
+    <ClInclude Include="Font.hpp">
       <Filter>Engine\RenderingEngine\2D\Font</Filter>
     </ClInclude>
-    <ClInclude Include="Utility_Math.h">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteFont.h">
+    <ClInclude Include="GlyphInfo.hpp">
       <Filter>Engine\RenderingEngine\2D\Font</Filter>
     </ClInclude>
-    <ClInclude Include="GlyphInfo.h">
+    <ClInclude Include="SpriteFont.hpp">
       <Filter>Engine\RenderingEngine\2D\Font</Filter>
     </ClInclude>
-    <ClInclude Include="UIElement.h">
-      <Filter>Engine\Scene\UI\UIElements</Filter>
-    </ClInclude>
-    <ClInclude Include="Draw2D.h">
+    <ClInclude Include="Draw2D.hpp">
       <Filter>Engine\RenderingEngine\2D</Filter>
     </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>Engine\Scene\UI</Filter>
+    <ClInclude Include="Frustum.hpp">
+      <Filter>Engine\RenderingEngine\Frustum</Filter>
     </ClInclude>
-    <ClInclude Include="LightScatteringPPS.h">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
-    </ClInclude>
-    <ClInclude Include="LightScatteringPPSP.h">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderingEngineInfo.h">
+    <ClInclude Include="RenderingEngine.hpp">
       <Filter>Engine\RenderingEngine</Filter>
     </ClInclude>
-    <ClInclude Include="DepthPostProcessShader.h">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
+    <ClInclude Include="RenderingEngineInfo.hpp">
+      <Filter>Engine\RenderingEngine</Filter>
     </ClInclude>
-    <ClInclude Include="LiftTriShader.h">
+    <ClInclude Include="Material.hpp">
+      <Filter>Engine\Scene\ItemScene\Actor\Model\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.hpp">
+      <Filter>Engine\Scene\ItemScene\Actor\Model\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.hpp">
+      <Filter>Engine\Scene\ItemScene\Actor\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.hpp">
+      <Filter>Engine\Scene\ItemScene\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorParameters.hpp">
+      <Filter>Engine\Scene\ItemScene\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.hpp">
+      <Filter>Engine\Scene\ItemScene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessEffect.hpp">
+      <Filter>Engine\Scene\ItemScene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.hpp">
+      <Filter>Engine\Scene\ItemScene\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemScene.hpp">
+      <Filter>Engine\Scene\ItemScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LiftTriAP.hpp">
       <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
     </ClInclude>
-    <ClInclude Include="LightTextureShader.h">
+    <ClInclude Include="LiftTriShader.hpp">
+      <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
+    </ClInclude>
+    <ClInclude Include="LightTextureShader.hpp">
       <Filter>Engine\Scene\Shaders\Models\LightTexture</Filter>
     </ClInclude>
-    <ClInclude Include="StandardShader.h">
+    <ClInclude Include="StandardShader.hpp">
       <Filter>Engine\Scene\Shaders\Models\Standard</Filter>
     </ClInclude>
-    <ClInclude Include="LiftTriAP.h">
-      <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
+    <ClInclude Include="ColorShader.hpp">
+      <Filter>Engine\Scene\Shaders\Models</Filter>
     </ClInclude>
-    <ClInclude Include="MyActor.h">
-      <Filter>TestGame</Filter>
+    <ClInclude Include="ModelShader.hpp">
+      <Filter>Engine\Scene\Shaders\Models</Filter>
     </ClInclude>
-    <ClInclude Include="UpdateParameters.h">
+    <ClInclude Include="PostProcess_Final.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessShader.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessShaderParams.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.hpp">
+      <Filter>Engine\Scene\Shaders\ShaderLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyboxShader.hpp">
+      <Filter>Engine\Scene\Shaders\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.hpp">
+      <Filter>Engine\Scene\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.hpp">
+      <Filter>Engine\Scene\Skybox</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.hpp">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCube.hpp">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureUtils.hpp">
+      <Filter>Engine\Scene\Textures</Filter>
+    </ClInclude>
+    <ClInclude Include="TextBox.hpp">
+      <Filter>Engine\Scene\UI\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.hpp">
+      <Filter>Engine\Scene\UI\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.hpp">
+      <Filter>Engine\Scene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.hpp">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Utility_Time.h">
+    <ClInclude Include="UpdateParameters.hpp">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckTable.hpp">
       <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="IDCollection.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="MapIterator.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Arrays.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_FileSystem.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_GLM.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Math.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Strings.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility_Time.hpp">
+      <Filter>Engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonConstants.hpp">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DEBUG.hpp">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.hpp">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="MyActor.hpp">
+      <Filter>TestGame</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTest.hpp">
+      <Filter>TestGame</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackAndWhitePostProcessShader.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\BlackAndWhite</Filter>
+    </ClInclude>
+    <ClInclude Include="BlurPostProcessShader.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Blur</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthPostProcessShader.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
+    </ClInclude>
+    <ClInclude Include="LightScatteringPPS.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
+    </ClInclude>
+    <ClInclude Include="LightScatteringPPSP.hpp">
+      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureDecoder.hpp">
+      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

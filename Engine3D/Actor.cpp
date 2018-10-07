@@ -1,8 +1,8 @@
-#include "Actor.h"
+#include "Actor.hpp"
 
-#include "Mesh.h"
+#include "Mesh.hpp"
 
-#include "Utility_GLM.h"
+#include "Utility_GLM.hpp"
 
 /*
 Actor::Actor(unsigned int ID, Scene* Scene) 

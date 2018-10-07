@@ -1,8 +1,8 @@
-#include "SkyboxShader.h"
+#include "SkyboxShader.hpp"
 
-#include "Skybox.h"
-#include "TextureCube.h"
-#include "Mesh.h"
+#include "Skybox.hpp"
+#include "TextureCube.hpp"
+#include "Mesh.hpp"
 
 
 SkyboxShader::SkyboxShader()

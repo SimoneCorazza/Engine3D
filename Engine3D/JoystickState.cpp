@@ -1,4 +1,4 @@
-#include "InputState.h"
+#include "InputState.hpp"
 
 #include <GLFW\glfw3.h>
 

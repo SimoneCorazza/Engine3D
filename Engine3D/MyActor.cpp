@@ -1,8 +1,8 @@
-#include "MyActor.h"
+#include "MyActor.hpp"
 
-#include "LiftTriAP.h"
-#include "UpdateParameters.h"
-#include "Utility_Time.h"
+#include "LiftTriAP.hpp"
+#include "UpdateParameters.hpp"
+#include "Utility_Time.hpp"
 
 MyActor::MyActor()
 {

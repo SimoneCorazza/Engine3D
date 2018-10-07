@@ -1,11 +1,11 @@
-#include "TextureCube.h"
+#include "TextureCube.hpp"
 
-#include "TextureDecoder.h"
-#include "DEBUG.h"
+#include "TextureDecoder.hpp"
+#include "DEBUG.hpp"
 
-#include "Utility_Arrays.h"
-#include "TextureUtils.h"
-#include "CommonConstants.h"
+#include "Utility_Arrays.hpp"
+#include "TextureUtils.hpp"
+#include "CommonConstants.hpp"
 
 
 TextureCube::TextureCube()

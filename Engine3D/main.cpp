@@ -1,5 +1,5 @@
-#include "Engine.h"
-#include "SceneTest.h"
+#include "Engine.hpp"
+#include "SceneTest.hpp"
 
 int main(int numArgs, char** args)
 {

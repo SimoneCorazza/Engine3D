@@ -1,5 +1,5 @@
-#include "Shader.h"
-#include "ShaderLoader.h"
+#include "Shader.hpp"
+#include "ShaderLoader.hpp"
 
 // --- BUILDERS ---
 

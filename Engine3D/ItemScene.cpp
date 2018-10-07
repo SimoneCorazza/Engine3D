@@ -1,8 +1,8 @@
-#include "ItemScene.h"
+#include "ItemScene.hpp"
 
-#include "Scene.h"
+#include "Scene.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 ItemScene::ItemScene()
 {

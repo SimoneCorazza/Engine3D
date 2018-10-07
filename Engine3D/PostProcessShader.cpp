@@ -1,7 +1,7 @@
-#include "PostProcessShader.h"
+#include "PostProcessShader.hpp"
 
-#include "ShaderLoader.h"
-#include "DEBUG.h"
+#include "ShaderLoader.hpp"
+#include "DEBUG.hpp"
 
 #define NAME_TEXTURE_RENDERED "renderedTex"
 #define NAME_TEXTURE_DEPTH "depthTex"

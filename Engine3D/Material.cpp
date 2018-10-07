@@ -1,6 +1,6 @@
-#include "Material.h"
+#include "Material.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 Material::Material()
 {

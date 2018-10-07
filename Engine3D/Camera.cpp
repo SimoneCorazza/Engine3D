@@ -1,13 +1,13 @@
-#include "Camera.h"
+#include "Camera.hpp"
 
 #include <glm\gtc\matrix_transform.hpp>
 #include <glm\gtc\constants.hpp>
-#include "InputState.h"
+#include "InputState.hpp"
 #include <GLFW\glfw3.h>
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
-#include "PostProcessShaderParams.h"
+#include "PostProcessShaderParams.hpp"
 
 /*
 Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)

@@ -1,9 +1,9 @@
-#include "StandardShader.h"
+#include "StandardShader.hpp"
 
-#include "Model.h"
-#include "Material.h"
-#include "Mesh.h"
-#include "Texture2D.h"
+#include "Model.hpp"
+#include "Material.hpp"
+#include "Mesh.hpp"
+#include "Texture2D.hpp"
 
 // --- BUILDERS ---
 

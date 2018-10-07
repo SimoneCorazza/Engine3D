@@ -1,8 +1,8 @@
-#include "Draw2D.h"
+#include "Draw2D.hpp"
 
 #include <GLFW\glfw3.h>
 #include <glm\gtc\matrix_transform.hpp>
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 Draw2D::Draw2D()
 {

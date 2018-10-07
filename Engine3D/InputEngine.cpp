@@ -1,10 +1,10 @@
-#include "InputEngine.h"
+#include "InputEngine.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 #include <GLFW\glfw3.h>
-#include "Point2.h"
-#include "IE_CursorMode.h"
-#include "InputState.h"
+#include "Point2.hpp"
+#include "IE_CursorMode.hpp"
+#include "InputState.hpp"
 
 #ifdef WINDOWS
 #include <Windows.h>

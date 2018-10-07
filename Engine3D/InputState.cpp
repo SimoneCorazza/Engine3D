@@ -1,7 +1,7 @@
-#include "InputState.h"
+#include "InputState.hpp"
 
 #include <GLFW\glfw3.h>
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 #include <vector>
 

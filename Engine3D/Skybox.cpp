@@ -1,9 +1,9 @@
-#include "Skybox.h"
+#include "Skybox.hpp"
 
-#include "Mesh.h"
-#include "Utility_GLM.h"
+#include "Mesh.hpp"
+#include "Utility_GLM.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 Skybox::Skybox(const Mesh* Mesh, const TextureCube* TextureCube)
 {

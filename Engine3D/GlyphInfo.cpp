@@ -1,4 +1,4 @@
-#include "GlyphInfo.h"
+#include "GlyphInfo.hpp"
 
 
 GlyphInfo::GlyphInfo()

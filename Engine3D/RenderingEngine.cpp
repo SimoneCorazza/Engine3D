@@ -1,26 +1,26 @@
-#include "RenderingEngine.h"
+#include "RenderingEngine.hpp"
 
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 #include <vector>
-#include "Actor.h"
-#include "Scene.h"
-#include "Material.h"
-#include "Mesh.h"
-#include "Frustum.h"
-#include "InputEngine.h"
-#include "Skybox.h"
-#include "PostProcessShader.h"
-#include "PostProcessShaderParams.h"
-#include "Rectangle.h"
-#include "ModelShader.h"
+#include "Actor.hpp"
+#include "Scene.hpp"
+#include "Material.hpp"
+#include "Mesh.hpp"
+#include "Frustum.hpp"
+#include "InputEngine.hpp"
+#include "Skybox.hpp"
+#include "PostProcessShader.hpp"
+#include "PostProcessShaderParams.hpp"
+#include "Rectangle.hpp"
+#include "ModelShader.hpp"
 
-#include "Font.h"
-#include "SpriteFont.h"
+#include "Font.hpp"
+#include "SpriteFont.hpp"
 #include <glm\gtc\matrix_transform.hpp>
 
-#include "CommonConstants.h"
+#include "CommonConstants.hpp"
 
 #ifdef _DEBUG
 /*

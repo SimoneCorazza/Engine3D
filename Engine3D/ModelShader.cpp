@@ -1,6 +1,6 @@
-#include "ModelShader.h"
+#include "ModelShader.hpp"
 
-#include "CommonConstants.h"
+#include "CommonConstants.hpp"
 
 ModelShader::ModelShader()
 {

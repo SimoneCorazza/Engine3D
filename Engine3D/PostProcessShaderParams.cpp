@@ -1,4 +1,4 @@
-#include "PostProcessShaderParams.h"
+#include "PostProcessShaderParams.hpp"
 
 #include <GLFW\glfw3.h>
 

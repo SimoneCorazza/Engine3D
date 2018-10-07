@@ -1,5 +1,5 @@
-#include "Utility_FileSystem.h"
-#include "Utility_Math.h"
+#include "Utility_FileSystem.hpp"
+#include "Utility_Math.hpp"
 
 #ifdef WINDOWS
 #include <Windows.h>

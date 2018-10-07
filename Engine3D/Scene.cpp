@@ -1,13 +1,13 @@
-#include "Scene.h"
+#include "Scene.hpp"
 
 #include <algorithm> // For std :: sort
 
-#include "Engine.h"
-#include "DEBUG.h"
+#include "Engine.hpp"
+#include "DEBUG.hpp"
 
-#include "InputEngine.h"
-#include "Point2.h"
-#include "Material.h"
+#include "InputEngine.hpp"
+#include "Point2.hpp"
+#include "Material.hpp"
 
 Scene::Scene()
 {

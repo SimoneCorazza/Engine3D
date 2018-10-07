@@ -1,7 +1,7 @@
-#include "BlurPostProcessShader.h"
+#include "BlurPostProcessShader.hpp"
 
-#include "PostProcessShaderParams.h"
-#include "DEBUG.h"
+#include "PostProcessShaderParams.hpp"
+#include "DEBUG.hpp"
 
 BlurPostProcessShader::BlurPostProcessShader()
 {

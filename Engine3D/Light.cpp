@@ -1,4 +1,4 @@
-#include "Light.h"
+#include "Light.hpp"
 
 #define MIN_LIGHT 0.01f
 #define MAXIMUM_RADIUS 100 // Maximum radius of a generic light

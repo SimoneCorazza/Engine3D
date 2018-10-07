@@ -1,13 +1,13 @@
-#include "LightTextureShader.h"
+#include "LightTextureShader.hpp"
 
 #include <glm\gtc\matrix_inverse.hpp>
 #include <string>
 
-#include "Model.h"
-#include "Mesh.h"
-#include "Material.h"
-#include "Texture2D.h"
-#include "Actor.h"
+#include "Model.hpp"
+#include "Mesh.hpp"
+#include "Material.hpp"
+#include "Texture2D.hpp"
+#include "Actor.hpp"
 
 LightTextureShader::LightTextureShader()
 {

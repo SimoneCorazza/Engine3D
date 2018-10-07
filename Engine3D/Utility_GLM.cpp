@@ -1,4 +1,4 @@
-#include "Utility_GLM.h"
+#include "Utility_GLM.hpp"
 
 #include <glm\gtc\matrix_transform.hpp>
 

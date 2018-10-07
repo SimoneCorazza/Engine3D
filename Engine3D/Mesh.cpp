@@ -1,11 +1,11 @@
-#include "Mesh.h"
+#include "Mesh.hpp"
 
 #include <vector>
 
 #include <math.h>
 
-#include "BinaryReader.h"
-#include "CommonConstants.h"
+#include "BinaryReader.hpp"
+#include "CommonConstants.hpp"
 
 Mesh::Mesh()
 {

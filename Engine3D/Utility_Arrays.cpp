@@ -1,6 +1,6 @@
-#include "Utility_Arrays.h"
+#include "Utility_Arrays.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 void* Utility_Arrays_SubMatrix(const size_t& OffsetX, const size_t& OffsetY, const size_t& Width, const size_t& Height, const size_t& SizeElement,
 	void* Matrix, const size_t& MatrixWid, const size_t& MatrixHei)

@@ -1,6 +1,6 @@
-#include "TextureDecoder.h"
+#include "TextureDecoder.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 // #include "lodepng.h"
 // #include "Utility_FileSystem.h"

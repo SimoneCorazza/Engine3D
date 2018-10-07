@@ -1,10 +1,10 @@
-#include "LiftTriShader.h"
+#include "LiftTriShader.hpp"
 
-#include "Model.h"
-#include "Material.h"
-#include "Texture2D.h"
+#include "Model.hpp"
+#include "Material.hpp"
+#include "Texture2D.hpp"
 
-#include "LiftTriAP.h"
+#include "LiftTriAP.hpp"
 
 
 LiftTriShader::LiftTriShader()

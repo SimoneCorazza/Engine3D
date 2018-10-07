@@ -1,7 +1,7 @@
-#include "PostProcessEffect.h"
+#include "PostProcessEffect.hpp"
 
-#include "Camera.h"
-#include "DEBUG.h"
+#include "Camera.hpp"
+#include "DEBUG.hpp"
 
 PostProcessEffect::PostProcessEffect(unsigned int ID, Camera* Camera, const PostProcessShader* PostProcessShader, PostProcessShaderParams* PostProcessShaderParams)
 {

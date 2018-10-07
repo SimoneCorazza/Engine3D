@@ -1,40 +1,40 @@
-#include "SceneTest.h"
+#include "SceneTest.hpp"
 
-#include "Engine.h"
+#include "Engine.hpp"
 
-#include "Texture2D.h"
-#include "TextureCube.h"
-#include "Model.h"
-#include "Mesh.h"
-#include "StandardShader.h"
-#include "Material.h"
-#include "Actor.h"
+#include "Texture2D.hpp"
+#include "TextureCube.hpp"
+#include "Model.hpp"
+#include "Mesh.hpp"
+#include "StandardShader.hpp"
+#include "Material.hpp"
+#include "Actor.hpp"
 
 
-#include "InputEngine.h"
-#include "Point2.h"
+#include "InputEngine.hpp"
+#include "Point2.hpp"
 #include <GLFW\glfw3.h>
 
-#include "Utility_FileSystem.h"
+#include "Utility_FileSystem.hpp"
 
-#include "PostProcessShaderParams.h"
-#include "BlackAndWhitePostProcessShader.h"
-#include "BlurPostProcessShader.h"
-#include "LightScatteringPPS.h"
-#include "LightScatteringPPSP.h"
-#include "LightTextureShader.h"
-#include "DepthPostProcessShader.h"
-#include "LiftTriShader.h"
+#include "PostProcessShaderParams.hpp"
+#include "BlackAndWhitePostProcessShader.hpp"
+#include "BlurPostProcessShader.hpp"
+#include "LightScatteringPPS.hpp"
+#include "LightScatteringPPSP.hpp"
+#include "LightTextureShader.hpp"
+#include "DepthPostProcessShader.hpp"
+#include "LiftTriShader.hpp"
 
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
-#include "Utility_Arrays.h"
-#include "InputState.h"
+#include "Utility_Arrays.hpp"
+#include "InputState.hpp"
 
-#include "TextBox.h"
+#include "TextBox.hpp"
 
-#include "MyActor.h"
+#include "MyActor.hpp"
 
 #define GLM_FORCE_RADIANS
 

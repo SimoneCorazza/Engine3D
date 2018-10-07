@@ -1,4 +1,4 @@
-#include "Utility_Time.h"
+#include "Utility_Time.hpp"
 
 #include <GLFW\glfw3.h>
 

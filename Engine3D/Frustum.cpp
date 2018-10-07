@@ -1,6 +1,6 @@
-#include "Frustum.h"
+#include "Frustum.hpp"
 
-#include "Box.h"
+#include "Box.hpp"
 
 Frustum::Frustum()
 {

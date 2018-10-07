@@ -1,8 +1,8 @@
-#include "SpriteFont.h"
+#include "SpriteFont.hpp"
 
-#include "ShaderLoader.h"
+#include "ShaderLoader.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 // Characters that can be drawn at once (requires more memory)
 #define MAX_CHAR_RENDER_ONCE 128

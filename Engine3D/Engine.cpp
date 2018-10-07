@@ -1,19 +1,19 @@
-#include "Engine.h"
+#include "Engine.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 #include <string>
 
 #include <GL\glew.h> // It must be placed before "#include <GLFW \ glfw3.h>"
 #include <GLFW\glfw3.h>
 
-#include "InputEngine.h"
+#include "InputEngine.hpp"
 
-#include "DEBUG.h"
+#include "DEBUG.hpp"
 
 #include <memory>
 
-#include "Utility_FileSystem.h"
+#include "Utility_FileSystem.hpp"
 
 
 Engine::Engine()
