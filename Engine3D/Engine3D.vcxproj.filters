@@ -109,6 +109,12 @@
     <Filter Include="Engine\Scene\Shaders\Models\Color">
       <UniqueIdentifier>{c6fa235d-1258-40de-b382-0e800d500fd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{81bae092-d9da-4409-aa8d-46a28aed92c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{1fd8d778-abb8-4182-a8d8-feca4196edce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShaderLoader.cpp">
@@ -488,5 +494,71 @@
     <ClInclude Include="ColorShaderAP.hpp">
       <Filter>Engine\Scene\Shaders\Models\Color</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="WorkingDirectory\bricks_wall.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="WorkingDirectory\Cubemap3.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="WorkingDirectory\world.jpg">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WorkingDirectory\Caratteri.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\Caratteri.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\Color.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\LiftTri.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\LightTexture.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\LightTexture.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\PostProcess_BlackWhite.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\PostProcess_Blur.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\PostProcess_Common.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\PostProcess_Depth.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\Skybox.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\Skybox.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\Standard.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\Texture.frag.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\VertecesOnly.vert.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="WorkingDirectory\cube.msh">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="WorkingDirectory\arial.ttf">
+      <Filter>Resources</Filter>
+    </Font>
   </ItemGroup>
 </Project>

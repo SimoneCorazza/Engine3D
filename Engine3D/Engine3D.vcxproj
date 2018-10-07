@@ -318,6 +318,32 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="Utility_Strings.hpp" />
     <ClInclude Include="Utility_Time.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="WorkingDirectory\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="WorkingDirectory\bricks_wall.jpg" />
+    <Image Include="WorkingDirectory\Cubemap3.png" />
+    <Image Include="WorkingDirectory\world.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WorkingDirectory\Caratteri.frag.glsl" />
+    <None Include="WorkingDirectory\Caratteri.vert.glsl" />
+    <None Include="WorkingDirectory\Color.frag.glsl" />
+    <None Include="WorkingDirectory\cube.msh" />
+    <None Include="WorkingDirectory\LiftTri.vert.glsl" />
+    <None Include="WorkingDirectory\LightTexture.frag.glsl" />
+    <None Include="WorkingDirectory\LightTexture.vert.glsl" />
+    <None Include="WorkingDirectory\PostProcess_BlackWhite.frag.glsl" />
+    <None Include="WorkingDirectory\PostProcess_Blur.frag.glsl" />
+    <None Include="WorkingDirectory\PostProcess_Common.vert.glsl" />
+    <None Include="WorkingDirectory\PostProcess_Depth.frag.glsl" />
+    <None Include="WorkingDirectory\Skybox.frag.glsl" />
+    <None Include="WorkingDirectory\Skybox.vert.glsl" />
+    <None Include="WorkingDirectory\Standard.vert.glsl" />
+    <None Include="WorkingDirectory\Texture.frag.glsl" />
+    <None Include="WorkingDirectory\VertecesOnly.vert.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

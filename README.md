@@ -4,7 +4,7 @@ A simple rendering engine in real time using **OpenGL** and **C++**.
 
 This project is not meant to be a rendering engine that someone will use for real applications, but is meant to someone that wants to learn the basic of a rendering engine.
 
-You can have a high level overview at the [wiki](https://github.com/SimoneCorazza/Engine3D/wiki)
+You can have a high level overview at the [wiki](https://github.com/SimoneCorazza/Engine3D/wiki).
 
 **NOTE**: the comments of the source code where translated so they may have some issues.
 
@@ -49,9 +49,11 @@ Libraries:
 * [FreeType](https://www.freetype.org/) To render glyphs.
 * [GLM](https://glm.g-truc.net) To simplify math.
 
-There are two top level filters (folders):
+The project is composed by those filters:
 1. `Engine` The rendering engine.
-2. `TestGame` A scene to test the rendering engine and it's performance.
+2. `Shaders` Shaders used in the engine.
+3. `Resources` Resources used in the test game.
+4. `TestGame` A scene to test the rendering engine and it's performance.
 
 ### EngineEditor
 
