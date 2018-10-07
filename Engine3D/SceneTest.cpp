@@ -20,8 +20,6 @@
 #include "PostProcessShaderParams.hpp"
 #include "BlackAndWhitePostProcessShader.hpp"
 #include "BlurPostProcessShader.hpp"
-#include "LightScatteringPPS.hpp"
-#include "LightScatteringPPSP.hpp"
 #include "LightTextureShader.hpp"
 #include "DepthPostProcessShader.hpp"
 #include "LiftTriShader.hpp"
@@ -82,24 +80,10 @@ void SceneTest::InizializeScene()
 	BlurPostProcessShader* postBlur = new BlurPostProcessShader();
 	postBlur->LoadShader("PostProcess_Common.vert.glsl", "PostProcess_Blur.frag.glsl");
 
-	LightScatteringPPS* postScattering = new LightScatteringPPS();
-	postScattering->LoadShader("PostProcess_Common.vert.glsl", "PostProcess_LightScattering.frag.glsl");
-
 	DepthPostProcessShader* postDepth = new DepthPostProcessShader();
 	postDepth->LoadShader("PostProcess_Common.vert.glsl", "PostProcess_Depth.frag.glsl");
 
 	ambientLight = glm::vec3(0.5f, 0.5f, 0.5f);
-	
-	/*
-	LIGHT SCATTERING (NON FUNZIONA)
-	LightScatteringPPSP* params = new LightScatteringPPSP();
-	camera->AddPostProcessEffect(postScattering, params);
-	params->setExposure(0.0034f);
-	params->setDecay(1.0f);
-	params->setDensity(0.84f);
-	params->setWeight(5.65f);
-	params->setScreenLightPos(glm::vec2(0, 0));
-	*/
 
 	// camera-> AddPostProcessEffect (blackAndWhite, nullptr);
 	// camera-> AddPostProcessEffect (postBlur, new PostProcessShaderParams ());

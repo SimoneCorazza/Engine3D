@@ -67,9 +67,6 @@
     <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Blur">
       <UniqueIdentifier>{f7e6f12e-ef7b-46c5-9d1c-6f834500fb05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering">
-      <UniqueIdentifier>{486cf9e4-689d-4083-90b0-42c18a5187cb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth">
       <UniqueIdentifier>{e3ffbffe-ba84-4354-ac79-84e38377596c}</UniqueIdentifier>
     </Filter>
@@ -111,9 +108,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lodepng.cpp">
-      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderLoader.cpp">
       <Filter>Engine\Scene\Shaders\ShaderLoader</Filter>
     </ClCompile>
@@ -261,12 +255,6 @@
     <ClCompile Include="UI.cpp">
       <Filter>Engine\Scene\UI</Filter>
     </ClCompile>
-    <ClCompile Include="LightScatteringPPS.cpp">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
-    </ClCompile>
-    <ClCompile Include="LightScatteringPPSP.cpp">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
-    </ClCompile>
     <ClCompile Include="DepthPostProcessShader.cpp">
       <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
     </ClCompile>
@@ -296,9 +284,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lodepng.h">
-      <Filter>Engine\Scene\Textures\TextureLoader</Filter>
-    </ClInclude>
     <ClInclude Include="Box.hpp">
       <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
@@ -490,12 +475,6 @@
     </ClInclude>
     <ClInclude Include="DepthPostProcessShader.hpp">
       <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\Depth</Filter>
-    </ClInclude>
-    <ClInclude Include="LightScatteringPPS.hpp">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
-    </ClInclude>
-    <ClInclude Include="LightScatteringPPSP.hpp">
-      <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\LightScattering</Filter>
     </ClInclude>
     <ClInclude Include="TextureDecoder.hpp">
       <Filter>Engine\Scene\Textures\TextureLoader</Filter>

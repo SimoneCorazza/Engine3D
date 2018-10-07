@@ -213,10 +213,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClCompile Include="LiftTriAP.cpp" />
     <ClCompile Include="LiftTriShader.cpp" />
     <ClCompile Include="Light.cpp" />
-    <ClCompile Include="LightScatteringPPS.cpp" />
-    <ClCompile Include="LightScatteringPPSP.cpp" />
     <ClCompile Include="LightTextureShader.cpp" />
-    <ClCompile Include="lodepng.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -278,10 +275,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="LiftTriAP.hpp" />
     <ClInclude Include="LiftTriShader.hpp" />
     <ClInclude Include="Light.hpp" />
-    <ClInclude Include="LightScatteringPPS.hpp" />
-    <ClInclude Include="LightScatteringPPSP.hpp" />
     <ClInclude Include="LightTextureShader.hpp" />
-    <ClInclude Include="lodepng.h" />
     <ClInclude Include="MapIterator.hpp" />
     <ClInclude Include="Material.hpp" />
     <ClInclude Include="Mesh.hpp" />
