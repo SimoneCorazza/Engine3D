@@ -11,9 +11,9 @@ UI::~UI()
 {
 }
 
-void UI::Add(UIElement& UIElement)
+void UI::Add(UIElement* UIElement)
 {
-	uiElements.push_back(&UIElement);
+	uiElements.push_back(UIElement);
 }
 
 const std::vector<UIElement*>& UI::getUIElements()

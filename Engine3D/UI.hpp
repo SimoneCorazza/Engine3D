@@ -17,7 +17,7 @@ class UI
 
 		// Adds an interface element in the UI
 		// @param [in] UIElement - Element to add
-		void Add(UIElement& UIElement);
+		void Add(UIElement* UIElement);
 
 		// Gets the elements of the interface
 		const std::vector<UIElement*>& getUIElements();
