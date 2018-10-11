@@ -94,9 +94,6 @@
     <Filter Include="Engine\BasicStructers">
       <UniqueIdentifier>{2a8fad01-946a-4451-97de-05125bac4edb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TestGame">
-      <UniqueIdentifier>{a7ac29e4-a62e-4e89-ad5f-0f0f0f7c4694}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Scene\Shaders\Models\LiftTri">
       <UniqueIdentifier>{8787c3f2-2c63-476e-923e-97edd6248d64}</UniqueIdentifier>
     </Filter>
@@ -114,6 +111,27 @@
     </Filter>
     <Filter Include="Resources">
       <UniqueIdentifier>{1fd8d778-abb8-4182-a8d8-feca4196edce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples">
+      <UniqueIdentifier>{a7ac29e4-a62e-4e89-ad5f-0f0f0f7c4694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\StressTestScene">
+      <UniqueIdentifier>{5d73b2a0-dd6f-4e40-a337-50f234c16328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\CustomActor">
+      <UniqueIdentifier>{a5cc94f3-c9b3-4fba-8061-a2267c5fe2e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\LightsScene">
+      <UniqueIdentifier>{8f0f0b04-07e3-442a-9d04-162430b9b41d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\ShadersWithParameters">
+      <UniqueIdentifier>{b173ffd5-078d-4ba4-a3ca-4d46d368d8fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\SimpleScene">
+      <UniqueIdentifier>{1722a2a5-7c87-445e-b2d9-770aa303e6ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Examples\PostProcess">
+      <UniqueIdentifier>{10f6dc57-43b5-46ae-97ea-3c673b82845c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -139,10 +157,7 @@
       <Filter>Engine\Scene\ItemScene\Actor\Model\Material</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>TestGame</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTest.cpp">
-      <Filter>TestGame</Filter>
+      <Filter>Examples</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Engine</Filter>
@@ -276,9 +291,6 @@
     <ClCompile Include="LiftTriAP.cpp">
       <Filter>Engine\Scene\Shaders\Models\LiftTri</Filter>
     </ClCompile>
-    <ClCompile Include="MyActor.cpp">
-      <Filter>TestGame</Filter>
-    </ClCompile>
     <ClCompile Include="UpdateParameters.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
@@ -293,6 +305,33 @@
     </ClCompile>
     <ClCompile Include="ColorShaderAP.cpp">
       <Filter>Engine\Scene\Shaders\Models\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="StressTestScene.cpp">
+      <Filter>Examples\StressTestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MyActor.cpp">
+      <Filter>Examples\CustomActor</Filter>
+    </ClCompile>
+    <ClCompile Include="LightsScene.cpp">
+      <Filter>Examples\LightsScene</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleScene.cpp">
+      <Filter>Examples\SimpleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MyColorActor.cpp">
+      <Filter>Examples\ShadersWithParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadersWithParametersScene.cpp">
+      <Filter>Examples\ShadersWithParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomActorScene.cpp">
+      <Filter>Examples\CustomActor</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessScene.cpp">
+      <Filter>Examples\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLiftTriActor.cpp">
+      <Filter>Examples\ShadersWithParameters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -470,12 +509,6 @@
     <ClInclude Include="Engine.hpp">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="MyActor.hpp">
-      <Filter>TestGame</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTest.hpp">
-      <Filter>TestGame</Filter>
-    </ClInclude>
     <ClInclude Include="BlackAndWhitePostProcessShader.hpp">
       <Filter>Engine\Scene\Shaders\PostProcess\DefaultPostProcess\BlackAndWhite</Filter>
     </ClInclude>
@@ -493,6 +526,33 @@
     </ClInclude>
     <ClInclude Include="ColorShaderAP.hpp">
       <Filter>Engine\Scene\Shaders\Models\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="StressTestScene.hpp">
+      <Filter>Examples\StressTestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MyActor.hpp">
+      <Filter>Examples\CustomActor</Filter>
+    </ClInclude>
+    <ClInclude Include="LightsScene.hpp">
+      <Filter>Examples\LightsScene</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleScene.hpp">
+      <Filter>Examples\SimpleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MyColorActor.hpp">
+      <Filter>Examples\ShadersWithParameters</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadersWithParametersScene.hpp">
+      <Filter>Examples\ShadersWithParameters</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomActorScene.hpp">
+      <Filter>Examples\CustomActor</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessScene.hpp">
+      <Filter>Examples\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLiftTriActor.hpp">
+      <Filter>Examples\ShadersWithParameters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

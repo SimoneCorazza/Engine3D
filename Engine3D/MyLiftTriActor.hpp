@@ -2,12 +2,11 @@
 
 #include "Actor.hpp"
 
-// Custom actor with custom logic
-class MyActor : public Actor
+class MyLiftTriActor : public Actor
 {
 	public:
-		MyActor();
-		~MyActor();
+		MyLiftTriActor();
+		~MyLiftTriActor();
 
 	public:
 		void Update(const UpdateParameters& P) override;

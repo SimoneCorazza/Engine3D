@@ -2,12 +2,11 @@
 
 #include "Actor.hpp"
 
-// Custom actor with custom logic
-class MyActor : public Actor
+class MyColorActor : public Actor
 {
 	public:
-		MyActor();
-		~MyActor();
+		MyColorActor();
+		~MyColorActor();
 
 	public:
 		void Update(const UpdateParameters& P) override;

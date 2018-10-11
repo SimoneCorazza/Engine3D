@@ -200,6 +200,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClCompile Include="CheckTable.cpp" />
     <ClCompile Include="ColorShader.cpp" />
     <ClCompile Include="ColorShaderAP.cpp" />
+    <ClCompile Include="CustomActorScene.cpp" />
     <ClCompile Include="DEBUG.cpp" />
     <ClCompile Include="DepthPostProcessShader.cpp" />
     <ClCompile Include="Draw2D.cpp" />
@@ -214,6 +215,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClCompile Include="LiftTriAP.cpp" />
     <ClCompile Include="LiftTriShader.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="LightsScene.cpp" />
     <ClCompile Include="LightTextureShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Material.cpp" />
@@ -221,14 +223,19 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelShader.cpp" />
     <ClCompile Include="MyActor.cpp" />
+    <ClCompile Include="MyColorActor.cpp" />
+    <ClCompile Include="MyLiftTriActor.cpp" />
     <ClCompile Include="NvidiaOptimus.hpp" />
     <ClCompile Include="PostProcessEffect.cpp" />
+    <ClCompile Include="PostProcessScene.cpp" />
     <ClCompile Include="PostProcessShader.cpp" />
     <ClCompile Include="PostProcessShaderParams.cpp" />
     <ClCompile Include="PostProcess_Final.cpp" />
     <ClCompile Include="RenderingEngine.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneTest.cpp" />
+    <ClCompile Include="ShadersWithParametersScene.cpp" />
+    <ClCompile Include="SimpleScene.cpp" />
+    <ClCompile Include="StressTestScene.cpp" />
     <ClCompile Include="UpdateParameters.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderLoader.cpp" />
@@ -262,6 +269,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="ColorShader.hpp" />
     <ClInclude Include="ColorShaderAP.hpp" />
     <ClInclude Include="CommonConstants.hpp" />
+    <ClInclude Include="CustomActorScene.hpp" />
     <ClInclude Include="DEBUG.hpp" />
     <ClInclude Include="DepthPostProcessShader.hpp" />
     <ClInclude Include="Draw2D.hpp" />
@@ -277,6 +285,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="LiftTriAP.hpp" />
     <ClInclude Include="LiftTriShader.hpp" />
     <ClInclude Include="Light.hpp" />
+    <ClInclude Include="LightsScene.hpp" />
     <ClInclude Include="LightTextureShader.hpp" />
     <ClInclude Include="MapIterator.hpp" />
     <ClInclude Include="Material.hpp" />
@@ -284,10 +293,13 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="Model.hpp" />
     <ClInclude Include="ModelShader.hpp" />
     <ClInclude Include="MyActor.hpp" />
+    <ClInclude Include="MyColorActor.hpp" />
+    <ClInclude Include="MyLiftTriActor.hpp" />
     <ClInclude Include="Plane.hpp" />
     <ClInclude Include="Point2.hpp" />
     <ClInclude Include="Point3.hpp" />
     <ClInclude Include="PostProcessEffect.hpp" />
+    <ClInclude Include="PostProcessScene.hpp" />
     <ClInclude Include="PostProcessShader.hpp" />
     <ClInclude Include="PostProcessShaderParams.hpp" />
     <ClInclude Include="PostProcess_Final.hpp" />
@@ -296,7 +308,9 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="RenderingEngine.hpp" />
     <ClInclude Include="RenderingEngineInfo.hpp" />
     <ClInclude Include="Scene.hpp" />
-    <ClInclude Include="SceneTest.hpp" />
+    <ClInclude Include="ShadersWithParametersScene.hpp" />
+    <ClInclude Include="SimpleScene.hpp" />
+    <ClInclude Include="StressTestScene.hpp" />
     <ClInclude Include="UpdateParameters.hpp" />
     <ClInclude Include="Shader.hpp" />
     <ClInclude Include="ShaderLoader.hpp" />
