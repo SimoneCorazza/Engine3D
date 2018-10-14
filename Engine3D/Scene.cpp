@@ -35,7 +35,7 @@ void Scene::Update(const UpdateParameters& SceneUpdateParameters)
 	for (int i = 0; i < a->size(); i++)
 		(*a)[i]->Update(SceneUpdateParameters);
 
-	// Update rooms:
+	// Update cameras:
 	MapIterator<unsigned int, Camera*> c = getCameras();
 	while (c.hasNext())
 		c.next()->Update(SceneUpdateParameters.getElapsedTime());
@@ -84,7 +84,7 @@ void Scene::RemoveItem(unsigned int ID)
 	else if (it_c != cameras.end()) // In the case the element to be removed is a chamber
 	{
 		delete it_c->second; // Disallocate the camera
-		cameras.erase(it_c); // I remove the camera from the rooms
+		cameras.erase(it_c); // I remove the camera from the cameras list
 	}
 	else
 		ASSERT(false, "Caso non previso: ID sconoscuto");
@@ -108,7 +108,7 @@ Camera* Scene::InsertNewCamera(MeasureMode ModeOffset, float X, float Y, Measure
 	Point2 size = getLastInputState()->getWindowSize();
 	c->OnScreenReSize(size.x, size.y);
 	items.InsertNew(c); // I enter the camera (the id returned by this method must match the one contained in 'id')
-	cameras.insert(std::pair<unsigned int, Camera*>(id, c)); // I also enter the camera in the list of rooms
+	cameras.insert(std::pair<unsigned int, Camera*>(id, c)); // I also enter the camera in the list of cameras
 
 	return c;
 }

@@ -208,8 +208,8 @@ void RenderingEngine::RenderScene(Scene& S)
 
 	Frustum frustum; // Class used to maintain the actors' frustrum in the scene
 
-	// --- ROOMS ---
-	while(cam.hasNext()) // Cycle for the rooms
+	// --- CAMERA ---
+	while(cam.hasNext()) // Cycle for the cameras
 	{
 		const Camera* camera = cam.next(); // Pointer to the current camera
 
@@ -395,7 +395,7 @@ void RenderingEngine::RenderScene(Scene& S)
 		// I apply post-process effects
 		ApplayPostRenderEffects(*camera, cameraPortion);
 
-	} // ROOMS
+	} // CAMERAS
 
 	// I render the interface
 	RenderUI(S);

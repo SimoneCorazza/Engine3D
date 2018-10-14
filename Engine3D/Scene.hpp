@@ -32,11 +32,11 @@ class Scene
 	std::vector<Actor*> actors;
 	unsigned int addedActors; // Number of actors added since the last sorting operation
 	std::map<unsigned int, Light*> lights; // Lights present in the scene
-	std::map<unsigned int, Camera*> cameras; // Rooms used for rendering
+	std::map<unsigned int, Camera*> cameras; // Camere used for rendering
 	UI ui;
 
 
-	IDCollection<ItemScene*> items; // Any Item contained in the scene: rooms, actors, lights, ...
+	IDCollection<ItemScene*> items; // Any Item contained in the scene: camras, actors, lights, ...
 
 	Engine* engine; // Engine belonging to the scene
 
@@ -65,7 +65,7 @@ class Scene
 		// Gets the actors contained in the scene
 		const std::vector<Actor*>* getActors();
 
-		// Get the rooms
+		// Get the cameras
 		MapIterator<unsigned int, Camera*> getCameras();
 
 		// Gets the lights present in the scene
