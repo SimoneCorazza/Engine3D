@@ -183,6 +183,11 @@ class Camera : public ItemScene
 		// Gets the position of the camera
 		const glm::vec3& getPosition() const;
 
+		// Set the speed of the camera
+		void setSpeed(float speed);
+		// Gets the speed of the camera
+		const float getSpeed() const;
+
 		// Frame buffer:
 
 		// Gets the framebuffer id of the camera

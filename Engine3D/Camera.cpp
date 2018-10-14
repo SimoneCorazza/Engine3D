@@ -286,6 +286,16 @@ const glm::vec3& Camera::getPosition() const
 	return position;
 }
 
+void Camera::setSpeed(float speed)
+{
+	this->speed = speed;
+}
+
+const float Camera::getSpeed() const
+{
+	return speed;
+}
+
 GLuint Camera::getFrameBufferID() const
 {
 	return idFrameBuffer;
