@@ -88,21 +88,23 @@ InputState::JoystickState * InputState::JoystickState::GetJoystickState(int GLFW
 	{
 		InputState::JoystickState* j = new InputState::JoystickState();
 
-		// I take the inputs:
+		// Taking the inputs:
 		int numAxes;
 		const float* axes = glfwGetJoystickAxes(GLFW_JoystickID, &numAxes);
 
 		int numBtn;
 		const unsigned char* buttons = glfwGetJoystickButtons(GLFW_JoystickID, &numBtn);
 
-		// If the previous joystick has parameters other than these (= it's definitely not the same joystick as before)
+		// Checking if the Prec parameter is correct
 		if (Prec != nullptr && ((size_t)numAxes != Prec->countAxes || (size_t)numBtn != Prec->countButt))
 			return nullptr;
 
 		// Settings for the axes:
 		j->countAxes = (size_t)numAxes;
-		j->axes = new float[j->countAxes]; // Instance the array of axes
-		for (size_t i = 0; i < j->countAxes; i++) // I copy the array passed from GLFW
+		j->axes = new float[j->countAxes];
+
+		// Copy the array passed from GLFW
+		for (size_t i = 0; i < j->countAxes; i++)
 			j->axes[i] = axes[i];
 
 		// Button settings:

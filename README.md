@@ -4,8 +4,6 @@ A simple real time rendering engine using **OpenGL** and **C++**.
 
 This project is not meant to be a rendering engine that someone will use for real applications, but is meant to someone that wants to learn the basic of a rendering engine. For this purpose the code is well documented and there is the [wiki](https://github.com/SimoneCorazza/Engine3D/wiki) to explain the main concepts.
 
-**NOTE**: the comments of the source code where translated so they may have some issues.
-
 ## Features
 
 ### Optimized rendering pipeline can render up to 30 000 actors at 60 FPS

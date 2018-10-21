@@ -26,7 +26,8 @@ void PostProcessShader::ApplayShader(GLuint IdBufferUnitQuad, GLuint RenderedTex
 
 	SetShaderParams(Params); // Set the shader parameters
 
-	if (idRenderedTexture != UINT_MAX) // Check if the derived post process uses the rendered texture
+	// Check if the derived post process uses the rendered texture
+	if (idRenderedTexture != UINT_MAX)
 	{
 		// Set the rendered texture in the shader
 		glActiveTexture(GL_TEXTURE0);
@@ -34,7 +35,8 @@ void PostProcessShader::ApplayShader(GLuint IdBufferUnitQuad, GLuint RenderedTex
 		glUniform1i(idRenderedTexture, 0);
 	}
 
-	if (idDepthTexture != UINT_MAX) // Check if the derived post process uses the depth texture
+	// Check if the derived post process uses the depth texture
+	if (idDepthTexture != UINT_MAX)
 	{
 		// Set the texture of the depth in the shader
 		glActiveTexture(GL_TEXTURE1);
@@ -66,7 +68,7 @@ void PostProcessShader::LoadIDVar()
 	idDepthTexture = GetVarID(NAME_TEXTURE_DEPTH);
 
 	ASSERT(idRenderedTexture != UINT_MAX || idDepthTexture != UINT_MAX,
-		"the created shader must have two texture sampler named with the value of the macro: NAME_TEXTURE_RENDERED  (for the rendered texture) and  NAME_TEXTURE_DEPTH (for the depth texture)");
+		"The created shader must have two texture sampler named with the value of the macro: NAME_TEXTURE_RENDERED  (for the rendered texture) and  NAME_TEXTURE_DEPTH (for the depth texture)");
 }
 
 

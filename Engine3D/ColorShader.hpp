@@ -6,8 +6,11 @@
 // Shades for mono colored vertices
 class ColorShader : public ModelShader
 {
-	GLuint idMatrix; // ID of the uniform variable of the array
-	GLuint idColor; // ID of the uniform color variable to use
+	// ID of the uniform variable of the array
+	GLuint idMatrix;
+
+	// ID of the uniform color variable to use
+	GLuint idColor;
 
 	// Partial matrix for the MVP (as the vertex shader takes the entire MVP matrix as input and not the individual matrices)
 	glm::mat4 matrixViewProject;

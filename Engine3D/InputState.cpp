@@ -44,7 +44,8 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 	glfwGetWindowSize(Window, &w, &h);
 	r->windowSize.x = w;
 	r->windowSize.y = h;
-	r->windowSurfaceValid = w * h > 0; // The validity of the surface is valid
+	// Chech if the surface is valid
+	r->windowSurfaceValid = w * h > 0;
 
 	double x, y;
 	glfwGetCursorPos(Window, &x, &y);
@@ -81,7 +82,8 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 	}
 	else
 	{
-		for (size_t i = 0; i <= GLFW_KEY_LAST; i++) // For the keyboard
+		// KEYBOARD
+		for (size_t i = 0; i <= GLFW_KEY_LAST; i++)
 		{
 			bool p = glfwGetKey(Window, i) == GLFW_PRESS;
 			r->keyboard[i].pressed = p;
@@ -89,7 +91,8 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 			r->keyboard[i].up = !p && PrecState->IsKeyPressed(i);
 		}
 
-		for (size_t i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++) // For the mouse
+		// MOUSE
+		for (size_t i = 0; i <= GLFW_MOUSE_BUTTON_LAST; i++)
 		{
 			bool p = glfwGetMouseButton(Window, i) == GLFW_PRESS;
 			r->mouse[i].pressed = p;
@@ -97,10 +100,12 @@ InputState* InputState::GetState(GLFWwindow* Window, const InputEngine* InputEng
 			r->mouse[i].up = !p && PrecState->IsMouseButtonPressed(i);
 		}
 
-		for (size_t i = 0; i <= GLFW_JOYSTICK_LAST; i++) // For the joysticks
+		// JOYSTICKS
+		for (size_t i = 0; i <= GLFW_JOYSTICK_LAST; i++)
 		{
 			r->joysticks[i] = InputState::JoystickState::GetJoystickState(i, PrecState->getJoystickState(i));
-			if (r->joysticks[i] != nullptr) // Increase the number of connected joysticks
+			// Increase the number of connected joysticks
+			if (r->joysticks[i] != nullptr)
 				r->connectedJoysticks++;
 		}
 
@@ -154,28 +159,6 @@ bool InputState::IsKeyPressed(int GLFW_KeyCode) const
 	else
 		return keyboard[GLFW_KeyCode].pressed;
 }
-
-/*
-const char* InputState::GetPressedChar() const
-{
-	std::vector<char> chars;
-	for (int i = 0; i < GLFW_KEY_LAST; i++)
-	{
-		if (keyboard[i].pressed)
-			chars.push_back(i);
-	}
-
-	if (chars.size() == 0)
-		return nullptr;
-	else
-	{
-		char* arr = new char[chars.size() + 1];
-		for (int i = 0; i < chars.size(); i++)
-			arr[i] = chars[i];
-		arr[chars.size()] = '\0';
-		return arr;
-	}
-}*/
 
 bool InputState::IsMouseButtonUp(int GLFW_MouseButtonCode) const
 {
@@ -265,7 +248,7 @@ size_t InputState::getNumConnectedJoystick() const
 
 const InputState::JoystickState * InputState::getJoystickState(int GLFW_JoystickID) const
 {
-	if (GLFW_JoystickID < 0 && GLFW_JoystickID > GLFW_JOYSTICK_LAST) // Case exceed limits
+	if (GLFW_JoystickID < 0 && GLFW_JoystickID > GLFW_JOYSTICK_LAST)
 		return nullptr;
 	else
 		return joysticks[GLFW_JoystickID];

@@ -1,7 +1,6 @@
 #include "Shader.hpp"
 #include "ShaderLoader.hpp"
 
-// --- BUILDERS ---
 
 Shader::Shader()
 {
@@ -15,7 +14,6 @@ Shader::~Shader()
 }
 
 
-// --- METHODS ---
 
 bool Shader::LoadShader(const char* PathVertexShader, const char* PathFragmentShader)
 {
@@ -39,8 +37,6 @@ GLuint Shader::GetVarID(const std::string & Name)
 {
 	return GetVarID(Name.c_str());
 }
-
-// GET and SET
 
 GLuint Shader::getIDShader() const
 {

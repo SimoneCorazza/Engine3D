@@ -5,8 +5,6 @@
 #include "Mesh.hpp"
 #include "Texture2D.hpp"
 
-// --- BUILDERS ---
-
 StandardShader::StandardShader()
 {
 	idMatrix = 0;
@@ -16,10 +14,6 @@ StandardShader::StandardShader()
 StandardShader::~StandardShader()
 {
 }
-
-
-
-// --- METHODS ---
 
 
 void StandardShader::LoadIDVar()
@@ -58,5 +52,5 @@ void StandardShader::SetCameraParameters(const glm::mat4 & ViewMatix, const glm:
 void StandardShader::SetObjectParameters(const ActorParameters * P, const glm::mat4 & ModelMatrix)
 {
 	glm::mat4 mvp = matrixViewProject * ModelMatrix;
-	glUniformMatrix4fv(idMatrix, 1, GL_FALSE, &mvp[0][0]); // Set the matrix
+	glUniformMatrix4fv(idMatrix, 1, GL_FALSE, &mvp[0][0]);
 }

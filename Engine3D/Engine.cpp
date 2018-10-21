@@ -4,7 +4,7 @@
 
 #include <string>
 
-#include <GL\glew.h> // It must be placed before "#include <GLFW \ glfw3.h>"
+#include <GL\glew.h> // It must be placed before "#include <GLFW\glfw3.h>"
 #include <GLFW\glfw3.h>
 
 #include "InputEngine.hpp"
@@ -80,7 +80,6 @@ void Engine::CreateNewWindow(const char* Title)
 	GLFWmonitor* m = glfwGetPrimaryMonitor();
 	const GLFWvidmode* v = glfwGetVideoMode(m);
 	window = glfwCreateWindow(v->width, v->height, Title, m, nullptr);
-	// glfwWindowHint (GLFW_SAMPLES, 8);
 
 	if (window) // Checking for errors
 		CreatedNewWindow();
@@ -91,7 +90,9 @@ void Engine::CreateNewWindow(const char* Title)
 void Engine::CreatedNewWindow()
 {
 	inputEngine.Inizialize(window);
-	lastInputState = inputEngine.getInputState(); // I get the first status of the input engine, for the initialization of classes
+
+	// I get the first status of the input engine, for the initialization of classes
+	lastInputState = inputEngine.getInputState();
 	glfwMakeContextCurrent(window);
 
 	// Initialize GLEW
@@ -115,7 +116,9 @@ void Engine::CreatedNewWindow()
 	
 	// Initialize the rendering engine
 	renderingEngine.Inizialize();
-	renderingEngine.WindowResized(lastInputState->getWindowSize().x, lastInputState->getWindowSize().y); // I also initialize the window size
+
+	// Initialize the window size
+	renderingEngine.WindowResized(lastInputState->getWindowSize().x, lastInputState->getWindowSize().y);
 }
 
 void Engine::StartGameLoop(Scene* Scene)
@@ -133,7 +136,7 @@ void Engine::EndGameLoop()
 void Engine::setScene(Scene* Scene)
 {
 	actualScene = Scene;
-	actualScene->Inizialize(this); // Initialize the scene
+	actualScene->Inizialize(this);
 }
 
 InputState * Engine::getLastInputState()
@@ -161,7 +164,7 @@ void Engine::GameLoop()
 		delete lastInputState;
 		lastInputState = inputEngine.getInputState();
 
-		// To keep the bill it takes to make a cycle
+		// Timestamp to check the elapsed time
 		double current = glfwGetTime();
 		float elapsed = float(current - last);
 		last = current;
@@ -188,7 +191,7 @@ void Engine::GameLoop()
 				actualScene->Update(UpdateParameters(elapsed, lastInputState)); // I update the scene
 				renderingEngine.RenderScene(*actualScene); // I render the scene
 			}
-			else if(!cursorReset) // When the window becomes invalid, I memorize the state of the cursor and set it as normal
+			else if(!cursorReset) // When the window becomes invalid, I store the state of the cursor and set it as normal
 			{
 				cursorReset = true;
 				glfwCursorMode = glfwGetInputMode(window, GLFW_CURSOR);

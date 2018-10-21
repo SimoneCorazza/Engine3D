@@ -3,6 +3,7 @@
 #include <glm\glm.hpp>
 #include "ActorParameters.hpp"
 
+// Class for the ActorParameters for the ColorShader
 class ColorShaderAP : public ActorParameters
 {
 	public:

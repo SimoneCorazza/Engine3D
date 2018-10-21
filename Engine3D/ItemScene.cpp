@@ -10,14 +10,6 @@ ItemScene::ItemScene()
 	scene = nullptr;
 }
 
-/*
-ItemScene::ItemScene(unsigned int ID, Scene* Scene)
-{
-	id = ID;
-	scene = Scene;
-}
-*/
-
 ItemScene::~ItemScene()
 {
 }
@@ -35,9 +27,9 @@ const Scene * ItemScene::getScene()
 void ItemScene::RemoveFromScene()
 {
 	if (scene == nullptr)
-		ASSERT(false, "Impossibile eliminare Item: non è agganciato a nessuna scena");
+		ASSERT(false, "Cannot remove: this item is not bound to a scene");
 	else
-		scene->RemoveItem(id); // I remove the item from the scene
+		scene->RemoveItem(id);
 }
 
 InputState * ItemScene::getInputState()

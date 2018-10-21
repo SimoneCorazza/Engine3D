@@ -179,6 +179,6 @@ InputEngine::MessageBox_Return InputEngine::MessageBoxShow(const char * Title, c
 	default: return MB_RETURN_OK;
 	}
 #else
-#error Unknown SO
+#error OS not implemented
 #endif
 }

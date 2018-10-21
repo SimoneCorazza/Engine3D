@@ -9,7 +9,7 @@ std::string workingDirectory; // Current folder containing the executable
 
 void Utility_FileSystem_InizializeWorkingDirectory()
 {
-	// I get the path using the sel operating system API in use
+	// I get the path using the API of the operating system in use
 #ifdef WINDOWS
 	HMODULE hModule = GetModuleHandleW(NULL);
 	WCHAR path[MAX_PATH];
@@ -17,7 +17,9 @@ void Utility_FileSystem_InizializeWorkingDirectory()
 
 	char ch[MAX_PATH];
 	char DefChar = ' ';
-	WideCharToMultiByte(CP_ACP, 0, path, -1, ch, 260, &DefChar, NULL); // Convert to char
+
+	// Convert to char
+	WideCharToMultiByte(CP_ACP, 0, path, -1, ch, 260, &DefChar, NULL);
 
 	workingDirectory = Utility_FileSystem_GetUpperFolder(std::string(ch));
 #else
@@ -25,19 +27,12 @@ void Utility_FileSystem_InizializeWorkingDirectory()
 #endif
 }
 
-/*
-std::string Utility_FileSystem_GetAbsolutePath(const std::string& P)
-{
-	// Return: "workingDirectory + \\ + P", the separator was placed for security reasons (there may not be)
-	return workingDirectory + "\\" + P;
-}
-*/
-
 
 
 std::string& Utility_FileSystem_GetExeFolder()
 {
-	if (workingDirectory.size() == 0) // In case the folder has not been set yet
+	// In case the folder has not been set yet
+	if (workingDirectory.size() == 0)
 		Utility_FileSystem_InizializeWorkingDirectory();
 
 	return workingDirectory;
@@ -60,7 +55,7 @@ std::string Utility_FileSystem_GetUpperFolder(const std::string& Path)
 	std::string p(Path);
 	size_t posBackSlash = p.find_last_of('\\');
 	size_t posSlash = p.find_last_of('/');
-	// I'm going to consider the greater position between the two (note: if it's MAX_UNSIGNED_INT or std :: string :: npos means it was not found)
+	// I'm going to consider the greater position between the two (note: if it's MAX_UNSIGNED_INT or std::string::npos means it was not found)
 	size_t pos;
 	if (posBackSlash == std::string::npos) // Case \ is not there
 		pos = posSlash;

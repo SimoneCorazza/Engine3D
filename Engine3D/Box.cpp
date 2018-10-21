@@ -7,7 +7,7 @@ Z|
  |
  O------>     (Y exit upwords from the screen)
 Y      X
-Bottom part:						Top part:
+Bottom:							Top:
 	V1--------V4					V5--------V8
 	|		  |						|		  |
 	|		  |						|		  |

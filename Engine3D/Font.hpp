@@ -8,14 +8,7 @@
 #include FT_FREETYPE_H
 
 #include "GlyphInfo.hpp"
-
 typedef FT_ULong Char;
-
-// Enumeration that allows to identify
-enum FontAtlas_Descriptor
-{
-	FontAtlas_Descriptor_PersonalStandard
-};
 
 class SpriteFont;
 
@@ -24,12 +17,20 @@ class Font
 {
 	friend SpriteFont;
 
-	static FT_Library freeType; // FreeType library
-	static int maxTextureSize; // Maximum pixel size supported by the device used
+	// FreeType library
+	static FT_Library freeType;
 
-	GLuint idTexture; // ID of the texture according to OpenGL containing the character atlas
-	std::map<Char, GlyphInfo> charactersMap; // Match the corresponding descriptor to each character
-	size_t quality; // Quality chosen for the font (used only if .ttf)
+	// Maximum pixel size supported by the device used
+	static int maxTextureSize;
+
+	// ID of the texture according to OpenGL containing the character atlas
+	GLuint idTexture;
+
+	// Match the corresponding descriptor to each character
+	std::map<Char, GlyphInfo> charactersMap;
+
+	// Quality chosen for the font (used only if .ttf)
+	size_t quality;
 
 
 public:
@@ -50,7 +51,7 @@ private:
 
 	// Initialize the Free Type library and variables
 	// static of the class
-	// @friend Method created to be accessed only by the "SpriteFont" lcasse
+	// @NOTE Method created to be accessed only by the "SpriteFont" class
 	static void Inizialize();
 
 	// METHODS:
@@ -58,18 +59,12 @@ public:
 
 	// Allows you to upload a .ttf file containing information about the catatter set
 	// @param [in] TTFPath - Path to the .ttf file
-	// @param [in] Quality - Coefficient representing the quality (the higher the higher the quality)
+	// @param [in] Quality - Coefficient representing the quality (a higher number means better quality)
 	// @return True if the upload was successful, Flase otherwise
 	// The upload is successful if:
 	// • The FreeType library is not error-free
 	// • Font characters are in a texture
 	bool Load(const char* TTFPath, const size_t Quality);
-
-	// Allows you to load a texture atlas of characters to use as a font
-	// @param [in] AtlasPath - Path to the image of the atlas of the characters
-	// @param [in] DescriptorPath - Path of the descriptor of the atlas (indicates the position of the characters in the image)
-	// @param [in] Type - Indicates the format of the descriptor
-	void Load(const char* AtlasPath, const char* DescrittorePath, FontAtlas_Descriptor Type);
 
 	// Gets the ID of the texture containing the glyphs atlas
 	GLuint getIDTexture() const;

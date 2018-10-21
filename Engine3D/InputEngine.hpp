@@ -28,14 +28,15 @@ class InputEngine
 	public:
 
 		// It allows to initialize the input engine
-		// @param [in] Window - Window whose input is to be obtained
+		// @param[in] Window - Window whose input is to be obtained
 		void Inizialize(GLFWwindow* Window);
 
-		// It allows to update the status of the cabinet by performing an update of the input status
+		// It allows to update the status of the cabinet by performing an
+		// update of the input status
 		void Update();
 
-		// Gets the status of the input for this frame
-		// NOTE: the pointer is managed by the user
+		// Gets the status of the input for this frame the returned ointer
+		// is managed by the user
 		InputState* getInputState();
 
 		// --- SCROLL WHEEL ----
@@ -93,39 +94,39 @@ class InputEngine
 		};
 
 		// Show a message box with the OK button
-		// @param [in] Title - Title on the message box window bar
-		// @param [in] Text - Text of the message box
+		// @param[in] Title - Title on the message box window bar
+		// @param[in] Text - Text of the message box
 		static void MessageBoxShow(const char* Title, const char* Text);
 
 		// Show a message box
-		// @param [in] Title - Title on the message box window bar
-		// @param [in] Text - Text of the message box
-		// @param [in] Buttons - Buttons in the box
+		// @param[in] Title - Title on the message box window bar
+		// @param[in] Text - Text of the message box
+		// @param[in] Buttons - Buttons in the box
 		// @return Button clicked by the user
 		static MessageBox_Return MessageBoxShow(const char* Title, const char* Text, MessageBox_Buttons Buttons);
 
 		// Show a message box
-		// @param [in] Title - Title on the message box window bar
-		// @param [in] Text - Text of the message box
-		// @param [in] Buttons - Buttons in the box
-		// @param [in] DefaultBtn - Button selected by default
+		// @param[in] Title - Title on the message box window bar
+		// @param[in] Text - Text of the message box
+		// @param[in] Buttons - Buttons in the box
+		// @param[in] DefaultBtn - Button selected by default
 		// @return Button clicked by the user
 		static MessageBox_Return MessageBoxShow(const char* Title, const char* Text, MessageBox_Buttons Buttons, MessageBox_DefaultButton DefaultBtn);
 
 		// Show a message box
-		// @param [in] Title - Title on the message box window bar
-		// @param [in] Text - Text of the message box
-		// @param [in] Buttons - Buttons in the box
-		// @param [in] Icon - Icon to show
+		// @param[in] Title - Title on the message box window bar
+		// @param[in] Text - Text of the message box
+		// @param[in] Buttons - Buttons in the box
+		// @param[in] Icon - Icon to show
 		// @return Button clicked by the user
 		static MessageBox_Return MessageBoxShow(const char* Title, const char* Text, MessageBox_Buttons Buttons, MessageBox_Icons Icon);
 
 		// Show a message box
-		// @param [in] Title - Title on the message box window bar
-		// @param [in] Text - Text of the message box
-		// @param [in] Buttons - Buttons in the box
-		// @param [in] DefaultBtn - Button selected by default
-		// @param [in] Icon - Icon to show
+		// @param[in] Title - Title on the message box window bar
+		// @param[in] Text - Text of the message box
+		// @param[in] Buttons - Buttons in the box
+		// @param[in] DefaultBtn - Button selected by default
+		// @param[in] Icon - Icon to show
 		// @return Button clicked by the user
 		static MessageBox_Return MessageBoxShow(const char* Title, const char* Text, MessageBox_Buttons Buttons, MessageBox_DefaultButton DefaultBtn, MessageBox_Icons Icon);
 };

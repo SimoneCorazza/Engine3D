@@ -37,7 +37,7 @@ void SkyboxShader::RenderSkybox(const Skybox * S, const glm::mat4 & CameraMatrix
 	glDrawArrays(GL_TRIANGLES, 0, S->getMesh()->getVertecesDraw());
 	glDisableVertexAttribArray(0);
 
-	// I leave no texture
+	// Reset the texture
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 

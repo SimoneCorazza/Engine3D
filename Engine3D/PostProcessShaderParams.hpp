@@ -18,6 +18,7 @@ class PostProcessShaderParams
 
 		// Sets the resolution of the portion of the video where the shader is applied
 		void setResolution(const glm::vec2& R);
+
 		// Gets the resolution of the portion of the video where the shader is applied
 		glm::vec2 getResolution() const;
 

@@ -60,12 +60,6 @@ bool Frustum::TestView(const glm::vec3 & V)
 	while (i < 6 && TestViewPlane(frustum[i], V))
 		i++;
 	return i == 6;
-
-	/*
-	return TestViewPlane(pLeft, V) && TestViewPlane(pRight, V) &&
-		TestViewPlane(pTop, V) && TestViewPlane(pBottom, V) &&
-		TestViewPlane(pNear, V) && TestViewPlane(pFar, V);
-	*/
 }
 
 
@@ -73,15 +67,8 @@ bool Frustum::TestView(const Box* B)
 {
 	// For this method the code provided by: http://www.racer.nl/reference/vfc_markmorley.htm was used
 	// in the section "Is This Box In the Frustum?"
-	// NOTE:
-	// • The normalization of the plans is not carried out (see cycle for commented) and apparently works the same
-	// • In some cases the culling is not carried out (and this is appropriate), all-in-all it happens only in sporadic cases
+	// NOTE in some cases the culling is not carried out (and this is appropriate), all-in-all it happens only in sporadic cases
 	// and not well determined (certain angles or when you are just outside the box)
-
-	/*
-	for (int i = 0; i < 8; i++)
-		frustum[i].Normalize();
-	*/
 
 
 	for (int p = 0; p < 6; p++)
@@ -105,14 +92,6 @@ bool Frustum::TestView(const Box* B)
 		return false;
 	}
 	return true;
-
-	/*
-	// Return false only if all tests fail
-	return TestView(B->getV1()) || TestView(B->getV2()) ||
-		TestView(B->getV3()) || TestView(B->getV4()) ||
-		TestView(B->getV5()) || TestView(B->getV6()) ||
-		TestView(B->getV7()) || TestView(B->getV8());
-	*/
 }
 
 bool Frustum::TestView(const glm::vec3 & O, float Radius)

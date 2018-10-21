@@ -90,7 +90,8 @@ Mesh* Mesh::Create(const float* BuffVerteces, const float* BuffUV, const float* 
 	glBindBuffer(GL_ARRAY_BUFFER, m->idBuffVerteces);
 	glBufferData(GL_ARRAY_BUFFER, sizeV, BuffVerteces, GL_STATIC_DRAW);
 
-	if (BuffUV == nullptr) // Check if the UVs are present
+	// Check if the UVs are present
+	if (BuffUV == nullptr)
 	{
 		m->idBuffUV = 0;
 		sizeUV = 0;
@@ -103,7 +104,8 @@ Mesh* Mesh::Create(const float* BuffVerteces, const float* BuffUV, const float* 
 		glBufferData(GL_ARRAY_BUFFER, sizeUV, BuffUV, GL_STATIC_DRAW);
 	}
 
-	if (BuffNormals == nullptr) // Normal cases not inserted
+	// Check if the Normals are present
+	if (BuffNormals == nullptr)
 	{
 		m->idBuffNormals = 0;
 		sizeNor = 0;
@@ -128,20 +130,20 @@ Mesh* Mesh::Create(const float* BuffVerteces, const float* BuffUV, const float* 
 
 // Allows you to load a single vertex of a face
 // by matching each ID with the corresponding value that is added to the respective array
-// @param [in] FaceIndex - Index of the face to which this summit belongs
-// @param [in] VertexIndex - Index of the currently analyzed vertex (between 0 and VERTECES_FACE)
-// @param [in-out] FacesVerteces - Array where to insert vertex data
-// @param [in-out] FacesUVs - Array where to enter UV data
-// @param [in-out] FacesNormals - Array where to enter normal data (if supported)
-// @param [in] Verteces - Array that serves as a dictionary for the various vertex IDs
-// @param [in] UVs - Array that serves as a dictionary for the various UV IDs
-// @param [in] Normals - Array that acts as a dictionary for the various IDs of the normals (if you support them)
-// @param [in] NormalsSupp - Indicates whether normals are supported by this mesh
-// @param [in-out] Br - Stream where to read the face data
+// @param[in] FaceIndex - Index of the face to which this summit belongs
+// @param[in] VertexIndex - Index of the currently analyzed vertex (between 0 and VERTECES_FACE)
+// @param[in-out] FacesVerteces - Array where to insert vertex data
+// @param[in-out] FacesUVs - Array where to enter UV data
+// @param[in-out] FacesNormals - Array where to enter normal data (if supported)
+// @param[in] Verteces - Array that serves as a dictionary for the various vertex IDs
+// @param[in] UVs - Array that serves as a dictionary for the various UV IDs
+// @param[in] Normals - Array that acts as a dictionary for the various IDs of the normals (if supported)
+// @param[in] NormalsSupp - Indicates whether normals are supported by this mesh
+// @param[in-out] Br - Stream where to read the face data
 inline void LoadVertexFace(const int& FaceIndex, const int& VertexIndex, float* FacesVerteces, float* FacesUVs, float* FacesNormals,
 	float* Verteces, float* UVs, float* Normals, const bool& NormalsSupp, BinaryReader* Br)
 {
-	// I take the IDs of the arrays from this face:
+	// Take the IDs of the arrays from this face:
 	int idVerteces = Br->ReadInt32() - 1;
 	int idUVs = Br->ReadInt32() - 1;
 	int idNormals;
@@ -150,7 +152,7 @@ inline void LoadVertexFace(const int& FaceIndex, const int& VertexIndex, float* 
 	else
 		idNormals = -1;
 
-	// I add the data in the respective arrays:
+	// Add the data in the respective arrays:
 
 	int indexFaceVert = FaceIndex * VERTECES_FACE * 3 + VertexIndex * 3;
 	FacesVerteces[indexFaceVert + 0] = Verteces[idVerteces * 3 + 0];
@@ -182,8 +184,10 @@ Mesh* Mesh::LoadMSH(const char* Path)
 
 	char* signature = br.ReadFixedString(3);
 	bool isMSHFile = signature[0] == 'M' && signature[1] == 'S' && signature[2] == 'H';
-	delete[] signature; // Free the signature array
-	if (!isMSHFile) // Case does not have the signature
+	delete[] signature;
+
+	// Case does not have the signature
+	if (!isMSHFile)
 	{
 		br.Close();
 		return nullptr;
@@ -205,7 +209,7 @@ Mesh* Mesh::LoadMSH(const char* Path)
 	float* uvs = nullptr;
 	float* normals = nullptr;
 
-	// I load the vertices
+	// Load the vertices
 	int vertecesCount = br.ReadInt32();
 	verteces = new float[vertecesCount * 3];
 	for (int i = 0; i < vertecesCount; i++)
@@ -269,23 +273,25 @@ Mesh* Mesh::LoadMSH(const char* Path)
 #define pi 3.14159265359f
 
 // Gets the position of the UV of the sphere
-// @param [in] P - Sphere Summit
-// @param [in] R - Sphere of the sphere
-// @param [in] O - Coordination orientation u values:
-// True: Display the texture correctly if you are inside the sphere
-// False: Display the texture correctly if you are outside the sphere
+// @param[in] P - Sphere Summit
+// @param[in] R - Sphere of the sphere
+// @param[in] O - Coordination orientation u values:
+//		True: Display the texture correctly if you are inside the sphere
+//		False: Display the texture correctly if you are outside the sphere
 inline glm::vec2 getUVPos(const glm::vec3& P, const float& R, const bool& O)
 {
 	// SOURCE: https://en.wikipedia.org/wiki/UV_mapping
 	// I normalize the components of the error:
 	float nx = P.x / R, ny = P.y / R, nz = P.z / R;
-	if (O) // If you want to see from the outside
+
+	// If you want to see from the outside
+	if (O)
 		std::swap(nz, nx); // Exchange the two normal coordinates
-	// I make the necessary calculations:
+	
 	float u = 0.5f + std::atan2(nz, nx) / (2.0f * pi);
 	float v =  0.5f - std::asin(ny) / pi;
 
-	return glm::vec2(u, v); // I return the carrier
+	return glm::vec2(u, v);
 }
 
 Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & Segments, const bool& Orentation, const bool& Normals)
@@ -306,10 +312,10 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 
 	// Cycle to draw the rings of the sphere
 	for (int counterZ = 0;
-	counterZ < Segments / 2; // I perform only a "bell" of the breast / cosine
+	counterZ < Segments / 2; // I perform only a "bell" of the sine/cosine
 		counterZ++)
 	{
-		float angleZ = pi + (float)counterZ * interval; // Set the new angle for the Z axis starting from 180 °
+		float angleZ = pi + (float)counterZ * interval; // Set the new angle for the Z axis starting from 180°
 
 		// Calculating the two intermediate rays that follow the Z axis (calculate the current one and the next one to be able to join them)
 		// Used to calculate the ring
@@ -378,7 +384,7 @@ Mesh * Mesh::Sphere(const glm::vec3 & Origin, const float & Radius, const int & 
 
 			if (Normals)
 			{
-				// TO ACCORDING:
+				// TO Vector:
 				// Array
 				glm::vec3* vertecesVec[6] = 
 				{

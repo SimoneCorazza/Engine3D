@@ -254,7 +254,6 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClCompile Include="Utility_FileSystem.cpp" />
     <ClCompile Include="Utility_GLM.cpp" />
     <ClCompile Include="Utility_Math.cpp" />
-    <ClCompile Include="Utility_Strings.cpp" />
     <ClCompile Include="Utility_Time.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -297,7 +296,6 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="MyLiftTriActor.hpp" />
     <ClInclude Include="Plane.hpp" />
     <ClInclude Include="Point2.hpp" />
-    <ClInclude Include="Point3.hpp" />
     <ClInclude Include="PostProcessEffect.hpp" />
     <ClInclude Include="PostProcessScene.hpp" />
     <ClInclude Include="PostProcessShader.hpp" />
@@ -329,7 +327,6 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <ClInclude Include="Utility_FileSystem.hpp" />
     <ClInclude Include="Utility_GLM.hpp" />
     <ClInclude Include="Utility_Math.hpp" />
-    <ClInclude Include="Utility_Strings.hpp" />
     <ClInclude Include="Utility_Time.hpp" />
   </ItemGroup>
   <ItemGroup>

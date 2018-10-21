@@ -21,15 +21,6 @@
 #include <glm\gtc\matrix_transform.hpp>
 
 #include "CommonConstants.hpp"
-
-#ifdef _DEBUG
-/*
-	#include "ColorShader.h"
-	ColorShader shaderColorDebug; // Shader used to debug
-	GLuint idBuff_BoxFrustum; // Frustum buffer id (to view the video frustum box)
-	#define SIZE_BUFF_LINES_BOX (72 * 4) // Size in bytes of the array containing the coordinates of the lines for the box
-*/
-#endif
 	
 GLuint RenderingEngine::idBuffUnitQuad = 0;
 
@@ -83,17 +74,6 @@ void RenderingEngine::Inizialize()
 
 	// For the interface design
 	draw2d.Inizialize();
-
-#ifdef _DEBUG
-/*
-	shaderColorDebug.LoadShader("VertecesOnly.vert.glsl", "Color.frag.glsl");
-
-	// I generate the debug buffer for the frutum box
-	glGenBuffers(1, &idBuff_BoxFrustum);
-	glBindBuffer(GL_ARRAY_BUFFER, idBuff_BoxFrustum);
-	glBufferData(GL_ARRAY_BUFFER, SIZE_BUFF_LINES_BOX, nullptr, GL_STREAM_DRAW);
-*/
-#endif
 }
 
 void RenderingEngine::WindowResized(int Width, int Height)
@@ -113,14 +93,14 @@ void RenderingEngine::EnableArraysShader(const ModelShader* S)
 	GLuint idUV = S->getIDVertecesUVs();
 	GLuint idNorm = S->getIDVertecesNormals();
 
-	// Check if the shader supports / requires UV and / or normal
+	// Check if the shader supports/requires UV and/or normal
 	bool uvs = idUV != INVALID_BUFFER_ID;
 	bool normals = idNorm != INVALID_BUFFER_ID;
 
 	glEnableVertexAttribArray(idCord);
-	if (uvs) // Disabled only if the UVs are supported / requested by the shader
+	if (uvs) // Disabled only if the UVs are supported/requested by the shader
 		glEnableVertexAttribArray(idUV);
-	if (normals) // Disable only if the normals are supported / requested by the shader
+	if (normals) // Disable only if the normals are supported/requested by the shader
 		glEnableVertexAttribArray(idNorm);
 }
 
@@ -130,7 +110,7 @@ void RenderingEngine::SetArraysShader(const ModelShader* S, const Mesh * M)
 	GLuint idUV = S->getIDVertecesUVs();
 	GLuint idNorm = S->getIDVertecesNormals();
 
-	// Check if the shader supports / requires UV and / or normal
+	// Check if the shader supports/requires UV and/or normal
 	bool uvs = idUV != INVALID_BUFFER_ID;
 	bool normals = idNorm != INVALID_BUFFER_ID;
 
@@ -145,7 +125,7 @@ void RenderingEngine::SetArraysShader(const ModelShader* S, const Mesh * M)
 		(void*)0
 		);
 
-	if (uvs) // Check if the shader supports / requires UV
+	if (uvs) // Check if the shader supports/requires UV
 	{
 		// 2nd attribute buffer: UVs
 		glBindBuffer(GL_ARRAY_BUFFER, M->getIDBuffUV());
@@ -159,7 +139,7 @@ void RenderingEngine::SetArraysShader(const ModelShader* S, const Mesh * M)
 			);
 	}
 
-	if (normals) // Check if the shader supports / requires normal
+	if (normals) // Check if the shader supports/requires normal
 	{
 		// 3nd attribute buffer: Normals
 		glBindBuffer(GL_ARRAY_BUFFER, M->getIDBuffNormals());
@@ -180,23 +160,21 @@ void RenderingEngine::DisableArrayShader(const ModelShader* S)
 	GLuint idUV = S->getIDVertecesUVs();
 	GLuint idNorm = S->getIDVertecesNormals();
 
-	// Check if the shader supports / requires UV and / or normal
+	// Check if the shader supports/requires UV and/or normal
 	bool uvs = idUV != INVALID_BUFFER_ID;
 	bool normals = idNorm != INVALID_BUFFER_ID;
 
 	glDisableVertexAttribArray(idCord);
-	if (uvs) // Disabled only if the UVs are supported / requested by the shader
+	if (uvs) // Disabled only if the UVs are supported/requested by the shader
 		glDisableVertexAttribArray(idUV);
-	if (normals) // Disable only if the normals are supported / requested by the shader
+	if (normals) // Disable only if the normals are supported/requested by the shader
 		glDisableVertexAttribArray(idNorm);
 }
 
 void RenderingEngine::RenderScene(Scene& S)
 {
 	// I order the actors to render:
-	// TIME_NOW ();
 	S.SortActors();
-	// TIME_POP ("Sort time:");
 
 	const Point2 windowSize = S.getLastInputState()->getWindowSize();
 
@@ -217,7 +195,7 @@ void RenderingEngine::RenderScene(Scene& S)
 
 		const Point2 o = camera->getOffset();
 		const Point2 s = camera->getSize();
-		Rectangle cameraPortion(o.x, windowSize.y - (o.y + s.y), s.x, s.y); // I get the portion of camera used by the camera
+		Rectangle cameraPortion(o.x, windowSize.y - (o.y + s.y), s.x, s.y); // I get the portion of screen used by the camera
 		const bool frustumCulling = camera->getFrustumCulling(); // Indicates whether the frustum culling is enabled by the camera
 
 		glBindFramebuffer(GL_FRAMEBUFFER, camera->getFrameBufferID()); // I use the frame buffer of the camera
@@ -243,29 +221,30 @@ void RenderingEngine::RenderScene(Scene& S)
 
 		// --- LIGHTS ---
 		std::vector<Light*> activeLights; // Vector for lights to render
-		// Cycle to eliminate the lights off or too far
+		// Cycle to eliminate the lights turned off or too far
 		while (lig.hasNext())
 		{
 			Light* l = lig.next();
-			if (l->state && frustum.TestView(glm::vec3(l->position), l->getClippingRadius())) // If turned on and in the frustum, I add the light in the list
+			if (l->state && frustum.TestView(glm::vec3(l->position), l->getClippingRadius()))
 				activeLights.push_back(l);
 		}
 
 
+		// ---- ACTORS -----
 		info.renderedActors = 0; // Counter for the number of actors rendered
 		info.renderedTriangles = 0; // Counter for the rendered triangles
 		const Actor* lastActor = nullptr; // Last actor rendered
-		// ---- ACTORS -----
-		for (int i = 0; i < actors->size(); i++) // Loop for rendering actors
+		// Loop for rendering actors
+		for (int i = 0; i < actors->size(); i++)
 		{
 			const Actor* a = (*actors)[i];
 			Box* b = a->getModel()->getMesh()->getFrustumBox() * a->getModelMatrix();
 
-			// Check that the frustum culling is enabled by the camera, and in this case text if the actor is in the frustum
-			// atrimenti senza frustum, I always draw the actor
+			// Check that the frustum culling is enabled by the camera, and in this case test if the actor is in the frustum
+			// otherwise without frustum, I always draw the actor
 			if (!frustumCulling || frustum.TestView(b))
 			{
-				info.renderedActors++; // Counter actors rendered
+				info.renderedActors++;
 
 				const Model* m = a->getModel();
 				const Material* mat = m->getMaterial();
@@ -280,7 +259,7 @@ void RenderingEngine::RenderScene(Scene& S)
 					if(lastActor != nullptr)
 						DisableArrayShader(lastActor->getModel()->getMaterial()->getShader());
 
-					// Enables / disables face culling based on the needs of the shader
+					// Enables/disables face culling based on the needs of the shader
 					if (s->getBothSide()) // In case the shader requires that all the faces be rendered
 					{
 						if (cullFace)
@@ -321,68 +300,11 @@ void RenderingEngine::RenderScene(Scene& S)
 				s->SetObjectParameters(a->getActorParameters(), a->getModelMatrix()); // Settings for the shader for this object
 				glDrawArrays(GL_TRIANGLES, 0, m->getMesh()->getVertecesDraw()); // Mesh rendering
 
-				/*
-				#ifdef _DEBUG
-				glDisable(GL_DEPTH_TEST);
-
-				float arr[] =
-				{
-					// Lower face:
-					b->v1.x, b->v1.y, b->v1.z,
-					b->v2.x, b->v2.y, b->v2.z,
-
-					b->v2.x, b->v2.y, b->v2.z,
-					b->v3.x, b->v3.y, b->v3.z,
-
-					b->v3.x, b->v3.y, b->v3.z,
-					b->v4.x, b->v4.y, b->v4.z,
-
-					b->v4.x, b->v4.y, b->v4.z,
-					b->v1.x, b->v1.y, b->v1.z,
-
-					// Upper face:
-					b->v5.x, b->v5.y, b->v5.z,
-					b->v6.x, b->v6.y, b->v6.z,
-
-					b->v6.x, b->v6.y, b->v6.z,
-					b->v7.x, b->v7.y, b->v7.z,
-
-					b->v7.x, b->v7.y, b->v7.z,
-					b->v8.x, b->v8.y, b->v8.z,
-
-					b->v8.x, b->v8.y, b->v8.z,
-					b->v5.x, b->v5.y, b->v5.z,
-
-					// Connection between upper and lower face:
-					b->v1.x, b->v1.y, b->v1.z,
-					b->v5.x, b->v5.y, b->v5.z,
-
-					b->v2.x, b->v2.y, b->v2.z,
-					b->v6.x, b->v6.y, b->v6.z,
-
-					b->v3.x, b->v3.y, b->v3.z,
-					b->v7.x, b->v7.y, b->v7.z,
-
-					b->v4.x, b->v4.y, b->v4.z,
-					b->v8.x, b->v8.y, b->v8.z,
-				};
-
-				glBindBuffer(GL_ARRAY_BUFFER, idBuff_BoxFrustum);
-				glBufferData(GL_ARRAY_BUFFER, SIZE_BUFF_LINES_BOX, nullptr, GL_STREAM_DRAW);
-				glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(arr), arr);
-
-				glUseProgram(shaderColorDebug.getIDShader());
-				shaderColorDebug.RenderLines(idBuff_BoxFrustum, glm::vec4(1, 0, 0, 1), glm::mat4(1), camera->getCameraMatrix(), (sizeof(arr) / sizeof(float)) / 3);
-
-				glEnable(GL_DEPTH_TEST);
-				#endif
-				*/
-
 				lastActor = a;
 			}
 
 
-			delete b; // Disable the box
+			delete b;
 
 		} // ACTORS
 
@@ -397,7 +319,6 @@ void RenderingEngine::RenderScene(Scene& S)
 
 	} // CAMERAS
 
-	// I render the interface
 	RenderUI(S);
 }
 
@@ -413,7 +334,8 @@ GLuint RenderingEngine::getIDBuffUnitQuad()
 
 void RenderingEngine::RenderSkybox(const Skybox* S, const Camera& C)
 {
-	if (S != nullptr) // There is a skybox for the scene
+	// There is a skybox for the scene
+	if (S != nullptr)
 	{
 		// Disable the depth test for the skybox to give the impression that it is very distant
 		glDisable(GL_DEPTH_TEST);
@@ -478,7 +400,6 @@ void RenderingEngine::ApplayPostRenderEffects(const Camera& C, const Rectangle& 
 
 void RenderingEngine::RenderUI(Scene & S)
 {
-	// Design the interface in 2D
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND); // Enable transparency
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);

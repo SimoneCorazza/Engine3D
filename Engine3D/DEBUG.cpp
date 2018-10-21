@@ -13,63 +13,7 @@
 #include <stack>
 #include <chrono>
 
-// ---- FOR THE DEBUG ----
 
-/*
-
-// Inserts a breaking point in the indicated line
-void Debug_BreakPoint()
-{
-#ifdef _DEBUG
-	__debugbreak();
-#else
-	// nothing
-#endif
-}
-
-// Show an error message and insert a breaking point
-void Debug_ErrorBreak(const char* C)
-{
-#ifdef _DEBUG
-	printf(C);
-	printf("\n");
-	Debug_BreakPoint();
-#else
-	// nothing
-#endif
-}
-
-// Print a message on standard output followed by a new one
-void Log(const char* C)
-{
-#ifdef _DEBUG
-	printf(C);
-	printf("\n");
-#else
-	// nothing
-#endif
-}
-*/
-
-/*
-// Print on the standard output a non-fatal error
-void Debug_Error(const char* C)
-{
-#ifdef _DEBUG
-	printf("ERROR: ");
-	printf(C);
-	printf("\n");
-#else
-	// nothing
-#endif
-}
-*/
-
-// ---- FOR RELEASE -----
-
-
-// Lets show an error in the console if we are debugging otherwise to show it in a MessageBox if it is inrelese
-// and then close the application
 void RELEASE_CLOSE(const char* C)
 {
 #ifdef _DEBUG
@@ -101,7 +45,7 @@ void RELEASE_CLOSE(const char* C)
 
 // ---- THE TIME SPENT ON ----
 
-std::stack<  std::chrono::time_point<std::chrono::high_resolution_clock>  > timeStack;
+std::stack<std::chrono::time_point<std::chrono::high_resolution_clock>> timeStack;
 
 void Time_Now()
 {

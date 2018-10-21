@@ -53,7 +53,7 @@ void CheckTable::Reset(size_t PredictedSize)
 {
 	if (table != nullptr)
 	{
-		for (size_t i = 0; i < tableSize; i++) // I delete the instantiated sub-arry
+		for (size_t i = 0; i < tableSize; i++) // I delete the instantiated sub-array
 			delete table[i];
 		delete table;
 	}

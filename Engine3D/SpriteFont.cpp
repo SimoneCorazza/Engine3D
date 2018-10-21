@@ -4,12 +4,17 @@
 
 #include "DEBUG.hpp"
 
-// Characters that can be drawn at once (requires more memory)
+// Characters that can be drawn at once (the more to render the more
+// memory it takes)
+
 #define MAX_CHAR_RENDER_ONCE 128
+
 // Number of vertices per character to be rendered
 #define NUM_VERTECES_FACE (4)
+
 // Size in bytes of the vertex buffer
 #define SIZE_VERTEX_BUFFER (sizeof(float) * NUM_VERTECES_FACE * 2 * MAX_CHAR_RENDER_ONCE)
+
 // Size in bytes of the UV coordinate buffer
 #define SIZE_UV_BUFFER (sizeof(float) * NUM_VERTECES_FACE * 2 * MAX_CHAR_RENDER_ONCE)
 
@@ -99,9 +104,9 @@ int string_length(const Char* S)
 	return i;
 }
 
-// Gets the size of the new righa
+// Gets the size of the new line
 // @param [in] Height - Height of the characters in a unit of measure
-// @return Size of the new row
+// @return Size of the new line
 inline float GetNewLineSize(float Height)
 {
 	return Height + Height * 0.01f;
@@ -135,10 +140,10 @@ void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Loc
 
 	// Arrays for which to fill the UV and Vertex buffers (length is an estimate: they could be spaces '' or '\ n' that not
 	// they go to generate characters and therefore coordinates by vertices or uv)
-	// - !! NOTE !! - Better not to replace these two std :: vector <float> with float array *
+	// - !! NOTE !! - Better not to replace these two std::vector<float> with float array*
 	// otherwise there are graphical glich (random black polygons) in the relays mode
-	// this is probably due to the fact that the delete operations of the arrays that causes a bad are optimized
-	// porting of arrays in VRAM
+	// this is probably due to the optimization of the delete of the arrays that provoke
+	// a bad porting of the data on the VRAM
 	std::vector<float> vertexCoords(NUM_VERTECES_FACE * 2 * len);
 	std::vector<float> uvCoords(NUM_VERTECES_FACE * 2 * len);
 
@@ -179,7 +184,6 @@ void SpriteFont::Draw(const Char* String, const Font* Font, const glm::vec2& Loc
 
 				int pos = NUM_VERTECES_FACE * 2 * realChar;
 
-				// float x1 = cursor.x, x2 = cursor.x + widChar, y1 = cursor.y + Height - heiChar + sposY, y2 = cursor.y + Height + sposY;
 				float x1 = cursor.x, x2 = cursor.x + widChar, y1 = cursor.y + Height - heiChar + sposY, y2 = cursor.y + Height + sposY;
 
 				vertexCoords[pos + 0] = x1;

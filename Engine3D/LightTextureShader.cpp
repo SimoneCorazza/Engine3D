@@ -69,15 +69,12 @@ void LightTextureShader::SetAmbientLight(const glm::vec3 & L)
 	glUniform4f(idAmbientLight, L.x, L.y, L.z, 1.0f);
 }
 
-// const Model * lastRenderedModel = nullptr; // Last rendered model
-
 void LightTextureShader::SetSceneLights(const std::vector<Light*>& Lights)
 {
-	// lastRenderedModel = nullptr;
+	// Set the number of lights to be set
+	glUniform1i(idLightsNumber, (int)Lights.size());
 
-	glUniform1i(idLightsNumber, (int)Lights.size()); // Set the number of lights to be set
-
-	// I set the various parameters for each field of light:
+	// Set the various parameters for each field of light:
 	for (int i = 0; i < Lights.size() && i < MAXIMUM_LIGTS; i++)
 	{
 		Light* l = Lights[i];
@@ -95,13 +92,13 @@ void LightTextureShader::SetSceneLights(const std::vector<Light*>& Lights)
 
 void LightTextureShader::SetMaterial(const Material * M)
 {
-	// Imposed the material:
+	// Set the material properties:
 	glUniform4f(materialUniformComponetID.idAmbient, M->getAmbient().x, M->getAmbient().y, M->getAmbient().z, 1.0f);
 	glUniform4f(materialUniformComponetID.idDiffuse, M->getDiffuse().x, M->getDiffuse().y, M->getDiffuse().z, 1.0f);
 	glUniform4f(materialUniformComponetID.idSpecular, M->getSpecular().x, M->getSpecular().y, M->getSpecular().z, 1.0f);
 	glUniform1f(materialUniformComponetID.idShininess, M->getShininess());
 
-	// I leave the texture:
+	// Set the texture:
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, M->getTexture()->getIDTexture());
 }
@@ -118,7 +115,7 @@ void LightTextureShader::SetCameraParameters(const glm::mat4 & ViewMatix, const 
 
 void LightTextureShader::SetObjectParameters(const ActorParameters* P, const glm::mat4& ModelMatrix)
 {
-	// P is accepting NULL in this shader
+	// P is ignored in this shader
 
 	glm::mat4 m = ModelMatrix;
 	glm::mat3 m_3x3_inv_transp = glm::transpose(glm::inverse(glm::mat3(ModelMatrix)));

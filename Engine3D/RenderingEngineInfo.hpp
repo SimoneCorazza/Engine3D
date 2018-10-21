@@ -1,7 +1,7 @@
 #pragma once
 
 
-// Struct that contains information about the engine
+// Information about the rendered scene
 struct RenderingEngineInfo
 {
 	size_t renderedActors; // Number of actors rendered in the last frame

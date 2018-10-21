@@ -183,9 +183,6 @@
     <ClCompile Include="DEBUG.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Utility_Strings.cpp">
-      <Filter>Engine\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="SkyBox.cpp">
       <Filter>Engine\Scene\Skybox</Filter>
     </ClCompile>
@@ -344,9 +341,6 @@
     <ClInclude Include="Point2.hpp">
       <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
-    <ClInclude Include="Point3.hpp">
-      <Filter>Engine\BasicStructers</Filter>
-    </ClInclude>
     <ClInclude Include="Rectangle.hpp">
       <Filter>Engine\BasicStructers</Filter>
     </ClInclude>
@@ -492,9 +486,6 @@
       <Filter>Engine\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Utility_Math.hpp">
-      <Filter>Engine\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Utility_Strings.hpp">
       <Filter>Engine\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Utility_Time.hpp">

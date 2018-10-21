@@ -3,7 +3,7 @@
 
 #include "PostProcessShader.hpp"
 
-
+// Post process shader that makes the obtained frame blurry
 class BlurPostProcessShader : public PostProcessShader
 {
 	GLuint idResolution;

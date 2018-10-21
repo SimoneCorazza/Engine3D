@@ -12,7 +12,6 @@ int Font::maxTextureSize;
 
 
 
-
 Font::Font()
 {
 	idTexture = 0;
@@ -55,7 +54,7 @@ const Char* Font::ToChar(const char* C)
 		c[i] = (unsigned char)C[i]; // Step from signed char to unsigned char to match unicode
 		i++;
 	}
-	c[i] = '\0'; // Fine string character
+	c[i] = '\0'; // End of string character
 	return c;
 }
 
@@ -94,7 +93,7 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 
 	int currentLine = 0; // Cursor used to know how many lines are used to store glyphs
 	charcode = FT_Get_First_Char(face, &gindex);
-	while (gindex != 0) // Flick the font characters
+	while (gindex != 0) // Loop for every font characters
 	{
 		FT_Error errFT_loadGl = FT_Load_Glyph(face, gindex, FT_LOAD_NO_BITMAP); // Load the glyph
 		if (errFT_loadGl != FT_Err_Ok)
@@ -117,7 +116,8 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 				rows++;
 				currentLine = 0;
 
-				if (hei * rows > maxTextureSize) // In the event that not all characters can be in the texture
+				// Case that not all characters can be in the texture
+				if (hei * rows > maxTextureSize)
 					return false;
 			}
 			maxGlyphHeight = glm::max(maxGlyphHeight, (int)face->glyph->bitmap.rows);
@@ -157,7 +157,7 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 		glTexSubImage2D(GL_TEXTURE_2D, 0, x, y, sizes[i].x, sizes[i].y, GL_RED, GL_FLOAT, &bitmaps[i][0]);
 
 		GlyphInfo info;
-		// Septum of the glyph uv
+		// Set UV coordinates of the glyph
 		info.areaUV = RectangleF((float)x / (float)wid, (float)y / (float)hei, (float)sizes[i].x / (float)wid, (float)sizes[i].y / (float)hei);
 		info.width = (int)sizes[i].x;
 		info.height = (int)sizes[i].y;
@@ -165,14 +165,14 @@ bool Font::Load(const char* TTFPath, const size_t Quality)
 		info.bitmapLeft = (int)sizes[i].w;
 		charactersMap[chars[i]] = info;
 
-		x += sizes[i].x + GLYPS_BORDER; // I position myself for the next character
+		x += sizes[i].x + GLYPS_BORDER; // Spacing for the next character
 	}
 
 	// GL_REPEAT is useless and can generate problems when glyphs are near the edges
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-	// Quality filters require the characters to be spaced (motif of the borders between the various glyphs) but guarantee one
+	// Quality filters require the characters to be spaced but guarantee one
 	// better quality when they are rendered
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

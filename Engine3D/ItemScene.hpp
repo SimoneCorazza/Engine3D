@@ -9,8 +9,11 @@ class ItemScene
 {
 	friend Scene; // TO SET THE PARAMETERS: ID and scenes
 
-	unsigned int id; // ID of the item; unique in the scene
-	Scene* scene; // Scene containing the item
+	// ID of the item; unique in the scene
+	unsigned int id;
+
+	// Scene containing the item
+	Scene* scene;
 
 	public:
 		ItemScene();
@@ -26,7 +29,7 @@ class ItemScene
 		const Scene* getScene();
 
 		// It allows you to remove this element from the scene
-		// NOTE: the object will be destroyed (delete obj)
+		// @NOTE: the memory deallocation will be handled internally
 		void RemoveFromScene();
 
 	protected:

@@ -25,10 +25,10 @@ class Scene
 {
 	// Actors present within the scene
 	// Vector sorted according to the order rendering order
-	// Shader
-	// Texture
-	// Properties of the material
-	// Mesh (Verteces buffers)
+	//		1. Shader
+	//		2. Texture
+	//		3. Properties of the material
+	//		4. Mesh (Verteces buffers)
 	std::vector<Actor*> actors;
 	unsigned int addedActors; // Number of actors added since the last sorting operation
 	std::map<unsigned int, Light*> lights; // Lights present in the scene
@@ -36,15 +36,19 @@ class Scene
 	UI ui;
 
 
-	IDCollection<ItemScene*> items; // Any Item contained in the scene: camras, actors, lights, ...
+	// Any Item contained in the scene: camras, actors, lights, ...
+	IDCollection<ItemScene*> items;
 
-	Engine* engine; // Engine belonging to the scene
+	// Engine belonging to the scene
+	Engine* engine;
 
-	const Skybox* skybox; // Skybox of the scene
+	// Skybox of the scene
+	const Skybox* skybox;
 
 	protected:
 
-		glm::vec3 ambientLight; // Ambient light of the scene, used in shaders that support lighting
+		// Ambient light of the scene, used in shaders that support lighting
+		glm::vec3 ambientLight;
 
 	public:
 		Scene();
@@ -56,7 +60,7 @@ class Scene
 		void Inizialize(Engine* E);
 
 		// Updates the scene
-		// @param [in] SceneUpdateParameters - Parameters for the scene
+		// @param[in] SceneUpdateParameters - Parameters for the scene
 		void Update(const UpdateParameters& SceneUpdateParameters);
 
 		// Method to call when the game window is resized
@@ -71,11 +75,11 @@ class Scene
 		// Gets the lights present in the scene
 		MapIterator<unsigned int, Light*> getLigths();
 
-		// Gets the skybox of the scna (if it is null is not present in the scene)
+		// Gets the skybox (if it is null is not present in the scene)
 		const Skybox* getSkyBox();
 
 		// Remove the item with the indicated ID
-		// NOTE: method called automatically by ItemScene.RemoveFromScene ()
+		// @NOTE: method called automatically by ItemScene::RemoveFromScene()
 		void RemoveItem(unsigned int ID);
 
 		// Gets the last state of the input occurred during the last update of the scene
@@ -104,24 +108,24 @@ class Scene
 		// --- METHODS USED FROM THE DERIVED SCENE
 
 		// Gets a new Camera object for the scene
-		// @param [in] ModeOffset - Desired measurement mode for camera offset
-		// @param [in] X - Desired measurement mode for the camera size
-		// @param [in] Y - Desired measurement mode for camera size
-		// @param [in] ModeSize - Desired measurement mode for the camera size
-		// @param [in] Width - Length of the camera relative to the window (using the mode indicated above)
-		// @param [in] Height - camera height compared to the window (using the mode indicated above)
+		// @param[in] ModeOffset - Desired measurement mode for camera offset
+		// @param[in] X - Desired measurement mode for the camera size
+		// @param[in] Y - Desired measurement mode for camera size
+		// @param[in] ModeSize - Desired measurement mode for the camera size
+		// @param[in] Width - Width of the camera relative to the window (using the mode indicated above)
+		// @param[in] Height - Height of the camera compared to the window (using the mode indicated above)
 		// @return Camera created
 		Camera* InsertNewCamera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height);
 
 		// Inserts a new actor for the scene
-		// @param [in] Actor to add; not null
+		// @param[in] Actor to add; not null
 		void InsertNewActor(Actor* A);
 
 		// Inserts a new light for the scene
 		// @return Light created
 		Light* InsertNewLight();
 
-		// Set / insert a new Skybox, it can be null
+		// Set/insert a new Skybox, it can be null
 		void InsertSkybox(const Skybox* Skybox);
 
 		// Allows to terminate the engine
@@ -134,16 +138,17 @@ class Scene
 		
 
 		// Gets the position index in the actor's array
-		// @param [in] A - Desired actor
+		// @param[in] A - Desired actor
 		// @return index in "actors" if not found or the argument is null returns -1
 		int IndexOfActor(const Actor* A);
+		
 		// Gets the position index in the actor's array
-		// @param [in] ID - ID of the actor
+		// @param[in] ID - ID of the actor
 		// @return index in "actors" if not found -1
 		int IndexOfActor(unsigned int ID);
 
 		// Gets the actor with the indicated id
-		// @param [in] ID - ID of the desired actor
+		// @param[in] ID - ID of the desired actor
 		// @return Actor desired or null if not present
 		Actor* GetActor(unsigned int ID);
 

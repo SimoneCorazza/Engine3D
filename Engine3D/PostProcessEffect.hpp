@@ -5,7 +5,7 @@ class PostProcessShaderParams;
 
 class Camera;
 
-// A class that wraps information to a post process / rendering effect
+// Class that wraps the information for the applicazion of a post process shader
 class PostProcessEffect
 {
 	unsigned int id;

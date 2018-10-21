@@ -2,8 +2,8 @@
 
 /*
 Reference pages:
-General: https: // en.m.wikibooks.org/wiki/GLSL_Programming/GLUT/Diffuse_Reflection
-Attenuation: https: // developer.valvesoftware.com/wiki/Constant-Linear-Quadratic_Falloff
+General: https://en.m.wikibooks.org/wiki/GLSL_Programming/GLUT/Diffuse_Reflection
+Attenuation: https://developer.valvesoftware.com/wiki/Constant-Linear-Quadratic_Falloff
 */
 
 #include <glm\glm.hpp>
@@ -12,12 +12,13 @@ Attenuation: https: // developer.valvesoftware.com/wiki/Constant-Linear-Quadrati
 
 class Scene;
 
-// Struct that represents a light
+// Class for a light that can be placed on a scene 
 class Light : public ItemScene
 {
 	public:
 
-		bool state; // Indicates if the light is active or not
+		// Indicates if the light is active or not
+		bool state;
 
 		// if w = 0 is a directional light and the xyz components indicate its direction (directional light)
 		// if w! = 0 is a point or spot light
@@ -28,12 +29,11 @@ class Light : public ItemScene
 		float linearAttenuation;  // Linear attenuation [0, 1]
 		float quadraticAttenuation;  // Quadratic attenuation [0, 1]
 		float spotCutoff; // Variable for spotlights: angle of cut in degrees (if it is <= 90 the light is considered a spotligth)
-		float spotExponent; // Variable for spotlights: indicates how much light decays between the center and the edge [TO CHECK]
+		float spotExponent; // Variable for spotlights: indicates how much light decays between the center and the edge
 		glm::vec3 spotDirection; // Variable for spotlights: direction of the spotlight
 
 
 	public:
-		// Light (unsigned int ID, Scene * Scene);
 		Light();
 		~Light();
 

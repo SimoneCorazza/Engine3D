@@ -2,13 +2,11 @@
 
 #include "DEBUG.hpp"
 
-// #include "lodepng.h"
-// #include "Utility_FileSystem.h"
-
 #include <vector>
 #include <FreeImage.h>
 
-std::vector<FIBITMAP*> bitmapCreated; // List of bitmaps created by decoding and not yet released yet to be freed
+// List of bitmaps created by decoding and not yet released yet to be freed
+std::vector<FIBITMAP*> bitmapCreated;
 
 bool TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height)
 {
@@ -35,7 +33,7 @@ bool TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLe
 	// retrieve the image data
 	*RawData = FreeImage_GetBits(dib);
 	
-	// In the case of either 32 or 24 bit forzo having 4 or 3 components regardless of the format of the indicated color
+	// In the case of either 32 or 24 bit i override having 4 or 3 components regardless of the format of the indicated color
 	unsigned int bitPerPixel = FreeImage_GetBPP(dib);
 	if (bitPerPixel == 32)
 	{
@@ -79,81 +77,3 @@ void TextureDecoder_FreeDecode()
 		FreeImage_Unload(bitmapCreated[i]);
 	bitmapCreated.clear();
 }
-
-
-/*
-void TextureDecoder_DecodeTexture(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height)
-{
-	std::string ext = Utility_FileSystem_GetExtension(Path);
-	if (ext == "") // Absent extension case
-	{
-		Debug_Error("TextureDecoder_DecodeTexture(), estensione assente %s", Path);
-		*RawData = nullptr;
-		*DataFormat = 0;
-		*DataType = 0;
-		*Width = 0;
-		*Height = 0;
-	}
-	else if(ext == ".png")
-	{
-		TextureDecoder_DecodeTexture_PNG(Path, RawData, DataFormat, DataType, Width, Height);
-	}
-	else if (ext == ".bmp")
-	{
-		TextureDecoder_DecodeTexture_BMP(Path, RawData, DataFormat, DataType, Width, Height);
-	}
-	else
-	{
-		Debug_Error("TextureDecoder_DecodeTexture(), estensione sconosuta %s", Path.c_str());
-		*RawData = nullptr;
-		*DataFormat = 0;
-		*DataType = 0;
-		*Width = 0;
-		*Height = 0;
-	}
-}
-
-
-void TextureDecoder_DecodeTexture_PNG(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height)
-{
-	std::vector<unsigned char> png;
-	lodepng::load_file(png, Path);
-
-	if (png.size() == 0)
-	{
-		Debug_Error("TextureDecoder_DecodeTexture_PNG(), file vuoto o inesistente %s", Path.c_str());
-		*RawData = nullptr;
-		*Width = 0;
-		*Height = 0;
-	}
-	else
-	{
-		std::vector<unsigned char> bitmap;
-		unsigned int width, heigth;
-
-		unsigned int error = lodepng::decode(bitmap, width, heigth, png);
-
-		if (error == 0)
-		{
-			*RawData = new unsigned char[bitmap.size()];
-			memcpy(*RawData, &bitmap[0], sizeof(unsigned char) * bitmap.size());
-			*DataFormat = GL_RGBA;
-			*DataType = GL_UNSIGNED_BYTE;
-			*Width = (int)width;
-			*Height = (int)heigth;
-		}
-		else
-		{
-			Debug_Error("Errore nella decodifica della texture PNG: %s\nErrore: %s", Path.c_str(), lodepng_error_text(error));
-			*RawData = nullptr;
-			*Width = 0;
-			*Height = 0;
-		}
-	}
-}
-
-void TextureDecoder_DecodeTexture_BMP(const std::string& Path, GLvoid** RawData, GLenum* DataFormat, GLenum* DataType, int* Width, int* Height)
-{
-	Debug_ErrorBreak("TextureDecoder_DecodeTexture_BMP(): Not implemented");
-}
-*/

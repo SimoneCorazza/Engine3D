@@ -6,7 +6,8 @@
 // Class that contains information related to a 2D texture
 class Texture2D
 {
-	GLuint idTexture; // ID of the texture according to OpenGL
+	// ID of the texture according to OpenGL
+	GLuint idTexture;
 
 	// Texture size in pixels
 
@@ -63,37 +64,37 @@ class Texture2D
 		void Dispose();
 
 		// It allows to load a texture
-		// @param [in] Width - Length in textel
-		// @param [in] Height - Length in textel
-		// @param [in] RawData - Texture data
-		// @param [in] DataFormat - Format of data passed in input
-		// @param [in] DataType - Type of data
-		// @param [in] InternalFormat - Format by which to store the texture in the GPU
-		// @param [in] WrapS -
-		// @param [in] WrapT -
-		// @param [in] MinFilter - MIN Filter
-		// @param [in] MagFilter - MAG filter
-		// @param [in] AnisotropicFilter - Anisotropic filter to be applied
+		// @param[in] Width - Width in textel
+		// @param[in] Height - Height in textel
+		// @param[in] RawData - Texture data
+		// @param[in] DataFormat - Format of data passed in input
+		// @param[in] DataType - Type of data
+		// @param[in] InternalFormat - Format by which to store the texture in the GPU
+		// @param[in] WrapS - Same meaning as of OpenGL
+		// @param[in] WrapT - Same meaning as of OpenGL
+		// @param[in] MinFilter - MIN Filter
+		// @param[in] MagFilter - MAG filter
+		// @param[in] AnisotropicFilter - Anisotropic filter to be applied
 		// @return Texture loaded; null if there was an error
 		static Texture2D* NewTexture2D(int Width, int Height,
 			GLvoid* RawData, GLenum DataFormat, GLenum DataType,
 			GLint InternalFormat, GLint WrapS, GLint WrapT, GLint MinFilter, GLint MagFilter, GLuint AnisotropicFilter);
 
 		// It allows to load a texture
-		// @param [in] Path - Path where to find the texture
-		// @param [in] InternalFormat - Format by which to store the texture in the GPU
-		// @param [in] WrapS -
-		// @param [in] WrapT -
-		// @param [in] MinFilter - MIN Filter
-		// @param [in] MagFilter - MAG filter
-		// @param [in] AnisotropicFilter - Anisotropic filter to be applied
+		// @param[in] Path - Path where to find the texture
+		// @param[in] InternalFormat - Format by which to store the texture in the GPU
+		// @param[in] WrapS - Same meaning as of OpenGL
+		// @param[in] WrapT - Same meaning as of OpenGL
+		// @param[in] MinFilter - MIN Filter
+		// @param[in] MagFilter - MAG filter
+		// @param[in] AnisotropicFilter - Anisotropic filter to be applied
 		// @return Texture loaded; null if there was an error loading the file
 		static Texture2D* NewTexture2D(const std::string& Path, GLint InternalFormat, GLint WrapS, GLint WrapT, GLint MinFilter, GLint MagFilter, GLuint AnisotropicFilter);
 
 	private:
 
 		// Initializes a texture instance with the indicated data
-		// (Texture ID generation performed in this method)
+		// @NOTE Texture ID generation performed in this method
 		void InizializeTexture(int Width, int Height,
 			GLvoid* RawData, GLenum DataFormat, GLenum DataType,
 			GLint InternalFormat, GLint WarpS, GLint WarpT, GLint MinFilter, GLint MagFilter, GLuint AnisotropicFilter);

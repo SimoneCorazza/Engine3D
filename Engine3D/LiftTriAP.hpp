@@ -2,12 +2,12 @@
 
 #include "ActorParameters.hpp"
 
-// Class for the parameters to be supplied to the shader by the actor
-// in order to function properly
+// Class for the ActorParameters for the LiftTri
 class LiftTriAP : public ActorParameters
 {
 	public:
-		float delta = 0; // Polygon distance
+		// Maximum vertex distance
+		float delta = 0;
 
 	public:
 		LiftTriAP();

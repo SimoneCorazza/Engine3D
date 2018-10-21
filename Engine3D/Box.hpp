@@ -8,12 +8,12 @@
 // 
 /* Verteces scheme:
 Axis:
-^
+ ^
 Z|
-|
-O------>     (Y exits upword from the screen)
+ |
+ O------>     (Y exits upword from the screen)
 Y      X
-Bottom part:				Top part:
+Bottom:						Top:
 V1--------V4					V5--------V8
 |		  |						|		  |
 |		  |						|		  |

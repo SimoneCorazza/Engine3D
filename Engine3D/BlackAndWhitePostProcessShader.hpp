@@ -2,7 +2,7 @@
 
 #include "PostProcessShader.hpp"
 
-// Post process shader that makes the image in black and white
+// Post process shader that makes the obteined frame in black and white
 class BlackAndWhitePostProcessShader : public PostProcessShader
 {
 

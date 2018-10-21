@@ -2,7 +2,7 @@
 
 #include <map>
 
-// Class that represents an editor for the values ​​of a map
+// Class that represents an iterator for the values ​​of a map
 template <class K, class T>
 class MapIterator
 {

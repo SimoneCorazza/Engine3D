@@ -3,11 +3,14 @@
 class Mesh;
 class Material;
 
-// Class that represents a model of a textured object
+// CLass of a model: a mesh with a binded material
 class Model
 {
-	const Mesh* mesh; // Pointer to the model mesh
-	const Material* material; // Pointer to the material that makes up the model
+	// Pointer to the model mesh
+	const Mesh* mesh;
+
+	// Pointer to the material that makes up the model
+	const Material* material;
 
 
 	public:

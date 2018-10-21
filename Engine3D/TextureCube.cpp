@@ -60,21 +60,20 @@ GLint TextureCube::getWrapR() const
 void TextureCube::Dispose()
 {
 	glDeleteTextures(1, &idTexture);
-	idTexture = INVALID_TEXTURE_ID; // Imposed the texture as invalid
+	idTexture = INVALID_TEXTURE_ID; // Set the texture as invalid
 }
 
 // http://learnopengl.com/#!Advanced-OpenGL/Cubemaps
 TextureCube * TextureCube::NewTextureCube(std::string FacesPath[CUBE_FACES_NUM], GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR, bool Usage)
 {
-	// glGenTextures (1, & idTexture);
-	// glBindTexture (GL_TEXTURE_CUBE_MAP, idTexture);
-
 	if (Usage)
 		std::swap(FacesPath[5], FacesPath[4]); // For internal use, I exchange the last two textures
 
 	Face faces[CUBE_FACES_NUM];
 
-	bool loadErr = false; // If true indicates that there was an error loading at least one texture
+	// If true indicates that there was an error loading at least one texture
+	bool loadErr = false;
+
 	for (int i = 0; i < CUBE_FACES_NUM && !loadErr; i++)
 	{
 		int width, height;
@@ -107,9 +106,6 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath[CUBE_FACES_NUM],
 
 TextureCube * TextureCube::NewTextureCube(std::string FacesPath, GLint InternalFormat, GLenum MinFilter, GLenum MaxFilter, GLint WrapS, GLint WrapT, GLint WrapR, bool Usage)
 {
-	// glGenTextures (1, & idTexture);
-	// glBindTexture (GL_TEXTURE_CUBE_MAP, idTexture);
-
 	int width, height;
 	void* data;
 	GLenum dataFormat, dataType;
@@ -123,7 +119,7 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath, GLint InternalF
 	size_t sizeTextel = TextureUtils_PixelSize(dataFormat, dataType);
 
 
-	// Control that the individual frames of the face are equivalent, control it from the same dimension of the texture
+	// Check that the individual frames of the face are equivalent, control it from the same dimension of the texture
 	ASSERT(faceWid == faceHei, "TextureCube::TextureCube() to make a MAP CUBE texture width and height of faces must be the same");
 
 	Face faces[CUBE_FACES_NUM];
@@ -138,7 +134,7 @@ TextureCube * TextureCube::NewTextureCube(std::string FacesPath, GLint InternalF
 	if (Usage)
 		std::swap(front, back); // For internal use, I exchange the last two textures
 
-								// Set the textures data
+	// Set the textures data
 	faces[0].textureData = right;
 	faces[1].textureData = left;
 	faces[2].textureData = top;

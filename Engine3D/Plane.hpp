@@ -2,7 +2,7 @@
 
 #include <glm\glm.hpp>
 
-// Struct representing a plan
+// Struct representing a plane
 struct Plane
 {
 	float a, b, c, d;

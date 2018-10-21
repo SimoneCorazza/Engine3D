@@ -23,7 +23,7 @@ class CheckTable
 		// Instantiate a table with expected size of 1
 		CheckTable();
 
-		// @param [in] PredictedSize - Expected table size
+		// @param[in] PredictedSize - Expected table size
 		CheckTable(size_t PredictedSize);
 
 		~CheckTable();
@@ -31,17 +31,17 @@ class CheckTable
 	public:
 
 		// Inserts the element if not yet present
-		// @param [in] K - Element to be inserted
+		// @param[in] K - Element to be inserted
 		// @return True if the element was already inserted, false otherwise
 		virtual bool Check(const KeyType& K);
 
 		// Reset the data structure
-		// @param [in] PredictedSize - Expected table size
+		// @param[in] PredictedSize - Expected table size
 		void Reset(size_t PredictedSize);
 
 	private:
 
-		// @param [in] K - Key
+		// @param[in] K - Key
 		// @return Index based 0 of the table where to find the ID
 		inline size_t HashFunction(const KeyType& K);
 };

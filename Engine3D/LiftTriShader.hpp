@@ -3,7 +3,7 @@
 #include "ModelShader.hpp"
 
 // Shader for models that allows you to move the triangles of the mesh
-// NOTE: it does not work well with frustum culling
+// @NOTE: it does not work well with frustum culling (the verteces can excede the bounding box)
 class LiftTriShader : public ModelShader
 {
 	// ID OF THE SHADER VARIABLES:
@@ -15,9 +15,6 @@ class LiftTriShader : public ModelShader
 
 	// Partial matrix for the MVP (as the vertex shader takes the entire MVP matrix as input and not the individual matrices)
 	glm::mat4 matrixViewProject;
-
-
-	// MANUFACTURERS:
 
 	public:
 		LiftTriShader();

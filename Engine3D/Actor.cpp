@@ -4,21 +4,7 @@
 
 #include "Utility_GLM.hpp"
 
-/*
-Actor::Actor(unsigned int ID, Scene* Scene) 
-	: ItemScene(ID, Scene)
-{
 
-
-	model = nullptr;
-	location = glm::vec3(0, 0, 0);
-	scale = glm::vec3(1, 1, 1);
-	rotation = glm::vec3(0, 0, 0);
-	param = nullptr;
-
-	modelMatrix = glm::mat4(1);
-}
-*/
 Actor::Actor()
 {
 	model = nullptr;
@@ -122,13 +108,6 @@ void Actor::Update(const UpdateParameters& P)
 {
 
 }
-
-/*
-void Actor::setActorParameters(ActorParameters * P)
-{
-	param = P;
-}
-*/
 
 const ActorParameters * Actor::getActorParameters() const
 {

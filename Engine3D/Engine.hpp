@@ -11,7 +11,7 @@ class Engine
 {
 	RenderingEngine renderingEngine;
 	InputEngine inputEngine;
-	InputState* lastInputState; // Last state of the input known
+	InputState* lastInputState; // Last state of the input
 
 	GLFWwindow* window; // Window used by the engine
 	Scene* actualScene; // Current scene to use
@@ -31,13 +31,13 @@ class Engine
 
 
 		// Create a window
-		// @param [in] Title - Title of the window
-		// @param [in] Width - Window length in pixels
-		// @param [in] Height - Height of the window in pixels
+		// @param[in] Title - Title of the window
+		// @param[in] Width - Window length in pixels
+		// @param[in] Height - Height of the window in pixels
 		void CreateNewWindow(const char* Title, int Width, int Heigth);
 
 		// Allows you to create a fullscreen window in the main monitor
-		// @param [in] Title - Title of the window
+		// @param[in] Title - Title of the window
 		void CreateNewWindow(const char* Title);
 
 		
@@ -45,7 +45,7 @@ class Engine
 		// --- GAME ---
 
 		// Start the game loop
-		// @param [in] Scene - Scene to use (no null)
+		// @param[in] Scene - Scene to use (no null)
 		void StartGameLoop(Scene* Scene);
 
 		// Allows to end the game cycle and finish the engine
@@ -55,7 +55,7 @@ class Engine
 		void setScene(Scene* Scene);
 
 		// Gets the last known state of the input
-		// NOTE: The pointer release is managed by this class
+		// @NOTE: The pointer release is managed by this class
 		InputState* getLastInputState();
 
 		// @return Information on the work of the engine

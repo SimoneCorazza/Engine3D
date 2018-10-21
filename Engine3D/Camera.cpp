@@ -9,48 +9,6 @@
 
 #include "PostProcessShaderParams.hpp"
 
-/*
-Camera::Camera(unsigned int ID, Scene* Scene, MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
-{
-	// TODO: also the camera must be tact as actors in InsertNewCamera (Camera * C)
-
-	// camera initialization:
-	position = glm::vec3(0, 0, 0);
-	horizontalAngle = 0.0f;
-	verticalAngle = 0.0f;
-	speed = 5.0f;
-	mouseSpeed = 0.005f;
-	faceCulling = FaceCulling::FaceCulling_Disabled;
-	coefficienteVelocitaCamera = 1.0f;
-
-
-	// Visual movement limits:
-	// I prevent the camera from tipping over
-	minVerticalAngle = -glm::pi<float>() / 2.f;
-	maxVerticalAngle = glm::pi<float>() / 2.f;
-
-	// I do not limit the horizontal part
-	minHorizontalAngle = 0.f;
-	maxHorizontalAngle = 0.f;
-
-	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f); // Set the Projection matrix by default
-
-	focused = false;
-	frustumCulling = true;
-
-	// Post process:
-	idPostProcessEffectsCounter = 1;
-	idFrameBuffer = 0;
-	idDepthTexture = 0;
-
-	modeOffset = ModeOffset;
-	measureOffset = glm::vec2(X, Y);
-	modeSize = ModeSize;
-	measureSize = glm::vec2(Width, Height);
-
-	// UpdateFrameBuffer ();
-}
-*/
 
 Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
 {
@@ -73,7 +31,8 @@ Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, f
 	minHorizontalAngle = 0.f;
 	maxHorizontalAngle = 0.f;
 
-	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f); // Set the Projection matrix by default
+	// Set the default Projection matrix
+	setProjectionMatrix(INITIAL_FOV, 4.f / 3.f, 0.1f, 1000.f);
 
 	focused = false;
 	frustumCulling = true;
@@ -87,8 +46,6 @@ Camera::Camera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, f
 	measureOffset = glm::vec2(X, Y);
 	modeSize = ModeSize;
 	measureSize = glm::vec2(Width, Height);
-
-	// UpdateFrameBuffer ();
 }
 
 Camera::~Camera()
@@ -112,15 +69,16 @@ void Camera::Update(float ElapsedTime)
 		horizontalAngle += mouseSpeed * (float)(cameraWidHalf - cursorPos.x);
 		verticalAngle += mouseSpeed * (float)(cameraHeiHalf - cursorPos.y);
 
-		// For camera limitation:
-		if(maxHorizontalAngle != 0.f) // Check if you want to limit the angle
+		// For camera angle limitation:
+		if(maxHorizontalAngle != 0.f)
 			horizontalAngle = glm::min(horizontalAngle, maxHorizontalAngle);
-		if (minHorizontalAngle != 0.f) // Check if you want to limit the angle
+		if (minHorizontalAngle != 0.f)
 			horizontalAngle = glm::max(horizontalAngle, minHorizontalAngle);
-		if (maxVerticalAngle != 0.f) // Check if you want to limit the angle
+		if (maxVerticalAngle != 0.f)
 			verticalAngle = glm::min(verticalAngle, maxVerticalAngle);
-		if (minVerticalAngle != 0.f) // Check if you want to limit the angle
+		if (minVerticalAngle != 0.f)
 			verticalAngle = glm::max(verticalAngle, minVerticalAngle);
+
 		// Direction: Spherical coordinates to Cartesian coordinates conversion
 		direction = glm::vec3(
 			cos(verticalAngle) * sin(horizontalAngle),
@@ -150,11 +108,11 @@ void Camera::Update(float ElapsedTime)
 		else if (getInputState()->IsKeyPressed(GLFW_KEY_A))
 			position -= right * ElapsedTime * speed * coefficienteVelocitaCamera;
 
-		// Muoversu on
+		// Move up
 		if (getInputState()->IsKeyPressed(GLFW_KEY_SPACE))
 			position += up * ElapsedTime * speed * coefficienteVelocitaCamera;
 
-		// Muoversu Jun
+		// Move down
 		if (getInputState()->IsKeyPressed(GLFW_KEY_LEFT_CONTROL))
 			position -= up * ElapsedTime * speed * coefficienteVelocitaCamera;
 
@@ -166,7 +124,8 @@ void Camera::Update(float ElapsedTime)
 			up						// Head is up (set to 0, -1.0 to look upside down)
 			);
 
-		cameraMatrix = projectionMatrix * viewMatrix; // Calculating the camera matrix
+		// Calculating the camera matrix
+		cameraMatrix = projectionMatrix * viewMatrix;
 	}
 }
 
@@ -198,7 +157,7 @@ void Camera::RemovePostProcessEffect(int ID)
 		ASSERT(false, "Effect not found");
 	else
 	{
-		delete postProcessEffects[pos]->getPostProcessShaderParams(); // Remove any parameters
+		delete postProcessEffects[pos]->getPostProcessShaderParams(); // dELETE any parameters
 		delete postProcessEffects[pos]; // Release the object's memory
 		postProcessEffects.erase(postProcessEffects.begin() + pos); // I delete the effect
 	}
@@ -395,7 +354,7 @@ Point2 Camera::TransformToPixel(const MeasureMode & Mode, const glm::vec2 & Meas
 
 	default: 
 		ASSERT(false, "Case not known"); 
-		return Point2(); // Error case and want to continue
+		return Point2(); // Default in case of error
 	}
 }
 
@@ -468,5 +427,5 @@ void Camera::UpdateFrameBuffer()
 	// Always check that our framebuffer is ok
 	ASSERT(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE, "Faild to inizialize frame buffer for the camera");
 
-	glBindFramebuffer(GL_FRAMEBUFFER, 0); // Setto for security as a rendering destination the screen
+	glBindFramebuffer(GL_FRAMEBUFFER, 0); // Set, for security, the screen as rendering destination
 }

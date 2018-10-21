@@ -2,15 +2,19 @@
 
 #include "RectangleF.hpp"
 
-// Class that allows you to store all the various information about a glyph
+// Class that store the information about a glyph
 class GlyphInfo
 {
 	// ATTRIBUTES:
 public:
-	RectangleF areaUV; // Area occupied by the character in the texture
+	// Area occupied by the character in the texture
+	RectangleF areaUV;
 
-	int width; // X size of the texture
-	int height; // Y-size of the texture
+	// X size of the texture
+	int width;
+	// Y size of the texture
+	int height;
+
 	int bitmapTop;
 	int bitmapLeft;
 

@@ -40,11 +40,7 @@ class RenderingEngine
 	// Used for example by the vertex shader for post-render effects
 	static GLuint idBuffUnitQuad;
 
-	// - SUPPORT STRUCTURE
-	// Support structures for rendering
-	
-	// - INFO ABOUT THE END ---
-
+	// Statistics about the rendered scene
 	RenderingEngineInfo info;
 
 
@@ -59,8 +55,8 @@ class RenderingEngine
 		void Inizialize();
 
 		// Method to indicate that the window has been resized
-		// @param [in] Width - New window length in pixels
-		// @param [in] Height - New window height in pixels
+		// @param[in] Width - New window length in pixels
+		// @param[in] Height - New window height in pixels
 		void WindowResized(int Width, int Height);
 
 		// Set the background color
@@ -86,26 +82,26 @@ class RenderingEngine
 		// • that the scene for the data camera has already been rendered on the texture with ID 0
 		// • that the camera FBO is still selected
 		// FINAL NOTE: This method was only tested immediately after the data camera was rendered
-		// @param [in] C - camera from which to render the post-process effects
-		// @param [in] Portion - Screen portion reserved for the pixel camera
+		// @param[in] C - camera from which to render the post-process effects
+		// @param[in] Portion - Screen portion reserved for the pixel camera
 		void ApplayPostRenderEffects(const Camera& C, const Rectangle& Portion);
 
 		// It allows to render the indicated scene
-		// @param [in] S - Scene of which to design the interface
+		// @param[in] S - Scene of which to design the interface
 		void RenderUI(Scene& S);
 
-		// Enables the variables / attributes for mesh buffers to be enabled
-		// @param [in] S - Shader to set buffers
+		// Enables the variables/attributes for mesh buffers to be enabled
+		// @param[in] S - Shader to set buffers
 		void EnableArraysShader(const ModelShader* S);
 
 		// Allows you to set the attributes of the mesh in the shader such as: vertices, uv and normal
 		// (if requested by the shader)
-		// @param [in] S - Shader to set mesh buffers
-		// @param [in] M - Mesh to be put in the shader
+		// @param[in] S - Shader to set mesh buffers
+		// @param[in] M - Mesh to be put in the shader
 		void SetArraysShader(const ModelShader* S, const Mesh* M);
 
-		// Disables the variables / attributes for mesh buffers
-		// @param [in] S - Shader to disable
+		// Disables the variables/attributes for mesh buffers
+		// @param[in] S - Shader to disable
 		void DisableArrayShader(const ModelShader* S);
 };
 

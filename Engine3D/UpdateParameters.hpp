@@ -11,7 +11,7 @@ class UpdateParameters
 
 
 	public:
-		// @param [in] ElapsedTime - Time spent in seconds since the last update
+		// @param[in] ElapsedTime - Time spent in seconds since the last update
 		UpdateParameters(float ElapsedTime, InputState* InputState);
 		~UpdateParameters();
 

@@ -1,6 +1,6 @@
 #include "Scene.hpp"
 
-#include <algorithm> // For std :: sort
+#include <algorithm> // For std::sort
 
 #include "Engine.hpp"
 #include "DEBUG.hpp"
@@ -81,13 +81,13 @@ void Scene::RemoveItem(unsigned int ID)
 		delete actors[index_a]; // I remove the actor
 		actors.erase(actors.begin() + index_a); // I delete the actor from the actors
 	}
-	else if (it_c != cameras.end()) // In the case the element to be removed is a chamber
+	else if (it_c != cameras.end()) // In the case the element to be removed is a camera
 	{
 		delete it_c->second; // Disallocate the camera
 		cameras.erase(it_c); // I remove the camera from the cameras list
 	}
 	else
-		ASSERT(false, "Caso non previso: ID sconoscuto");
+		ASSERT(false, "Unkown case: id not present");
 }
 
 InputState * Scene::getLastInputState()
@@ -98,11 +98,11 @@ InputState * Scene::getLastInputState()
 Camera* Scene::InsertNewCamera(MeasureMode ModeOffset, float X, float Y, MeasureMode ModeSize, float Width, float Height)
 {
 	unsigned int id = items.getNextID(); // Since the ID is required for the camera, I "anticipate"
-	Camera* c = new Camera(ModeOffset, X, Y, ModeSize, Width, Height); // Istanzio a camera
+	Camera* c = new Camera(ModeOffset, X, Y, ModeSize, Width, Height);
 
 	// Set the parameters of ItemScene
 	c->id = id; // ID of the scene item
-	c->scene = this; // Mother scene
+	c->scene = this; // Parent scene
 
 
 	Point2 size = getLastInputState()->getWindowSize();

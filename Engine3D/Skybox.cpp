@@ -10,7 +10,7 @@ Skybox::Skybox(const Mesh* Mesh, const TextureCube* TextureCube)
 	ASSERT(Mesh != nullptr && TextureCube != nullptr, "Skybox::Skybox(): params can not be null");
 
 	mesh = Mesh;
-	scale = glm::vec3(1); // Initialment has the size of the mesh
+	scale = glm::vec3(1); // Default scale: the same as the mesh
 	textureCube = TextureCube;
 }
 
@@ -48,37 +48,3 @@ const glm::mat4 Skybox::getMatrix(const glm::vec3& CameraPos) const
 	// Calculate the skybox array in order to center the camera
 	return Utility_GLM_MatrixFromVectors(CameraPos, scale, glm::vec3(0));
 }
-
-
-/*
-Skybox::Skybox(const Model * Model)
-{
-	model = Model;
-	scale = glm::vec3(1);
-}
-
-Skybox::~Skybox()
-{
-}
-
-void Skybox::setScale(const glm::vec3 & S)
-{
-	scale = S;
-}
-
-const glm::vec3 & Skybox::getScale() const
-{
-	return scale;
-}
-
-const Model* Skybox::getModel() const
-{
-	return model;
-}
-
-const glm::mat4 Skybox::getMatrix(const glm::vec3& CameraPos) const
-{
-	// Calculate the skybox array in order to center the camera
-	return Utility_GLM_MatrixFromVectors(CameraPos, scale, glm::vec3(0));
-}
-*/

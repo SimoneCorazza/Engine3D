@@ -32,7 +32,7 @@ File that aims to add utilities for debugging the application
 
 // ---- FOR RELEASE -----
 
-// Lets show an error in the console if we are debugging otherwise to show it in a MessageBox if it is inrelese
+// Lets show an error in the console if we are debugging otherwise to show it in a MessageBox if it is in relese
 // and then close the application
 void RELEASE_CLOSE(const char* C);
 

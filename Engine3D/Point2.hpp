@@ -1,6 +1,6 @@
 #pragma once
 
-// Struct that represents a point in the 2D plane
+// Struct that represents a point in a 2D plane
 struct Point2
 {
 	int x;

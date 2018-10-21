@@ -2,7 +2,7 @@
 
 #include "ModelShader.hpp"
 
-// Shader to render patterns by applying the texture as it is
+// Shader to render models by applying the texture as it is
 class StandardShader : public ModelShader
 {
 	// ID OF THE SHADER VARIABLES:

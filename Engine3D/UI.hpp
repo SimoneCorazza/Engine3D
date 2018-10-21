@@ -7,7 +7,8 @@
 // Class representing the user interface
 class UI
 {
-	std::vector<UIElement*> uiElements; // Interface elements
+	// Interface elements
+	std::vector<UIElement*> uiElements;
 
 	public:
 		UI();
@@ -16,7 +17,7 @@ class UI
 	public:
 
 		// Adds an interface element in the UI
-		// @param [in] UIElement - Element to add
+		// @param[in] UIElement - Element to add
 		void Add(UIElement* UIElement);
 
 		// Gets the elements of the interface

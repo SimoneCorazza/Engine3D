@@ -33,13 +33,21 @@ class LightTextureShader : public ModelShader
 	GLuint idMTrans; // Id of the uniform matrix M transposed
 	GLuint idVInv; // Id of the inverse camera matrix (View)
 
+
 	GLuint idTextureSampler;
 
-	GLuint idAmbientLight; // Uniform variable for ambient light
-	LightUniformIDs lightsArrayComponetsID[MAXIMUM_LIGTS]; // Array containing the IDs of the individual shader struct components
-	MaterialUniformIDs materialUniformComponetID; // ID of the uniform shader components for the material
+
+	// Uniform variable for ambient light
+	GLuint idAmbientLight;
+
+	// Array containing the IDs of the individual shader struct components
+	LightUniformIDs lightsArrayComponetsID[MAXIMUM_LIGTS];
+
+	// ID of the uniform shader components for the material
+	MaterialUniformIDs materialUniformComponetID;
 	
-	GLuint idLightsNumber; // ID of the variable in the shader indicating the number of lights currently in the array
+	// ID of the variable in the shader indicating the number of lights currently in the array
+	GLuint idLightsNumber;
 
 	public:
 		LightTextureShader();

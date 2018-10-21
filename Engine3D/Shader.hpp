@@ -10,9 +10,10 @@ class Shader
 	// ATTRIBUTES:
 	private:
 
-		GLuint idShader; // Shader ID according to OpenGL
+		// Shader ID according to OpenGL
+		GLuint idShader;
 
-	// MANUFACTURERS:
+	// CONSTRUCTORS:
 	public:
 		Shader();
 
@@ -22,8 +23,8 @@ class Shader
 	public:
 
 		// Allows you to load the shader
-		// @param [in] PathVertexShader - Path to the file containing the GLSL code of the vertex shader
-		// @param [in] PathFragmentShader - Path to the file containing the GLSL code of the fragment shader
+		// @param[in] PathVertexShader - Path to the file containing the GLSL code of the vertex shader
+		// @param[in] PathFragmentShader - Path to the file containing the GLSL code of the fragment shader
 		// @return True operation loading successfully performed False otherwise
 		bool LoadShader(const char* PathVertexShader, const char* PathFragmentShader);
 
@@ -36,13 +37,13 @@ class Shader
 
 	protected:
 
-		// Obtains the ID of the unifrme variable indicated in the shader
-		// @param [in] Name - Name of the variable in the shader
+		// Obtains the ID of the uniform variable indicated in the shader
+		// @param in] Name - Name of the variable in the shader
 		// @return ID of the variable for the shader
 		GLuint GetVarID(const char* Name);
 
-		// Obtains the ID of the unifrme variable indicated in the shader
-		// @param [in] Name - Name of the variable in the shader
+		// Obtains the ID of the uniform variable indicated in the shader
+		// @param[in] Name - Name of the variable in the shader
 		// @return ID of the variable for the shader
 		GLuint GetVarID(const std::string& Name);
 
