@@ -16,6 +16,12 @@ This project is not meant to be a rendering engine that someone will use for rea
 <img width="32%" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/DepthPostProcess.jpg"/>
 </div>
 
+From left to right: 
+
+- Black and white
+- Blur
+- Depth
+
 ### Parametrization of shaders
 <img width="auto" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/ComplexShaders.gif"/>
 
