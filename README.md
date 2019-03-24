@@ -34,7 +34,7 @@ Depth
 
 ### Prerequisites
 
-* Visual Studio 2015 (not tested other versions)
+* Visual Studio 2017
 
 ### Installing
 
