@@ -1,4 +1,4 @@
-# Engine 3D
+# Engine 3D &middot; [![Build Status](https://dev.azure.com/simonecorazza/Engine3D/_apis/build/status/SimoneCorazza.Engine3D?branchName=master)](https://dev.azure.com/simonecorazza/Engine3D/_build/latest?definitionId=1&branchName=master)
 
 A simple real time rendering engine using **OpenGL** and **C++**.
 
@@ -10,17 +10,19 @@ This project is not meant to be a rendering engine that someone will use for rea
 <img width="auto" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/StressTest.jpg"/>
 
 ### Post process shaders
-<div>
+
+Black and white
+
 <img width="32%" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/BlackAndWhitePostProcess.jpg"/>
+
+
+Blur
+
 <img width="32%" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/BlurPostProcess.jpg"/>
+
+Depth
+
 <img width="32%" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/DepthPostProcess.jpg"/>
-</div>
-
-From left to right: 
-
-- Black and white
-- Blur
-- Depth
 
 ### Parametrization of shaders
 <img width="auto" height="auto" src="https://raw.githubusercontent.com/wiki/SimoneCorazza/Engine3D/images/ComplexShaders.gif"/>
