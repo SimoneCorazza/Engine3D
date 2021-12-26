@@ -3,6 +3,7 @@
 #include "Draw2D.hpp"
 
 #include "Rectangle.hpp"
+#include <string>
 
 
 
