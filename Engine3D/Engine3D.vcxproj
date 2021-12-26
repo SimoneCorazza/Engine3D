@@ -79,6 +79,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -86,7 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);WINDOWS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\freetype-2.6.2\include;$(ProjectDir)\LIB\FreeImage\Dist\x32;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\include;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <ShowIncludes>true</ShowIncludes>
       <LanguageStandard>Default</LanguageStandard>
@@ -94,16 +97,16 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
-xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy dll to out directory</Message>
+      <Message>
+      </Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -113,7 +116,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);WINDOWS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\freetype-2.6.2\include;$(ProjectDir)\LIB\FreeImage\Dist\x32;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\include;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <ShowIncludes>true</ShowIncludes>
       <LanguageStandard>Default</LanguageStandard>
@@ -121,16 +124,16 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
-xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy dll to out directory</Message>
+      <Message>
+      </Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +145,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)WINDOWS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\freetype-2.6.2\include;$(ProjectDir)\LIB\FreeImage\Dist\x32;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\include;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
@@ -151,16 +154,16 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
-xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy dll to out directory</Message>
+      <Message>
+      </Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -172,7 +175,7 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)WINDOWS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\freetype-2.6.2\include;$(ProjectDir)\LIB\FreeImage\Dist\x32;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\include;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
@@ -181,16 +184,16 @@ xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)\LIB\FreeType-2.6.2\CreatedLIB;$(ProjectDir)\LIB\glm-0.9.4.0;$(ProjectDir)\LIB\glew-1.13.0\lib\Release\Win32;$(ProjectDir)\LIB\glfw-3.1.2.bin.WIN32\lib-vc2015;$(ProjectDir)\LIB\FreeImage\Dist\x32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;freetype262.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "$(ProjectDir)\LIB\FreeImage\Dist\x32\*.dll" "$(OutDir)"
-xcopy /y "$(ProjectDir)\LIB\glew-1.13.0\bin\Release\Win32\*.dll" "$(OutDir)"
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy dll to out directory</Message>
+      <Message>
+      </Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

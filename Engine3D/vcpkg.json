@@ -1,0 +1,35 @@
+{
+	"$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+	"name": "engine3d",
+	"version": "1.0.0",
+	"dependencies": [
+		{
+			"name": "glm",
+			"version>=": "0.9.8.0"
+		},
+		{
+			"name": "glew",
+			"version>=": "2.2.0"
+		},
+		{
+			"name": "glfw3",
+			"version>=": "3.1.2"
+		},
+		{
+			"name": "freetype",
+			"version>=": "2.11.0#2"
+		},
+		{
+			"name": "freeimage",
+			"version>=": "3.18.0#21"
+		}
+	],
+  	"overrides": [
+		{ "name": "glm", "version": "0.9.8.0" },
+		{ "name": "glew", "version": "2.2.0" },
+		{ "name": "glfw3", "version": "3.1.2" },
+		{ "name": "freetype", "version": "2.11.0#2" },
+		{ "name": "freeimage", "version": "3.18.0#21" }
+	],
+	"builtin-baseline": "772fe6cbce530cb3a5f0fee67b57e9861676e5d0"
+}
