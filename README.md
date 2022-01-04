@@ -54,6 +54,9 @@ Depth
 
 1. Open the **Engine3D** project proprieties
 2. Change the propriety Working Directory to `$(ProjectDir)\WorkingDirectory`
+3. Start the Engine3D project
+
+If you want to run a different scene you can go to [`main.cpp`](./Engine3D/main.cpp) file and uncomment the scene you want.
 
 ### Project structure
 
