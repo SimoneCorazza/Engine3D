@@ -7,11 +7,11 @@ trigger:
 - master
 
 pool:
-  vmImage: 'VS2017-Win2016'
+  vmImage: 'windows-latest'
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'x64'
+  buildPlatform: 'x86'
   buildConfiguration: 'Release'
   VCPKG_DIR: '$(Build.SourcesDirectory)\vcpkg'
   VCPKG_VERSION: '2021.05.12'
@@ -32,7 +32,7 @@ steps:
 
 - script: |
     cd $(Build.SourcesDirectory)\Engine3D
-    %VCPKG_DIR%\vcpkg.exe install
+    %VCPKG_DIR%\vcpkg.exe install --triplet x86-windows
   displayName: 'vcpkg package installation'
 
 - task: VSBuild@1
