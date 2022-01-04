@@ -11,7 +11,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'x86'
+  buildPlatform: 'x32'
   buildConfiguration: 'Release'
   VCPKG_DIR: '$(Build.SourcesDirectory)\vcpkg'
   VCPKG_VERSION: '2021.05.12'
