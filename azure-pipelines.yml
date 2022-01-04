@@ -7,12 +7,14 @@ trigger:
 - master
 
 pool:
-  vmImage: 'VS2017-Win2016'
+  vmImage: 'VS2022-Win2016'
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
+  buildPlatform: 'x64'
   buildConfiguration: 'Release'
+  VCPKG_DIR: '$(Build.SourcesDirectory)\vcpkg'
+  VCPKG_VERSION: '2021.05.12'
 
 steps:
 - task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
@@ -31,6 +33,18 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
+
+- script: |
+    git clone https://github.com/microsoft/vcpkg %VCPKG_DIR%
+    git %VCPKG_DIR% checkout tags/%VCPKG_VERSION%
+    call %VCPKG_DIR%\bootstrap-vcpkg.bat
+    %VCPKG_DIR%\vcpkg.exe version
+  displayName: 'Install vcpkg'
+
+- script: |
+    cd $(Build.SourcesDirectory)\Engine3D
+    %VCPKG_DIR%\vcpkg.exe install
+  displayName: 'vcpkg package installation'
 
 - task: VSBuild@1
   inputs:
