@@ -5,38 +5,38 @@ pool:
   vmImage: 'windows-2022'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'x32'
-  buildConfiguration: 'Release'
   VCPKG_DIR: '$(Build.SourcesDirectory)\vcpkg'
   VCPKG_VERSION: '2021.05.12'
 
 steps:
-- task: NuGetToolInstaller@0
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
 - script: |
     git clone https://github.com/microsoft/vcpkg %VCPKG_DIR%
     git %VCPKG_DIR% checkout tags/%VCPKG_VERSION%
     call %VCPKG_DIR%\bootstrap-vcpkg.bat
-    %VCPKG_DIR%\vcpkg.exe version
+    %VCPKG_DIR%\vcpkg.exe integrate install
   displayName: 'Install vcpkg'
 
 - script: |
     cd $(Build.SourcesDirectory)\Engine3D
-    %VCPKG_DIR%\vcpkg.exe install --triplet x86-windows
+    %VCPKG_DIR%\vcpkg.exe install
   displayName: 'vcpkg package installation'
 
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    vsVersion: 17.0
+    solution: '$(Build.SourcesDirectory)\Engine3D\Engine3D.vcxproj'
+    configuration: 'Release'
+    platform: 'Win32'
+  displayName: 'Build C++ Engine'
 
-- task: VSTest@2
+- task: NuGetCommand@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    restoreSolution: '$(Build.SourcesDirectory)\EngineEditor\EngineEditor.csproj'
+
+- task: VSBuild@1
+  inputs:
+    vsVersion: 17.0
+    solution: '$(Build.SourcesDirectory)\EngineEditor\EngineEditor.csproj'
+    configuration: 'Debug'
+    platform: 'x86'
+  displayName: 'Build C# Editor'
